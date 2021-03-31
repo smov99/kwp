@@ -1,3 +1,10 @@
 from django.shortcuts import render
+from django.views.generic import TemplateView
 
-# Create your views here.
+
+class ConfirmationView(TemplateView):
+    template_name = 'confirmation.html'
+
+
+class ProposalView(TemplateView):
+    template_name = 'proposal.html'

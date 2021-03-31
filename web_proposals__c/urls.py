@@ -1,5 +1,5 @@
 from django.urls import path
-import Web_Proposals__c.views as views
+import web_proposals__c.views as views
 
 urlpatterns = [
     path('', views.ConfirmationView.as_view(), name='confirmation'),

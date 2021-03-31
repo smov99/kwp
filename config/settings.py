@@ -54,9 +54,9 @@ THIRD_PARTY_APPS = [
 ]
 
 LOCAL_APPS = [
-    'Authorized_emails__c.apps.AuthorizedEmailsCConfig',
-    'Web_Proposals__c.apps.WebProposalsCConfig',
-    'Proposal_engagement__c.apps.ProposalEngagementCConfig',
+    'authorized_emails__c.apps.AuthorizedEmailsCConfig',
+    'web_proposals__c.apps.WebProposalsCConfig',
+    'proposal_engagement__c.apps.ProposalEngagementCConfig',
 ]
 
 INSTALLED_APPS = DEFAULT_APPS + THIRD_PARTY_APPS + LOCAL_APPS
@@ -125,7 +125,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 # Authentication parameters
 
-AUTH_USER_MODEL = 'Authorized_emails__c.CustomUser'
+AUTH_USER_MODEL = 'authorized_emails__c.CustomUser'
 
 
 # Internationalization

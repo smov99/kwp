@@ -3,13 +3,191 @@
   <component name="ChangeListManager">
     <list default="true" id="09261db6-e477-4638-a4b0-2d0875373965" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Authorized_emails__c/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/Authorized_emails__c/admin.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Authorized_emails__c/migrations/0001_initial.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Pipfile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/Pipfile.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Web_Proposals__c/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/Web_Proposals__c/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Web_Proposals__c/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/Web_Proposals__c/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/config/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/wsgi.py" beforeDir="false" afterPath="$PROJECT_DIR$/config/wsgi.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/vendor/font-awesome-pro/webfonts/free-fa-brands-400.eot" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/vendor/font-awesome-pro/webfonts/free-fa-brands-400.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/vendor/font-awesome-pro/webfonts/free-fa-brands-400.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/vendor/font-awesome-pro/webfonts/free-fa-brands-400.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/vendor/font-awesome-pro/webfonts/free-fa-brands-400.woff2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/vendor/font-awesome-pro/webfonts/free-fa-regular-400.eot" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/vendor/font-awesome-pro/webfonts/free-fa-regular-400.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/vendor/font-awesome-pro/webfonts/free-fa-regular-400.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/vendor/font-awesome-pro/webfonts/free-fa-regular-400.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/vendor/font-awesome-pro/webfonts/free-fa-regular-400.woff2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/vendor/font-awesome-pro/webfonts/free-fa-solid-900.eot" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/vendor/font-awesome-pro/webfonts/free-fa-solid-900.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/vendor/font-awesome-pro/webfonts/free-fa-solid-900.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/vendor/font-awesome-pro/webfonts/free-fa-solid-900.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/vendor/font-awesome-pro/webfonts/free-fa-solid-900.woff2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/vendor/font-awesome-pro/webfonts/pro-fa-duotone-900-5.0.0.eot" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/vendor/font-awesome-pro/webfonts/pro-fa-duotone-900-5.0.0.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/vendor/font-awesome-pro/webfonts/pro-fa-duotone-900-5.0.0.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/vendor/font-awesome-pro/webfonts/pro-fa-duotone-900-5.0.0.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/vendor/font-awesome-pro/webfonts/pro-fa-duotone-900-5.0.0.woff2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/vendor/font-awesome-pro/webfonts/pro-fa-duotone-900-5.0.1.eot" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/vendor/font-awesome-pro/webfonts/pro-fa-duotone-900-5.0.1.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/vendor/font-awesome-pro/webfonts/pro-fa-duotone-900-5.0.1.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/vendor/font-awesome-pro/webfonts/pro-fa-duotone-900-5.0.1.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/vendor/font-awesome-pro/webfonts/pro-fa-duotone-900-5.0.1.woff2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/vendor/font-awesome-pro/webfonts/pro-fa-duotone-900-5.0.10.eot" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/vendor/font-awesome-pro/webfonts/pro-fa-duotone-900-5.0.10.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/vendor/font-awesome-pro/webfonts/pro-fa-duotone-900-5.0.10.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/vendor/font-awesome-pro/webfonts/pro-fa-duotone-900-5.0.10.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/vendor/font-awesome-pro/webfonts/pro-fa-duotone-900-5.0.10.woff2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/vendor/font-awesome-pro/webfonts/pro-fa-duotone-900-5.0.11.eot" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/vendor/font-awesome-pro/webfonts/pro-fa-duotone-900-5.0.11.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/vendor/font-awesome-pro/webfonts/pro-fa-duotone-900-5.0.11.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/vendor/font-awesome-pro/webfonts/pro-fa-duotone-900-5.0.11.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/vendor/font-awesome-pro/webfonts/pro-fa-duotone-900-5.0.11.woff2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/vendor/font-awesome-pro/webfonts/pro-fa-duotone-900-5.0.13.eot" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/vendor/font-awesome-pro/webfonts/pro-fa-duotone-900-5.0.13.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/vendor/font-awesome-pro/webfonts/pro-fa-duotone-900-5.0.13.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/vendor/font-awesome-pro/webfonts/pro-fa-duotone-900-5.0.13.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/vendor/font-awesome-pro/webfonts/pro-fa-duotone-900-5.0.13.woff2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/vendor/font-awesome-pro/webfonts/pro-fa-duotone-900-5.0.3.eot" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/vendor/font-awesome-pro/webfonts/pro-fa-duotone-900-5.0.3.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/vendor/font-awesome-pro/webfonts/pro-fa-duotone-900-5.0.3.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/vendor/font-awesome-pro/webfonts/pro-fa-duotone-900-5.0.3.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/vendor/font-awesome-pro/webfonts/pro-fa-duotone-900-5.0.3.woff2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/vendor/font-awesome-pro/webfonts/pro-fa-duotone-900-5.0.5.eot" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/vendor/font-awesome-pro/webfonts/pro-fa-duotone-900-5.0.5.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/vendor/font-awesome-pro/webfonts/pro-fa-duotone-900-5.0.5.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/vendor/font-awesome-pro/webfonts/pro-fa-duotone-900-5.0.5.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/vendor/font-awesome-pro/webfonts/pro-fa-duotone-900-5.0.5.woff2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/vendor/font-awesome-pro/webfonts/pro-fa-duotone-900-5.0.7.eot" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/vendor/font-awesome-pro/webfonts/pro-fa-duotone-900-5.0.7.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/vendor/font-awesome-pro/webfonts/pro-fa-duotone-900-5.0.7.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/vendor/font-awesome-pro/webfonts/pro-fa-duotone-900-5.0.7.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/vendor/font-awesome-pro/webfonts/pro-fa-duotone-900-5.0.7.woff2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/vendor/font-awesome-pro/webfonts/pro-fa-duotone-900-5.0.9.eot" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/vendor/font-awesome-pro/webfonts/pro-fa-duotone-900-5.0.9.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/vendor/font-awesome-pro/webfonts/pro-fa-duotone-900-5.0.9.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/vendor/font-awesome-pro/webfonts/pro-fa-duotone-900-5.0.9.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/vendor/font-awesome-pro/webfonts/pro-fa-duotone-900-5.0.9.woff2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/vendor/font-awesome-pro/webfonts/pro-fa-duotone-900-5.1.0.eot" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/vendor/font-awesome-pro/webfonts/pro-fa-duotone-900-5.1.0.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/vendor/font-awesome-pro/webfonts/pro-fa-duotone-900-5.1.0.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/vendor/font-awesome-pro/webfonts/pro-fa-duotone-900-5.1.0.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/vendor/font-awesome-pro/webfonts/pro-fa-duotone-900-5.1.0.woff2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/vendor/font-awesome-pro/webfonts/pro-fa-duotone-900-5.1.1.eot" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/vendor/font-awesome-pro/webfonts/pro-fa-duotone-900-5.1.1.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/vendor/font-awesome-pro/webfonts/pro-fa-duotone-900-5.1.1.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/vendor/font-awesome-pro/webfonts/pro-fa-duotone-900-5.1.1.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/vendor/font-awesome-pro/webfonts/pro-fa-duotone-900-5.1.1.woff2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/vendor/font-awesome-pro/webfonts/pro-fa-duotone-900-5.10.1.eot" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/vendor/font-awesome-pro/webfonts/pro-fa-duotone-900-5.10.1.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/vendor/font-awesome-pro/webfonts/pro-fa-duotone-900-5.10.1.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/vendor/font-awesome-pro/webfonts/pro-fa-duotone-900-5.10.1.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/vendor/font-awesome-pro/webfonts/pro-fa-duotone-900-5.10.1.woff2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/vendor/font-awesome-pro/webfonts/pro-fa-duotone-900-5.10.2.eot" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/vendor/font-awesome-pro/webfonts/pro-fa-duotone-900-5.10.2.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/vendor/font-awesome-pro/webfonts/pro-fa-duotone-900-5.10.2.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/vendor/font-awesome-pro/webfonts/pro-fa-duotone-900-5.10.2.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/vendor/font-awesome-pro/webfonts/pro-fa-duotone-900-5.10.2.woff2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/vendor/font-awesome-pro/webfonts/pro-fa-duotone-900-5.11.0.eot" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/vendor/font-awesome-pro/webfonts/pro-fa-duotone-900-5.11.0.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/vendor/font-awesome-pro/webfonts/pro-fa-duotone-900-5.11.0.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/vendor/font-awesome-pro/webfonts/pro-fa-duotone-900-5.11.0.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/vendor/font-awesome-pro/webfonts/pro-fa-duotone-900-5.11.0.woff2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/vendor/font-awesome-pro/webfonts/pro-fa-duotone-900-5.11.1.eot" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/vendor/font-awesome-pro/webfonts/pro-fa-duotone-900-5.11.1.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/vendor/font-awesome-pro/webfonts/pro-fa-duotone-900-5.11.1.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/vendor/font-awesome-pro/webfonts/pro-fa-duotone-900-5.11.1.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/vendor/font-awesome-pro/webfonts/pro-fa-duotone-900-5.11.1.woff2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/vendor/font-awesome-pro/webfonts/pro-fa-duotone-900-5.11.2.eot" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/vendor/font-awesome-pro/webfonts/pro-fa-duotone-900-5.11.2.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/vendor/font-awesome-pro/webfonts/pro-fa-duotone-900-5.11.2.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/vendor/font-awesome-pro/webfonts/pro-fa-duotone-900-5.11.2.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/vendor/font-awesome-pro/webfonts/pro-fa-duotone-900-5.11.2.woff2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/vendor/font-awesome-pro/webfonts/pro-fa-duotone-900-5.12.0.eot" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/vendor/font-awesome-pro/webfonts/pro-fa-duotone-900-5.12.0.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/vendor/font-awesome-pro/webfonts/pro-fa-duotone-900-5.12.0.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/vendor/font-awesome-pro/webfonts/pro-fa-duotone-900-5.12.0.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/vendor/font-awesome-pro/webfonts/pro-fa-duotone-900-5.12.0.woff2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/vendor/font-awesome-pro/webfonts/pro-fa-duotone-900-5.12.1.eot" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/vendor/font-awesome-pro/webfonts/pro-fa-duotone-900-5.12.1.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/vendor/font-awesome-pro/webfonts/pro-fa-duotone-900-5.12.1.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/vendor/font-awesome-pro/webfonts/pro-fa-duotone-900-5.12.1.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/vendor/font-awesome-pro/webfonts/pro-fa-duotone-900-5.12.1.woff2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/vendor/font-awesome-pro/webfonts/pro-fa-duotone-900-5.13.0.eot" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/vendor/font-awesome-pro/webfonts/pro-fa-duotone-900-5.13.0.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/vendor/font-awesome-pro/webfonts/pro-fa-duotone-900-5.13.0.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/vendor/font-awesome-pro/webfonts/pro-fa-duotone-900-5.13.0.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/vendor/font-awesome-pro/webfonts/pro-fa-duotone-900-5.13.0.woff2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/vendor/font-awesome-pro/webfonts/pro-fa-duotone-900-5.14.0.eot" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/vendor/font-awesome-pro/webfonts/pro-fa-duotone-900-5.14.0.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/vendor/font-awesome-pro/webfonts/pro-fa-duotone-900-5.14.0.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/vendor/font-awesome-pro/webfonts/pro-fa-duotone-900-5.14.0.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/vendor/font-awesome-pro/webfonts/pro-fa-duotone-900-5.14.0.woff2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/vendor/font-awesome-pro/webfonts/pro-fa-duotone-900-5.15.1.eot" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/vendor/font-awesome-pro/webfonts/pro-fa-duotone-900-5.15.1.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/vendor/font-awesome-pro/webfonts/pro-fa-duotone-900-5.15.1.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/vendor/font-awesome-pro/webfonts/pro-fa-duotone-900-5.15.1.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/vendor/font-awesome-pro/webfonts/pro-fa-duotone-900-5.15.1.woff2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/vendor/font-awesome-pro/webfonts/pro-fa-duotone-900-5.2.0.eot" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/vendor/font-awesome-pro/webfonts/pro-fa-duotone-900-5.2.0.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/vendor/font-awesome-pro/webfonts/pro-fa-duotone-900-5.2.0.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/vendor/font-awesome-pro/webfonts/pro-fa-duotone-900-5.2.0.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/vendor/font-awesome-pro/webfonts/pro-fa-duotone-900-5.2.0.woff2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/vendor/font-awesome-pro/webfonts/pro-fa-duotone-900-5.3.0.eot" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/vendor/font-awesome-pro/webfonts/pro-fa-duotone-900-5.3.0.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/vendor/font-awesome-pro/webfonts/pro-fa-duotone-900-5.3.0.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/vendor/font-awesome-pro/webfonts/pro-fa-duotone-900-5.3.0.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/vendor/font-awesome-pro/webfonts/pro-fa-duotone-900-5.3.0.woff2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/vendor/font-awesome-pro/webfonts/pro-fa-duotone-900-5.4.0.eot" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/vendor/font-awesome-pro/webfonts/pro-fa-duotone-900-5.4.0.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/vendor/font-awesome-pro/webfonts/pro-fa-duotone-900-5.4.0.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/vendor/font-awesome-pro/webfonts/pro-fa-duotone-900-5.4.0.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/vendor/font-awesome-pro/webfonts/pro-fa-duotone-900-5.4.0.woff2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/vendor/font-awesome-pro/webfonts/pro-fa-duotone-900-5.4.1.eot" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/vendor/font-awesome-pro/webfonts/pro-fa-duotone-900-5.4.1.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/vendor/font-awesome-pro/webfonts/pro-fa-duotone-900-5.4.1.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/vendor/font-awesome-pro/webfonts/pro-fa-duotone-900-5.4.1.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/vendor/font-awesome-pro/webfonts/pro-fa-duotone-900-5.4.1.woff2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/vendor/font-awesome-pro/webfonts/pro-fa-duotone-900-5.5.0.eot" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/vendor/font-awesome-pro/webfonts/pro-fa-duotone-900-5.5.0.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/vendor/font-awesome-pro/webfonts/pro-fa-duotone-900-5.5.0.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/vendor/font-awesome-pro/webfonts/pro-fa-duotone-900-5.5.0.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/vendor/font-awesome-pro/webfonts/pro-fa-duotone-900-5.5.0.woff2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/vendor/font-awesome-pro/webfonts/pro-fa-duotone-900-5.6.0.eot" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/vendor/font-awesome-pro/webfonts/pro-fa-duotone-900-5.6.0.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/vendor/font-awesome-pro/webfonts/pro-fa-duotone-900-5.6.0.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/vendor/font-awesome-pro/webfonts/pro-fa-duotone-900-5.6.0.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/vendor/font-awesome-pro/webfonts/pro-fa-duotone-900-5.6.0.woff2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/vendor/font-awesome-pro/webfonts/pro-fa-duotone-900-5.6.1.eot" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/vendor/font-awesome-pro/webfonts/pro-fa-duotone-900-5.6.1.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/vendor/font-awesome-pro/webfonts/pro-fa-duotone-900-5.6.1.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/vendor/font-awesome-pro/webfonts/pro-fa-duotone-900-5.6.1.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/vendor/font-awesome-pro/webfonts/pro-fa-duotone-900-5.6.1.woff2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/vendor/font-awesome-pro/webfonts/pro-fa-duotone-900-5.6.3.eot" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/vendor/font-awesome-pro/webfonts/pro-fa-duotone-900-5.6.3.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/vendor/font-awesome-pro/webfonts/pro-fa-duotone-900-5.6.3.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/vendor/font-awesome-pro/webfonts/pro-fa-duotone-900-5.6.3.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/vendor/font-awesome-pro/webfonts/pro-fa-duotone-900-5.6.3.woff2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/vendor/font-awesome-pro/webfonts/pro-fa-duotone-900-5.7.0.eot" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/vendor/font-awesome-pro/webfonts/pro-fa-duotone-900-5.7.0.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/vendor/font-awesome-pro/webfonts/pro-fa-duotone-900-5.7.0.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/vendor/font-awesome-pro/webfonts/pro-fa-duotone-900-5.7.0.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/vendor/font-awesome-pro/webfonts/pro-fa-duotone-900-5.7.0.woff2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/vendor/font-awesome-pro/webfonts/pro-fa-duotone-900-5.7.1.eot" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/vendor/font-awesome-pro/webfonts/pro-fa-duotone-900-5.7.1.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/vendor/font-awesome-pro/webfonts/pro-fa-duotone-900-5.7.1.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/vendor/font-awesome-pro/webfonts/pro-fa-duotone-900-5.7.1.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/vendor/font-awesome-pro/webfonts/pro-fa-duotone-900-5.7.1.woff2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/vendor/font-awesome-pro/webfonts/pro-fa-duotone-900-5.8.0.eot" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/vendor/font-awesome-pro/webfonts/pro-fa-duotone-900-5.8.0.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/vendor/font-awesome-pro/webfonts/pro-fa-duotone-900-5.8.0.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/vendor/font-awesome-pro/webfonts/pro-fa-duotone-900-5.8.0.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/vendor/font-awesome-pro/webfonts/pro-fa-duotone-900-5.8.0.woff2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/vendor/font-awesome-pro/webfonts/pro-fa-duotone-900-5.8.2.eot" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/vendor/font-awesome-pro/webfonts/pro-fa-duotone-900-5.8.2.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/vendor/font-awesome-pro/webfonts/pro-fa-duotone-900-5.8.2.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/vendor/font-awesome-pro/webfonts/pro-fa-duotone-900-5.8.2.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/vendor/font-awesome-pro/webfonts/pro-fa-duotone-900-5.8.2.woff2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/vendor/font-awesome-pro/webfonts/pro-fa-duotone-900-5.9.0.eot" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/vendor/font-awesome-pro/webfonts/pro-fa-duotone-900-5.9.0.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/vendor/font-awesome-pro/webfonts/pro-fa-duotone-900-5.9.0.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/vendor/font-awesome-pro/webfonts/pro-fa-duotone-900-5.9.0.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/vendor/font-awesome-pro/webfonts/pro-fa-duotone-900-5.9.0.woff2" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -106,7 +284,7 @@
       <workItem from="1616600603426" duration="4192000" />
       <workItem from="1616604848342" duration="743000" />
       <workItem from="1616605660121" duration="29963000" />
-      <workItem from="1617221347846" duration="4390000" />
+      <workItem from="1617221347846" duration="5265000" />
     </task>
     <task id="LOCAL-00001" summary="applications and model">
       <created>1616780285314</created>
@@ -122,7 +300,14 @@
       <option name="project" value="LOCAL" />
       <updated>1616780297021</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="templates added">
+      <created>1617226198586</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1617226198586</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -142,6 +327,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="applications and model" />
-    <option name="LAST_COMMIT_MESSAGE" value="applications and model" />
+    <MESSAGE value="templates added" />
+    <option name="LAST_COMMIT_MESSAGE" value="templates added" />
   </component>
 </project>

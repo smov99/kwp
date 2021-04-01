@@ -27,7 +27,7 @@
   <link href="{% static 'assets/vendor/aos/aos.css' %}" rel="stylesheet">
 
   <!-- Template Main CSS File -->
-  <link href="{% static 'assets/css/style.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/css/main-style.css' %}" rel="stylesheet">
   
 </head>
 
@@ -64,12 +64,10 @@
   <!-- ======= Introduction Section ======= -->
   {% block introduction %}
   {% endblock introduction %}
-  <main id="main">
 
 {% block content %}
 {% endblock content %}
 
-  </main><!-- End #main -->
 
   <!-- ======= Footer ======= -->
   <footer id="footer">
@@ -155,6 +153,7 @@
 
           <div class="col-lg-4 footer-newsletter">
             <form action="" method="post" role="form">
+              {% csrf_token %}
               <div class="text-center"><h4>Receive our news!</h4></div>
               <div class="form-group">
                 <input type="email" class="form-control" name="email" id="email" placeholder="Email" data-rule="email" data-msg="Please enter a valid email" />

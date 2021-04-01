@@ -3,7 +3,7 @@
 
 {% block lang %}lang="en"{% endblock lang %}
 
-{% block title %}Kiwapower - Proposal for you{% endblock title %}
+{% block title %}Proposal for you - Kiwapower{% endblock title %}
 
 {% block description %}{% endblock description %}
 
@@ -20,7 +20,7 @@
 {% endblock nav %}
 
 {% block nav_lang %}
-<li><a href="https://www.kiwapower.com/">ES</a></li>
+<li><a href="#">ES</a></li>
 {% endblock nav_lang %}
 
 {% block mobile_nav %}
@@ -36,7 +36,7 @@
       <a class="nav-link" href="#whykiwapower">FAQ</a>
     </li>
     <li class="nav-item d-block ml-4 mb-1">
-      <a class="nav-link" href="https://www.kiwapower.com/">ES</a>
+      <a class="nav-link" href="#">ES</a>
     </li>
   </ul>
 </div>
@@ -57,6 +57,7 @@
 {% endblock introduction %}
 
 {% block content %}
+  <main id="main">
 
     <!-- ======= Prepared Section ======= -->
     <section id="prepared" class="prepared">
@@ -92,133 +93,137 @@
       </div>
     </section><!-- End Welcom Message Section -->
 
-  <!-- ======= Proposal Link Section ======= -->
-  <section id="proposal-link" class="proposal-link">
-    <div class="container-fluid" data-aos="fade-up">
+    <!-- ======= Proposal Link Section ======= -->
+    <section id="proposal-link" class="proposal-link">
+      <div class="container-fluid" data-aos="fade-up">
 
-      <div class="section-title">
-        <p>Proposal for you:</p>
-        <a href="link-to-proposal" class="btn-confirmation">View proposal</a>
+        <div class="section-title">
+          <p>Proposal for you:</p>
+          <a href="link-to-proposal" class="btn-confirmation">View proposal</a>
+        </div>
       </div>
-    </div>
-  </section><!-- End Proposal Link Section -->
+    </section><!-- End Proposal Link Section -->
 
-  <!-- ======= Why Kiwapower Section ======= -->
-  <section id="whykiwapower" class="faq">
-    <div class="container" data-aos="fade-up">
+    <!-- ======= Why Kiwapower Section ======= -->
+    <section id="whykiwapower" class="faq">
+      <div class="container" data-aos="fade-up">
 
-      <div class="section-title">
-        <h2>Why Kiwapower?</h2>
-      </div>
+        <div class="section-title">
+          <h2>Why Kiwapower?</h2>
+        </div>
 
-      <ul class="faq-list" data-aos="fade-up">
-
-        <li>
-          <a data-toggle="collapse" class="collapsed" href="#faq1">Some Question<i class="bx bx-chevron-down icon-show"></i><i class="bx bx-x icon-close"></i></a>
-          <div id="faq1" class="collapse" data-parent=".faq-list">
-            <p>
-              Some Answer
-            </p>
-          </div>
-        </li>
-
-      </ul>
-
-    </div>
-  </section><!-- End Frequently Asked Questions Section -->
-
-  <!-- ======= Frequently Asked Questions Section ======= -->
-  <section id="faq" class="faq">
-    <div class="container" data-aos="fade-up">
-
-      <div class="section-title">
-        <h2>How does the Kiwapower PPA work?</h2>
-      </div>
-
-      <ul class="faq-list" data-aos="fade-up">
-
-        <li>
-          <a data-toggle="collapse" class="collapsed" href="#faq1">Q<i class="bx bx-chevron-down icon-show"></i><i class="bx bx-x icon-close"></i></a>
-          <div id="faq1" class="collapse" data-parent=".faq-list">
-            <p>
-              A
-            </p>
-          </div>
-        </li>
-
-      </ul>
-
-    </div>
-  </section><!-- End Frequently Asked Questions Section -->
-
-  <!-- ======= Frequently Asked Questions Section ======= -->
-  <section id="faq" class="faq">
-    <div class="container" data-aos="fade-up">
-
-      <div class="section-title">
-        <h2>The Kiwapower process</h2>
-      </div>
-
-      <ul class="faq-list" data-aos="fade-up">
-
-        <li>
-          <a data-toggle="collapse" class="collapsed" href="#faq1">Q<i class="bx bx-chevron-down icon-show"></i><i class="bx bx-x icon-close"></i></a>
-          <div id="faq1" class="collapse" data-parent=".faq-list">
-            <p>
-              A
-            </p>
-          </div>
-        </li>
-
-      </ul>
-
-    </div>
-  </section><!-- End Frequently Asked Questions Section -->
-
-  <!-- ======= Contact Section ======= -->
-  <section id="contact" class="contact">
-    <div class="container" data-aos="fade-up">
-
-      <div class="section-title">
-        <h2>Contact</h2>
-        <p>Provide feedback or question</p>
-      </div>
-
-      <div class="row" data-aos="fade-up" data-aos-delay="100">
-
-        <div class="col-8 col-centered">
-          <form action="" method="post" role="form" class="contact-form">
-            <div class="form-group">
-              <textarea class="form-control" name="message" rows="5" data-rule="required" data-msg="Please write something for us" placeholder="Enter your question"></textarea>
+        <ul class="faq-list" data-aos="fade-up">
+        {% for i in '1234' %}
+          <li>
+            <a data-toggle="collapse" class="collapsed" href="#faq{{ i }}">Some Question<i class="bx bx-chevron-down icon-show"></i><i class="bx bx-x icon-close"></i></a>
+            <div id="faq{{ i }}" class="collapse" data-parent=".faq-list">
+              <p>
+                Some Answer
+              </p>
             </div>
-            <div class="text-center"><button type="submit">Submit</button></div>
-          </form>
+          </li>
+        {% endfor %}
+        </ul>
+
+      </div>
+    </section><!-- End Frequently Asked Questions Section -->
+
+    <!-- ======= Frequently Asked Questions Section ======= -->
+    <section id="faq" class="faq">
+      <div class="container" data-aos="fade-up">
+
+        <div class="section-title">
+          <h2>How does the Kiwapower PPA work?</h2>
+        </div>
+
+        <ul class="faq-list" data-aos="fade-up">
+        {% for i in '5678' %}
+          <li>
+            <a data-toggle="collapse" class="collapsed" href="#faq{{ i }}">Q<i class="bx bx-chevron-down icon-show"></i><i class="bx bx-x icon-close"></i></a>
+            <div id="faq{{ i }}" class="collapse" data-parent=".faq-list">
+              <p>
+                A
+              </p>
+            </div>
+          </li>
+        {% endfor %}
+        </ul>
+
+      </div>
+    </section><!-- End Frequently Asked Questions Section -->
+
+    <!-- ======= Frequently Asked Questions Section ======= -->
+    <section id="faq" class="faq">
+      <div class="container" data-aos="fade-up">
+
+        <div class="section-title">
+          <h2>The Kiwapower process</h2>
+        </div>
+
+        <ul class="faq-list" data-aos="fade-up">
+
+          <li>
+            <a data-toggle="collapse" class="collapsed" href="#faq1">Q<i class="bx bx-chevron-down icon-show"></i><i class="bx bx-x icon-close"></i></a>
+            <div id="faq1" class="collapse" data-parent=".faq-list">
+              <p>
+                A
+              </p>
+            </div>
+          </li>
+
+        </ul>
+
+      </div>
+    </section><!-- End Frequently Asked Questions Section -->
+
+    <!-- ======= Contact Section ======= -->
+    <section id="contact" class="contact">
+      <div class="container" data-aos="fade-up">
+
+        <div class="section-title">
+          <h2>Contact</h2>
+          <p>Provide feedback or question</p>
+        </div>
+
+        <div class="row" data-aos="fade-up" data-aos-delay="100">
+
+          <div class="col-8 col-centered">
+            <form action="" method="post" role="form" class="contact-form">
+              {% csrf_token %}
+              <div class="form-group">
+                <textarea class="form-control" name="message" rows="5" data-rule="required" data-msg="Please write something for us" placeholder="Enter your question"></textarea>
+              </div>
+              <div class="text-center"><button type="submit">Submit</button></div>
+            </form>
+          </div>
+
         </div>
 
       </div>
+      <div class="container" data-aos="fade-up">
 
-    </div>
-    <div class="container" data-aos="fade-up">
+        <div class="contact-form-title">
+          <p>Request a meeting with Kiwapower</p>
+        </div>
 
-      <div class="contact-form-title">
-        <p>Request a meeting with Kiwapower</p>
-      </div>
+        <div class="row" data-aos="fade-up" data-aos-delay="100">
 
-      <div class="row" data-aos="fade-up" data-aos-delay="100">
+          <div class="col-8 col-centered">
+            <form action="" method="post" role="form" class="contact-form">
+              {% csrf_token %}
+              <div class="form-group">
+                <textarea class="form-control" name="message" rows="5" data-rule="required" data-msg="Please write something for us" placeholder="Please indicate the best time and way for Kiwapower to get in touch with you"></textarea>
+              </div>
+              <div class="text-center"><button type="submit">Submit</button></div>
+            </form>
+          </div>
 
-        <div class="col-8 col-centered">
-          <form action="" method="post" role="form" class="contact-form">
-            <div class="form-group">
-              <textarea class="form-control" name="message" rows="5" data-rule="required" data-msg="Please write something for us" placeholder="Please indicate the best time and way for Kiwapower to get in touch with you"></textarea>
-            </div>
-            <div class="text-center"><button type="submit">Submit</button></div>
-          </form>
         </div>
 
       </div>
+    </section><!-- End Contact Section -->
 
-    </div>
-  </section><!-- End Contact Section -->
+  </main><!-- End #main -->
 {% endblock content %}
 
 {% block footer_nav %}

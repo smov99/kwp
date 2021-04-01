@@ -238,28 +238,57 @@ h1, h2, h3, h4, h5, h6 {
   font-size: 24px;
 }
 
-#introduction .btn-confirmation {
-  font-family: "Lato", Sans-serif;
-  font-weight: 500;
-  font-size: 16px;
-  letter-spacing: 1px;
-  display: inline-block;
-  padding: 10px 30px;
-  transition: 0.5s;
+#introduction form {
   margin-top: 30px;
-  color: #fff;
+  margin-bottom: 30px;
   background: #e60012;
-  border: 2px solid #e60012;
+  padding: 4px 8px;
+  border-radius: 4px;
+  position: relative;
+  text-align: left;
 }
 
-#introduction .btn-confirmation:hover {
-  background: transparent;
-  border-color: #fff;
+#introduction form input[type="email"] {
+  border: 0;
+  padding: 4px 8px;
+  width: calc(100% - 100px);
+}
+
+#introduction form input[type="submit"] {
+  position: absolute;
+  top: 0;
+  right: -1px;
+  bottom: 0;
+  border: 0;
+  background: none;
+  font-size: 16px;
+  padding: 0 20px;
+  background: #e60012;
+  color: #fff;
+  transition: 0.3s;
+  border-radius: 0 1px 1px 0;
+  box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.1);
+}
+
+#introduction form input[type="submit"]:hover {
+  background: #e35052;
 }
 
 @media(min-width: 1920px) {
   #introduction video {
     width: 100%;
+  }
+}
+
+@media(min-width: 1200px) {
+  #introduction .introduction-form {
+    max-width: 100%;
+  }
+}
+
+@media(min-width: 768px) and (max-width: 1200px){
+  #introduction .introduction-form {
+    max-width: 50%;
   }
 }
 
@@ -274,6 +303,10 @@ h1, h2, h3, h4, h5, h6 {
   #introduction h2 {
     font-size: 18px;
     line-height: 24px;
+  }
+
+  #introduction .introduction-form {
+    max-width: 100%;
   }
 }
 
@@ -385,126 +418,6 @@ section {
   top: 0;
   left: 0;
   right: 0;
-}
-
-/*--------------------------------------------------------------
-# Confirmation
---------------------------------------------------------------*/
-.confirmation {
-  display: flex;
-}
-
-.confirmation .container {
-  position: relative;
-  z-index: 10;
-}
-
-.confirmation .content {
-  padding: 30px 30px 30px 0;
-}
-
-.confirmation .content h3 {
-  font-weight: 700;
-  font-size: 34px;
-  margin-bottom: 32px;
-}
-
-.confirmation .content p {
-  margin-bottom: 30px;
-}
-
-.confirmation form {
-  margin-top: 30px;
-  background: #e60012;
-  padding: 4px 8px;
-  border-radius: 4px;
-  position: relative;
-  text-align: left;
-}
-
-.confirmation form input[type="email"] {
-  border: 0;
-  padding: 4px 8px;
-  width: calc(100% - 100px);
-}
-
-.confirmation form input[type="submit"] {
-  position: absolute;
-  top: 0;
-  right: -1px;
-  bottom: 0;
-  border: 0;
-  background: none;
-  font-size: 16px;
-  padding: 0 20px;
-  background: #e60012;
-  color: #fff;
-  transition: 0.3s;
-  border-radius: 0 1px 1px 0;
-  box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.1);
-}
-
-.confirmation form input[type="submit"]:hover {
-  background: #e35052;
-}
-
-.confirmation .content .confirmation-btn {
-  padding: 8px 30px 9px 30px;
-  color: #fff;
-  border-radius: 50px;
-  transition: 0.3s;
-  text-transform: uppercase;
-  font-weight: 600;
-  font-size: 13px;
-  display: inline-flex;
-  align-items: center;
-  border: 2px solid #e60012;
-}
-
-.confirmation .content .confirmation-btn:hover {
-  background: #e35052;
-  background: #e60012;
-}
-
-.confirmation .icon-boxes .icon-box {
-  margin-top: 30px;
-}
-
-.confirmation .icon-boxes .icon-box object {
-  width: 60px;
-  height: 60px;
-  fill: #e60012;
-  margin-bottom: 10px;
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.confirmation .icon-boxes .icon-box h4 {
-  font-size: 20px;
-  font-weight: 700;
-  margin: 0 0 10px 0;
-}
-
-.confirmation .icon-boxes .icon-box p {
-  font-size: 16px;
-  color: #848484;
-  text-align: center;
-}
-
-@media (max-width: 1200px) {
-  .confirmation .content {
-    padding-right: 0;
-  }
-}
-
-@media (max-width: 768px) {
-  .confirmation {
-    text-align: center;
-    position: relative;
-    display: grid;
-    align-items: center;
-  }
 }
 
 /*--------------------------------------------------------------

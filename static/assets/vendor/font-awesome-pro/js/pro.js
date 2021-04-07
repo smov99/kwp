@@ -288,7 +288,7 @@
   /* BEGIN.FEATURE.AF */
 
   var fromJsDirectory = /\/js\/.*\.js.*/;
-  var manuallyConfigureMessage = 'Manually set config.fetchSvgFrom = "URL" or use <script data-fetch-svg-from="URL" ...> to explicitly configure.'; // TODO: figure out all of this error scenario handling for the fetchCustomSvg url as well.
+  var manuallyConfigureMessage = 'Manually set kwp.fetchSvgFrom = "URL" or use <script data-fetch-svg-from="URL" ...> to explicitly configure.'; // TODO: figure out all of this error scenario handling for the fetchCustomSvg url as well.
 
   if (_config.autoFetchSvg && !_config.fetchSvgFrom && DOCUMENT && DOCUMENT.currentScript) {
     var src = DOCUMENT.currentScript.getAttribute('src');
@@ -1363,11 +1363,11 @@
 
     return new picked(function (resolve, reject) {
       if (!url) {
-        return reject(new Error('No URL available to fetch SVGs from. Specify in params or by setting config.fetchSvgFrom'));
+        return reject(new Error('No URL available to fetch SVGs from. Specify in params or by setting kwp.fetchSvgFrom'));
       }
 
       if (isUploadedIcon && !uploadedSvgUrl) {
-        return reject(new Error('No URL available to fetch kit SVGs from. Specify in params or by setting config.fetchKitSvgFrom'));
+        return reject(new Error('No URL available to fetch kit SVGs from. Specify in params or by setting kwp.fetchKitSvgFrom'));
       }
 
       var fullUrl = isUploadedIcon ? "".concat(uploadedSvgUrl, "/").concat(token, "/icons/").concat(iconPath(iconName, version)) : "".concat(url, "/").concat(PREFIX_TO_STYLE[prefix], "/").concat(iconPath(iconName));

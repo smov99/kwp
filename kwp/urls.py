@@ -19,7 +19,5 @@ from django.urls import path, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('authorized_emails__c.urls')),
-    path('', include('web_proposals__c.urls')),
-    path('', include('proposal_engagement__c.urls')),
+    path('<proposalid>/', include('kwp.proposal.urls')),
 ]

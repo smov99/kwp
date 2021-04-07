@@ -1,7 +1,55 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="09261db6-e477-4638-a4b0-2d0875373965" name="Default Changelist" comment="" />
+    <list default="true" id="09261db6-e477-4638-a4b0-2d0875373965" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/kwp/proposal/admin.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/kwp/proposal/apps.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/kwp/proposal/models.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/kwp/proposal/services.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pipfile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/Pipfile.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/authorized_emails__c/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/kwp/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/authorized_emails__c/admin.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/authorized_emails__c/apps.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/authorized_emails__c/migrations/0001_initial.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/authorized_emails__c/migrations/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/kwp/proposal/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/authorized_emails__c/models.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/authorized_emails__c/services.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/authorized_emails__c/tests.py" beforeDir="false" afterPath="$PROJECT_DIR$/kwp/proposal/tests.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/authorized_emails__c/urls.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/authorized_emails__c/views.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/kwp/proposal/migrations/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/asgi.py" beforeDir="false" afterPath="$PROJECT_DIR$/kwp/asgi.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/kwp/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/kwp/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/wsgi.py" beforeDir="false" afterPath="$PROJECT_DIR$/kwp/wsgi.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/kwp/ansible_settings.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/manage.py" beforeDir="false" afterPath="$PROJECT_DIR$/manage.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/proposal_engagement__c/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/proposal_engagement__c/admin.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/proposal_engagement__c/apps.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/proposal_engagement__c/migrations/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/proposal_engagement__c/models.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/proposal_engagement__c/tests.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/proposal_engagement__c/urls.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/proposal_engagement__c/views.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/admin/js/vendor/select2/select2.full.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/admin/js/vendor/select2/select2.full.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/css/main-style.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/assets/css/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/vendor/font-awesome-pro/js/pro.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/assets/vendor/font-awesome-pro/js/pro.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/vendor/font-awesome-pro/js/pro.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/assets/vendor/font-awesome-pro/js/pro.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/rest_framework/css/bootstrap-tweaks.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/rest_framework/css/bootstrap-tweaks.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/proposal.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/proposal.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web_proposals__c/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/web_proposals__c/admin.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/web_proposals__c/apps.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/web_proposals__c/migrations/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/web_proposals__c/models.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/web_proposals__c/tests.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/web_proposals__c/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/kwp/proposal/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web_proposals__c/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/kwp/proposal/views.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -13,8 +61,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Python Script" />
         <option value="HTML File" />
+        <option value="Python Script" />
       </list>
     </option>
   </component>
@@ -31,9 +79,11 @@
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../python/test_proj" />
-    <property name="settings.editor.selected.configurable" value="com.jetbrains.django.DjangoModulesConfigurable" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../pythonProject" />
+    <property name="settings.editor.selected.configurable" value="preferences.sourceCode.HTML" />
+    <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -42,12 +92,47 @@
       <recent name="F:\workspace\django\kiwapower_web_proposal\static\css" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="F:\workspace\django\kiwapower_web_proposal\kwp\proposal" />
+      <recent name="F:\workspace\django\kiwapower_web_proposal\kwp" />
       <recent name="F:\workspace\django\kiwapower_web_proposal\static\assets" />
       <recent name="F:\workspace\django\kiwapower_web_proposal\templates" />
       <recent name="F:\workspace\django\kiwapower_web_proposal\Authorized_emails__c" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Django Server.kiwapower">
+    <configuration name="Unnamed" type="Python.DjangoServer" factoryName="Django server" nameIsGenerated="true">
+      <module name="kiwapower_web_proposal" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\Scripts\python.exe" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="net.ashald.envfile">
+        <option name="IS_ENABLED" value="false" />
+        <option name="IS_SUBST" value="false" />
+        <option name="IS_PATH_MACRO_SUPPORTED" value="false" />
+        <option name="IS_IGNORE_MISSING_FILES" value="false" />
+        <option name="IS_ENABLE_EXPERIMENTAL_INTEGRATIONS" value="false" />
+        <ENTRIES>
+          <ENTRY IS_ENABLED="true" PARSER="runconfig" />
+        </ENTRIES>
+      </EXTENSION>
+      <option name="launchJavascriptDebuger" value="false" />
+      <option name="port" value="8000" />
+      <option name="host" value="" />
+      <option name="additionalOptions" value="" />
+      <option name="browserUrl" value="" />
+      <option name="runTestServer" value="false" />
+      <option name="runNoReload" value="false" />
+      <option name="useCustomRunCommand" value="false" />
+      <option name="customRunCommand" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="kiwapower" type="Python.DjangoServer" factoryName="Django server">
       <module name="kiwapower_web_proposal" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -81,6 +166,10 @@
       <option name="customRunCommand" value="" />
       <method v="2" />
     </configuration>
+    <list>
+      <item itemvalue="Django Server.kiwapower" />
+      <item itemvalue="Django Server.Unnamed" />
+    </list>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="SvnConfiguration">
@@ -97,7 +186,9 @@
       <workItem from="1616600603426" duration="4192000" />
       <workItem from="1616604848342" duration="743000" />
       <workItem from="1616605660121" duration="29963000" />
-      <workItem from="1617221347846" duration="13490000" />
+      <workItem from="1617221347846" duration="15338000" />
+      <workItem from="1617448272479" duration="7931000" />
+      <workItem from="1617460245505" duration="37745000" />
     </task>
     <task id="LOCAL-00001" summary="applications and model">
       <created>1616780285314</created>
@@ -141,7 +232,14 @@
       <option name="project" value="LOCAL" />
       <updated>1617303529281</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="templates corrected">
+      <created>1617304000992</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1617304000992</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

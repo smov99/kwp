@@ -423,6 +423,14 @@ section {
 /*--------------------------------------------------------------
 # Frequently Asked Questions
 --------------------------------------------------------------*/
+#whykiwapower .section-title a {
+  color: #262626;
+}
+
+#whykiwapower .section-title a:hover {
+  color: #e60012;
+}
+
 .faq .faq-list {
   padding: 0;
   list-style: none;

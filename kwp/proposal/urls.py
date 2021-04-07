@@ -1,7 +1,8 @@
 from django.urls import path
-import web_proposals__c.views as views
+from kwp.proposal import views
 
 urlpatterns = [
     path('', views.ConfirmationView.as_view(), name='confirmation'),
     path('proposal/', views.ProposalView.as_view(), name='proposal'),
+    path('pdf/', views.ProposalPDFView.as_view(), name='pdf'),
 ]

@@ -109,72 +109,64 @@
       <div class="container" data-aos="fade-up">
 
         <div class="section-title">
-          <h2>Why Kiwapower?</h2>
+          <h2><a data-toggle="collapse" class="collapsed" href="#wkwp">Why Kiwapower?</a></h2>
         </div>
 
-        <ul class="faq-list" data-aos="fade-up">
-        {% for i in '123' %}
-          <li>
-            <a data-toggle="collapse" class="collapsed" href="#faq{{ i }}">Some Question<i class="bx bx-chevron-down icon-show"></i><i class="bx bx-x icon-close"></i></a>
-            <div id="faq{{ i }}" class="collapse" data-parent=".faq-list">
-              <p>
-                Some Answer
-              </p>
-            </div>
-          </li>
-        {% endfor %}
-        </ul>
-
-      </div>
-    </section><!-- End Frequently Asked Questions Section -->
-
-    <!-- ======= Frequently Asked Questions Section ======= -->
-    <section id="faq" class="faq">
-      <div class="container" data-aos="fade-up">
+        <div id="wkwp" class="collapse" data-parent=".section-title">
+          <ul class="faq-list" data-aos="fade-up">
+          {% for i in '123' %}
+            <li>
+              <a data-toggle="collapse" class="collapsed" href="#faq{{ i }}">Some Question<i class="bx bx-chevron-down icon-show"></i><i class="bx bx-x icon-close"></i></a>
+              <div id="faq{{ i }}" class="collapse" data-parent=".faq-list">
+                <p>
+                  Some Answer
+                </p>
+              </div>
+            </li>
+          {% endfor %}
+          </ul>
+        </div>
 
         <div class="section-title">
-          <h2>How does the Kiwapower PPA work?</h2>
+          <h2><a data-toggle="collapse" class="collapsed" href="#kwpppa">How does the Kiwapower PPA work?</a></h2>
         </div>
 
-        <ul class="faq-list" data-aos="fade-up">
-        {% for i in '456' %}
-          <li>
-            <a data-toggle="collapse" class="collapsed" href="#faq{{ i }}">Q<i class="bx bx-chevron-down icon-show"></i><i class="bx bx-x icon-close"></i></a>
-            <div id="faq{{ i }}" class="collapse" data-parent=".faq-list">
-              <p>
-                A
-              </p>
-            </div>
-          </li>
-        {% endfor %}
-        </ul>
-
-      </div>
-    </section><!-- End Frequently Asked Questions Section -->
-
-    <!-- ======= Frequently Asked Questions Section ======= -->
-    <section id="faq" class="faq">
-      <div class="container" data-aos="fade-up">
+        <div id="kwpppa" class="collapse" data-parent=".section-title">
+          <ul class="faq-list" data-aos="fade-up">
+          {% for i in '456' %}
+            <li>
+              <a data-toggle="collapse" class="collapsed" href="#faq{{ i }}">Q<i class="bx bx-chevron-down icon-show"></i><i class="bx bx-x icon-close"></i></a>
+              <div id="faq{{ i }}" class="collapse" data-parent=".faq-list">
+                <p>
+                  A
+                </p>
+              </div>
+            </li>
+          {% endfor %}
+          </ul>
+        </div>
 
         <div class="section-title">
-          <h2>The Kiwapower process</h2>
+          <h2><a data-toggle="collapse" class="collapsed" href="#kwpprocess">The Kiwapower process</a></h2>
         </div>
 
-        <ul class="faq-list" data-aos="fade-up">
-        {% for i in '789' %}
-          <li>
-            <a data-toggle="collapse" class="collapsed" href="#faq{{ i }}">Q<i class="bx bx-chevron-down icon-show"></i><i class="bx bx-x icon-close"></i></a>
-            <div id="faq{{ i }}" class="collapse" data-parent=".faq-list">
-              <p>
-                A
-              </p>
-            </div>
-          </li>
-        {% endfor %}
-        </ul>
+        <div id="kwpprocess" class="collapse" data-parent=".section-title">
+          <ul class="faq-list" data-aos="fade-up">
+          {% for i in '789' %}
+            <li>
+              <a data-toggle="collapse" class="collapsed" href="#faq{{ i }}">Q<i class="bx bx-chevron-down icon-show"></i><i class="bx bx-x icon-close"></i></a>
+              <div id="faq{{ i }}" class="collapse" data-parent=".faq-list">
+                <p>
+                  A
+                </p>
+              </div>
+            </li>
+          {% endfor %}
+          </ul>
+        </div>
 
       </div>
-    </section><!-- End Frequently Asked Questions Section -->
+    </section><!-- End Why Kiwapower Section -->
 
     <!-- ======= Contact Section ======= -->
     <section id="contact" class="contact">

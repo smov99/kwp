@@ -16,7 +16,8 @@ class ConfirmationView(View):
 
 
 class ProposalView(View):
-    pass
+    def get(self, request: HttpRequest, proposalid) -> HttpResponse:
+        return render(request, 'proposal.html')
 
 
 class ProposalPDFView(View):

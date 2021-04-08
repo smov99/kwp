@@ -123,4 +123,19 @@
     aos_init();
   });
 
+  //PDF preview
+  $("#proposal-pdf-link").click(function (e) {
+    var pdf_url = window.location.href + 'pdf';
+    var modal_width = 700;
+    var modal_height = 450;
+    var x = screen.width/2 - modal_width/2;
+    var y = screen.height/2 - modal_height/2;
+    var pdfWindow;
+    e.preventDefault();
+    if ($(window).width() > 992) {
+      pdfWindow = window.open(pdf_url,"", 'width='+modal_width+',height='+modal_height+',left='+x+',top='+y);}
+    else {
+      pdfWindow = window.open(pdf_url,"");}
+  });
+
 })(jQuery);

@@ -9,7 +9,7 @@ from kwp import settings
 
 class ConfirmationView(View):
     def get(self, request: HttpRequest, proposalid) -> HttpResponse:
-        return render(request, 'confirmation.html')
+        return render(request, 'confirmation.html', {'proposalid': proposalid})
 
     def post(self, request: HttpRequest) -> HttpResponse:
         pass
@@ -17,8 +17,9 @@ class ConfirmationView(View):
 
 class ProposalView(View):
     def get(self, request: HttpRequest, proposalid) -> HttpResponse:
-        return render(request, 'proposal.html')
+        return render(request, 'proposal.html', {'proposalid':proposalid})
 
 
 class ProposalPDFView(View):
-    pass
+    def get(self, request: HttpRequest, proposalid) -> HttpResponse:
+        return render(request, 'pdf.html')

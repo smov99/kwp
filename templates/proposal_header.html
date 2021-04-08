@@ -1,0 +1,36 @@
+{% load static i18n %}
+
+  <!-- ======= Header ======= -->
+  <header id="header" class="fixed-top">
+    <div class="container-fluid">
+      <div class="row justify-content-center">
+        <div class="col-xl-10 d-flex align-items-center">
+          <div class="logo mr-auto scale">
+            <a class="logo mr-auto scale" href="https://www.kiwapower.com/"><img src="{% static 'assets/img/kwlogo.png' %}" alt=""></a>
+          </div>
+            <nav class="nav-menu d-none d-lg-block align-justify mr-auto">
+              <ul>
+                <li><a href="https://www.kiwapower.com/">{% trans 'Casa' %}</a></li>
+                <li><a href="https://www.kiwapower.com/#acerca">{% trans 'Quienes somos' %}</a></li>
+                <li><a class="scrollto" href="#whykiwapower">{% trans 'PMF' %}</a></li>
+              </ul>
+            </nav><!-- .nav-menu -->
+
+          <a href="https://www.marubeni.com/en/" class="group-nav"><img src="{% static 'assets/img/group.png' %}"></a>
+
+          <nav class="nav-menu d-none d-lg-block">
+            <ul>
+              {% get_current_language as LANGUAGE_CODE %}
+              {% get_available_languages as LANGUAGES %}
+              {% get_language_info_list for LANGUAGES as languages %}
+              {% for lang in languages %}
+              {% if lang.code != LANGUAGE_CODE %}
+              <li><a href="/{{ lang.code }}/{{ proposalid }}/proposal">{% trans 'EN' %}</a></li>
+              {% endif %}
+              {% endfor %}
+            </ul>
+          </nav><!-- Lang switcher -->
+        </div>
+      </div>
+    </div>
+  </header><!-- End Header -->

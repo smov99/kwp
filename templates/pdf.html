@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% load static i18n %}
+
+{% block title %}{% trans 'Propuesta en PDF para usted - Kiwapower' %}{% endblock title %}
+
+{% block introduction %}
+<section id="introduction-pdf" class="d-flex align-items-center">
+
+  <div class="container-fluid">
+    <div class="row justify-content-center">
+      <div class="col-xl-10">
+          <h1>{% trans 'Propuesta para ti' %}</h1>
+      </div>
+    </div>
+  </div>
+
+</section><!-- End introduction -->
+{% endblock introduction %}
+
+{% block content %}
+  <main id="main">
+
+    <!-- ======= Prepared Section ======= -->
+    <section id="proposal-pdf" class="proposal-pdf">
+      <div class="container">
+        <iframe></iframe>
+        <input type="button" class="btn-download" id="proposal-download-btn" value="{% trans 'Descargar' %}" />
+      </div>
+    </section>
+
+  </main>
+{% endblock content %}

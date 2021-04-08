@@ -1,43 +1,38 @@
 {% extends 'base.html' %}
-{% load static %}
+{% load static i18n %}
 
-{% block lang %}lang="en"{% endblock lang %}
-
-{% block title %}Proposal for you - Kiwapower{% endblock title %}
+{% block title %}{% trans 'Propuesta para ti - Kiwapower' %}{% endblock title %}
 
 {% block description %}{% endblock description %}
 
 {% block keywords %}{% endblock keywords %}
 
-{% block nav %}
-<nav class="nav-menu d-none d-lg-block align-justify mr-auto">
-  <ul>
-    <li><a href="https://www.kiwapower.com/">Home</a></li>
-    <li><a href="https://www.kiwapower.com/#acerca">Who we are</a></li>
-    <li><a class="scrollto" href="#whykiwapower">FAQ</a></li>
-  </ul>
-</nav><!-- .nav-menu -->
-{% endblock nav %}
-
-{% block nav_lang %}
-<li><a href="#">ES</a></li>
-{% endblock nav_lang %}
+{% block header %}
+  {% include 'proposal_header.html' %}
+{% endblock header %}
 
 {% block mobile_nav %}
 <div class="navbar-collapse collapse" id="mobile-nav">
   <ul class="navbar-nav">
     <li class="nav-item d-block ml-4 mb-1 mt-1">
-      <a class="nav-link" href="https://www.kiwapower.com/">Home</a>
+      <a class="nav-link" href="https://www.kiwapower.com/">{% trans 'Casa' %}</a>
     </li>
     <li class="nav-item d-block ml-4 mb-1">
-      <a class="nav-link" href="https://www.kiwapower.com/#acerca">Who we are</a>
+      <a class="nav-link" href="https://www.kiwapower.com/#acerca">{% trans 'Quienes somos' %}</a>
     </li>
     <li class="nav-item d-block ml-4 mb-1">
-      <a class="nav-link" href="#whykiwapower">FAQ</a>
+      <a class="nav-link" href="#whykiwapower">{% trans 'PMF' %}</a>
     </li>
+    {% get_current_language as LANGUAGE_CODE %}
+    {% get_available_languages as LANGUAGES %}
+    {% get_language_info_list for LANGUAGES as languages %}
+    {% for lang in languages %}
+    {% if lang.code != LANGUAGE_CODE %}
     <li class="nav-item d-block ml-4 mb-1">
-      <a class="nav-link" href="#">ES</a>
+      <a class="nav-link" href="/{{ lang.code }}/">{% trans 'EN' %}</a>
     </li>
+    {% endif %}
+    {% endfor %}
   </ul>
 </div>
 {% endblock mobile_nav %}
@@ -45,10 +40,10 @@
 {% block introduction %}
 <section id="introduction-proposal" class="d-flex align-items-center">
 
-  <div class="container-fluid" data-aos="zoom-out" data-aos-delay="100">
+  <div class="container-fluid">
     <div class="row justify-content-center">
       <div class="col-xl-10">
-          <h1>Proposal for you</h1>
+          <h1>{% trans 'Propuesta para ti' %}</h1>
       </div>
     </div>
   </div>
@@ -61,19 +56,19 @@
 
     <!-- ======= Prepared Section ======= -->
     <section id="prepared" class="prepared">
-      <div class="container-fluid" data-aos="fade-up">
+      <div class="container-fluid">
 
         <div class="section-title">
-          <p>This proposal was prepared by:</p>
+          <p>{% trans 'Esta propuesta fue preparada por:' %}</p>
         </div>
         <div class="row">
             <div class="col-auto d-flex col-centered">
-              <div class="row member" data-aos="fade-up" data-aos-delay="100">
+              <div class="row member">
                 <div class="col-6 member-img">
                   <img src="{% static 'assets/img/user-icon-placeholder.png' %}" class="img-fluid" alt="">
                 </div>
                 <div class="col-5 member-info">
-                  <h4>User Name</h4>
+                  <h4>{% trans 'Nombre de Usuario' %}</h4>
                 </div>
               </div>
             </div>
@@ -88,7 +83,7 @@
       <div class="container-fluid" data-aos="fade-up">
 
         <div class="section-title">
-          <h2>Place for welcom message</h2>
+          <h2>{% trans 'Lugar para mensaje de bienvenida' %}</h2>
         </div>
       </div>
     </section><!-- End Welcom Message Section -->
@@ -98,8 +93,8 @@
       <div class="container-fluid" data-aos="fade-up">
 
         <div class="section-title">
-          <p>Proposal for you:</p>
-          <a href="link-to-proposal" class="btn-confirmation">View proposal</a>
+          <p>{% trans 'Propuesta para ti' %}:</p>
+          <input type="button" id="proposal-pdf-link" class="btn-confirmation" value="{% trans 'Ver propuesta' %}" />
         </div>
       </div>
     </section><!-- End Proposal Link Section -->
@@ -109,7 +104,7 @@
       <div class="container" data-aos="fade-up">
 
         <div class="section-title">
-          <h2><a data-toggle="collapse" class="collapsed" href="#wkwp">Why Kiwapower?</a></h2>
+          <h2><a data-toggle="collapse" class="collapsed" href="#wkwp">{% trans '¿Por qué Kiwapower?' %}</a></h2>
         </div>
 
         <div id="wkwp" class="collapse" data-parent=".section-title">
@@ -128,7 +123,7 @@
         </div>
 
         <div class="section-title">
-          <h2><a data-toggle="collapse" class="collapsed" href="#kwpppa">How does the Kiwapower PPA work?</a></h2>
+          <h2><a data-toggle="collapse" class="collapsed" href="#kwpppa">{% trans '¿Cómo funciona el PPA de Kiwapower?' %}</a></h2>
         </div>
 
         <div id="kwpppa" class="collapse" data-parent=".section-title">
@@ -147,7 +142,7 @@
         </div>
 
         <div class="section-title">
-          <h2><a data-toggle="collapse" class="collapsed" href="#kwpprocess">The Kiwapower process</a></h2>
+          <h2><a data-toggle="collapse" class="collapsed" href="#kwpprocess">{% trans 'El proceso de Kiwapower' %}</a></h2>
         </div>
 
         <div id="kwpprocess" class="collapse" data-parent=".section-title">
@@ -173,8 +168,8 @@
       <div class="container" data-aos="fade-up">
 
         <div class="section-title">
-          <h2>Contact</h2>
-          <p>Provide feedback or question</p>
+          <h2>{% trans 'Contacto' %}</h2>
+          <p>{% trans 'Proporcionar comentarios o preguntas' %}</p>
         </div>
 
         <div class="row" data-aos="fade-up" data-aos-delay="100">
@@ -183,9 +178,9 @@
             <form action="" method="post" role="form" class="contact-form">
               {% csrf_token %}
               <div class="form-group">
-                <textarea class="form-control" name="message" rows="5" data-rule="required" data-msg="Please write something for us" placeholder="Enter your question"></textarea>
+                <textarea class="form-control" name="message" rows="5" data-rule="required" data-msg="{% trans 'Por favor escribe algo para nosotros' %}" placeholder="{% trans 'Ingrese su pregunta' %}"></textarea>
               </div>
-              <div class="text-center"><button type="submit">Submit</button></div>
+              <div class="text-center"><button type="submit">{% trans 'Enviar' %}</button></div>
             </form>
           </div>
 
@@ -195,7 +190,7 @@
       <div class="container" data-aos="fade-up">
 
         <div class="contact-form-title">
-          <p>Request a meeting with Kiwapower</p>
+          <p>{% trans 'Solicite una reunión con Kiwapower' %}</p>
         </div>
 
         <div class="row" data-aos="fade-up" data-aos-delay="100">
@@ -204,9 +199,9 @@
             <form action="" method="post" role="form" class="contact-form">
               {% csrf_token %}
               <div class="form-group">
-                <textarea class="form-control" name="message" rows="5" data-rule="required" data-msg="Please write something for us" placeholder="Please indicate the best time and way for Kiwapower to get in touch with you"></textarea>
+                <textarea class="form-control" name="message" rows="5" data-rule="required" data-msg="{% trans 'Por favor escribe algo para nosotros' %}" placeholder="{% trans 'Indique el mejor momento y la mejor forma para que Kiwapower se comunique con usted' %}"></textarea>
               </div>
-              <div class="text-center"><button type="submit">Submit</button></div>
+              <div class="text-center"><button type="submit">{% trans 'Enviar' %}</button></div>
             </form>
           </div>
 
@@ -218,6 +213,6 @@
   </main><!-- End #main -->
 {% endblock content %}
 
-{% block footer_nav %}
-<li><a class="scrollto" href="#whykiwapower">FAQ</a></li>
-{% endblock footer_nav %}
+{% block footer %}
+  {% include 'proposal_footer.html' %}
+{% endblock footer %}

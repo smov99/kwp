@@ -1,24 +1,29 @@
 {% extends 'base.html' %}
-{% load static %}
+{% load static i18n %}
 
-{% block lang %}lang="en"{% endblock lang %}
-
-{% block title %}Email confirmation - Kiwapower{% endblock title %}
+{% block title %}{% trans 'Confirmación por correo electrónico - Kiwapower' %}{% endblock title %}
 
 {% block description %}{% endblock description %}
 
 {% block keywords %}{% endblock keywords %}
 
-{% block nav_lang %}
-<li><a href="#">ES</a></li>
-{% endblock nav_lang %}
+{% block header %}
+{% include 'header.html' %}
+{% endblock header %}
 
 {% block mobile_nav %}
+{% get_current_language as LANGUAGE_CODE %}
+{% get_available_languages as LANGUAGES %}
+{% get_language_info_list for LANGUAGES as languages %}
 <div class="navbar-collapse collapse" id="mobile-nav">
   <ul class="navbar-nav">
+  {% for lang in languages %}
+    {% if lang.code != LANGUAGE_CODE %}
     <li class="nav-item d-block ml-4 mb-1">
-      <a class="nav-link" href="https://www.kiwapower.com/">ES</a>
+      <a class="nav-link" href="/{{ lang.code }}/">{% trans 'EN' %}</a>
     </li>
+    {% endif %}
+  {% endfor %}
   </ul>
 </div>
 {% endblock mobile_nav %}
@@ -36,12 +41,12 @@
       <div class="col-xl-10">
         <div class="row">
           <div class="col-xl-5 introduction-bg">
-            <h1>Confirm your email address</h1>
-            <h2>Enter email address</h2>
+            <h1>{% trans 'Confirme su dirección de correo electrónico' %}</h1>
+            <h2>{% trans 'Introduzca la dirección de correo electrónico' %}</h2>
             <div class="introduction-form">
               <form action="" method="post">
                 {% csrf_token %}
-                <input type="email" name="email" placeholder="Email.."><input type="submit" value="Confirm">
+                <input type="email" name="email" placeholder="{% trans 'Correo electrónico..' %}"><input type="submit" value="Confirm">
               </form>
             </div>
           </div>
@@ -53,5 +58,6 @@
 </section><!-- End introduction -->
 {% endblock introduction %}
 
-{% block content %}
-{% endblock content %}
+{% block footer %}
+  {% include 'footer.html' %}
+{% endblock footer %}

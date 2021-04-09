@@ -105,7 +105,6 @@
     });
     $('body').append($mobile_nav);
     $('body').prepend('<button type="button" class="mobile-nav-toggle d-lg-none collapsed" data-toggle="collapse" data-target="#mobile-nav"><i class="far fa-bars"></i></button>');
-    $('body').append('<div class="mobile-nav-overly"></div>');
 
     $(document).on('click', '.mobile-nav-toggle', function(e) {
       $('body').toggleClass('mobile-nav-active');
@@ -199,7 +198,7 @@
 
   $('#contact form button').on('click', function (e) {
     e.preventDefault();
-    eventsAjax('click_on_submit_button', 'Click on submit button in '+$(this).closest("form").attr('id'))
+    eventsAjax('click_on_submit_button', 'Click on submit button in '+$(this).closest("form").attr('id'));
   })
 
 

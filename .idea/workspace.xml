@@ -2,15 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="09261db6-e477-4638-a4b0-2d0875373965" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/locale/en/LC_MESSAGES/django.po" beforeDir="false" afterPath="$PROJECT_DIR$/locale/en/LC_MESSAGES/django.po" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/proposal/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/proposal/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/proposal/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/proposal/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/proposal/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/proposal/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/assets/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/assets/css/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/assets/js/main.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/confirmation.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/confirmation.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/proposal.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/proposal.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/js/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/assets/js/main.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -161,7 +153,7 @@
       <workItem from="1617221347846" duration="15338000" />
       <workItem from="1617448272479" duration="7931000" />
       <workItem from="1617460245505" duration="63157000" />
-      <workItem from="1617904531860" duration="41741000" />
+      <workItem from="1617904531860" duration="42129000" />
     </task>
     <task id="LOCAL-00001" summary="applications and model">
       <created>1616780285314</created>
@@ -240,7 +232,21 @@
       <option name="project" value="LOCAL" />
       <updated>1617922911056</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="tracking events and templates fixes">
+      <created>1618005104493</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1618005104493</updated>
+    </task>
+    <task id="LOCAL-00013" summary="tracking events and templates fixes">
+      <created>1618005117306</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1618005117306</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -264,6 +270,7 @@
     <MESSAGE value="templates corrected" />
     <MESSAGE value="refactoring" />
     <MESSAGE value="internalisation and pdf modal" />
-    <option name="LAST_COMMIT_MESSAGE" value="internalisation and pdf modal" />
+    <MESSAGE value="tracking events and templates fixes" />
+    <option name="LAST_COMMIT_MESSAGE" value="tracking events and templates fixes" />
   </component>
 </project>

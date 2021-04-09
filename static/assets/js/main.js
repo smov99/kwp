@@ -1,6 +1,37 @@
 !(function($) {
   "use strict";
-  
+
+  // Get CSRF
+  function getCookie(name) {
+    let cookieValue = null;
+    if (document.cookie && document.cookie !== '') {
+        const cookies = document.cookie.split(';');
+        for (let i = 0; i < cookies.length; i++) {
+            const cookie = cookies[i].trim();
+            // Does this cookie string begin with the name we want?
+            if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                break;
+            }
+        }
+    }
+    return cookieValue;
+  }
+  const csrftoken = getCookie('csrftoken')
+
+  // Ajax request
+  function eventsAjax(event_type, event_name, message) {
+    var events_path = window.location.href.replace('proposal/', 'events/')
+    $.ajax({
+      headers: {"X-CSRFToken": csrftoken},
+      url: events_path,
+      method: "POST",
+      data: {"event_type":event_type, "event_name":event_name, "message":message},
+      dataType: "json"
+    });
+
+  }
+
   // Process bar
   $(window).scroll(function() {
     let docElem = document.documentElement,
@@ -21,10 +52,6 @@
         e.preventDefault();
 
         var scrollto = target.offset().top - scrolltoOffset;
-
-        if ($(this).attr("href") == '#header') {
-          scrollto = 0;
-        }
 
         $('html, body').animate({
           scrollTop: scrollto
@@ -77,23 +104,29 @@
       class: 'mobile-nav d-none'
     });
     $('body').append($mobile_nav);
-    $('body').prepend('<button type="button" class="mobile-nav-toggle d-lg-none" data-toggle="collapse" data-target="#mobile-nav" aria-controls="mobile-nav" aria-expanded="false"><i class="far fa-bars"></i></button>');
+    $('body').prepend('<button type="button" class="mobile-nav-toggle d-lg-none collapsed" data-toggle="collapse" data-target="#mobile-nav"><i class="far fa-bars"></i></button>');
+    $('body').append('<div class="mobile-nav-overly"></div>');
 
     $(document).on('click', '.mobile-nav-toggle', function(e) {
       $('body').toggleClass('mobile-nav-active');
       $('.mobile-nav-toggle i').toggleClass('fa-bars fa-times');
-      $('.mobile-nav-overly').toggle();
     });
 
-    $(document).click(function(e) {
-      var container = $(".mobile-nav, .mobile-nav-toggle");
-      if (!container.is(e.target) && container.has(e.target).length === 0) {
-        if ($('body').hasClass('mobile-nav-active')) {
-          $('body').removeClass('mobile-nav-active');
-          $('.mobile-nav-toggle i').toggleClass('fa-bars fa-times');
-        }
-      }
+    $("#mobile-nav").on('show.bs.collapse', function() {
+        $('a.nav-link').click(function() {
+            $('.mobile-nav-toggle i').toggleClass('fa-bars fa-times');
+            $("#mobile-nav").collapse('hide');
+        });
     });
+
+   $(document).click(function (event) {
+     var clickover = $(event.target);
+     var _opened = $(".navbar-collapse").hasClass("show");
+     if (_opened === true && !clickover.hasClass("mobile-nav-toggle")) {
+       $(".mobile-nav-toggle").click();
+     }
+   });
+
   } else if ($(".mobile-nav, .mobile-nav-toggle").length) {
     $(".mobile-nav, .mobile-nav-toggle").hide();
   }
@@ -123,19 +156,52 @@
     aos_init();
   });
 
-  //PDF preview
+  //PDF preview and events
   $("#proposal-pdf-link").click(function (e) {
     var pdf_url = window.location.href + 'pdf';
-    var modal_width = 700;
-    var modal_height = 450;
+    var modal_width = 1000;
+    var modal_height = 650;
     var x = screen.width/2 - modal_width/2;
     var y = screen.height/2 - modal_height/2;
     var pdfWindow;
     e.preventDefault();
+
+    eventsAjax('open_pdf', 'Open PDF document');
+
     if ($(window).width() > 992) {
       pdfWindow = window.open(pdf_url,"", 'width='+modal_width+',height='+modal_height+',left='+x+',top='+y);}
     else {
       pdfWindow = window.open(pdf_url,"");}
+
+    $(pdfWindow).on('load', function () {
+      $(pdfWindow).on('unload', function () {
+        e.preventDefault();
+        eventsAjax('closing_preview', 'Closing modal preview');
+      });
+    });
+
   });
+
+  $('#proposal-download-btn').click(function () {
+    e.preventDefault();
+    eventsAjax('download', 'Download PDF');
+  })
+
+  $('.section-title .collapsed').on('click', function (e) {
+    e.preventDefault();
+    eventsAjax('opening_of_section','Opening of section: '+e.target.text);
+  })
+
+  $('.faq-list a').on('click', function (e) {
+    e.preventDefault();
+    eventsAjax('opening_of_sections_line', 'Opening of line: '+e.target.text);
+  })
+
+  $('#contact form button').on('click', function (e) {
+    e.preventDefault();
+    eventsAjax('click_on_submit_button', 'Click on submit button in '+$(this).closest("form").attr('id'))
+  })
+
+
 
 })(jQuery);

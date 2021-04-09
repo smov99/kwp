@@ -23,3 +23,11 @@ class ProposalView(View):
 class ProposalPDFView(View):
     def get(self, request: HttpRequest, proposalid) -> HttpResponse:
         return render(request, 'pdf.html')
+
+
+class EventsView(View):
+    def post(self, request, proposalid):
+        print(request.POST['event_type'])
+        print(request.POST['event_name'])
+        print(proposalid)
+        pass

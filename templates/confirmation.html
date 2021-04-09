@@ -20,7 +20,7 @@
   {% for lang in languages %}
     {% if lang.code != LANGUAGE_CODE %}
     <li class="nav-item d-block ml-4 mb-1">
-      <a class="nav-link" href="/{{ lang.code }}/">{% trans 'EN' %}</a>
+      <a class="nav-link" href="/{{ lang.code }}/{{ proposalid }}">{% trans 'EN' %}</a>
     </li>
     {% endif %}
   {% endfor %}
@@ -32,8 +32,7 @@
 
 <section id="introduction" class="d-flex align-items-center">
 
-  <video loop="loop" autoplay="" muted="">
-      <source src="{% static 'assets/img/solar_panels.mp4' %}"/>
+  <video loop="loop" autoplay="" muted="" src="{% static 'assets/img/solar_panels.mp4' %}">
   </video>
 
   <div class="container-fluid" data-aos="zoom-out" data-aos-delay="100">

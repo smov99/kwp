@@ -76,12 +76,12 @@ class SessionEvent(BaseModel):
     CLICK_ON_SUBMIT_BUTTON = 'click_on_submit_button'
 
     EVENT_CHOICES = (
-        (OPEN_PDF, 'Open PDF document for reviewing'),
+        (OPEN_PDF, 'Open PDF'),
         (DOWNLOAD, 'Download document'),
         (CLOSING_PREVIEW, 'Closing modal preview window'),
         (OPENING_OF_SECTION, 'Opening of section / accordion'),
         (OPENING_OF_SECTIONS_LINE, 'Opening of lines / accordions in section'),
-        (CLICK_ON_SUBMIT_BUTTON, 'Click on submit button in section')
+        (CLICK_ON_SUBMIT_BUTTON, 'Click on submit button in in form')
     )
 
     sessionid = models.ForeignKey(Session, on_delete=models.CASCADE)

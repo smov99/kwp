@@ -120,7 +120,7 @@ msgstr "View proposal"
 
 #: .\templates\proposal.html:124
 msgid "¿Por qué Kiwapower?"
-msgstr "Why Kiwapower"
+msgstr "Why Kiwapower?"
 
 #: .\templates\proposal.html:143
 msgid "¿Cómo funciona el PPA de Kiwapower?"

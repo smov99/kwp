@@ -56,7 +56,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 #header.header-scrolled {
-  padding: 0px 0;
+  padding: 0;
 }
 
 #header.header-scrolled .logo img {
@@ -154,8 +154,6 @@ h1, h2, h3, h4, h5, h6 {
   top: 35px;
   z-index: 9998;
   border: 0;
-  border-radius: 3px;
-  background: rgba(0,0,0,.05);
   font-size: 24px;
   transition: all 0.4s;
   outline: none !important;
@@ -178,6 +176,10 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: normal;
   letter-spacing: 0.7px;
   font-family: "Lato", sans-serif;
+}
+
+.proposal-mobile-nav {
+  margin-top: 6px !important;
 }
 
 #mobile-nav a {
@@ -369,9 +371,9 @@ h1, h2, h3, h4, h5, h6 {
   }
 }
 
-@media (max-height: 500px) {
+@media (max-width: 500px) {
   #introduction-proposal {
-    height: 120vh;
+    background-size: 140vw;
   }
 }
 
@@ -380,7 +382,7 @@ h1, h2, h3, h4, h5, h6 {
 --------------------------------------------------------------*/
 #introduction-pdf {
   width: 100%;
-  height: 40vh;
+  height: 30vh;
   background: url("../img/bg-proposals.png") top fixed no-repeat;
   background-size: 100vw;
   position: relative;
@@ -456,11 +458,11 @@ section {
 /*--------------------------------------------------------------
 # Frequently Asked Questions
 --------------------------------------------------------------*/
-#whykiwapower .section-title a {
+.faq .section-title a {
   color: #262626;
 }
 
-#whykiwapower .section-title a:hover {
+.faq .section-title a:hover {
   color: #e60012;
 }
 

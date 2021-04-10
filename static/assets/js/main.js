@@ -173,7 +173,12 @@
       pdfWindow = window.open(pdf_url,"");}
 
     $(pdfWindow).on('load', function () {
-      $(pdfWindow).on('unload', function () {
+      var elem = this.document.getElementById('proposal-download-btn')
+      elem.addEventListener('click', function (e) {
+        e.preventDefault();
+        eventsAjax('download', 'Download PDF');
+      })
+      $(pdfWindow).on('unload', function (e) {
         e.preventDefault();
         eventsAjax('closing_preview', 'Closing modal preview');
       });
@@ -181,10 +186,6 @@
 
   });
 
-  $('#proposal-download-btn').click(function () {
-    e.preventDefault();
-    eventsAjax('download', 'Download PDF');
-  })
 
   $('.section-title .collapsed').on('click', function (e) {
     e.preventDefault();

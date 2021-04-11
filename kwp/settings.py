@@ -48,6 +48,7 @@ THIRD_PARTY_APPS = [
 
 LOCAL_APPS = [
     'proposal.apps.ProposalConfig',
+    'celery.apps.CeleryConfig',
 ]
 
 INSTALLED_APPS = DEFAULT_APPS + THIRD_PARTY_APPS + LOCAL_APPS
@@ -149,7 +150,7 @@ USE_TZ = True
 gettext = lambda s: s
 LANGUAGES = (
     ('es', gettext('ES')),
-    ('en', gettext('EN')),
+    ('en', gettext('EN-US')),
 )
 
 LOCALE_PATHS = (

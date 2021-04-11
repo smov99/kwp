@@ -3,6 +3,13 @@ import kwp.settings as settings
 
 import uuid
 
+SF_LOGIN_URL = 'https://test.salesforce.com/services/oauth2/token'
+SF_CONSUMER_SECRET = 'CD74EE798586E68841BF6CFC60B61B451449904ACDFA3B9E6457D852954FF6B9'
+SF_CONSUMER_KEY = '3MVG9M43irr9JAuyX9k4MSEg2sKpL9Eswc9hslkN7vnqYMZxFkIUreh4BiO3HhC..dq9GsWnIqebJDxzQ0CYO'
+SF_INITIAL_ACCESS_TOKEN = 'ge0s0ft99'
+SF_USER_NAME = 'smorozov@gmail.com'
+SF_API_VERSION = 'v51.0'
+
 
 class UserManager(BaseUserManager):
     def create_user(self, email, guid=None, email_confirmed=False, full_name=None, password=None, is_active=True,

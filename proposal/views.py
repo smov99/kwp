@@ -11,13 +11,13 @@ class ConfirmationView(View):
     def get(self, request: HttpRequest, proposalid) -> HttpResponse:
         return render(request, 'confirmation.html', {'proposalid': proposalid})
 
-    def post(self, request: HttpRequest) -> HttpResponse:
-        pass
+    def post(self, request: HttpRequest, proposalid) -> HttpResponse:
+        return redirect('proposal', proposalid)
 
 
 class ProposalView(View):
     def get(self, request: HttpRequest, proposalid) -> HttpResponse:
-        return render(request, 'proposal.html', {'proposalid':proposalid})
+        return render(request, 'proposal.html', {'proposalid': proposalid})
 
 
 class ProposalPDFView(View):

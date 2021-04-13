@@ -102,6 +102,9 @@ msgstr "FAQ"
 msgid "Propuesta para ti"
 msgstr "Proposal for you"
 
+msgid "Propuesta"
+msgstr "Proposal"
+
 #: .\templates\proposal.html:79
 msgid "Esta propuesta fue preparada por:"
 msgstr "This proposal was prepared by:"

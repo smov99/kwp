@@ -382,7 +382,7 @@ h1, h2, h3, h4, h5, h6 {
 --------------------------------------------------------------*/
 #introduction-pdf {
   width: 100%;
-  height: 30vh;
+  height: 10vh;
   background: url("../img/bg-proposals.png") top fixed no-repeat;
   background-size: 100vw;
   position: relative;
@@ -408,6 +408,17 @@ h1, h2, h3, h4, h5, h6 {
   font-size: 40px;
   font-weight: normal;
   letter-spacing: 1px;
+}
+
+/*--------------------------------------------------------------
+# Sections General
+--------------------------------------------------------------*/
+
+#proposal-pdf .pdf-viewer {
+  position: relative;
+  width: 100%;
+  height: 75vh;
+  border: 2px #e60012 solid;
 }
 
 /*--------------------------------------------------------------

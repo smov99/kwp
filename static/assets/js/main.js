@@ -158,8 +158,8 @@
   //PDF preview and events
   $("#proposal-pdf-link").click(function (e) {
     var pdf_url = window.location.href + 'pdf';
-    var modal_width = 1000;
-    var modal_height = 650;
+    var modal_width = screen.width*0.8;
+    var modal_height = screen.height*0.8;
     var x = screen.width/2 - modal_width/2;
     var y = screen.height/2 - modal_height/2;
     var pdfWindow;

@@ -22,7 +22,7 @@ class ProposalView(View):
 
 class ProposalPDFView(View):
     def get(self, request: HttpRequest, proposalid) -> HttpResponse:
-        return render(request, 'pdf.html')
+        return render(request, 'pdf.html', {'proposalid': proposalid})
 
 
 class EventsView(View):

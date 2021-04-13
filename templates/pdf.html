@@ -10,7 +10,7 @@
   <div class="container-fluid">
     <div class="row justify-content-center">
       <div class="col-xl-10">
-          <h1>{% trans 'Propuesta para ti' %}</h1>
+          <h1>{% trans 'Propuesta' %} {{ proposalid }}</h1>
       </div>
     </div>
   </div>
@@ -24,7 +24,7 @@
     <!-- ======= Prepared Section ======= -->
     <section id="proposal-pdf" class="proposal-pdf">
       <div class="container">
-        <iframe></iframe>
+        <embed class="pdf-viewer" type="application/pdf" src="{% static 'files/docs/sample.pdf' %}" height="100%" width="100%">
         <input type="button" class="btn-download" id="proposal-download-btn" value="{% trans 'Descargar' %}" />
       </div>
     </section>

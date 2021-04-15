@@ -44,7 +44,6 @@ DEFAULT_APPS = [
 
 THIRD_PARTY_APPS = [
     'rest_framework',
-    'simple_salesforce',
 ]
 
 LOCAL_APPS = [

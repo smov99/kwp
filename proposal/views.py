@@ -2,8 +2,6 @@ from django.shortcuts import render, redirect
 from django.http.request import HttpRequest
 from django.http.response import HttpResponse
 from django.views import View
-
-from simple_salesforce import Salesforce
 from kwp import settings
 
 

@@ -2,7 +2,7 @@
 
 {% load static i18n %}
 
-{% block title %}{% trans 'Propuesta en PDF para usted - Kiwapower' %}{% endblock title %}
+{% block title %}{% trans 'Propuesta' %} {{ proposalid }}{% endblock title %}
 
 {% block introduction %}
 <section id="introduction-pdf" class="d-flex align-items-center">
@@ -23,9 +23,39 @@
 
     <!-- ======= Prepared Section ======= -->
     <section id="proposal-pdf" class="proposal-pdf">
+
+      <div id="top-bar" class="top-bar">
+        <button class="btn-page" id="prev-page">
+          <div class="row">
+            <div class="btn-arrow">
+              <i class="far fa-long-arrow-left"></i>
+            </div>
+            <div class="name-btn">
+              Prev Page
+            </div>
+          </div>
+        </button>
+        <span class="page-info">
+          Page <span id="page-num"></span> of <span id="page-count"></span>
+        </span>
+        <button class="btn-page" id="next-page">
+          <div class="row">
+            <div class="name-btn">
+              Next page
+            </div>
+            <div class="btn-arrow">
+              <i class="far fa-long-arrow-right"></i>
+            </div>
+          </div>
+        </button>
+      </div>
+
+      <canvas id="pdf-render"></canvas>
+
       <div class="container">
-        <embed class="pdf-viewer" type="application/pdf" src="{% static 'files/docs/sample.pdf' %}" height="100%" width="100%">
-        <input type="button" class="btn-download" id="proposal-download-btn" value="{% trans 'Descargar' %}" />
+        <a class="btn-download" id="proposal-download-btn" href="" download="proposal">
+          {% trans 'Descargar' %}
+        </a>
       </div>
     </section>
 

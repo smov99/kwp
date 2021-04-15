@@ -27,6 +27,7 @@ ENV = 'dev'
 
 ALLOWED_HOSTS = [
     '127.0.0.1',
+    '192.168.100.56'
 ]
 
 # Application definition

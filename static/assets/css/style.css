@@ -411,14 +411,92 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /*--------------------------------------------------------------
-# Sections General
+# Proposal section
 --------------------------------------------------------------*/
+#proposal-pdf {
+  padding-top: 0;
+  text-align: center;
+}
+
+#proposal-pdf .btn-download {
+  font-family: "Lato", Sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  letter-spacing: 1px;
+  display: inline-block;
+  padding: 10px 30px;
+  transition: 0.5s;
+  margin-top: 30px;
+  color: #fff;
+  background: #e60012;
+  border: 3px solid #e60012;
+  width: 100%;
+}
+
+#proposal-pdf .btn-download:hover {
+  background: transparent;
+  color: #e60012;
+}
 
 #proposal-pdf .pdf-viewer {
   position: relative;
   width: 100%;
   height: 75vh;
   border: 2px #e60012 solid;
+}
+
+#proposal-pdf .top-bar {
+  background: #262626;
+  color: #fff;
+  padding: 1rem;
+}
+
+#proposal-pdf .btn-page {
+  background: #e60012;
+  color: #fff;
+  border: 3px solid #e60012;
+  border-radius: 2px;
+  outline: none;
+  cursor: pointer;
+  padding: 0.7rem 2rem;
+}
+
+#proposal-pdf .btn-page:hover {
+  opacity: 0.9;
+}
+
+#proposal-pdf .name-btn {
+  padding: 0 5px;
+}
+
+@media (max-width: 992px) {
+  #proposal-pdf .name-btn {
+    display: none;
+  }
+
+  #proposal-pdf .btn-page {
+    background: none;
+    border: 0;
+  }
+
+  #proposal-pdf .btn-arrow {
+    font-size: 20px;
+  }
+
+  #pdf-render {
+    width: 100%;
+  }
+}
+
+#proposal-pdf .page-info {
+  margin-left: 1rem;
+  margin-right: 1rem;
+}
+
+#proposal-pdf .error {
+  background: #e60012;
+  color: #fff;
+  padding: 1rem;
 }
 
 /*--------------------------------------------------------------
@@ -593,29 +671,6 @@ section {
 }
 
 #proposal-link .btn-confirmation:hover {
-  background: transparent;
-  color: #e60012;
-}
-
-/*--------------------------------------------------------------
-# Proposal Link
---------------------------------------------------------------*/
-#proposal-pdf .btn-download {
-  font-family: "Lato", Sans-serif;
-  font-weight: 500;
-  font-size: 16px;
-  letter-spacing: 1px;
-  display: inline-block;
-  padding: 10px 30px;
-  transition: 0.5s;
-  margin-top: 30px;
-  color: #fff;
-  background: #e60012;
-  border: 3px solid #e60012;
-  width: 100%;
-}
-
-#proposal-pdf .btn-download:hover {
   background: transparent;
   color: #e60012;
 }

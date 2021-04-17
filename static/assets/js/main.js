@@ -20,13 +20,13 @@
   const csrftoken = getCookie('csrftoken')
 
   // Ajax request
-  function eventsAjax(event_type, event_name, message) {
+  function eventsAjax(event_type, event_name, time_spent, message) {
     var events_path = window.location.href.replace('proposal/', 'events/')
     $.ajax({
       headers: {"X-CSRFToken": csrftoken},
       url: events_path,
       method: "POST",
-      data: {"event_type":event_type, "event_name":event_name, "message":message},
+      data: {"event_type":event_type, "event_name":event_name, "time_spent": time_spent, "message":message},
       dataType: "json"
     });
 
@@ -285,14 +285,14 @@
       this.document.querySelector('#prev-page').addEventListener('click', () => {
         timeTracker['pageEnd'] = new Date();
         spentTime = (timeTracker['pageEnd']-timeTracker['pageStart'])/1000;
-        eventsAjax('spent_time', 'Spent '+spentTime+' seconds on page number '+pageNum)
+        eventsAjax('spent_time', 'Spent '+spentTime+' seconds on page number '+pageNum, spentTime+'s')
         showPrevPage();
         eventsAjax('page_opened', "Opened page number: "+pageNum);
       });
       this.document.querySelector('#next-page').addEventListener('click', () => {
         timeTracker['pageEnd'] = new Date();
         spentTime = (timeTracker['pageEnd']-timeTracker['pageStart'])/1000;
-        eventsAjax('spent_time', 'Spent '+spentTime+' seconds on page number '+pageNum)
+        eventsAjax('spent_time', 'Spent '+spentTime+' seconds on page number '+pageNum, spentTime+'s')
         showNextPage();
         eventsAjax('page_opened', "Opened page number: "+pageNum);
       });

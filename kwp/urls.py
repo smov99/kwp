@@ -24,5 +24,5 @@ urlpatterns = [
 ]
 
 urlpatterns += i18n_patterns(
-    path('<proposalid>/', include('proposal.urls')),
+    path('<proposal_id>/', include('proposal.urls')),
 )

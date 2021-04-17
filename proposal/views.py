@@ -6,26 +6,26 @@ from kwp import settings
 
 
 class ConfirmationView(View):
-    def get(self, request: HttpRequest, proposalid) -> HttpResponse:
-        return render(request, 'confirmation.html', {'proposalid': proposalid})
+    def get(self, request: HttpRequest, proposal_id) -> HttpResponse:
+        return render(request, 'confirmation.html', {'proposal_id': proposal_id})
 
-    def post(self, request: HttpRequest, proposalid) -> HttpResponse:
-        return redirect('proposal', proposalid)
+    def post(self, request: HttpRequest, proposal_id) -> HttpResponse:
+        return redirect('proposal', proposal_id)
 
 
 class ProposalView(View):
-    def get(self, request: HttpRequest, proposalid) -> HttpResponse:
-        return render(request, 'proposal.html', {'proposalid': proposalid})
+    def get(self, request: HttpRequest, proposal_id) -> HttpResponse:
+        return render(request, 'proposal.html', {'proposal_id': proposal_id})
 
 
 class ProposalPDFView(View):
-    def get(self, request: HttpRequest, proposalid) -> HttpResponse:
-        return render(request, 'pdf.html', {'proposalid': proposalid})
+    def get(self, request: HttpRequest, proposal_id) -> HttpResponse:
+        return render(request, 'pdf.html', {'proposal_id': proposal_id})
 
 
 class EventsView(View):
-    def post(self, request, proposalid):
+    def post(self, request, proposal_id):
         print(request.POST['event_type'])
         print(request.POST['event_name'])
-        print(proposalid)
+        print(proposal_id)
         pass

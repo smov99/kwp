@@ -141,6 +141,18 @@ def create_contact(email, contact_account_id):
     return response
 
 
+def get_proposals_creator(user_id):
+    """Getting proposal author info.
+
+    :param user_id: CreatedById from 'get_proposal's response.
+
+    :return: Author info.
+    """
+    query = f"SELECT Name,MediumPhotoUrl,SmallPhotoUrl FROM User where id='{user_id}'"
+    response = sf_api_call(f'/services/data/{settings.SF_API_VERSION}/query/', {'q': query})
+    return response
+
+
 def get_documents_list(proposal_id):
     """Getting documents list.
 

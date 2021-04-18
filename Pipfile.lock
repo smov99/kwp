@@ -42,10 +42,10 @@
         },
         "django-modeltranslation": {
             "hashes": [
-                "sha256:a14e67d40952a6e927fb743e6529e29ccfd33a80d8aaaa39036aaf994cfdaf7e"
+                "sha256:9ef886d02a3c5613ebf1c1184f3b2f4065b1453ac7d4151a73d2243991a34956"
             ],
             "index": "pypi",
-            "version": "==0.16.2"
+            "version": "==0.17.1"
         },
         "djangorestframework": {
             "hashes": [

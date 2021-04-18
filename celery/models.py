@@ -5,10 +5,21 @@ class Section(models.Model):
     id = models.IntegerField(primary_key=True, unique=True)
     label = models.CharField(max_length=255)
 
+    class Meta:
+        ordering = ('id',)
+
+    def __str__(self):
+        return self.label
+
 
 class Article(models.Model):
-    id = models.IntegerField(primary_key=True, unique=True)
-    guid = models.CharField(max_length=255, unique=True)
-    section = models.ForeignKey(Section, to_field=id, on_delete=models.CASCADE)
-    question = models.CharField(max_length=255)
-    answer = models.CharField(max_length=255)
+    order = models.IntegerField(blank=True, null=True)
+    section = models.ForeignKey(Section, on_delete=models.CASCADE)
+    question = models.TextField()
+    answer = models.TextField()
+
+    class Meta:
+        ordering = ('order',)
+
+    def __str__(self):
+        return self.question

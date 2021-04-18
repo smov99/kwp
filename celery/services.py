@@ -1,6 +1,7 @@
 from kwp import settings
 from proposal.services import sf_api_call
 import re
+from .models import Section, Article
 
 
 def get_sections():
@@ -72,3 +73,48 @@ def normalize_articles(articles_response):
                 'answer': answer
             }
     return articles
+
+
+def create_sections_and_articles(section_return, article_return):
+    """Creating section and article objects in db.
+
+    :param section_return: Response from 'get_sections' func.
+    :param article_return: Response from 'get_articles' func.
+    """
+    for section in section_return:
+        try:
+            section_articles = article_return[section]
+        except KeyError:
+            section_articles = {}
+        _id = section_return[section]['order']
+        label = section
+        label_es = section_return[section]['spanish_label']
+        label_en = section_return[section]['english_label']
+        Section.objects.create(
+            id=_id,
+            label=label,
+            label_en=label_en,
+            label_es=label_es
+        )
+        if section_articles:
+            for article in section_articles:
+                this_article = section_articles[article]
+                order = article
+                question = this_article['en_US']['question']
+                answer = this_article['en_US']['answer']
+                question_es = this_article['es']['question']
+                question_en = this_article['en_US']['question']
+                answer_es = this_article['es']['answer']
+                answer_en = this_article['en_US']['answer']
+                _section = Section.objects.get(label=label)
+                Article.objects.create(
+                    order=order,
+                    section=_section,
+                    question=question,
+                    answer=answer,
+                    question_en=question_en,
+                    question_es=question_es,
+                    answer_en=answer_en,
+                    answer_es=answer_es
+                )
+    return True

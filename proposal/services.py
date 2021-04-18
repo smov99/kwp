@@ -86,26 +86,26 @@ def user_email_validation(proposal_account_id, email):
         validated_info['contact_id'] = email_response['Authorized_contact__c']
         validated_info['contact_account_id'] = proposal_account_id
     elif email_domain == email_response['Authorized_domain__c']:
-        domain_response = email_domain_validation(email_domain)
-        for domain in domain_response:
-            if domain['Email'] == email:
-                validated_info['contact_id'] = domain['Id']
-                validated_info['contact_account_id'] = domain['AccountId']
-                return validated_info
-        validated_info['contact_account_id'] = domain_response[0]['AccountId']
-        created_contact_response = create_contact(email, validated_info['contact_account_id'])
-        validated_info['contact_id'] = created_contact_response['Id']
+        domain_response = email_domain_validation(email)
+        if domain_response['Email'] == email:
+            validated_info['contact_id'] = domain_response['Id']
+            validated_info['contact_account_id'] = domain_response['AccountId']
+            return validated_info
+        else:
+            validated_info['contact_account_id'] = proposal_account_id
+            created_contact_response = create_contact(email, validated_info['contact_account_id'])
+            validated_info['contact_id'] = created_contact_response['Id']
     return validated_info
 
 
-def email_domain_validation(email_domain):
+def email_domain_validation(email):
     """Validation of provided email address domain of user.
 
-    :param email_domain: Provided email address domain of user.
+    :param email: Provided email address of user.
 
-    :return: Response containing a list with info of verified email addresses.
+    :return: Response containing info of verified email addresses.
     """
-    query = f"SELECT Id,AccountId,Email FROM Contact where Email like '%{email_domain}%' and isDeleted=false"
+    query = f"SELECT Id,AccountId,Email FROM Contact where Email='{email}' and isDeleted=false"
     response = sf_api_call(f'/services/data/{settings.SF_API_VERSION}/query/', {'q': query})['records']
     return response
 

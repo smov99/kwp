@@ -105,6 +105,18 @@ msgstr "Proposal for you"
 msgid "Propuesta"
 msgstr "Proposal"
 
+msgid "Accede a tu propuesta"
+msgstr "Access your proposal"
+
+msgid "Esta dirección de correo electrónico no coincide con nuestros registros. Comuníquese con nosotros si cree que se trata de un error."
+msgstr "This email address does not match our records. Please contact us if you think this is an error."
+
+msgid "Lo sentimos, esta página no existe."
+msgstr "We’re sorry, this page that does not exist."
+
+msgid "Energice su negocio con energía solar. Ponga las área de techo no usadas a trabajar para usted, y asegure tarifas de electricidad bajas y en pesos. Facilitaremos la transición de su negocio a una electricidad solar limpia y moderna."
+msgstr "Energize your business with solar power. Put your unused rooftop area to work for you, and lock-in low electricity rates in pesos. We will facilitate your business transition to modern and clean solar electricity."
+
 #: .\templates\proposal.html:79
 msgid "Esta propuesta fue preparada por:"
 msgstr "This proposal was prepared by:"
@@ -138,8 +150,8 @@ msgid "Contacto"
 msgstr "Contacts"
 
 #: .\templates\proposal.html:189
-msgid "Proporcionar comentarios o preguntas"
-msgstr "Provide feedback or question"
+msgid "¿Tiene alguna pregunta o desea darnos su opinión?"
+msgstr "Have a question or want to give us feedback?"
 
 #: .\templates\proposal.html:198 .\templates\proposal.html:219
 msgid "Por favor escribe algo para nosotros"

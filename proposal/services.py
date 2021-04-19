@@ -1,11 +1,9 @@
-from django.contrib.auth.models import BaseUserManager
-from kwp import settings
-
-import uuid
 import requests
-import re
-import time
-from functools import lru_cache
+from datetime import datetime, timedelta
+import functools
+from PIL import Image
+
+from kwp import settings
 
 
 params = {
@@ -21,6 +19,27 @@ access_token = r.json().get('access_token')
 instance_url = r.json().get('instance_url')
 
 
+def timed_cache(**timedelta_kwargs):
+    def _wrapper(f):
+        update_delta = timedelta(**timedelta_kwargs)
+        next_update = datetime.utcnow() + update_delta
+        # Apply @lru_cache to f with no cache size limit
+        f = functools.lru_cache(None)(f)
+
+        @functools.wraps(f)
+        def _wrapped(*args, **kwargs):
+            nonlocal next_update
+            now = datetime.utcnow()
+            if now >= next_update:
+                f.cache_clear()
+                next_update = now + update_delta
+            return f(*args, **kwargs)
+
+        return _wrapped
+
+    return _wrapper
+
+
 def sf_api_call(action, parameters={}, method='get', data={}):
     """
     Helper function to make calls to Salesforce REST API.
@@ -31,8 +50,16 @@ def sf_api_call(action, parameters={}, method='get', data={}):
         'Accept-Encoding': 'gzip',
         'Authorization': 'Bearer %s' % access_token
     }
+    img_headers = {
+        'Authorization': 'Bearer %s' % access_token,
+        'Content-type': 'image/png'}
     if method == 'get':
-        r = requests.request(method, instance_url + action, headers=headers, params=parameters, timeout=30)
+        if 'profilephoto' in action:
+            r = requests.request(method, action, headers=img_headers, timeout=30)
+            if r.status_code < 300:
+                return r.raw
+        else:
+            r = requests.request(method, instance_url + action, headers=headers, params=parameters, timeout=30)
     elif method in ['post', 'patch']:
         r = requests.request(method, instance_url + action, headers=headers, json=data, params=parameters, timeout=10)
     else:
@@ -47,6 +74,7 @@ def sf_api_call(action, parameters={}, method='get', data={}):
         raise Exception('API error when calling %s : %s' % (r.url, r.content))
 
 
+@timed_cache(seconds=3600)
 def get_proposal(proposal_id):
     """Getting proposal info.
 
@@ -55,7 +83,10 @@ def get_proposal(proposal_id):
     :return: Proposal info
     """
     query = f"SELECT Id,Account__c,Welcome_message__c,Description__c,CreatedById,Published__c FROM Web_Proposals__c where IsDeleted = false and Id = '{proposal_id}'"
-    response = sf_api_call(f'/services/data/{settings.SF_API_VERSION}/query/', {'q': query})['records'][0]
+    try:
+        response = sf_api_call(f'/services/data/{settings.SF_API_VERSION}/query/', {'q': query})['records'][0]
+    except:
+        response = False
     return response
 
 
@@ -137,10 +168,12 @@ def create_contact(email, contact_account_id):
         'From_django__c': True,
         'OwnerId': get_owner_id(contact_account_id)
     }
-    response = sf_api_call(f"/services/data/{settings.SF_API_VERSION}/sobjects/Contact", method='post', data=data)['records'][0]
+    response = \
+    sf_api_call(f"/services/data/{settings.SF_API_VERSION}/sobjects/Contact", method='post', data=data)['records'][0]
     return response
 
 
+@timed_cache(seconds=3600)
 def get_proposals_creator(user_id):
     """Getting proposal author info.
 
@@ -149,7 +182,7 @@ def get_proposals_creator(user_id):
     :return: Author info.
     """
     query = f"SELECT Name,MediumPhotoUrl,SmallPhotoUrl FROM User where id='{user_id}'"
-    response = sf_api_call(f'/services/data/{settings.SF_API_VERSION}/query/', {'q': query})
+    response = sf_api_call(f'/services/data/{settings.SF_API_VERSION}/query/', {'q': query})['records'][0]
     return response
 
 
@@ -188,41 +221,7 @@ def get_document_for_download(content_document_id):
     return response
 
 
-class UserManager(BaseUserManager):
-    def create_user(self, email, guid=None, email_confirmed=False, full_name=None, password=None, is_active=True,
-                    is_staff=False, is_admin=False):
-        if not email:
-            raise ValueError("Users must have an email address")
-        user_obj = self.model(
-            email=self.normalize_email(email),
-            full_name=full_name
-        )
-        if not guid:
-            guid = uuid.uuid4().hex
-        user_obj.set_password(password)
-        user_obj.guid = guid
-        user_obj.email_confirmed = email_confirmed
-        user_obj.staff = is_staff
-        user_obj.admin = is_admin
-        user_obj.is_active = is_active
-        user_obj.save(using=self._db)
-        return user_obj
+def get_creator_img(url):
+    response = sf_api_call(url)
 
-    def create_staffuser(self, email, full_name=None, password=None):
-        user = self.create_user(
-            email,
-            full_name=full_name,
-            password=password,
-            is_staff=True
-        )
-        return user
-
-    def create_superuser(self, email, full_name=None, password=None):
-        user = self.create_user(
-            email,
-            full_name=full_name,
-            password=password,
-            is_staff=True,
-            is_admin=True
-        )
-        return user
+    return response

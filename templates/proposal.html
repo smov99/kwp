@@ -56,19 +56,19 @@
 
     <!-- ======= Prepared Section ======= -->
     <section id="prepared" class="prepared">
-      <div class="container-fluid">
+      <div class="container">
 
         <div class="section-title">
-          <p>{% trans 'Esta propuesta fue preparada por:' %}</p>
+          <h2>{% trans 'Esta propuesta fue preparada por:' %}</h2>
         </div>
         <div class="row">
             <div class="col-auto d-flex col-centered">
               <div class="row member">
                 <div class="col-6 member-img">
-                  <img src="{% static 'assets/img/user-icon-placeholder.png' %}" class="img-fluid" alt="">
+                  <img src="{% static 'assets/img/user-icon-placeholder.png' %}" alt="">
                 </div>
                 <div class="col-5 member-info">
-                  <h4>{% trans 'Nombre de Usuario' %}</h4>
+                  <h4>{{ user_name }}</h4>
                 </div>
               </div>
             </div>
@@ -78,22 +78,26 @@
       </div>
     </section><!-- End Prepared Section -->
 
-    <!-- ======= Welcom Message Section ======= -->
-    <section id="welcom" class="welcom section-bg">
-      <div class="container-fluid" data-aos="fade-up">
+    <!-- ======= Welcome Message Section ======= -->
+    <section id="welcome" class="welcome section-bg">
+      <div class="container" data-aos="fade-up">
 
         <div class="section-title">
-          <h2>{% trans 'Lugar para mensaje de bienvenida' %}</h2>
+          {% if message %}
+          <p>{{ message }}</p>
+          {% else %}
+          <h2>{% trans 'Energice su negocio con energía solar. Ponga las área de techo no usadas a trabajar para usted, y asegure tarifas de electricidad bajas y en pesos. Facilitaremos la transición de su negocio a una electricidad solar limpia y moderna.' %}</h2>
+          {% endif %}
         </div>
       </div>
-    </section><!-- End Welcom Message Section -->
+    </section><!-- End Welcome Message Section -->
 
     <!-- ======= Proposal Link Section ======= -->
     <section id="proposal-link" class="proposal-link">
       <div class="container-fluid" data-aos="fade-up">
 
         <div class="section-title">
-          <p>{% trans 'Propuesta para ti' %}:</p>
+          <p>{% trans 'Accede a tu propuesta' %}:</p>
           <input type="button" id="proposal-pdf-link" class="btn-confirmation" value="{% trans 'Ver propuesta' %}" />
         </div>
       </div>
@@ -105,7 +109,7 @@
         {% for section in sections %}
 
         <div class="section-title">
-          <h2><a data-toggle="collapse" class="collapsed" href="#section{{ section.id }}">{{ section.label }}</a></h2>
+          <h2><a data-toggle="collapse" class="collapsed" href="#section{{ section.id }}">{{ section.label }}<i class="bx bx-chevron-down icon-show"></i><i class="bx bx-x icon-close"></i></a></h2>
         </div>
 
         <div id="section{{ section.id }}" class="collapse" data-parent=".section-title">
@@ -131,18 +135,13 @@
     <section id="contact" class="contact">
       <div class="container" data-aos="fade-up">
 
-        <div class="section-title">
-          <h2>{% trans 'Contacto' %}</h2>
-        </div>
-
         <div class="contact-form-title">
-          <p>{% trans 'Proporcionar comentarios o preguntas' %}</p>
+          <p>{% trans '¿Tiene alguna pregunta o desea darnos su opinión?' %}</p>
         </div>
-
 
         <div class="row" data-aos="fade-up" data-aos-delay="100">
 
-          <div class="col-8 col-centered">
+          <div class="col-xl-8 col-centered">
             <form action="" method="post" role="form" id="Feedback-Form" class="contact-form">
               {% csrf_token %}
               <div class="form-group">
@@ -163,7 +162,7 @@
 
         <div class="row" data-aos="fade-up" data-aos-delay="100">
 
-          <div class="col-8 col-centered">
+          <div class="col-xl-8 col-centered">
             <form action="" method="post" role="form" id="Request-A-Meeting-Form" class="contact-form">
               {% csrf_token %}
               <div class="form-group">
@@ -180,7 +179,3 @@
 
   </main><!-- End #main -->
 {% endblock content %}
-
-{% block footer %}
-  {% include 'proposal_footer.html' %}
-{% endblock footer %}

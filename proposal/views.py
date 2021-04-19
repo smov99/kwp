@@ -22,7 +22,7 @@ class ConfirmationView(View):
     def post(self, request: HttpRequest, proposal_id) -> HttpResponse:
         email = request.POST['email']
         proposal = services.get_proposal(proposal_id)
-        if services.user_email_validation(proposal['Account__c'], 'juan.torres@logrand.com'):
+        if services.user_email_validation(proposal['Account__c'], email):
             return redirect('proposal', proposal_id)
         else:
             pass

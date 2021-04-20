@@ -19,8 +19,9 @@ class ConfirmationView(View):
         else:
             return redirect('error-404')
 
-    def post(self, request: HttpRequest, proposal_id) -> HttpResponse:
+    def post(self, request, proposal_id) -> HttpResponse:
         email = request.POST['email']
+        request.session['email'] = email
         proposal = services.get_proposal(proposal_id)
         if services.user_email_validation(proposal['Account__c'], email):
             return redirect('proposal', proposal_id)
@@ -29,20 +30,24 @@ class ConfirmationView(View):
 
 
 class ProposalView(View):
-    def get(self, request: HttpRequest, proposal_id) -> HttpResponse:
+    def get(self, request, proposal_id) -> HttpResponse:
         # section_response = get_sections()
         # article_response = get_articles()
         # create_sections_and_articles(section_response, article_response)
         sections = Section.objects.all()
         proposal = services.get_proposal(proposal_id)
         if proposal:
+            request.session['is_proposalexist'] = proposal['Published__c']
             welcome_message = proposal['Welcome_message__c']
             creator = services.get_proposals_creator(proposal['CreatedById'])
+            img = services.get_document(creator['MediumPhotoUrl'])
             user_name = creator['Name']
             return render(request, 'proposal.html', {'proposal_id': proposal_id,
                                                      'sections': sections,
                                                      'message': welcome_message,
-                                                     'user_name': user_name})
+                                                     'user_name': user_name,
+                                                     'img': img
+                                                     })
         else:
             return redirect('error-404')
 

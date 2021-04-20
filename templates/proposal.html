@@ -65,7 +65,11 @@
             <div class="col-auto d-flex col-centered">
               <div class="row member">
                 <div class="col-6 member-img">
+                {% if img %}
+                  <img src="data:image/png;base64,{{ img }}" alt="">
+                {% else %}
                   <img src="{% static 'assets/img/user-icon-placeholder.png' %}" alt="">
+                {% endif %}
                 </div>
                 <div class="col-5 member-info">
                   <h4>{{ user_name }}</h4>

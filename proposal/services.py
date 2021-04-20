@@ -1,3 +1,4 @@
+import base64
 import requests
 from datetime import datetime, timedelta
 import functools
@@ -50,14 +51,18 @@ def sf_api_call(action, parameters={}, method='get', data={}):
         'Accept-Encoding': 'gzip',
         'Authorization': 'Bearer %s' % access_token
     }
-    img_headers = {
-        'Authorization': 'Bearer %s' % access_token,
-        'Content-type': 'image/png'}
+    doc_headers = {
+        'Authorization': 'Bearer %s' % access_token
+    }
     if method == 'get':
         if 'profilephoto' in action:
-            r = requests.request(method, action, headers=img_headers, timeout=30)
+            r = requests.request(method, action, headers=doc_headers, timeout=30)
             if r.status_code < 300:
-                return r.raw
+                return r.content
+        elif 'VersionData' in action:
+            r = requests.request(method, instance_url + action, headers=doc_headers, timeout=30)
+            if r.status_code < 300:
+                return r.content
         else:
             r = requests.request(method, instance_url + action, headers=headers, params=parameters, timeout=30)
     elif method in ['post', 'patch']:
@@ -168,8 +173,7 @@ def create_contact(email, contact_account_id):
         'From_django__c': True,
         'OwnerId': get_owner_id(contact_account_id)
     }
-    response = \
-    sf_api_call(f"/services/data/{settings.SF_API_VERSION}/sobjects/Contact", method='post', data=data)['records'][0]
+    response = sf_api_call(f"/services/data/{settings.SF_API_VERSION}/sobjects/Contact", method='post', data=data)['records'][0]
     return response
 
 
@@ -194,34 +198,41 @@ def get_documents_list(proposal_id):
     :return: List of documents
     """
     query = f"SELECT ContentDocumentId FROM ContentDocumentLink where IsDeleted = false and LinkedEntityId = '{proposal_id}'"
-    response = sf_api_call(f'/services/data/{settings.SF_API_VERSION}/query/', {'q': query})
+    response = sf_api_call(f'/services/data/{settings.SF_API_VERSION}/query/', {'q': query})['records']
     return response
 
 
-def get_single_document(content_document_ids_list):
+def get_single_document(content_document_id):
     """Getting single document.
 
-    :param content_document_ids_list: List of documents from 'get_documents_list's response.
+    :param content_document_id: First match in list of documents from 'get_documents_list's response.
 
     :return: Document.
     """
-    query = f"SELECT Id, ContentSize, CreatedDate, Description, FileExtension, FileType, OwnerId, ParentId, PublishStatus, SharingOption, SharingPrivacy, Title FROM ContentDocument where id in ({content_document_ids_list}) and FileType='PDF' order by CreatedDate DESC"
+    query = f"SELECT Id, ContentSize, CreatedDate, Description, FileExtension, FileType, OwnerId, ParentId, PublishStatus, SharingOption, SharingPrivacy, Title FROM ContentDocument where Id='{content_document_id}' and FileType='PDF' order by CreatedDate DESC"
     response = sf_api_call(f'/services/data/{settings.SF_API_VERSION}/query/', {'q': query})
     return response
 
 
-def get_document_for_download(content_document_id):
-    """Request to download document
+def get_document_link(content_document_id):
+    """Getting url to file
 
     :param content_document_id: Id of document.
 
-    :return: Document.
+    :return: Document link.
     """
-    response = sf_api_call(f"/services/data/{settings.SF_API_VERSION}/sobjects/ContentDocument/{content_document_id}")
+    query = f"SELECT VersionData FROM ContentVersion WHERE ContentDocumentId='{content_document_id}' and isLatest = true"
+    response = sf_api_call(f'/services/data/{settings.SF_API_VERSION}/query/', {'q': query})['records'][0]['VersionData']
     return response
 
 
-def get_creator_img(url):
+def get_document(url):
+    """Getting needed document.
+
+    :param url: Document link.
+
+    :return: Document in base64 format.
+    """
     response = sf_api_call(url)
-
-    return response
+    doc64 = base64.b64encode(response).decode()
+    return doc64

@@ -178,3 +178,6 @@ msgstr ""
 
 msgid "Descargar"
 msgstr "Download"
+
+msgid "Confirmar"
+msgstr "Confirm"

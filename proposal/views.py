@@ -56,5 +56,9 @@ class EventsView(View):
     def post(self, request, proposal_id):
         print(request.POST['event_type'])
         print(request.POST['event_name'])
+        try:
+            print(request.POST['time_spent'])
+        except:
+            pass
         print(proposal_id)
         return HttpResponse('ok')

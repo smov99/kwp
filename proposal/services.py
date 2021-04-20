@@ -14,7 +14,7 @@ params = {
     'password': settings.SF_PASSWORD,
 }
 
-r = requests.post('https://test.salesforce.com/services/oauth2/token', params=params)
+r = requests.post(settings.SF_LOGIN_URL, params=params)
 access_token = r.json().get('access_token')
 instance_url = r.json().get('instance_url')
 

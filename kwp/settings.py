@@ -110,6 +110,7 @@ SF_INITIAL_ACCESS_TOKEN = 'Geosoft999Cel800D040000008gMG88804000000GndYOHyk2gVh5
 SF_USER_NAME = 'smorozov@gmail.com'
 SF_API_VERSION = 'v51.0'
 SF_PASSWORD = 'ge0s0ft99'
+SF_LOGIN_URL = 'https://test.salesforce.com/services/oauth2/token'
 
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators

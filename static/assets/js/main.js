@@ -292,9 +292,9 @@
       this.document.querySelector('#next-page').addEventListener('click', () => {
         timeTracker['pageEnd'] = new Date();
         spentTime = (timeTracker['pageEnd']-timeTracker['pageStart'])/1000;
-        eventsAjax('spent_time', 'Spent '+spentTime+' seconds on page number '+pageNum, spentTime+'s')
+        eventsAjax('spent_time', 'Spent '+spentTime+' seconds on page number '+pageNum, ''+spentTime+'s')
         showNextPage();
-        eventsAjax('page_opened', "Opened page number: "+pageNum);
+        eventsAjax('page_viewed', "Viewed page number: "+pageNum);
       });
 
       // Download button

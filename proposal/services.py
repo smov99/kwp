@@ -226,6 +226,7 @@ def get_document_link(content_document_id):
     return response
 
 
+@timed_cache(seconds=3600)
 def get_document(url):
     """Getting needed document.
 

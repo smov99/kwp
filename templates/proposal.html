@@ -139,13 +139,12 @@
     <section id="contact" class="contact">
       <div class="container" data-aos="fade-up">
 
-        <div class="contact-form-title">
-          <p>{% trans '¿Tiene alguna pregunta o desea darnos su opinión?' %}</p>
-        </div>
-
         <div class="row" data-aos="fade-up" data-aos-delay="100">
 
-          <div class="col-xl-8 col-centered">
+          <div class="col-xl-6">
+            <div class="contact-form-title">
+              <p>{% trans '¿Tiene alguna pregunta o desea darnos su opinión?' %}</p>
+            </div>
             <form action="" method="post" role="form" id="Feedback-Form" class="contact-form">
               {% csrf_token %}
               <div class="form-group">
@@ -155,18 +154,10 @@
             </form>
           </div>
 
-        </div>
-
-      </div>
-      <div class="container" data-aos="fade-up">
-
-        <div class="contact-form-title">
-          <p>{% trans 'Solicite una reunión con Kiwapower' %}</p>
-        </div>
-
-        <div class="row" data-aos="fade-up" data-aos-delay="100">
-
-          <div class="col-xl-8 col-centered">
+          <div class="col-xl-6">
+            <div class="contact-form-title">
+              <p>{% trans 'Solicite una reunión con Kiwapower' %}</p>
+            </div>
             <form action="" method="post" role="form" id="Request-A-Meeting-Form" class="contact-form">
               {% csrf_token %}
               <div class="form-group">

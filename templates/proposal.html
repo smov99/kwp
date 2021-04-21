@@ -113,7 +113,7 @@
         {% for section in sections %}
 
         <div class="section-title">
-          <h2><a data-toggle="collapse" class="collapsed" href="#section{{ section.id }}">{{ section.label }}<i class="bx bx-chevron-down icon-show"></i><i class="bx bx-x icon-close"></i></a></h2>
+          <a data-toggle="collapse" class="collapsed" href="#section{{ section.id }}"><h2>{{ section.label }}<i class="bx bx-chevron-down icon-show"></i><i class="bx bx-x icon-close"></i></h2></a>
         </div>
 
         <div id="section{{ section.id }}" class="collapse" data-parent=".section-title">

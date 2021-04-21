@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="09261db6-e477-4638-a4b0-2d0875373965" name="Default Changelist" comment="some corrections">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/proposal/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/proposal/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/assets/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/assets/css/style.css" afterDir="false" />
-    </list>
+    <list default="true" id="09261db6-e477-4638-a4b0-2d0875373965" name="Default Changelist" comment="some corrections" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -159,7 +155,7 @@
       <workItem from="1617904531860" duration="108992000" />
       <workItem from="1618512834086" duration="3000000" />
       <workItem from="1618586779376" duration="61648000" />
-      <workItem from="1618960465099" duration="6900000" />
+      <workItem from="1618960465099" duration="7246000" />
     </task>
     <task id="LOCAL-00001" summary="applications and model">
       <created>1616780285314</created>
@@ -371,7 +367,14 @@
       <option name="project" value="LOCAL" />
       <updated>1618959506071</updated>
     </task>
-    <option name="localTasksCounter" value="31" />
+    <task id="LOCAL-00031" summary="some corrections">
+      <created>1619019364080</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1619019364080</updated>
+    </task>
+    <option name="localTasksCounter" value="32" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -401,8 +404,8 @@
     <MESSAGE value="Salesforce API requests" />
     <MESSAGE value="Salesforce API requests and sections creation" />
     <MESSAGE value="corrected translation, template and verification logic" />
-    <MESSAGE value="some corrections" />
     <MESSAGE value="correct getting documents" />
-    <option name="LAST_COMMIT_MESSAGE" value="correct getting documents" />
+    <MESSAGE value="some corrections" />
+    <option name="LAST_COMMIT_MESSAGE" value="some corrections" />
   </component>
 </project>

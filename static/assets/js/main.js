@@ -310,21 +310,30 @@
 
   });
 
+  $('#flexCheckIntro').on('click', function () {
+    if ($(this).is(':checked')) {
+      $('.introduction-form input[type="submit"]').removeAttr('disabled');
+    } else {
+      $('.introduction-form input[type="submit"]').attr('disabled', 'disabled');
+    }
+  });
 
   $('.section-title .collapsed').on('click', function (e) {
     e.preventDefault();
-    eventsAjax('opening_of_section','Opening of section: '+e.target.text);
-  })
+    eventsAjax('opening_of_section','Opening of section: '+e.target.innerText);
+  });
 
   $('.faq-list a').on('click', function (e) {
     e.preventDefault();
-    eventsAjax('opening_of_sections_line', 'Opening of line: '+e.target.text);
-  })
+    eventsAjax('opening_of_sections_line', 'Opening of line: '+e.target.innerText);
+  });
 
   $('#contact form button').on('click', function (e) {
     e.preventDefault();
-    eventsAjax('click_on_submit_button', 'Click on submit button in '+$(this).closest("form").attr('id'));
-  })
+    let message = $(this).closest("form").find('textarea')
+    eventsAjax('click_on_submit_button', 'Click on submit button in '+$(this).closest("form").attr('id'), '', ''+message.val());
+    message.val('')
+  });
 
 
 

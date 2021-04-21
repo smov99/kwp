@@ -121,6 +121,7 @@ def get_user_email_information(proposal_account_id):
     return response
 
 
+@timed_cache(seconds=3600)
 def get_client_name(proposal_account_id):
     """Getting owner info of new Contact object.
 

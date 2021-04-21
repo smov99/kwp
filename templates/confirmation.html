@@ -45,9 +45,16 @@
             <div class="introduction-form">
               <form action="" method="post">
                 {% csrf_token %}
-                <input type="email" name="email" placeholder="{% trans 'Correo electrónico..' %}"><input type="submit" value="{% trans 'Confirmar' %}">
+                <input type="email" name="email" placeholder="{% trans 'Correo electrónico..' %}"><input disabled type="submit" value="{% trans 'Confirmar' %}">
               </form>
             </div>
+            <div class="form-check mb-3 text-center">
+              <input class="form-check-input" type="checkbox" value="" id="flexCheckIntro">
+              <label class="form-check-label" for="flexCheckIntro">
+                {% trans 'Acepto la política de privacidad' %}
+              </label>
+            </div>
+            <div class="text-center"><a href="{% trans 'https://www.kiwapower.com/aviso-de-privacidad/' %}">{% trans 'Aviso de privacidad' %}</a></div>
           </div>
         </div>
       </div>

@@ -55,9 +55,7 @@ msgstr "I agree to the privacy policy"
 msgid "Suscribir"
 msgstr "Subscribe"
 
-#: .\templates\base.html:168
-#, fuzzy
-#| msgid "Aviso de Privacidad "
+
 msgid "Aviso de privacidad"
 msgstr "Notice of Privacy"
 
@@ -118,6 +116,9 @@ msgstr "Energize your business with solar power. Put your unused rooftop area to
 #: .\templates\proposal.html:79
 msgid "Esta propuesta fue preparada para "
 msgstr "This proposal was prepared for "
+
+msgid "https://www.kiwapower.com/aviso-de-privacidad/"
+msgstr "https://www.kiwapower.com/en/privacy-policy/"
 
 msgid " por:"
 msgstr " by:"

@@ -69,5 +69,9 @@ class EventsView(View):
             print(request.POST['time_spent'])
         except:
             pass
+        try:
+            print(request.POST['message'])
+        except:
+            pass
         print(proposal_id)
         return HttpResponse('ok')

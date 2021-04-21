@@ -292,6 +292,21 @@ main:before {
   background: #e35052;
 }
 
+#introduction .form-check {
+  color: #fff;
+}
+
+#introduction a {
+  text-decoration: underline;
+  font-size: 14px;
+  color: #fff;
+  font-style:initial;
+}
+
+#introduction a:hover {
+  color: #e60012;
+}
+
 @media(min-width: 1920px) {
   #introduction video {
     width: 100%;

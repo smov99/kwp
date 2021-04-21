@@ -17,7 +17,7 @@ class ConfirmationView(View):
         if proposal:
             return render(request, 'confirmation.html', {'proposal_id': proposal_id})
         else:
-            return redirect('error-404')
+            pass
 
     def post(self, request, proposal_id) -> HttpResponse:
         email = request.POST['email']

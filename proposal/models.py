@@ -97,12 +97,12 @@ class User(AbstractBaseUser):
 
 
 class Session(BaseModel):
-    proposalid = models.CharField(max_length=64)
+    proposal_id = models.CharField(max_length=64)
     is_proposalexists = models.BooleanField(default=False)
     email = models.ForeignKey(User, to_field='email', on_delete=models.CASCADE)
-    accountid = models.CharField(max_length=64, blank=True, null=True)
+    account_id = models.CharField(max_length=64, blank=True, null=True)
     is_emailvalid = models.BooleanField(default=False)
-    contactid = models.CharField(max_length=64, blank=True, null=True)
+    contact_id = models.CharField(max_length=64, blank=True, null=True)
     is_contactcreated = models.BooleanField(default=False)
     message = models.CharField(max_length=255)
 
@@ -124,8 +124,8 @@ class SessionEvent(BaseModel):
         (CLICK_ON_SUBMIT_BUTTON, 'Click on submit button in in form')
     )
 
-    sessionid = models.ForeignKey(Session, on_delete=models.CASCADE)
-    event_type = models.CharField(max_length=255, choices=EVENT_CHOICES, default=OPEN_PDF)
+    session_id = models.ForeignKey(Session, on_delete=models.CASCADE)
+    event_type = models.CharField(max_length=255)
     event_name = models.CharField(max_length=255)
-    questionid = models.CharField(max_length=64, blank=True, null=True)
+    question_id = models.CharField(max_length=64, blank=True, null=True)
     message = models.TextField(blank=True, null=True)

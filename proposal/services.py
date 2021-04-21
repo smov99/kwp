@@ -3,6 +3,7 @@ import requests
 from datetime import datetime, timedelta
 import functools
 from PIL import Image
+import time
 
 from kwp import settings
 
@@ -18,6 +19,19 @@ params = {
 r = requests.post(settings.SF_LOGIN_URL, params=params)
 access_token = r.json().get('access_token')
 instance_url = r.json().get('instance_url')
+
+
+def clock(func):
+    def clocked(*args, **kwargs):
+        t0 = time.time()
+
+        result = func(*args, **kwargs)  # вызов декорированной функции
+
+        elapsed = time.time() - t0
+        print(elapsed)
+        return result
+
+    return clocked
 
 
 def timed_cache(**timedelta_kwargs):
@@ -104,6 +118,18 @@ def get_user_email_information(proposal_account_id):
     """
     query = f"SELECT Authorized_contact__c, Authorized_domain__c, Authorized_email__c FROM Authorized_emails__c where Account__c='{proposal_account_id}' and  isDeleted=false"
     response = sf_api_call(f'/services/data/{settings.SF_API_VERSION}/query/', {'q': query})['records'][0]
+    return response
+
+
+def get_client_name(proposal_account_id):
+    """Getting owner info of new Contact object.
+
+    :param proposal_account_id: Account__c value from 'get_proposal' requests response.
+
+    :return: Client name.
+    """
+    query = f"SELECT Name FROM Account where id='{proposal_account_id}'"
+    response = sf_api_call(f'/services/data/{settings.SF_API_VERSION}/query/', {'q': query})['records'][0]['Name']
     return response
 
 

@@ -59,7 +59,7 @@
       <div class="container">
 
         <div class="section-title">
-          <h2>{% trans 'Esta propuesta fue preparada por:' %}</h2>
+          <h2>{% trans 'Esta propuesta fue preparada para ' %}{{ client_name }}{% trans ' por:' %}</h2>
         </div>
         <div class="row">
             <div class="col-auto d-flex col-centered">
@@ -72,7 +72,7 @@
                 {% endif %}
                 </div>
                 <div class="col-5 member-info">
-                  <h4>{{ user_name }}</h4>
+                  <h4>{{ creator_name }}</h4>
                 </div>
               </div>
             </div>
@@ -110,6 +110,7 @@
     <!-- ======= Why Kiwapower Section ======= -->
     <section id="whykiwapower" class="faq">
       <div class="container" data-aos="fade-up">
+      {% with sections=sections.all %}
         {% for section in sections %}
 
         <div class="section-title">
@@ -131,7 +132,7 @@
           </ul>
         </div>
         {% endfor %}
-
+      {% endwith %}
       </div>
     </section><!-- End Why Kiwapower Section -->
 

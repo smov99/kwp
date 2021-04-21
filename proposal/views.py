@@ -12,6 +12,7 @@ import proposal.services as services
 
 
 class ConfirmationView(View):
+    @services.clock
     def get(self, request: HttpRequest, proposal_id) -> HttpResponse:
         proposal = services.get_proposal(proposal_id)
         if proposal:
@@ -30,6 +31,7 @@ class ConfirmationView(View):
 
 
 class ProposalView(View):
+    @services.clock
     def get(self, request, proposal_id) -> HttpResponse:
         # section_response = get_sections()
         # article_response = get_articles()
@@ -40,13 +42,15 @@ class ProposalView(View):
             request.session['is_proposalexist'] = proposal['Published__c']
             welcome_message = proposal['Welcome_message__c']
             creator = services.get_proposals_creator(proposal['CreatedById'])
+            client_name = services.get_client_name(proposal['Account__c'])
             img = services.get_document(creator['MediumPhotoUrl'])
-            user_name = creator['Name']
+            creator_name = creator['Name']
             return render(request, 'proposal.html', {'proposal_id': proposal_id,
                                                      'sections': sections,
                                                      'message': welcome_message,
-                                                     'user_name': user_name,
-                                                     'img': img
+                                                     'creator_name': creator_name,
+                                                     'img': img,
+                                                     'client_name': client_name
                                                      })
         else:
             return redirect('error-404')

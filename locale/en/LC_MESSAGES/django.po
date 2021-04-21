@@ -48,8 +48,8 @@ msgid "Por favor introduzca una dirección de correo electrónico válida "
 msgstr "Please enter a valid email"
 
 #: .\templates\base.html:164
-msgid "He leído el aviso de privacidad."
-msgstr "I have read the privacy notice."
+msgid "Acepto la política de privacidad"
+msgstr "I agree to the privacy policy"
 
 #: .\templates\base.html:167
 msgid "Suscribir"
@@ -69,13 +69,11 @@ msgstr "Email confirmation - Kiwapower"
 msgid "EN"
 msgstr "ES"
 
-#: .\templates\confirmation.html:51
-msgid "Confirme su dirección de correo electrónico"
-msgstr "Confirm your email address"
+msgid "Bienvenidos a su propuesta de Kiwapower."
+msgstr "Welcome to your Kiwapower proposal."
 
-#: .\templates\confirmation.html:52
-msgid "Introduzca la dirección de correo electrónico"
-msgstr "Enter email address"
+msgid "Ingrese su correo electrónico para acceder directamente."
+msgstr "Please enter your email for direct access."
 
 #: .\templates\confirmation.html:56
 msgid "Correo electrónico.."
@@ -118,16 +116,11 @@ msgid "Energice su negocio con energía solar. Ponga las área de techo no usada
 msgstr "Energize your business with solar power. Put your unused rooftop area to work for you, and lock-in low electricity rates in pesos. We will facilitate your business transition to modern and clean solar electricity."
 
 #: .\templates\proposal.html:79
-msgid "Esta propuesta fue preparada por:"
-msgstr "This proposal was prepared by:"
+msgid "Esta propuesta fue preparada para "
+msgstr "This proposal was prepared for "
 
-#: .\templates\proposal.html:88
-msgid "Nombre de Usuario"
-msgstr "User Name"
-
-#: .\templates\proposal.html:103
-msgid "Lugar para mensaje de bienvenida"
-msgstr "Place for welcom message"
+msgid " por:"
+msgstr " by:"
 
 #: .\templates\proposal.html:114
 msgid "Ver propuesta"

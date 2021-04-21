@@ -81,6 +81,8 @@ def create_sections_and_articles(section_return, article_return):
     :param section_return: Response from 'get_sections' func.
     :param article_return: Response from 'get_articles' func.
     """
+    Section.objects.all().delete()
+    Article.objects.all().delete()
     for section in section_return:
         try:
             section_articles = article_return[section]

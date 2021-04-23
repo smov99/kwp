@@ -122,16 +122,22 @@ class ProposalPDFView(View):
 
 class EventsView(View):
     def post(self, request, proposal_id):
-        print(request.POST['event_type'])
-        print(request.POST['event_name'])
         try:
-            print(request.POST['time_spent'])
-        except:
-            pass
+            time_spent = request.POST['time_spent']
+        except KeyError:
+            time_spent = None
         try:
-            print(request.POST['message'])
-        except:
-            pass
-        print(proposal_id)
-        print(datetime.datetime.utcnow().__format__('%Y-%m-%dT%H:%M:%S.%UZ'))
+            message = request.POST['message']
+        except KeyError:
+            message = None
+        services.create_event_record(
+            session_id=request.session['session_id'],
+            event_type=request.POST['event_type'],
+            event_name=request.POST['event_name'],
+            time_spent=time_spent,
+            message=message,
+            proposal_id=proposal_id,
+            proposal_account_id=request.session['proposal_account_id'],
+            contact_id=request.session['contact_id']
+        )
         return HttpResponse('ok')

@@ -2,10 +2,10 @@ import base64
 import requests
 from datetime import datetime, timedelta
 import functools
-from PIL import Image
 import time
 
 from kwp import settings
+from .models import SessionEvent
 
 
 params = {
@@ -270,3 +270,71 @@ def get_document(url):
     response = sf_api_call(url)
     doc64 = base64.b64encode(response).decode()
     return doc64
+
+
+def create_sf_proposal_engagement(
+        proposal_id,
+        proposal_account_id,
+        contact_id,
+        event_name,
+        time_spent=None
+):
+    """Creating an event record in Salesforce.
+
+    :param proposal_id: Proposal Id from url.
+    :param proposal_account_id: Account__c value from 'get_proposal' requests response.
+    :param contact_id: 'contact_id' from 'user_email_validation' response.
+    :param event_name: Event name.
+    :param time_spent: Time spent on page(if available).
+
+    :return: Created record
+    """
+    data = {
+        'Web_Proposal__c': proposal_id,
+        'Account__c': proposal_account_id,
+        'Contact__c': contact_id,
+        'Event_type__c': event_name,
+        'Event_date__c': datetime.utcnow().__format__('%Y-%m-%dT%H:%M:%S.%UZ'),
+        'Time_spent__c': time_spent,
+        'OwnerId': settings.SF_USER_ID
+    }
+    response = sf_api_call(f"/services/data/{settings.SF_API_VERSION}/sobjects/Proposal_engagement__c", method='post', data=data)['records'][0]
+    return response
+
+
+def create_event_record(
+        session_id,
+        event_type,
+        proposal_id,
+        proposal_account_id,
+        contact_id,
+        event_name,
+        time_spent=None,
+        message=None
+):
+    """Creating an event record in both systems, Salesforce and Django.
+
+    :param session_id: Session Id.
+    :param event_type: Event type.
+    :param proposal_id: Proposal Id from url.
+    :param proposal_account_id: Account__c value from 'get_proposal' requests response.
+    :param contact_id: 'contact_id' from 'user_email_validation' response.
+    :param event_name: Event name.
+    :param time_spent: Time spent on page(if available).
+    :param message: Message(if available).
+    """
+    SessionEvent.objects.get_or_create(
+        session_id_id=session_id,
+        event_type=event_type,
+        event_name=event_name,
+        message=message
+    )
+    if message:
+        event_name = event_name + ', Message: ' + message
+    create_sf_proposal_engagement(
+        proposal_id=proposal_id,
+        proposal_account_id=proposal_account_id,
+        contact_id=contact_id,
+        event_name=event_name,
+        time_spent=time_spent
+    )

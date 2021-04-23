@@ -107,6 +107,9 @@ class Session(BaseModel):
     message = models.CharField(max_length=255, blank=True, null=True)
     client_ip = models.CharField(max_length=64)
 
+    class Meta:
+        ordering = ('created',)
+
     def __str__(self):
         return self.email
 
@@ -128,8 +131,13 @@ class SessionEvent(BaseModel):
         (CLICK_ON_SUBMIT_BUTTON, 'Click on submit button in in form')
     )
 
-    session_id = models.ForeignKey(Session, on_delete=models.CASCADE)
+    session_id = models.ForeignKey(Session, to_field='id', on_delete=models.CASCADE)
     event_type = models.CharField(max_length=255)
     event_name = models.CharField(max_length=255)
-    question_id = models.CharField(max_length=64, blank=True, null=True)
     message = models.TextField(blank=True, null=True)
+
+    class Meta:
+        ordering = ('created',)
+
+    def __str__(self):
+        return self.event_name

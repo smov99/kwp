@@ -1,9 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="09261db6-e477-4638-a4b0-2d0875373965" name="Default Changelist" comment="session tracking">
+    <list default="true" id="09261db6-e477-4638-a4b0-2d0875373965" name="Default Changelist" comment="events recording">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/proposal/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/proposal/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/celery/migrations/0001_initial.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/celery/migrations/0002_auto_20210419_0135.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/celery/migrations/0003_auto_20210419_0147.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/celery/migrations/0004_auto_20210419_1517.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/celery/migrations/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/proposal/migrations/0001_initial.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/proposal/migrations/__init__.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/proposal/services.py" beforeDir="false" afterPath="$PROJECT_DIR$/proposal/services.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/proposal/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/proposal/views.py" afterDir="false" />
     </list>
@@ -41,7 +47,6 @@
     <setting file="file://$PROJECT_DIR$/locale/en/LC_MESSAGES/django.po" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/kwp/settings.py" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/celery/models.py" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/proposal/views.py" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/static/assets/js/main.js" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/kwp/urls.py" root0="FORCE_HIGHLIGHTING" />
   </component>
@@ -58,7 +63,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="ToolWindowDuplicates.ShowToolbar" value="false" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../simple_api" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
@@ -172,7 +177,8 @@
       <workItem from="1617904531860" duration="108992000" />
       <workItem from="1618512834086" duration="3000000" />
       <workItem from="1618586779376" duration="61648000" />
-      <workItem from="1618960465099" duration="46387000" />
+      <workItem from="1618960465099" duration="51043000" />
+      <workItem from="1619193627622" duration="300000" />
     </task>
     <task id="LOCAL-00001" summary="applications and model">
       <created>1616780285314</created>
@@ -426,7 +432,14 @@
       <option name="project" value="LOCAL" />
       <updated>1619138558082</updated>
     </task>
-    <option name="localTasksCounter" value="37" />
+    <task id="LOCAL-00037" summary="events recording">
+      <created>1619181924913</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1619181924913</updated>
+    </task>
+    <option name="localTasksCounter" value="38" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -461,6 +474,7 @@
     <MESSAGE value="template and services corrections" />
     <MESSAGE value="template corrections" />
     <MESSAGE value="session tracking" />
-    <option name="LAST_COMMIT_MESSAGE" value="session tracking" />
+    <MESSAGE value="events recording" />
+    <option name="LAST_COMMIT_MESSAGE" value="events recording" />
   </component>
 </project>

@@ -41,7 +41,7 @@ class ConfirmationView(View):
         email = request.POST['email']
         proposal = services.get_proposal(proposal_id)
         request.session['email'] = email
-        request.session['account_id'] = proposal['Account__c']
+        request.session['proposal_account_id'] = proposal['Account__c']
         email_validation = services.user_email_validation(proposal['Account__c'], email)
         if email_validation:
             request.session['contact_id'] = email_validation['contact_id']
@@ -85,9 +85,9 @@ class ConfirmationView(View):
 class ProposalView(View):
     @services.clock
     def get(self, request, proposal_id) -> HttpResponse:
-        # section_response = get_sections()
-        # article_response = get_articles()
-        # create_sections_and_articles(section_response, article_response)
+        section_response = get_sections()
+        article_response = get_articles()
+        create_sections_and_articles(section_response, article_response)
         try:
             email = request.session['email']
             email_validation = services.user_email_validation(request.session['proposal_account_id'], email)

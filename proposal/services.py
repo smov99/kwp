@@ -298,7 +298,7 @@ def create_sf_proposal_engagement(
         'Time_spent__c': time_spent,
         'OwnerId': settings.SF_USER_ID
     }
-    response = sf_api_call(f"/services/data/{settings.SF_API_VERSION}/sobjects/Proposal_engagement__c", method='post', data=data)['records'][0]
+    response = sf_api_call(f"/services/data/{settings.SF_API_VERSION}/sobjects/Proposal_engagement__c", method='post', data=data)
     return response
 
 

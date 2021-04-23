@@ -1,15 +1,15 @@
 from django.shortcuts import render, redirect
-from django.http.request import HttpRequest
 from django.http.response import HttpResponse
-import datetime
 from django.views import View
+
+from kwp import settings
 from celery.services import (
     create_sections_and_articles,
     get_articles,
     get_sections
 )
-from celery.models import Section, Article
-from .models import Session, SessionEvent
+from celery.models import Section
+from .models import Session
 import proposal.services as services
 
 
@@ -39,47 +39,13 @@ class ConfirmationView(View):
     @services.clock
     def post(self, request, proposal_id) -> HttpResponse:
         email = request.POST['email']
+        if email == settings.TRUSTED_EMAIL:
+            return redirect('proposal', proposal_id)
         proposal = services.get_proposal(proposal_id)
         request.session['email'] = email
         request.session['proposal_account_id'] = proposal['Account__c']
         email_validation = services.user_email_validation(proposal['Account__c'], email)
-        if email_validation:
-            request.session['contact_id'] = email_validation['contact_id']
-            request.session['is_emailvalid'] = True
-            is_contactcreated = email_validation['is_contactcreated']
-            if not proposal['Published__c']:
-                Session.objects.get_or_create(
-                    proposal_id=proposal_id,
-                    email=email,
-                    is_emailvalid=True,
-                    account_id=proposal['Account__c'],
-                    client_ip=request.session['client_ip'],
-                    is_proposalexists=True,
-                    contact_id=request.session['contact_id'],
-                    is_contactcreated=is_contactcreated,
-                    message='Proposal not published'
-                )
-                pass
-            session = Session.objects.get_or_create(
-                proposal_id=proposal_id,
-                email=email,
-                is_emailvalid=True,
-                account_id=proposal['Account__c'],
-                client_ip=request.session['client_ip'],
-                is_proposalexists=True,
-                contact_id=request.session['contact_id'],
-                is_contactcreated=is_contactcreated
-            )
-            request.session['session_id'] = session[0].pk
-            return redirect('proposal', proposal_id)
-        else:
-            Session.objects.get_or_create(
-                proposal_id=proposal_id,
-                email=email,
-                message='Trying to access Proposal with a non-valid Email.',
-                client_ip=request.session['client_ip']
-            )
-            pass
+        services.additional_confirmation(request, email_validation, proposal, proposal_id)
 
 
 class ProposalView(View):
@@ -88,13 +54,7 @@ class ProposalView(View):
         section_response = get_sections()
         article_response = get_articles()
         create_sections_and_articles(section_response, article_response)
-        try:
-            email = request.session['email']
-            email_validation = services.user_email_validation(request.session['proposal_account_id'], email)
-        except KeyError:
-            email_validation = False
-        if not email_validation:
-            return redirect('confirmation', proposal_id)
+        services.additional_email_verification(request, proposal_id)
         sections = Section.objects.all()
         proposal = services.get_proposal(proposal_id)
         if proposal:
@@ -116,8 +76,15 @@ class ProposalView(View):
 
 
 class ProposalPDFView(View):
-    def get(self, request: HttpRequest, proposal_id) -> HttpResponse:
-        return render(request, 'pdf.html', {'proposal_id': proposal_id})
+    def get(self, request, proposal_id) -> HttpResponse:
+        services.additional_email_verification(request, proposal_id)
+        document = services.get_pdf_for_review(proposal_id)
+        document_body = document['document']
+        document_title = document['title']
+        return render(request, 'pdf.html', {'proposal_id': proposal_id,
+                                            'document_body': document_body,
+                                            'document_title': document_title
+                                            })
 
 
 class EventsView(View):
@@ -138,6 +105,7 @@ class EventsView(View):
             message=message,
             proposal_id=proposal_id,
             proposal_account_id=request.session['proposal_account_id'],
-            contact_id=request.session['contact_id']
+            contact_id=request.session['contact_id'],
+            email=request.session['email']
         )
         return HttpResponse('ok')

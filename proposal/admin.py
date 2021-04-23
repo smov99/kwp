@@ -4,10 +4,12 @@ from django.contrib.auth.models import Group
 from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
 
 from .forms import UserAdminCreationForm, UserAdminChangeForm
+from .models import Session, SessionEvent
 
 User = get_user_model()
 
 
+@admin.register(User)
 class UserAdmin(BaseUserAdmin):
     form = UserAdminChangeForm
     add_form = UserAdminCreationForm
@@ -31,6 +33,14 @@ class UserAdmin(BaseUserAdmin):
     filter_horizontal = ()
 
 
-admin.site.register(User, UserAdmin)
+# @admin.register(Session)
+# class SessionAdmin(admin.ModelAdmin):
+#
+#
+# @admin.register(SessionEvent)
+# class SessionEventAdmin(admin.ModelAdmin):
+
 
 admin.site.unregister(Group)
+admin.site.register(Session)
+admin.site.register(SessionEvent)

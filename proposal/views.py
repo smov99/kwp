@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.http.request import HttpRequest
 from django.http.response import HttpResponse
+import datetime
 from django.views import View
 from celery.services import (
     create_sections_and_articles,
@@ -8,25 +9,76 @@ from celery.services import (
     get_sections
 )
 from celery.models import Section, Article
+from .models import Session, SessionEvent
 import proposal.services as services
 
 
 class ConfirmationView(View):
     @services.clock
-    def get(self, request: HttpRequest, proposal_id) -> HttpResponse:
+    def get(self, request, proposal_id) -> HttpResponse:
         proposal = services.get_proposal(proposal_id)
+        request.session['client_ip'] = request.META.get("REMOTE_ADDR")
         if proposal:
             return render(request, 'confirmation.html', {'proposal_id': proposal_id})
         else:
-            pass
+            if request.session['email']:
+                Session.objects.get_or_create(
+                    proposal_id=proposal_id,
+                    email=request.session['email'],
+                    is_emailvalid=request.session['is_emailvalid'],
+                    message='Trying to access a non-existent Proposal.',
+                    client_ip=request.session['client_ip']
+                )
+            else:
+                Session.objects.get_or_create(
+                    proposal_id=proposal_id,
+                    message='Trying to access a non-existent Proposal.',
+                    client_ip=request.session['client_ip']
+                )
 
+    @services.clock
     def post(self, request, proposal_id) -> HttpResponse:
         email = request.POST['email']
-        request.session['email'] = email
         proposal = services.get_proposal(proposal_id)
-        if services.user_email_validation(proposal['Account__c'], email):
+        request.session['email'] = email
+        request.session['account_id'] = proposal['Account__c']
+        email_validation = services.user_email_validation(proposal['Account__c'], email)
+        if email_validation:
+            request.session['contact_id'] = email_validation['contact_id']
+            request.session['is_emailvalid'] = True
+            is_contactcreated = email_validation['is_contactcreated']
+            if not proposal['Published__c']:
+                Session.objects.get_or_create(
+                    proposal_id=proposal_id,
+                    email=email,
+                    is_emailvalid=True,
+                    account_id=proposal['Account__c'],
+                    client_ip=request.session['client_ip'],
+                    is_proposalexists=True,
+                    contact_id=request.session['contact_id'],
+                    is_contactcreated=is_contactcreated,
+                    message='Proposal not published'
+                )
+                pass
+            session = Session.objects.get_or_create(
+                proposal_id=proposal_id,
+                email=email,
+                is_emailvalid=True,
+                account_id=proposal['Account__c'],
+                client_ip=request.session['client_ip'],
+                is_proposalexists=True,
+                contact_id=request.session['contact_id'],
+                is_contactcreated=is_contactcreated
+            )
+            request.session['session_id'] = session[0].pk
             return redirect('proposal', proposal_id)
         else:
+            Session.objects.get_or_create(
+                proposal_id=proposal_id,
+                email=email,
+                message='Trying to access Proposal with a non-valid Email.',
+                client_ip=request.session['client_ip']
+            )
             pass
 
 
@@ -36,6 +88,13 @@ class ProposalView(View):
         # section_response = get_sections()
         # article_response = get_articles()
         # create_sections_and_articles(section_response, article_response)
+        try:
+            email = request.session['email']
+            email_validation = services.user_email_validation(request.session['proposal_account_id'], email)
+        except KeyError:
+            email_validation = False
+        if not email_validation:
+            return redirect('confirmation', proposal_id)
         sections = Section.objects.all()
         proposal = services.get_proposal(proposal_id)
         if proposal:
@@ -74,4 +133,5 @@ class EventsView(View):
         except:
             pass
         print(proposal_id)
+        print(datetime.datetime.utcnow().__format__('%Y-%m-%dT%H:%M:%S.%UZ'))
         return HttpResponse('ok')

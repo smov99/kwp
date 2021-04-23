@@ -97,14 +97,18 @@ class User(AbstractBaseUser):
 
 
 class Session(BaseModel):
-    proposal_id = models.CharField(max_length=64)
+    proposal_id = models.CharField(max_length=64, null=True)
     is_proposalexists = models.BooleanField(default=False)
-    email = models.ForeignKey(User, to_field='email', on_delete=models.CASCADE)
+    email = models.CharField(max_length=64, blank=True, null=True)
     account_id = models.CharField(max_length=64, blank=True, null=True)
     is_emailvalid = models.BooleanField(default=False)
     contact_id = models.CharField(max_length=64, blank=True, null=True)
     is_contactcreated = models.BooleanField(default=False)
-    message = models.CharField(max_length=255)
+    message = models.CharField(max_length=255, blank=True, null=True)
+    client_ip = models.CharField(max_length=64)
+
+    def __str__(self):
+        return self.email
 
 
 class SessionEvent(BaseModel):

@@ -134,6 +134,7 @@ def get_client_name(proposal_account_id):
     return response
 
 
+@timed_cache(seconds=3600)
 def user_email_validation(proposal_account_id, email):
     """User email validation
 
@@ -148,16 +149,21 @@ def user_email_validation(proposal_account_id, email):
     if email == email_response['Authorized_email__c']:
         validated_info['contact_id'] = email_response['Authorized_contact__c']
         validated_info['contact_account_id'] = proposal_account_id
+        validated_info['is_contactcreated'] = False
     elif email_domain == email_response['Authorized_domain__c']:
         domain_response = email_domain_validation(email)
         if domain_response['Email'] == email:
             validated_info['contact_id'] = domain_response['Id']
             validated_info['contact_account_id'] = domain_response['AccountId']
+            validated_info['is_contactcreated'] = False
             return validated_info
         else:
             validated_info['contact_account_id'] = proposal_account_id
             created_contact_response = create_contact(email, validated_info['contact_account_id'])
             validated_info['contact_id'] = created_contact_response['Id']
+            validated_info['is_contactcreated'] = True
+    else:
+        return False
     return validated_info
 
 

@@ -46,7 +46,7 @@
   // Smooth scroll for the navigation menu and links with .scrollto classes
   var scrolltoOffset = $('#header').outerHeight() - 5;
   $(document).on('click', '.nav-menu a, .mobile-nav a, .scrollto', function(e) {
-    if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') && location.hostname == this.hostname) {
+    if (location.pathname.replace(/^\//, '') === this.pathname.replace(/^\//, '') && location.hostname === this.hostname) {
       var target = $(this.hash);
       if (target.length) {
         e.preventDefault();
@@ -169,144 +169,42 @@
 
     $(pdfWindow).on('load', function () {
       var downloadBtn = this.document.getElementById('proposal-download-btn'),
-        url = '/static/files/docs/sample.pdf',
-        topBar = this.document.getElementById('top-bar'),
-        timeTracker = {}
+        timeTracker = {},
+        iframe = this.document.getElementById('pdf-iframe').contentWindow;
+    $(iframe).ready(function (){
+      $(iframe).scroll(function() {
+        let docElem = iframe.document.documentElement,
+            docBody = iframe.document.body,
+            scrollTop = docElem['scrollTop'] || docBody['scrollTop'],
+            scrollBottom = (docElem['scrollHeight'] || docBody['scrollHeight']) - iframe.innerHeight,
+            scrollPercent = scrollTop / scrollBottom * 100 + '%';
 
-      let pdfDoc = null,
-        pageNum = 1,
-        pageIsRendering = false,
-        pageNumIsPending = null,
-        spentTime;
-
-      timeTracker['pageStart'] = new Date();
-
-      const scale = 1.5,
-        canvas = this.document.querySelector('#pdf-render'),
-        ctx = canvas.getContext('2d', {alpha: false});
-
-      // Copy tracking
-      this.document.addEventListener('copy', function (e) {
-          let selected_text = pdfWindow.getSelection().toString().replace("\n", ' '),
-            l = selected_text.length;
-          if (l > 50) {
-              selected_text = selected_text.substring(0, 20) + ' ... ' + selected_text.substring(l-20, l);
-          }
-          eventsAjax('copying_in_pdf', 'Copied text: '+selected_text);
+        document.getElementById('progress-bar').style.setProperty('--scrollAmount', scrollPercent);
       });
+    })
 
-      $(this.window).scroll(function() {
-        if ($(this).scrollTop() > screen.height/10) {
-          topBar.classList.add('fixed-top');
-        } else {
-          topBar.classList.remove('fixed-top');}
-      });
+    timeTracker['pageStart'] = new Date();
 
-      // Render the page
-      const renderPage = num => {
-
-        timeTracker['pageStart'] = new Date();
-        pageIsRendering = true;
-
-         // Get page
-        pdfDoc.getPage(num).then(page => {
-          // Set scale
-          const viewport = page.getViewport({ scale });
-          canvas.height = viewport.height;
-          canvas.width = viewport.width;
-
-          const renderCtx = {
-            canvasContext: ctx,
-            viewport
-          };
-
-          page.render(renderCtx).promise.then(() => {
-            pageIsRendering = false;
-
-            if (pageNumIsPending !== null) {
-              renderPage(pageNumIsPending);
-              pageNumIsPending = null;
-            }
-          });
-
-          // Output current page
-          this.document.querySelector('#page-num').textContent = num;
-        });
-      };
-
-      // Check for pages rendering
-      const queueRenderPage = num => {
-        if (pageIsRendering) {
-          pageNumIsPending = num;
-        } else {
-          renderPage(num);
+    // Copy tracking
+    this.document.addEventListener('copy', function (e) {
+        let selected_text = pdfWindow.getSelection().toString().replace("\n", ' '),
+          l = selected_text.length;
+        if (l > 50) {
+            selected_text = selected_text.substring(0, 20) + ' ... ' + selected_text.substring(l-20, l);
         }
-      };
-
-      // Show Prev Page
-      const showPrevPage = () => {
-        if (pageNum <= 1) {
-          return;
-        }
-        pageNum--;
-        queueRenderPage(pageNum);
-      };
-
-      // Show Next Page
-      const showNextPage = () => {
-        if (pageNum >= pdfDoc.numPages) {
-          return;
-        }
-        pageNum++;
-        queueRenderPage(pageNum);
-      };
-
-      // Get Document
-      pdfjsLib
-        .getDocument(url)
-        .promise.then(pdfDoc_ => {
-          pdfDoc = pdfDoc_;
-
-          this.document.querySelector('#page-count').textContent = pdfDoc.numPages;
-
-          renderPage(pageNum);
-        })
-        .catch(err => {
-          // Display error
-          const div = this.document.createElement('div');
-          div.className = 'error';
-          div.appendChild(document.createTextNode(err.message));
-          this.document.querySelector('body').insertBefore(div, canvas);
-          // Remove top bar
-          this.document.querySelector('.top-bar').style.display = 'none';
-        });
-
-      // Button Events
-      this.document.querySelector('#prev-page').addEventListener('click', () => {
-        timeTracker['pageEnd'] = new Date();
-        spentTime = (timeTracker['pageEnd']-timeTracker['pageStart'])/1000;
-        eventsAjax('spent_time', 'Spent '+spentTime+' seconds on page number '+pageNum, spentTime+'s')
-        showPrevPage();
-        eventsAjax('page_opened', "Opened page number: "+pageNum);
-      });
-      this.document.querySelector('#next-page').addEventListener('click', () => {
-        timeTracker['pageEnd'] = new Date();
-        spentTime = (timeTracker['pageEnd']-timeTracker['pageStart'])/1000;
-        eventsAjax('spent_time', 'Spent '+spentTime+' seconds on page number '+pageNum, ''+spentTime+'s')
-        showNextPage();
-        eventsAjax('page_viewed', "Viewed page number: "+pageNum);
-      });
-
-      // Download button
-      downloadBtn.href = url
-
-      downloadBtn.addEventListener('click', () => {
-        eventsAjax('download', 'PDF downloaded');
-      })
-      $(pdfWindow).on('unload', () => {
-        eventsAjax('closing_preview', 'Closing modal preview');
-      });
+        eventsAjax('copying_in_pdf', 'Copied text: '+selected_text);
     });
+
+    // Download button
+    downloadBtn.href = url
+
+    downloadBtn.addEventListener('click', () => {
+      eventsAjax('download', 'PDF downloaded');
+    })
+    $(pdfWindow).on('unload', () => {
+      eventsAjax('closing_preview', 'Closing modal preview');
+    });
+  });
 
   });
 
@@ -331,8 +229,10 @@
   $('#contact form button').on('click', function (e) {
     e.preventDefault();
     let message = $(this).closest("form").find('textarea')
-    eventsAjax('click_on_submit_button', 'Click on submit button in '+$(this).closest("form").attr('id'), '', ''+message.val());
-    message.val('')
+    if (message.value.replace(/ /g,'').length) {
+      eventsAjax('click_on_submit_button', 'Click on submit button in ' + $(this).closest("form").attr('id'), '', '' + message.val());
+      message.val('')
+    }
   });
 
 

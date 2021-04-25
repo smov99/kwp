@@ -19,6 +19,10 @@ h1, h2, h3, h4, h5, h6 {
   font-family: "Lato", sans-serif;
 }
 
+input, textarea, button {
+  outline: none;
+}
+
 main {
   background: url("../img/bg-proposals.png") bottom no-repeat;
   background-size: 100vw;
@@ -214,7 +218,7 @@ main:before {
   height: 100vh;
   background-size: cover;
   position: relative;
-  padding-top: 82px;
+  padding-top: 120px;
 }
 
 #introduction video {
@@ -259,7 +263,7 @@ main:before {
 #introduction form {
   margin-top: 30px;
   margin-bottom: 30px;
-  background: #e60012;
+  background: #fff;
   padding: 4px 8px;
   border-radius: 4px;
   position: relative;
@@ -268,28 +272,29 @@ main:before {
 
 #introduction form input[type="email"] {
   border: 0;
-  padding: 4px 8px;
+  padding: 6px 8px;
+  letter-spacing: .7px;
   width: calc(100% - 100px);
 }
 
 #introduction form input[type="submit"] {
   position: absolute;
   top: 0;
-  right: -1px;
+  right: 0;
   bottom: 0;
   border: 0;
   background: none;
   font-size: 16px;
   padding: 0 20px;
-  background: #e60012;
-  color: #fff;
+  background: #fff;
+  color: #262626;
   transition: 0.3s;
-  border-radius: 0 1px 1px 0;
+  border-radius: 0 4px 4px 0;
   box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
 }
 
 #introduction form input[type="submit"]:hover {
-  background: #e35052;
+  background: rgba(38, 38, 38, 0.2);
 }
 
 #introduction .form-check {
@@ -304,7 +309,7 @@ main:before {
 }
 
 #introduction a:hover {
-  color: #e60012;
+  color: #000;
 }
 
 @media(min-width: 1920px) {
@@ -313,13 +318,37 @@ main:before {
   }
 }
 
-@media(min-width: 1200px) {
+@media (max-width: 1440px) {
+  #introduction h1 {
+    font-size: 42px;
+  }
+
+  #introduction h2 {
+    color: #fff;
+    margin: 10px 0 0 0;
+    font-size: 18px;
+  }
+}
+
+@media(min-width: 1260px) {
   #introduction .introduction-form {
     max-width: 100%;
   }
 }
 
-@media(min-width: 768px) and (max-width: 1200px){
+@media(min-width: 992px) {
+  #introduction .intro-privacy {
+    text-align: right;
+  }
+}
+
+@media(min-width: 992px) and (max-width: 1260px) {
+  #introduction h1 {
+    font-size: 26px;
+  }
+}
+
+@media(min-width: 768px) and (max-width: 992px){
   #introduction .introduction-form {
     max-width: 50%;
   }
@@ -339,6 +368,7 @@ main:before {
   }
 
   #introduction .introduction-form {
+    align-items: center;
     max-width: 100%;
   }
 }
@@ -354,7 +384,7 @@ main:before {
 --------------------------------------------------------------*/
 #introduction-proposal {
   width: 100%;
-  height: 20vh;
+  height: 11vh;
   background: url("../img/bg-proposals.png") top fixed no-repeat;
   background-size: 100vw;
   position: relative;
@@ -377,7 +407,7 @@ main:before {
   margin: 0;
   color: #fff;
   font-family: "Lato", sans-serif;
-  font-size: 26px;
+  font-size: 20px;
   font-weight: normal;
   letter-spacing: 1px;
 }
@@ -385,21 +415,17 @@ main:before {
 @media (max-width: 992px) {
   #introduction-proposal {
     margin-top: 92px;
-    height: 20vh;
+    height: 12vh;
   }
   #introduction-proposal h1 {
-    font-size: 28px;
-  }
-  #introduction-proposal h2 {
-    font-size: 18px;
-    line-height: 24px;
+    font-size: 20px;
   }
 }
 
 @media (max-width: 500px) {
   #introduction-proposal {
     background-size: 140vw;
-    height: 15vh;
+    height: 10vh;
   }
 }
 
@@ -445,12 +471,7 @@ main:before {
 /*--------------------------------------------------------------
 # Proposal section
 --------------------------------------------------------------*/
-#proposal-pdf {
-  padding-top: 0;
-  text-align: center;
-}
-
-#proposal-pdf .btn-download {
+.btn-download {
   font-family: "Lato", sans-serif;
   font-weight: 500;
   font-size: 16px;
@@ -462,87 +483,27 @@ main:before {
   color: #fff;
   background: #e60012;
   border: 3px solid #e60012;
+  border-radius: 6px;
   width: 100%;
 }
 
-#proposal-pdf .btn-download:hover {
+.btn-download:hover {
   background: transparent;
   color: #e60012;
-}
-
-#proposal-pdf .pdf-viewer {
-  position: relative;
-  width: 100%;
-  height: 75vh;
-  border: 2px #e60012 solid;
-}
-
-#proposal-pdf .top-bar {
-  background: #262626;
-  color: #fff;
-  padding: 1rem;
-}
-
-#proposal-pdf .btn-page {
-  background: #e60012;
-  color: #fff;
-  border: 3px solid #e60012;
-  border-radius: 2px;
-  outline: none;
-  cursor: pointer;
-  padding: 0.7rem 2rem;
-}
-
-#proposal-pdf .btn-page:hover {
-  opacity: 0.9;
-}
-
-#proposal-pdf .name-btn {
-  padding: 0 5px;
-}
-
-@media (max-width: 992px) {
-  #proposal-pdf .name-btn {
-    display: none;
-  }
-
-  #proposal-pdf .btn-page {
-    background: none;
-    border: 0;
-  }
-
-  #proposal-pdf .btn-arrow {
-    font-size: 20px;
-  }
-
-  #pdf-render {
-    width: 100%;
-  }
-}
-
-#proposal-pdf .page-info {
-  margin-left: 1rem;
-  margin-right: 1rem;
-}
-
-#proposal-pdf .error {
-  background: #e60012;
-  color: #fff;
-  padding: 1rem;
 }
 
 /*--------------------------------------------------------------
 # Sections General
 --------------------------------------------------------------*/
 section {
-  padding: 30px 0;
+  margin-top: 10px;
   overflow: hidden;
   position: relative;
 }
 
 .section-title {
   text-align: center;
-  padding-bottom: 30px;
+  padding-bottom: 20px;
   position: relative;
 }
 
@@ -560,13 +521,14 @@ section {
 }
 
 .section-bg {
-  padding-top: 20px;
+  padding: 10px;
+  margin-bottom: 30px;
   color: #fff;
 }
 
 .section-bg:before {
   content: "";
-  background: #262626;
+  background: rgba(0, 0, 0, 0.7);
   position: absolute;
   bottom: 0;
   top: 0;
@@ -590,8 +552,9 @@ section {
 }
 
 .faq .faq-list {
-  padding: 0;
+  padding: 20px;
   list-style: none;
+  background: #f0f1f1;
 }
 
 .faq .faq-list li {
@@ -669,13 +632,14 @@ section {
   margin: 0 auto;
 }
 
+#prepared .section-title p {
+  text-align: left;
+  font-size: 22px;
+}
+
 .prepared .member {
-  margin-bottom: 20px;
   overflow: hidden;
-  border-radius: 2px;
-  border-color: #e60012;
-  border-width: 3px;
-  border-style: solid;
+  border-radius: 100px;
   background: #262626;
 }
 
@@ -690,7 +654,8 @@ section {
 .prepared .member .member-img img {
   height: auto;
   width: auto;
-  max-width: 80%;
+  border-radius: 100px;
+  max-width: 75%;
 }
 
 .prepared .member .member-info {
@@ -700,7 +665,7 @@ section {
 .prepared .member .member-info h4 {
   font-weight: 700;
   margin-bottom: 5px;
-  font-size: 18px;
+  font-size: 14px;
   color: #fff;
 }
 
@@ -709,6 +674,24 @@ section {
   font-size: 14px;
   line-height: 26px;
   color: #777777;
+}
+
+@media (min-width: 992px) and (max-width: 1200px) {
+  .prepared .member .member-img img {
+    max-width: 100%;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 992px) {
+  .prepared .col-centered {
+    max-width: 50%;
+  }
+}
+
+@media (max-width: 768px) {
+  .prepared .col-centered {
+    max-width: 80%;
+  }
 }
 
 /*--------------------------------------------------------------
@@ -722,15 +705,14 @@ section {
   display: inline-block;
   padding: 10px 30px;
   transition: 0.5s;
-  margin-top: 30px;
   color: #fff;
   background: #e60012;
-  border: 3px solid #e60012;
+  border: 0;
+  border-radius: 6px;
 }
 
 #proposal-link .btn-confirmation:hover {
-  background: transparent;
-  color: #e60012;
+  background: #e35052;
 }
 
 /*--------------------------------------------------------------
@@ -738,8 +720,6 @@ section {
 --------------------------------------------------------------*/
 .contact .contact-form-title {
   font-size: 24px;
-  margin-bottom: 0;
-  margin-top: 20px;
   text-align: left;
   padding-bottom: 20px;
   position: relative;
@@ -748,6 +728,7 @@ section {
 .contact .contact-form {
   box-shadow: 0 0 30px rgba(214, 215, 216, 0.6);
   padding: 30px;
+  margin-bottom: 30px;
   border-radius: 2px;
   background: #fff;
   opacity: 1;
@@ -774,6 +755,7 @@ section {
 .contact .contact-form button[type="submit"] {
   background: #e60012;
   border: 0;
+  border-radius: 6px;
   width: 100%;
   padding: 10px 32px;
   color: #fff;
@@ -787,24 +769,6 @@ section {
 @media (max-width: 800px) {
   .contact .contact-form-width {
     width: 100%;
-  }
-}
-
-@-webkit-keyframes animate-loading {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
-}
-
-@keyframes animate-loading {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
   }
 }
 

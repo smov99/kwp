@@ -74,8 +74,8 @@ msgid "Ingrese su correo electrónico para acceder directamente."
 msgstr "Please enter your email for direct access."
 
 #: .\templates\confirmation.html:56
-msgid "Correo electrónico.."
-msgstr "Email.."
+msgid "Correo electrónico..."
+msgstr "Email..."
 
 #: .\templates\pdf.html:4
 msgid "Propuesta en PDF para usted - Kiwapower"
@@ -94,15 +94,8 @@ msgstr "Who we are"
 msgid "PMF"
 msgstr "FAQ"
 
-#: .\templates\proposal.html:63
-msgid "Propuesta para ti"
-msgstr "Proposal for you"
-
 msgid "Propuesta"
 msgstr "Proposal"
-
-msgid "Accede a tu propuesta"
-msgstr "Access your proposal"
 
 msgid "Esta dirección de correo electrónico no coincide con nuestros registros. Comuníquese con nosotros si cree que se trata de un error."
 msgstr "This email address does not match our records. Please contact us if you think this is an error."
@@ -119,9 +112,6 @@ msgstr "This proposal was prepared for "
 
 msgid "https://www.kiwapower.com/aviso-de-privacidad/"
 msgstr "https://www.kiwapower.com/en/privacy-policy/"
-
-msgid " por:"
-msgstr " by:"
 
 #: .\templates\proposal.html:114
 msgid "Ver propuesta"

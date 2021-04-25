@@ -39,21 +39,35 @@ class ConfirmationView(View):
     @services.clock
     def post(self, request, proposal_id) -> HttpResponse:
         email = request.POST['email']
-        if email == settings.TRUSTED_EMAIL:
-            return redirect('proposal', proposal_id)
-        proposal = services.get_proposal(proposal_id)
         request.session['email'] = email
+        proposal = services.get_proposal(proposal_id)
+        if email == settings.TRUSTED_EMAIL:
+            services.additional_trusted_email_confirmation(request, proposal_id)
+            return redirect('proposal', proposal_id)
         request.session['proposal_account_id'] = proposal['Account__c']
         email_validation = services.user_email_validation(proposal['Account__c'], email)
-        services.additional_confirmation(request, email_validation, proposal, proposal_id)
+        if email_validation:
+            request.session['contact_id'] = email_validation['contact_id']
+            request.session['is_emailvalid'] = True
+            is_contactcreated = email_validation['is_contactcreated']
+            services.additional_confirmation(request, is_contactcreated, proposal, proposal_id)
+            return redirect('proposal', proposal_id)
+        else:
+            Session.objects.get_or_create(
+                proposal_id=proposal_id,
+                email=request.session['email'],
+                message='Trying to access Proposal with a non-valid Email.',
+                client_ip=request.session['client_ip']
+            )
+            pass
 
 
 class ProposalView(View):
     @services.clock
     def get(self, request, proposal_id) -> HttpResponse:
-        section_response = get_sections()
-        article_response = get_articles()
-        create_sections_and_articles(section_response, article_response)
+        # section_response = get_sections()
+        # article_response = get_articles()
+        # create_sections_and_articles(section_response, article_response)
         services.additional_email_verification(request, proposal_id)
         sections = Section.objects.all()
         proposal = services.get_proposal(proposal_id)

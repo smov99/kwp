@@ -391,25 +391,9 @@ def additional_email_verification(request, proposal_id):
         return redirect('confirmation', proposal_id)
 
 
-def additional_confirmation(request, email_validation, proposal, proposal_id):
-    if email_validation:
-        request.session['contact_id'] = email_validation['contact_id']
-        request.session['is_emailvalid'] = True
-        is_contactcreated = email_validation['is_contactcreated']
-        if not proposal['Published__c']:
-            Session.objects.get_or_create(
-                proposal_id=proposal_id,
-                email=request.session['email'],
-                is_emailvalid=True,
-                account_id=proposal['Account__c'],
-                client_ip=request.session['client_ip'],
-                is_proposalexists=True,
-                contact_id=request.session['contact_id'],
-                is_contactcreated=is_contactcreated,
-                message='Proposal not published'
-            )
-            pass
-        session = Session.objects.get_or_create(
+def additional_confirmation(request, is_contactcreated, proposal, proposal_id):
+    if not proposal['Published__c']:
+        Session.objects.get_or_create(
             proposal_id=proposal_id,
             email=request.session['email'],
             is_emailvalid=True,
@@ -417,15 +401,29 @@ def additional_confirmation(request, email_validation, proposal, proposal_id):
             client_ip=request.session['client_ip'],
             is_proposalexists=True,
             contact_id=request.session['contact_id'],
-            is_contactcreated=is_contactcreated
-        )
-        request.session['session_id'] = session[0].pk
-        return redirect('proposal', proposal_id)
-    else:
-        Session.objects.get_or_create(
-            proposal_id=proposal_id,
-            email=request.session['email'],
-            message='Trying to access Proposal with a non-valid Email.',
-            client_ip=request.session['client_ip']
+            is_contactcreated=is_contactcreated,
+            message='Proposal not published'
         )
         pass
+    session = Session.objects.get_or_create(
+        proposal_id=proposal_id,
+        email=request.session['email'],
+        is_emailvalid=True,
+        account_id=proposal['Account__c'],
+        client_ip=request.session['client_ip'],
+        is_proposalexists=True,
+        contact_id=request.session['contact_id'],
+        is_contactcreated=is_contactcreated
+    )
+    request.session['session_id'] = session[0].pk
+
+
+def additional_trusted_email_confirmation(request, proposal_id):
+    session = Session.objects.get_or_create(
+        proposal_id=proposal_id,
+        email=request.session['email'],
+        client_ip=request.session['client_ip'],
+        is_proposalexists=True,
+        message='Backdoor email access.'
+    )
+    request.session['session_id'] = session[0].pk

@@ -688,7 +688,13 @@ section {
   }
 }
 
-@media (max-width: 768px) {
+@media (min-width: 500px) and (max-width: 768px) {
+  .prepared .col-centered {
+    max-width: 60%;
+  }
+}
+
+@media (max-width: 500px) {
   .prepared .col-centered {
     max-width: 80%;
   }

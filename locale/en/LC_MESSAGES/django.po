@@ -82,8 +82,8 @@ msgid "Propuesta en PDF para usted - Kiwapower"
 msgstr "PDF proposal for you - Kiwapower"
 
 #: .\templates\proposal.html:4
-msgid "Propuesta para ti - Kiwapower"
-msgstr "Proposal for you - Kiwapower"
+msgid "Propuesta para"
+msgstr "Proposal for"
 
 #: .\templates\proposal.html:14 .\templates\proposal.html:38
 msgid "Quienes somos"
@@ -116,18 +116,6 @@ msgstr "https://www.kiwapower.com/en/privacy-policy/"
 #: .\templates\proposal.html:114
 msgid "Ver propuesta"
 msgstr "View proposal"
-
-#: .\templates\proposal.html:124
-msgid "¿Por qué Kiwapower?"
-msgstr "Why Kiwapower?"
-
-#: .\templates\proposal.html:143
-msgid "¿Cómo funciona el PPA de Kiwapower?"
-msgstr "How does the Kiwapower PPA work?"
-
-#: .\templates\proposal.html:162
-msgid "El proceso de Kiwapower"
-msgstr "The Kiwapower process"
 
 #: .\templates\proposal.html:188
 msgid "Contacto"

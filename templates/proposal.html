@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% load static i18n %}
 
-{% block title %}{% trans 'Propuesta para ti - Kiwapower' %}{% endblock title %}
+{% block title %}{% trans 'Propuesta para' %} {{ client_name }} - Kiwapower{% endblock title %}
 
 {% block description %}{% endblock description %}
 
@@ -90,7 +90,7 @@
 
     <!-- ======= Proposal Link Section ======= -->
     <section id="proposal-link" class="proposal-link">
-      <div class="container-fluid" data-aos="fade-up">
+      <div class="container-fluid">
 
         <div class="section-title">
           <input type="button" id="proposal-pdf-link" class="btn-confirmation" value="{% trans 'Ver propuesta' %}" />

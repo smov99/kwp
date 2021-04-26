@@ -1,6 +1,4 @@
 from django.contrib import admin
-from django.contrib.auth.models import Group
-from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
 from django.urls import reverse
 from django.utils.safestring import mark_safe
 from rangefilter.filters import DateTimeRangeFilter

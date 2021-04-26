@@ -9,7 +9,7 @@
           <form method="post" action="{% url 'update_sections' %}">
             {% csrf_token %}
             <a href="{{ app.app_url }}" class="section" title="{% blocktranslate with name=app.name %}Models in the {{ name }} application{% endblocktranslate %}">{{ app.name }}</a>
-            <label class="update-content" for="content-updater">Update</label>
+            <label class="update-content" for="content-updater">Refresh</label>
             <input id="content-updater" type="submit">
           </form>
           {% else %}

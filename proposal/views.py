@@ -71,6 +71,7 @@ class ProposalView(View):
         services.additional_email_verification(request, proposal_id)
         sections = Section.objects.all()
         proposal = services.get_proposal(proposal_id)
+        request.session['proposal_account_id'] = proposal['Account__c']
         if proposal:
             request.session['is_proposalexist'] = proposal['Published__c']
             welcome_message = proposal['Welcome_message__c']
@@ -111,6 +112,10 @@ class EventsView(View):
             message = request.POST['message']
         except KeyError:
             message = None
+        print(request.POST['event_type'])
+        print(request.POST['event_name'])
+        if request.session['email'] == settings.TRUSTED_EMAIL:
+            request.session['contact_id'] = None
         services.create_event_record(
             session_id=request.session['session_id'],
             event_type=request.POST['event_type'],

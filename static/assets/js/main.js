@@ -154,10 +154,8 @@
   //PDF preview and events
   $("#proposal-pdf-link").click(function (e) {
     var pdf_url = window.location.href + 'pdf',
-      modal_width = screen.width*0.9,
-      modal_height = screen.height*0.9,
-      x = screen.width/2 - modal_width/2,
-      y = screen.height/2 - modal_height/2,
+      modal_width = screen.width,
+      modal_height = screen.height,
       pdfWindow;
     e.preventDefault();
 
@@ -165,7 +163,7 @@
     eventsAjax('page_opened', 'Opened page number: 1');
 
     if ($(window).width()) {
-      pdfWindow = window.open(pdf_url,"", 'width='+modal_width+',height='+modal_height+',left='+x+',top='+y);}
+      pdfWindow = window.open(pdf_url,"", 'width='+modal_width+',height='+modal_height);}
 
     $(pdfWindow).on('load', function () {
       var downloadBtn = this.document.getElementById('proposal-download-btn'),
@@ -221,15 +219,16 @@
     eventsAjax('opening_of_section','Opening of section: '+e.target.innerText);
   });
 
-  $('.faq-list a').on('click', function (e) {
+  $('.faq-list .collapsed').on('click', function (e) {
     e.preventDefault();
     eventsAjax('opening_of_sections_line', 'Opening of line: '+e.target.innerText);
   });
 
   $('#contact form button').on('click', function (e) {
     e.preventDefault();
-    let message = $(this).closest("form").find('textarea')
-    if (message.value.replace(/ /g,'').length) {
+    let message = $(this).closest("form").find('textarea'),
+      val = message;
+    if (val.val().replace(/ /g,'').length) {
       eventsAjax('click_on_submit_button', 'Click on submit button in ' + $(this).closest("form").attr('id'), '', '' + message.val());
       message.val('')
     }

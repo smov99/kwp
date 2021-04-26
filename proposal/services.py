@@ -328,9 +328,9 @@ def create_event_record(
         event_type,
         proposal_id,
         proposal_account_id,
-        contact_id,
         event_name,
         email,
+        contact_id=None,
         time_spent=None,
         message=None
 ):
@@ -346,7 +346,7 @@ def create_event_record(
     :param time_spent: Time spent on page(if available).
     :param message: Message(if available).
     """
-    SessionEvent.objects.get_or_create(
+    SessionEvent.objects.create(
         session_id_id=session_id,
         event_type=event_type,
         event_name=event_name,
@@ -375,15 +375,15 @@ def additional_email_verification(request, proposal_id):
         email_validation = False
     if not email_validation:
         if request.session['email']:
-            Session.objects.get_or_create(
+            Session.objects.create(
                 proposal_id=proposal_id,
                 email=request.session['email'],
-                is_emailvalid=request.session['is_emailvalid'],
+                email_valid=request.session['is_emailvalid'],
                 message='Trying to access a Proposal without authorization.',
                 client_ip=request.session['client_ip']
             )
         else:
-            Session.objects.get_or_create(
+            Session.objects.create(
                 proposal_id=proposal_id,
                 message='Trying to access a Proposal without authorization.',
                 client_ip=request.session['client_ip']
@@ -396,34 +396,35 @@ def additional_confirmation(request, is_contactcreated, proposal, proposal_id):
         Session.objects.get_or_create(
             proposal_id=proposal_id,
             email=request.session['email'],
-            is_emailvalid=True,
+            email_valid=True,
             account_id=proposal['Account__c'],
             client_ip=request.session['client_ip'],
-            is_proposalexists=True,
+            proposal_exists=True,
             contact_id=request.session['contact_id'],
-            is_contactcreated=is_contactcreated,
+            contact_created=is_contactcreated,
             message='Proposal not published'
         )
         pass
-    session = Session.objects.get_or_create(
+    session = Session.objects.create(
         proposal_id=proposal_id,
         email=request.session['email'],
-        is_emailvalid=True,
+        email_valid=True,
         account_id=proposal['Account__c'],
         client_ip=request.session['client_ip'],
-        is_proposalexists=True,
+        proposal_exists=True,
         contact_id=request.session['contact_id'],
-        is_contactcreated=is_contactcreated
+        contact_created=is_contactcreated
     )
-    request.session['session_id'] = session[0].pk
+    request.session['session_id'] = session.pk
 
 
 def additional_trusted_email_confirmation(request, proposal_id):
-    session = Session.objects.get_or_create(
+    session = Session.objects.create(
         proposal_id=proposal_id,
         email=request.session['email'],
         client_ip=request.session['client_ip'],
-        is_proposalexists=True,
+        email_valid=True,
+        proposal_exists=True,
         message='Backdoor email access.'
     )
-    request.session['session_id'] = session[0].pk
+    request.session['session_id'] = session.pk

@@ -44,11 +44,13 @@ DEFAULT_APPS = [
 
 THIRD_PARTY_APPS = [
     'rest_framework',
+    'rangefilter',
 ]
 
 LOCAL_APPS = [
     'proposal.apps.ProposalConfig',
     'celery.apps.CeleryConfig',
+    'users.apps.UsersConfig',
 ]
 
 INSTALLED_APPS = DEFAULT_APPS + THIRD_PARTY_APPS + LOCAL_APPS
@@ -136,7 +138,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 # Authentication parameters
 
-AUTH_USER_MODEL = 'proposal.User'
+AUTH_USER_MODEL = 'users.User'
 
 
 # Internationalization

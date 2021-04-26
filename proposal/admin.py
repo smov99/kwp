@@ -1,6 +1,8 @@
 from django.contrib import admin
 from django.contrib.auth.models import Group
 from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
+from django.urls import reverse
+from django.utils.safestring import mark_safe
 from rangefilter.filters import DateTimeRangeFilter
 
 from .models import Session, SessionEvent
@@ -17,7 +19,7 @@ class SessionAdmin(admin.ModelAdmin):
         'id',
         'created',
         'proposal_exists',
-        'email',
+        '_email',
         'email_valid',
         'account_id',
         'contact_id',
@@ -56,6 +58,10 @@ class SessionAdmin(admin.ModelAdmin):
     has_add_permission = false
     has_delete_permission = false
     log_change = false
+
+    def _email(self, obj):
+        base_url = reverse('admin:proposal_sessionevent_changelist')
+        return mark_safe('<a href="{0}?session_id__id__exact={1}">{2}</a>'.format(base_url, obj.pk, obj.email))
 
 
 @admin.register(SessionEvent)

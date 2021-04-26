@@ -3,8 +3,21 @@
   <component name="ChangeListManager">
     <list default="true" id="09261db6-e477-4638-a4b0-2d0875373965" name="Default Changelist" comment="admin view &amp; project refactoring">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/celery/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/faq/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/celery/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/faq/admin.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/celery/apps.py" beforeDir="false" afterPath="$PROJECT_DIR$/faq/apps.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/celery/migrations/0001_initial.py" beforeDir="false" afterPath="$PROJECT_DIR$/faq/migrations/0001_initial.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/celery/migrations/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/faq/migrations/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/celery/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/faq/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/celery/services.py" beforeDir="false" afterPath="$PROJECT_DIR$/faq/services.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/celery/tests.py" beforeDir="false" afterPath="$PROJECT_DIR$/faq/tests.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/celery/translation.py" beforeDir="false" afterPath="$PROJECT_DIR$/faq/translation.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/celery/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/faq/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/kwp/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/kwp/settings.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/kwp/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/kwp/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/proposal/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/proposal/admin.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/proposal/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/proposal/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/admin/css/base.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/admin/css/base.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/admin/css/nav_sidebar.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/admin/css/nav_sidebar.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/users/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/users/admin.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -40,7 +53,7 @@
     <setting file="file://$PROJECT_DIR$/static/assets/css/style.css" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/locale/en/LC_MESSAGES/django.po" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/kwp/settings.py" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/celery/models.py" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/faq/models.py" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/static/assets/js/main.js" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/kwp/urls.py" root0="FORCE_HIGHLIGHTING" />
   </component>
@@ -172,7 +185,7 @@
       <workItem from="1618512834086" duration="3000000" />
       <workItem from="1618586779376" duration="61648000" />
       <workItem from="1618960465099" duration="51043000" />
-      <workItem from="1619193627622" duration="62060000" />
+      <workItem from="1619193627622" duration="73999000" />
     </task>
     <task id="LOCAL-00001" summary="applications and model">
       <created>1616780285314</created>
@@ -489,7 +502,14 @@
       <option name="project" value="LOCAL" />
       <updated>1619454619144</updated>
     </task>
-    <option name="localTasksCounter" value="46" />
+    <task id="LOCAL-00046" summary="admin view &amp; project refactoring">
+      <created>1619469209825</created>
+      <option name="number" value="00046" />
+      <option name="presentableId" value="LOCAL-00046" />
+      <option name="project" value="LOCAL" />
+      <updated>1619469209825</updated>
+    </task>
+    <option name="localTasksCounter" value="47" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

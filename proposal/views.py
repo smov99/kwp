@@ -3,12 +3,7 @@ from django.http.response import HttpResponse
 from django.views import View
 
 from kwp import settings
-from celery.services import (
-    create_sections_and_articles,
-    get_articles,
-    get_sections
-)
-from celery.models import Section
+from faq.models import Section
 from .models import Session
 import proposal.services as services
 
@@ -65,11 +60,8 @@ class ConfirmationView(View):
 class ProposalView(View):
     @services.clock
     def get(self, request, proposal_id) -> HttpResponse:
-        # section_response = get_sections()
-        # article_response = get_articles()
-        # create_sections_and_articles(section_response, article_response)
         services.additional_email_verification(request, proposal_id)
-        sections = Section.objects.all()
+        sections = Section.objects.filter(is_active=True).all()
         proposal = services.get_proposal(proposal_id)
         request.session['proposal_account_id'] = proposal['Account__c']
         if proposal:

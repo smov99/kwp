@@ -35,7 +35,7 @@ class Migration(migrations.Migration):
                 ('answer', models.TextField()),
                 ('answer_es', models.TextField(null=True)),
                 ('answer_en', models.TextField(null=True)),
-                ('section', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='celery.section')),
+                ('section', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='faq.section')),
             ],
             options={
                 'ordering': ('order',),

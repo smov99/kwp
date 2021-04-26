@@ -1,7 +1,21 @@
+from django.db import transaction
+import re
+
 from kwp import settings
 from proposal.services import sf_api_call
-import re
 from .models import Section, Article
+
+
+def update_attr(queryset, value):
+    """ Updates model instance attributes and saves the instance.
+
+    :param queryset: Any Model instance.
+    :param value: Attributes value.
+    """
+    with transaction.atomic():
+        for obj in queryset:
+            obj.is_active = value
+            obj.save()
 
 
 def get_sections():
@@ -81,8 +95,8 @@ def create_sections_and_articles(section_return, article_return):
     :param section_return: Response from 'get_sections' func.
     :param article_return: Response from 'get_articles' func.
     """
-    Section.objects.all().delete()
-    Article.objects.all().delete()
+    update_attr(Section.objects.filter(is_active=True).all(), False)
+    update_attr(Article.objects.filter(is_active=True).all(), False)
     for section in section_return:
         try:
             section_articles = article_return[section]
@@ -93,7 +107,7 @@ def create_sections_and_articles(section_return, article_return):
         label_es = section_return[section]['spanish_label']
         label_en = section_return[section]['english_label']
         Section.objects.create(
-            id=_id,
+            order=_id,
             label=label,
             label_en=label_en,
             label_es=label_es
@@ -108,7 +122,7 @@ def create_sections_and_articles(section_return, article_return):
                 question_en = this_article['en_US']['question']
                 answer_es = this_article['es']['answer']
                 answer_en = this_article['en_US']['answer']
-                _section = Section.objects.get(label=label)
+                _section = Section.objects.filter(is_active=True).get(label=label)
                 Article.objects.create(
                     order=order,
                     section=_section,

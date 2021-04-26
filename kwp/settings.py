@@ -49,7 +49,7 @@ THIRD_PARTY_APPS = [
 
 LOCAL_APPS = [
     'proposal.apps.ProposalConfig',
-    'celery.apps.CeleryConfig',
+    'faq.apps.CeleryConfig',
     'users.apps.UsersConfig',
 ]
 

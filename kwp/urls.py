@@ -20,6 +20,7 @@ from django.urls import path, include
 
 urlpatterns = [
     path('kwp/', admin.site.urls),
+    path('update_sections/', include('faq.urls')),
     path('i18n/', include('django.conf.urls.i18n')),
 ]
 

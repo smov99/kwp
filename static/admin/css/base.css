@@ -20,12 +20,12 @@ body {
 /* LINKS */
 
 a:link, a:visited {
-    color: #447e9b;
+    color: #262626;
     text-decoration: none;
 }
 
 a:focus, a:hover {
-    color: #036;
+    color: #262626;
 }
 
 a:focus {
@@ -352,7 +352,7 @@ table thead th.sorted .sortoptions a.sortremove:after {
 
 table thead th.sorted .sortoptions a.sortremove:focus:after,
 table thead th.sorted .sortoptions a.sortremove:hover:after {
-    color: #447e9b;
+    color: #262626;
 }
 
 table thead th.sorted .sortoptions a.sortremove:focus,
@@ -424,7 +424,7 @@ select[multiple] {
 /* FORM BUTTONS */
 
 .button, input[type=submit], input[type=button], .submit-row input, a.button {
-    background: #79aec8;
+    background: rgba(38, 38, 38, 0.6);
     padding: 10px 15px;
     border: none;
     border-radius: 4px;
@@ -439,7 +439,7 @@ a.button {
 .button:active, input[type=submit]:active, input[type=button]:active,
 .button:focus, input[type=submit]:focus, input[type=button]:focus,
 .button:hover, input[type=submit]:hover, input[type=button]:hover {
-    background: #609ab6;
+    background: #262626;
 }
 
 .button[disabled], input[type=submit][disabled], input[type=button][disabled] {
@@ -450,13 +450,13 @@ a.button {
     float: right;
     border: none;
     font-weight: 400;
-    background: #417690;
+    background: #262626;
 }
 
 .button.default:active, input[type=submit].default:active,
 .button.default:focus, input[type=submit].default:focus,
 .button.default:hover, input[type=submit].default:hover {
-    background: #205067;
+    background: #262626;
 }
 
 .button[disabled].default,
@@ -497,7 +497,7 @@ input[type=button][disabled].default {
     font-weight: 400;
     font-size: 13px;
     text-align: left;
-    background: #79aec8;
+    background: rgba(38, 38, 38, 0.6);
     color: #fff;
 }
 
@@ -531,7 +531,7 @@ ul.messagelist li {
 }
 
 ul.messagelist li.warning {
-    background: #ffc url(../img/icon-alert.svg) 40px 14px no-repeat;
+    background: #262626 url(../img/icon-alert.svg) 40px 14px no-repeat;
     background-size: 14px auto;
 }
 
@@ -608,7 +608,7 @@ td ul.errorlist + input, td ul.errorlist + select, td ul.errorlist + textarea {
 /* BREADCRUMBS */
 
 div.breadcrumbs {
-    background: #79aec8;
+    background: rgba(38, 38, 38, 0.6);
     padding: 10px 40px;
     border: none;
     font-size: 14px;
@@ -698,7 +698,7 @@ a.deletelink:focus, a.deletelink:hover {
 }
 
 .object-tools a:focus, .object-tools a:hover {
-    background-color: #417690;
+    background-color: #262626;
 }
 
 .object-tools a:focus{
@@ -813,8 +813,8 @@ table#change-history tbody th {
     justify-content: space-between;
     align-items: center;
     padding: 10px 40px;
-    background: #417690;
-    color: #ffc;
+    background: #262626;
+    color: #fff;
     overflow: hidden;
 }
 
@@ -835,11 +835,11 @@ table#change-history tbody th {
     margin: 0 20px 0 0;
     font-weight: 300;
     font-size: 24px;
-    color: #f5dd5d;
+    color: #fff;
 }
 
 #branding h1, #branding h1 a:link, #branding h1 a:visited {
-    color: #f5dd5d;
+    color: #fff;
 }
 
 #branding h2 {
@@ -847,7 +847,7 @@ table#change-history tbody th {
     font-size: 14px;
     margin: -8px 0 8px 0;
     font-weight: normal;
-    color: #ffc;
+    color: #fff;
 }
 
 #branding a:hover {
@@ -871,8 +871,8 @@ table#change-history tbody th {
 
 #user-tools a:focus, #user-tools a:hover {
     text-decoration: none;
-    border-bottom-color: #79aec8;
-    color: #79aec8;
+    border-bottom-color: rgba(38, 38, 38, 0.6);
+    color: rgba(38, 38, 38, 0.6);
 }
 
 /* SIDEBAR */

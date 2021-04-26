@@ -4,6 +4,21 @@
     max-height: 100vh;
 }
 
+.update-content {
+    position: relative;
+    color: #fff !important;
+    float: right !important;
+}
+
+.update-content:hover {
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+#content-updater {
+    display: none;
+}
+
 .toggle-nav-sidebar {
     z-index: 20;
     left: 0;
@@ -91,12 +106,12 @@
 
 #nav-sidebar .current-app .section:link,
 #nav-sidebar .current-app .section:visited {
-    color: #ffc;
+    color: #000;
     font-weight: bold;
 }
 
 #nav-sidebar .current-model {
-    background: #ffc;
+    background: rgba(38, 38, 38, 0.3);
 }
 
 .main > #nav-sidebar + .content {

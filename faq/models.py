@@ -2,11 +2,12 @@ from django.db import models
 
 
 class Section(models.Model):
-    id = models.IntegerField(primary_key=True, unique=True)
+    order = models.IntegerField(blank=True, null=True)
     label = models.CharField(max_length=255)
+    is_active = models.BooleanField(default=True)
 
     class Meta:
-        ordering = ('id',)
+        ordering = ('order',)
 
     def __str__(self):
         return self.label
@@ -17,6 +18,7 @@ class Article(models.Model):
     section = models.ForeignKey(Section, on_delete=models.CASCADE)
     question = models.TextField()
     answer = models.TextField()
+    is_active = models.BooleanField(default=True)
 
     class Meta:
         ordering = ('order',)

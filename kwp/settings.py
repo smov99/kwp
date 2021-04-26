@@ -117,6 +117,11 @@ SF_USER_ID = '0056g0000036ZdTAAU'
 
 TRUSTED_EMAIL = 'backdoor@email.com'
 
+SESSION_COOKIE_AGE = 600
+SESSION_COOKIE_SAMESITE = 'Strict'
+SESSION_EXPIRE_AT_BROWSER_CLOSE = True
+SESSION_SAVE_EVERY_REQUEST = True
+
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
 
@@ -176,7 +181,7 @@ STATICFILES_DIRS = [
 
 MEDIA_URL = '/tmp/kwp/'
 
-MEDIA_ROOT = '/tmp/kwp'
+MEDIA_ROOT = os.path.join(BASE_DIR, '/tmp/kwp')
 
 # kwp
 PRODUCT_VERSION = 'Beta'

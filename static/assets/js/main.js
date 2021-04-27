@@ -19,7 +19,7 @@
   }
   const csrftoken = getCookie('csrftoken')
 
-  // Ajax request
+  // Ajax requests
   function eventsAjax(event_type, event_name, time_spent, message) {
     var events_path = window.location.href.replace('proposal/', 'events/')
     $.ajax({
@@ -29,7 +29,20 @@
       data: {"event_type":event_type, "event_name":event_name, "time_spent": time_spent, "message":message},
       dataType: "json"
     });
+  }
 
+  function formAjax(email) {
+    var _path = window.location.href
+    $.ajax({
+      headers: {"X-CSRFToken": csrftoken},
+      url: _path,
+      method: "POST",
+      data: {'email': email},
+      dataType: "json",
+      error: function () {
+        $('#form-error').removeClass('d-none')
+      }
+    });
   }
 
   // Process bar
@@ -206,13 +219,9 @@
 
   });
 
-  $('#flexCheckIntro').on('click', function () {
-    if ($(this).is(':checked')) {
-      $('.introduction-form input[type="submit"]').removeAttr('disabled');
-    } else {
-      $('.introduction-form input[type="submit"]').attr('disabled', 'disabled');
-    }
-  });
+  function checkCheckbox () {
+    return !!$('#flexCheckIntro').is(':checked');
+  }
 
   $('.section-title .collapsed').on('click', function (e) {
     e.preventDefault();
@@ -227,10 +236,24 @@
   $('#contact form button').on('click', function (e) {
     e.preventDefault();
     let message = $(this).closest("form").find('textarea'),
-      val = message;
-    if (val.val().replace(/ /g,'').length) {
+      _value = message;
+    if (_value.val().replace(/ /g,'').length) {
       eventsAjax('click_on_submit_button', 'Click on submit button in ' + $(this).closest("form").attr('id'), '', '' + message.val());
       message.val('')
+    }
+  });
+
+  // Email validation
+  $('#introduction form input[type="submit"]').on('click', function (e) {
+    if (checkCheckbox()) {
+      let email = $(this).closest("form").find('input[type="email"]').val(),
+        re = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/;
+      if (!re.test(String(email).toLowerCase())) {
+        e.preventDefault();
+        formAjax(email)
+      }
+    } else {
+      e.preventDefault()
     }
   });
 

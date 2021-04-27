@@ -43,11 +43,12 @@
             <h1>{% trans 'Bienvenidos a su propuesta de Kiwapower.' %}</h1>
             <h2>{% trans 'Ingrese su correo electrónico para acceder directamente.' %}</h2>
             <div class="introduction-form">
-              <form action="" method="post">
+              <form class="validForm" action="" method="post">
                 {% csrf_token %}
-                <input type="email" name="email" placeholder="{% trans 'Correo electrónico...' %}"><input disabled="disabled" type="submit" value="{% trans 'Confirmar' %}">
+                <input type="email" name="email" placeholder="{% trans 'Correo electrónico...' %}"><input type="submit" value="{% trans 'Confirmar' %}">
               </form>
             </div>
+            <div class="form-error d-none" id="form-error" data-aos="fade-up" data-aos-delay="100">{% trans 'Email inválido.' %}</div>
             <div class="row">
               <div class="col-lg-6">
                 <div class="form-check mb-3">

@@ -262,9 +262,9 @@ main:before {
 
 #introduction form {
   margin-top: 30px;
-  margin-bottom: 30px;
+  margin-bottom: 15px;
   background: #fff;
-  padding: 4px 8px;
+  padding: 5px 8px;
   border-radius: 4px;
   position: relative;
   text-align: left;
@@ -283,7 +283,6 @@ main:before {
   right: 0;
   bottom: 0;
   border: 0;
-  background: none;
   font-size: 16px;
   padding: 0 20px;
   background: #e60012;
@@ -299,6 +298,17 @@ main:before {
 
 #introduction .form-check {
   color: #fff;
+}
+
+#introduction .form-error {
+  position: relative;
+  color: #e60012;
+  margin-bottom: 10px;
+  padding: 5px;
+  width: 100%;
+  font-weight: 700;
+  background: #fff;
+  border-radius: 4px;
 }
 
 #introduction a {

@@ -6,6 +6,7 @@ from kwp import settings
 from faq.models import Section
 from .models import Session
 import proposal.services as services
+from .forms import VerificationForm
 
 
 class ConfirmationView(View):
@@ -33,6 +34,10 @@ class ConfirmationView(View):
 
     @services.clock
     def post(self, request, proposal_id) -> HttpResponse:
+        form = VerificationForm(request.POST)
+        if not form.is_valid():
+            request.method = 'GET'
+            return HttpResponse({'error': True})
         email = request.POST['email']
         request.session['email'] = email
         proposal = services.get_proposal(proposal_id)

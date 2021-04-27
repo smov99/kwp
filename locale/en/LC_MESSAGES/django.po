@@ -85,6 +85,9 @@ msgstr "PDF proposal for you - Kiwapower"
 msgid "Propuesta para"
 msgstr "Proposal for"
 
+msgid "Email inválido."
+msgstr "Invalid email."
+
 #: .\templates\proposal.html:14 .\templates\proposal.html:38
 msgid "Quienes somos"
 msgstr "Who we are"

@@ -94,7 +94,7 @@ WSGI_APPLICATION = 'kwp.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'kwp',
+        'NAME': 'kwpn',
         'USER': 'kwp',
         'PASSWORD': '6zSppdu9ZHy4Q1nB',
         'HOST': 'localhost',

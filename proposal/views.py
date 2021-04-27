@@ -20,7 +20,7 @@ class ConfirmationView(View):
                 Session.objects.get_or_create(
                     proposal_id=proposal_id,
                     email=request.session['email'],
-                    is_emailvalid=request.session['is_emailvalid'],
+                    email_valid=request.session['is_emailvalid'],
                     message='Trying to access a non-existent Proposal.',
                     client_ip=request.session['client_ip']
                 )

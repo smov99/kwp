@@ -158,7 +158,7 @@
             <div class="contact-form-title">
               <p>{% trans 'Solicite una reunión con Kiwapower' %}</p>
             </div>
-            <form action="" method="post" role="form" id="Request-A-Meeting-Form" class="contact-form">
+            <form action="" method="post" role="form" id="Meeting-Form" class="contact-form">
               {% csrf_token %}
               <div class="form-group">
                 <textarea class="form-control" name="message" rows="5" data-rule="required" data-msg="{% trans 'Por favor escribe algo para nosotros' %}" placeholder="{% trans 'Indique el mejor momento y la mejor forma para que Kiwapower se comunique con usted' %}"></textarea>

@@ -102,7 +102,7 @@ def get_proposal(proposal_id):
 
     :return: Proposal info
     """
-    query = f"SELECT Id,Account__c,Welcome_message__c,Description__c,CreatedById,Published__c FROM Web_Proposals__c where IsDeleted = false and Id = '{proposal_id}'"
+    query = f"SELECT Id,Account__c,Welcome_message__c,Description__c,CreatedById,Published__c,Name FROM Web_Proposals__c where IsDeleted = false and Id = '{proposal_id}'"
     try:
         response = sf_api_call(f'/services/data/{settings.SF_API_VERSION}/query/', {'q': query})['records'][0]
     except:
@@ -180,6 +180,7 @@ def email_domain_validation(email):
     return response
 
 
+@timed_cache(seconds=3600)
 def get_owner_id(contact_account_id):
     """Getting owner info of new Contact object.
 
@@ -327,7 +328,9 @@ def create_event_record(
         session_id,
         event_type,
         proposal_id,
+        proposal_name,
         proposal_account_id,
+        contact_account_id,
         event_name,
         email,
         contact_id=None,
@@ -336,6 +339,8 @@ def create_event_record(
 ):
     """Creating an event record in both systems, Salesforce and Django.
 
+    :param contact_account_id: AccountId from 'email_domain_validation' response.
+    :param proposal_name: 'Name' from 'get_proposal' requests response.
     :param email: Provided email address of user.
     :param session_id: Session Id.
     :param event_type: Event type.
@@ -355,13 +360,53 @@ def create_event_record(
     # if message:
     #     event_name = event_name + ', Message: ' + message
     if not email == settings.TRUSTED_EMAIL:
-        create_sf_proposal_engagement(
-            proposal_id=proposal_id,
-            proposal_account_id=proposal_account_id,
-            contact_id=contact_id,
-            event_name=event_name,
-            time_spent=time_spent
-        )
+        if message:
+            create_case_record(
+                message=message,
+                proposal_name=proposal_name,
+                event_name=event_name,
+                contact_account_id=contact_account_id,
+                proposal_account_id=proposal_account_id,
+                contact_id=contact_id
+            )
+        else:
+            create_sf_proposal_engagement(
+                proposal_id=proposal_id,
+                proposal_account_id=proposal_account_id,
+                contact_id=contact_id,
+                event_name=event_name,
+                time_spent=time_spent
+            )
+
+
+def create_case_record(
+        message,
+        proposal_name,
+        event_name,
+        contact_account_id,
+        proposal_account_id,
+        contact_id
+):
+    """Creating a Case record.
+
+    :param message: Message(if available).
+    :param proposal_name: 'Name' from 'get_proposal' requests response.
+    :param event_name: Event name.
+    :param contact_account_id: AccountId from 'email_domain_validation' response.
+    :param proposal_account_id: Account__c value from 'get_proposal' requests response.
+    :param contact_id: 'contact_id' from 'user_email_validation' response.
+    """
+    owner_id = get_owner_id(contact_account_id)
+    subject = ['Question or Feedback' if 'Feedback-Form' in event_name else 'Meeting request' + ', WebProposal{}'.format(proposal_name)]
+    data = {
+        'Description': message,
+        'From_django__c': True,
+        'AccountId': proposal_account_id,
+        'OwnerId': owner_id,
+        'ContactId': contact_id,
+        'Subject': subject
+    }
+    sf_api_call(f"/services/data/{settings.SF_API_VERSION}/sobjects/Case", method='post', data=data)
 
 
 def additional_email_verification(request, proposal_id):

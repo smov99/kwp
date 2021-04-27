@@ -47,6 +47,7 @@ class ConfirmationView(View):
         request.session['proposal_account_id'] = proposal['Account__c']
         email_validation = services.user_email_validation(proposal['Account__c'], email)
         if email_validation:
+            request.session['contact_account_id'] = email_validation['contact_account_id']
             request.session['contact_id'] = email_validation['contact_id']
             request.session['is_emailvalid'] = True
             is_contactcreated = email_validation['is_contactcreated']
@@ -68,6 +69,7 @@ class ProposalView(View):
         services.additional_email_verification(request, proposal_id)
         sections = Section.objects.filter(is_active=True).all()
         proposal = services.get_proposal(proposal_id)
+        request.session['proposal_name'] = proposal['Name']
         request.session['proposal_account_id'] = proposal['Account__c']
         if proposal:
             request.session['is_proposalexist'] = proposal['Published__c']
@@ -122,6 +124,8 @@ class EventsView(View):
             proposal_id=proposal_id,
             proposal_account_id=request.session['proposal_account_id'],
             contact_id=request.session['contact_id'],
-            email=request.session['email']
+            email=request.session['email'],
+            contact_account_id=request.session['contact_account_id'],
+            proposal_name=request.session['proposal_name']
         )
         return HttpResponse('ok')

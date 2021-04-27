@@ -286,15 +286,15 @@ main:before {
   background: none;
   font-size: 16px;
   padding: 0 20px;
-  background: #fff;
-  color: #262626;
+  background: #e60012;
+  color: #fff;
   transition: 0.3s;
   border-radius: 0 4px 4px 0;
   box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
 }
 
 #introduction form input[type="submit"]:hover {
-  background: rgba(38, 38, 38, 0.2);
+  background: #e35052;
 }
 
 #introduction .form-check {

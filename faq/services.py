@@ -23,7 +23,7 @@ def get_sections():
 
     :return: Sections info normalized via 'normalize_sections' func.
     """
-    query = "SELECT Category_order__c, English_label__c, Spanish_label__c, FAQ_Category__c FROM Django_FAQ_Setting__c WHERE IsDeleted = false"
+    query = "SELECT Id, Category_order__c, English_label__c, Spanish_label__c, FAQ_Category__c FROM Django_FAQ_Setting__c WHERE IsDeleted = false"
     response = sf_api_call(f'/services/data/{settings.SF_API_VERSION}/query/', {'q': query})['records']
     sections = normalize_sections(response)
     return sections
@@ -42,6 +42,7 @@ def normalize_sections(sections_response):
             'order': section['Category_order__c'],
             'spanish_label': section['Spanish_label__c'],
             'english_label': section['English_label__c'],
+            'guid': section['Id']
         }
     return sections
 
@@ -80,7 +81,7 @@ def normalize_articles(articles_response):
             try:
                 article_order = article_category[order]
             except KeyError:
-                article_order = articles[category][order] = {}
+                article_order = article_category[order] = {}
             article_order[language] = {
                 'guid': guid,
                 'question': question,
@@ -102,12 +103,14 @@ def create_sections_and_articles(section_return, article_return):
             section_articles = article_return[section]
         except KeyError:
             section_articles = {}
-        _id = section_return[section]['order']
+        order = section_return[section]['order']
         label = section
+        guid = section_return[section]['guid']
         label_es = section_return[section]['spanish_label']
         label_en = section_return[section]['english_label']
         Section.objects.create(
-            order=_id,
+            order=order,
+            guid=guid,
             label=label,
             label_en=label_en,
             label_es=label_es
@@ -116,6 +119,8 @@ def create_sections_and_articles(section_return, article_return):
             for article in section_articles:
                 this_article = section_articles[article]
                 order = article
+                guid = this_article['en_US']['guid']
+                print('\n\n\n'+guid+'\n\n\n')
                 question = this_article['en_US']['question']
                 answer = this_article['en_US']['answer']
                 question_es = this_article['es']['question']
@@ -125,6 +130,7 @@ def create_sections_and_articles(section_return, article_return):
                 _section = Section.objects.filter(is_active=True).get(label=label)
                 Article.objects.create(
                     order=order,
+                    guid=guid,
                     section=_section,
                     question=question,
                     answer=answer,

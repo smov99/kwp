@@ -1,14 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="09261db6-e477-4638-a4b0-2d0875373965" name="Default Changelist" comment="admin view &amp; project refactoring">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/faq/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/faq/admin.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/locale/en/LC_MESSAGES/django.po" beforeDir="false" afterPath="$PROJECT_DIR$/locale/en/LC_MESSAGES/django.po" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/proposal/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/proposal/views.py" afterDir="false" />
+    <list default="true" id="09261db6-e477-4638-a4b0-2d0875373965" name="Default Changelist" comment="verification fixes">
       <change beforePath="$PROJECT_DIR$/static/assets/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/assets/css/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/assets/js/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/assets/js/main.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/confirmation.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/confirmation.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -175,14 +169,7 @@
       <workItem from="1618512834086" duration="3000000" />
       <workItem from="1618586779376" duration="61648000" />
       <workItem from="1618960465099" duration="51043000" />
-      <workItem from="1619193627622" duration="87678000" />
-    </task>
-    <task id="LOCAL-00003" summary="templates added">
-      <created>1617226198586</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1617226198586</updated>
+      <workItem from="1619193627622" duration="87983000" />
     </task>
     <task id="LOCAL-00004" summary="templates added">
       <created>1617226877927</created>
@@ -520,7 +507,14 @@
       <option name="project" value="LOCAL" />
       <updated>1619521986854</updated>
     </task>
-    <option name="localTasksCounter" value="52" />
+    <task id="LOCAL-00052" summary="verification fixes">
+      <created>1619534288941</created>
+      <option name="number" value="00052" />
+      <option name="presentableId" value="LOCAL-00052" />
+      <option name="project" value="LOCAL" />
+      <updated>1619534288941</updated>
+    </task>
+    <option name="localTasksCounter" value="53" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -560,6 +554,7 @@
     <MESSAGE value="ProposalPDFView functionality and code refactoring" />
     <MESSAGE value="templates correction" />
     <MESSAGE value="admin view &amp; project refactoring" />
-    <option name="LAST_COMMIT_MESSAGE" value="admin view &amp; project refactoring" />
+    <MESSAGE value="verification fixes" />
+    <option name="LAST_COMMIT_MESSAGE" value="verification fixes" />
   </component>
 </project>

@@ -264,7 +264,7 @@ main:before {
   margin-top: 30px;
   margin-bottom: 15px;
   background: #fff;
-  padding: 5px 8px;
+  padding: 6px 8px 5px 8px;
   border-radius: 4px;
   position: relative;
   text-align: left;
@@ -289,7 +289,7 @@ main:before {
   color: #fff;
   transition: 0.3s;
   border-radius: 0 4px 4px 0;
-  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+  box-shadow: none;
 }
 
 #introduction form input[type="submit"]:hover {

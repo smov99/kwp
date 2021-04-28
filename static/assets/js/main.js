@@ -182,17 +182,6 @@
       var downloadBtn = this.document.getElementById('proposal-download-btn'),
         timeTracker = {},
         iframe = this.document.getElementById('pdf-iframe').contentWindow;
-    $(iframe).ready(function (){
-      $(iframe).scroll(function() {
-        let docElem = iframe.document.documentElement,
-            docBody = iframe.document.body,
-            scrollTop = docElem['scrollTop'] || docBody['scrollTop'],
-            scrollBottom = (docElem['scrollHeight'] || docBody['scrollHeight']) - iframe.innerHeight,
-            scrollPercent = scrollTop / scrollBottom * 100 + '%';
-
-        document.getElementById('progress-bar').style.setProperty('--scrollAmount', scrollPercent);
-      });
-    })
 
     timeTracker['pageStart'] = new Date();
 

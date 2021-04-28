@@ -1,32 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="09261db6-e477-4638-a4b0-2d0875373965" name="Default Changelist" comment="faq's model &amp; admin">
+    <list default="true" id="09261db6-e477-4638-a4b0-2d0875373965" name="Default Changelist" comment="corrections">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/kwp/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/kwp/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/proposal/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/proposal/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/proposal/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/proposal/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/admin/js/SelectFilter2.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/admin/js/SelectFilter2.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/admin/js/calendar.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/admin/js/calendar.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/admin/js/inlines.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/admin/js/inlines.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/admin/js/inlines.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/admin/js/inlines.min.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/admin/js/prepopulate.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/admin/js/prepopulate.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/admin/js/vendor/jquery/jquery.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/admin/js/vendor/jquery/jquery.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/admin/js/vendor/select2/select2.full.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/admin/js/vendor/select2/select2.full.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/static/assets/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/assets/css/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/assets/vendor/pdfjs/js/pdf.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/assets/vendor/pdfjs/js/pdf.js.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/assets/vendor/pdfjs/js/pdf.sandbox.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/assets/vendor/pdfjs/js/pdf.sandbox.js.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/assets/vendor/pdfjs/js/pdf.worker.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/assets/vendor/pdfjs/js/pdf.worker.js.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/rest_framework/docs/css/highlight.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/rest_framework/docs/css/highlight.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/rest_framework/docs/js/highlight.pack.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/rest_framework/docs/js/highlight.pack.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/rest_framework/js/bootstrap.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/rest_framework/js/bootstrap.min.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/rest_framework/js/coreapi-0.1.1.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/rest_framework/js/coreapi-0.1.1.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/rest_framework/js/default.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/rest_framework/js/default.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/rest_framework/js/prettify-min.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/rest_framework/js/prettify-min.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/js/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/assets/js/main.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/pdf.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/pdf.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/proposal.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/proposal.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/proposal_footer.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/viewer.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/viewer.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -78,7 +63,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="ToolWindowDuplicates.ShowToolbar" value="false" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../python/test_proj" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../sites_parts/pdfjs_integration-master" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
@@ -193,14 +178,7 @@
       <workItem from="1618512834086" duration="3000000" />
       <workItem from="1618586779376" duration="61648000" />
       <workItem from="1618960465099" duration="51043000" />
-      <workItem from="1619193627622" duration="106832000" />
-    </task>
-    <task id="LOCAL-00007" summary="templates corrected">
-      <created>1617304000992</created>
-      <option name="number" value="00007" />
-      <option name="presentableId" value="LOCAL-00007" />
-      <option name="project" value="LOCAL" />
-      <updated>1617304000992</updated>
+      <workItem from="1619193627622" duration="112080000" />
     </task>
     <task id="LOCAL-00008" summary="refactoring">
       <created>1617831546481</created>
@@ -538,7 +516,14 @@
       <option name="project" value="LOCAL" />
       <updated>1619546431914</updated>
     </task>
-    <option name="localTasksCounter" value="56" />
+    <task id="LOCAL-00056" summary="corrections">
+      <created>1619630851586</created>
+      <option name="number" value="00056" />
+      <option name="presentableId" value="LOCAL-00056" />
+      <option name="project" value="LOCAL" />
+      <updated>1619630851586</updated>
+    </task>
+    <option name="localTasksCounter" value="57" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -581,6 +566,7 @@
     <MESSAGE value="verification fixes" />
     <MESSAGE value="cases recording" />
     <MESSAGE value="faq's model &amp; admin" />
-    <option name="LAST_COMMIT_MESSAGE" value="faq's model &amp; admin" />
+    <MESSAGE value="corrections" />
+    <option name="LAST_COMMIT_MESSAGE" value="corrections" />
   </component>
 </project>

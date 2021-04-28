@@ -108,8 +108,8 @@ class ProposalPDFView(View):
                                             })
 
 
-class PDFViewerView(TemplateView):
-    template_name = 'viewer.html'
+def pdf_view(request):
+    return render(request, 'viewer.html')
 
 
 class EventsView(View):

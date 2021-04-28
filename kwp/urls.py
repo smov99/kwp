@@ -16,10 +16,12 @@ Including another URLconf
 from django.conf.urls.i18n import i18n_patterns
 from django.contrib import admin
 from django.urls import path, include
+from proposal import views
 
 
 urlpatterns = [
     path('kwp/', admin.site.urls),
+    path('pdf_viewer', views.pdf_view, name='pdf_viewer'),
     path('update_sections/', include('faq.urls')),
     path('i18n/', include('django.conf.urls.i18n')),
 ]

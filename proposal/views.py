@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.http.response import HttpResponse
 from django.views import View
-from django.views.generic.base import TemplateView
+from django.views.decorators.clickjacking import xframe_options_exempt
 
 from kwp import settings
 from faq.models import Section
@@ -108,6 +108,7 @@ class ProposalPDFView(View):
                                             })
 
 
+@xframe_options_exempt
 def pdf_view(request):
     return render(request, 'viewer.html')
 
@@ -124,6 +125,7 @@ class EventsView(View):
             message = None
         if request.session['email'] == settings.TRUSTED_EMAIL:
             request.session['contact_id'] = None
+            request.session['contact_account_id'] = None
         request.session['event_type'] = request.POST['event_type']
         request.session['event_name'] = request.POST['event_name']
         services.create_event_record(

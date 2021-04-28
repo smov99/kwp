@@ -180,8 +180,7 @@
 
     $(pdfWindow).on('load', function () {
       var downloadBtn = this.document.getElementById('proposal-download-btn'),
-        timeTracker = {},
-        iframe = this.document.getElementById('pdf-iframe').contentWindow;
+        timeTracker = {};
 
     timeTracker['pageStart'] = new Date();
 
@@ -195,12 +194,6 @@
         eventsAjax('copying_in_pdf', 'Copied text: '+selected_text);
     });
 
-    // Download button
-    downloadBtn.href = url
-
-    downloadBtn.addEventListener('click', () => {
-      eventsAjax('download', 'PDF downloaded');
-    })
     $(pdfWindow).on('unload', () => {
       eventsAjax('closing_preview', 'Closing modal preview');
     });

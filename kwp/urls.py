@@ -21,7 +21,7 @@ from proposal import views
 
 urlpatterns = [
     path('kwp/', admin.site.urls),
-    path('pdf_viewer', views.pdf_view, name='pdf_viewer'),
+    path('viewer', views.pdf_view, name='viewer'),
     path('update_sections/', include('faq.urls')),
     path('i18n/', include('django.conf.urls.i18n')),
 ]

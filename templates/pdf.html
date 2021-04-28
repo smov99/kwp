@@ -21,7 +21,7 @@
 {% block content %}
   <main id="main">
     <div class="embed-responsive pdf-viewer">
-      <iframe id="pdf-iframe" class="embed-responsive-item" src="{% url 'pdf_viewer' %}?file={% static '/files/doc/sample.pdf' %}" allowfullscreen></iframe>
+      <iframe id="pdf-iframe" class="embed-responsive-item" src="/viewer?file=data:application/pdf;base64,{{ document_body }}"></iframe>
     </div>
   </main>
 {% endblock content %}

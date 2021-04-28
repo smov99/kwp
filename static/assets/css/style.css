@@ -440,7 +440,7 @@ main:before {
 }
 
 /*--------------------------------------------------------------
-# Introduction-pdf Section
+# PDF Viewer
 --------------------------------------------------------------*/
 #introduction-pdf {
   width: 100%;
@@ -470,6 +470,11 @@ main:before {
   font-size: 26px;
   font-weight: normal;
   letter-spacing: 1px;
+}
+
+.pdf-viewer {
+  width: 100vw;
+  height: 90vh;
 }
 
 @media (max-width: 992px) {

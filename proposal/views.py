@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.http.response import HttpResponse
 from django.views import View
+from django.views.generic.base import TemplateView
 
 from kwp import settings
 from faq.models import Section
@@ -66,7 +67,10 @@ class ConfirmationView(View):
 class ProposalView(View):
     @services.clock
     def get(self, request, proposal_id) -> HttpResponse:
-        services.additional_email_verification(request, proposal_id)
+        try:
+            services.additional_email_verification(request, proposal_id)
+        except KeyError:
+            return redirect('confirmation', proposal_id)
         sections = Section.objects.filter(is_active=True).all()
         proposal = services.get_proposal(proposal_id)
         request.session['proposal_name'] = proposal['Name']
@@ -91,7 +95,10 @@ class ProposalView(View):
 
 class ProposalPDFView(View):
     def get(self, request, proposal_id) -> HttpResponse:
-        services.additional_email_verification(request, proposal_id)
+        try:
+            services.additional_email_verification(request, proposal_id)
+        except KeyError:
+            pass
         document = services.get_pdf_for_review(proposal_id)
         document_body = document['document']
         document_title = document['title']
@@ -99,6 +106,10 @@ class ProposalPDFView(View):
                                             'document_body': document_body,
                                             'document_title': document_title
                                             })
+
+
+class PDFViewerView(TemplateView):
+    template_name = 'viewer.html'
 
 
 class EventsView(View):

@@ -1,7 +1,10 @@
+import os
+
 from django.shortcuts import render, redirect
 from django.http.response import HttpResponse
 from django.views import View
 from django.views.decorators.clickjacking import xframe_options_exempt
+from django.core.files.base import ContentFile
 
 from kwp import settings
 from faq.models import Section
@@ -44,6 +47,7 @@ class ConfirmationView(View):
         proposal = services.get_proposal(proposal_id)
         if email == settings.TRUSTED_EMAIL:
             services.additional_trusted_email_confirmation(request, proposal_id)
+            request.session['is_emailvalid'] = True
             return redirect('proposal', proposal_id)
         request.session['proposal_account_id'] = proposal['Account__c']
         email_validation = services.user_email_validation(proposal['Account__c'], email)
@@ -80,7 +84,7 @@ class ProposalView(View):
             welcome_message = proposal['Welcome_message__c']
             creator = services.get_proposals_creator(proposal['CreatedById'])
             client_name = services.get_client_name(proposal['Account__c'])
-            img = services.get_document(creator['MediumPhotoUrl'])
+            img = services.get_creator_img(creator['MediumPhotoUrl'])
             creator_name = creator['Name']
             return render(request, 'proposal.html', {'proposal_id': proposal_id,
                                                      'sections': sections,
@@ -100,17 +104,27 @@ class ProposalPDFView(View):
         except KeyError:
             pass
         document = services.get_pdf_for_review(proposal_id)
-        document_body = document['document']
+        document_link = document['document_link']
         document_title = document['title']
+        # document_base64 = document['document_base64']
         return render(request, 'pdf.html', {'proposal_id': proposal_id,
-                                            'document_body': document_body,
+                                            'document': document_link,
                                             'document_title': document_title
                                             })
 
 
-@xframe_options_exempt
-def pdf_view(request):
-    return render(request, 'viewer.html')
+class Viewer(View):
+    @xframe_options_exempt
+    def get(self, request):
+        return render(request, 'viewer.html')
+
+    def post(self, request):
+        file_name = request.POST['file_name']
+        try:
+            os.remove(os.path.join(settings.MEDIA_ROOT, file_name))
+        except:
+            pass
+        return HttpResponse({'ok': True})
 
 
 class EventsView(View):

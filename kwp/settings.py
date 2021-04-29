@@ -181,7 +181,7 @@ STATICFILES_DIRS = [
 
 MEDIA_URL = '/tmp/kwp/'
 
-MEDIA_ROOT = os.path.join(BASE_DIR, '/tmp/kwp')
+MEDIA_ROOT = os.path.join(BASE_DIR, 'tmp/kwp/')
 
 # kwp
 PRODUCT_VERSION = 'Beta'

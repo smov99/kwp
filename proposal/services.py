@@ -1,4 +1,6 @@
 import base64
+import os
+
 import requests
 from datetime import datetime, timedelta
 import functools
@@ -267,14 +269,25 @@ def get_document(url):
 
     :param url: Document link.
 
-    :return: Document in base64 format.
+    :return: Binary document.
     """
     response = sf_api_call(url)
-    doc64 = base64.b64encode(response).decode()
-    return doc64
+    return response
 
 
-@timed_cache(seconds=3600)
+def get_creator_img(url):
+    """Getting creator image.
+
+    :param url: Image link.
+
+    :return: Image in base64 format.
+    """
+    response = get_document(url)
+    img64 = base64.b64encode(response).decode()
+    return img64
+
+
+# @timed_cache(seconds=3600)
 def get_pdf_for_review(proposal_id):
     """Getting PDF for review.
 
@@ -289,8 +302,15 @@ def get_pdf_for_review(proposal_id):
     single_document = get_single_document(document_id)
     response['title'] = ' '.join(single_document['Title'].split('_'))
     document_link = get_document_link(document_id)
-    document = get_document(document_link)
-    response['document'] = document
+    bytes_document = get_document(document_link)
+    document_path = os.path.join(settings.MEDIA_ROOT, single_document['Title']+'.pdf')
+    try:
+        with open(document_path, 'wb') as doc:
+            doc.write(bytes_document)
+    except FileExistsError:
+        pass
+    response['document_base64'] = base64.b64encode(bytes_document).decode()
+    response['document_link'] = os.path.join(settings.MEDIA_URL, single_document['Title']+'.pdf')
     return response
 
 
@@ -357,8 +377,6 @@ def create_event_record(
         event_name=event_name,
         message=message
     )
-    # if message:
-    #     event_name = event_name + ', Message: ' + message
     if not email == settings.TRUSTED_EMAIL:
         if message:
             create_case_record(

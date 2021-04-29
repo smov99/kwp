@@ -1,6 +1,5 @@
 import base64
 import os
-
 import requests
 from datetime import datetime, timedelta
 import functools
@@ -287,7 +286,7 @@ def get_creator_img(url):
     return img64
 
 
-# @timed_cache(seconds=3600)
+@timed_cache(seconds=3600)
 def get_pdf_for_review(proposal_id):
     """Getting PDF for review.
 

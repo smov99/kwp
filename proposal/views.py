@@ -21,7 +21,11 @@ class ConfirmationView(View):
         if proposal:
             return render(request, 'confirmation.html', {'proposal_id': proposal_id})
         else:
-            if request.session['email']:
+            try:
+                email = request.session['email']
+            except KeyError:
+                email = False
+            if email:
                 Session.objects.get_or_create(
                     proposal_id=proposal_id,
                     email=request.session['email'],
@@ -80,6 +84,7 @@ class ProposalView(View):
         request.session['proposal_name'] = proposal['Name']
         request.session['proposal_account_id'] = proposal['Account__c']
         if proposal:
+            request.session['proposal_id'] = proposal_id
             request.session['is_proposalexist'] = proposal['Published__c']
             welcome_message = proposal['Welcome_message__c']
             creator = services.get_proposals_creator(proposal['CreatedById'])
@@ -106,25 +111,29 @@ class ProposalPDFView(View):
         document = services.get_pdf_for_review(proposal_id)
         document_link = document['document_link']
         document_title = document['title']
-        # document_base64 = document['document_base64']
         return render(request, 'pdf.html', {'proposal_id': proposal_id,
                                             'document': document_link,
                                             'document_title': document_title
                                             })
 
+    def post(self, request, proposal_id):
+        if request.POST['url'] == request.META.get('HTTP_REFERER'):
+            document = services.get_pdf_for_review(proposal_id)
+            file_name = document['file_name']
+            os.remove(os.path.join(settings.MEDIA_ROOT, file_name))
+        return HttpResponse({'ok': True})
+
 
 class Viewer(View):
     @xframe_options_exempt
     def get(self, request):
-        return render(request, 'viewer.html')
-
-    def post(self, request):
-        file_name = request.POST['file_name']
         try:
-            os.remove(os.path.join(settings.MEDIA_ROOT, file_name))
-        except:
-            pass
-        return HttpResponse({'ok': True})
+            proposal_id = request.session['proposal_id']
+        except KeyError:
+            return HttpResponse('Session time expired. Please reopen this page.')
+        document = services.get_pdf_for_review(proposal_id)
+        return render(request, 'viewer.html', {'document_body': document['document_base64'],
+                                               'document_name': document['file_name']})
 
 
 class EventsView(View):

@@ -21,17 +21,17 @@
 
   // Ajax requests
   function eventsAjax(event_type, event_name, time_spent, message) {
-    var events_path = window.location.href.replace('proposal/', 'events/')
+    var _path = window.location.href.replace('proposal/', 'events/')
     $.ajax({
       headers: {"X-CSRFToken": csrftoken},
-      url: events_path,
+      url: _path,
       method: "POST",
       data: {"event_type":event_type, "event_name":event_name, "time_spent": time_spent, "message":message},
       dataType: "json"
     });
   }
 
-  function formAjax(email) {
+  function formAjax (email) {
     var _path = window.location.href
     $.ajax({
       headers: {"X-CSRFToken": csrftoken},
@@ -45,7 +45,18 @@
     });
   }
 
-  // Process bar
+  function pdfAjax () {
+    var _path = window.location.href;
+    $.ajax({
+      headers: {"X-CSRFToken": csrftoken},
+      url: _path+'pdf/',
+      method: "POST",
+      data: {"url": _path},
+      dataType: "json"
+    });
+  }
+
+  // Progress bar
   $(window).scroll(function() {
     let docElem = document.documentElement,
         docBody = document.body,
@@ -173,31 +184,81 @@
     e.preventDefault();
 
     eventsAjax('open_pdf', 'Open PDF document');
-    eventsAjax('page_opened', 'Opened page number: 1');
 
     if ($(window).width()) {
       pdfWindow = window.open(pdf_url,"", 'width='+modal_width+',height='+modal_height);}
 
     $(pdfWindow).on('load', function () {
-      var downloadBtn = this.document.getElementById('proposal-download-btn'),
-        timeTracker = {};
+      var timeTracker = {},
+        iframe = this.document.getElementById('pdf-iframe'),
+        src = $(iframe).attr('src');
 
-    timeTracker['pageStart'] = new Date();
+      timeTracker['pageStart'] = new Date();
 
-    // Copy tracking
-    this.document.addEventListener('copy', function (e) {
-        let selected_text = pdfWindow.getSelection().toString().replace("\n", ' '),
-          l = selected_text.length;
-        if (l > 50) {
-            selected_text = selected_text.substring(0, 20) + ' ... ' + selected_text.substring(l-20, l);
-        }
-        eventsAjax('copying_in_pdf', 'Copied text: '+selected_text);
+      $(iframe).on('load', function (e) {
+        var iframeDocument = iframe.contentDocument || iframe.contentWindow.document,
+          iframeInput = iframeDocument.getElementById('pageNumber'),
+          docContainer = iframeDocument.getElementById('viewerContainer'),
+          downloadContainer = iframeDocument.getElementById('download-container'),
+          downloadBtn = iframeDocument.getElementById('proposal-download-btn'),
+          inputVal = $(iframeInput),
+          valDict = {},
+          startPage = new Date().getTime(),
+          endPage,
+          spentTime;
+
+        valDict.oldVal = inputVal.val()
+        setTimeout(eventsAjax('page_opened', "Opened page number: "+valDict.oldVal), 3000);
+
+        $(downloadBtn).on('click', function () {
+          eventsAjax('download', 'PDF downloaded');
+        })
+
+        $(docContainer).on('scroll', function () {
+          let docElem = docContainer,
+            scrollTop = docElem['scrollTop'],
+            scrollBottom = docElem['scrollHeight'] - iframe.contentWindow.innerHeight,
+            scrollPercent = scrollTop / scrollBottom * 100 + '%';
+
+          if ((scrollTop / scrollBottom)*100 >= 50) {
+            $(downloadContainer).removeClass('hide')
+          } else {
+            $(downloadContainer).addClass('hide')
+          }
+
+          iframeDocument.getElementById('progress-bar').style.setProperty('--scrollAmount', scrollPercent);
+          valDict.newVal = inputVal.val()
+
+          if (valDict.newVal !== valDict.oldVal) {
+            endPage = new Date().getTime()
+            spentTime = ((endPage - startPage) / 1000)+'seconds'
+            eventsAjax('spent_time', 'Spent '+spentTime+' seconds on page number '+valDict.oldVal, spentTime+'s')
+            eventsAjax('page_opened', "Opened page number: "+valDict.newVal);
+            valDict.oldVal = valDict.newVal
+            startPage = new Date().getTime()
+          }
+        });
+
+        $(iframeDocument).on('copy', function () {
+          let selected_text = iframeDocument.getSelection().toString().replace("\n", ' '),
+            l = selected_text.length;
+          if (l > 50) {
+              selected_text = selected_text.substring(0, 20) + ' ... ' + selected_text.substring(l-20, l);
+          }
+          eventsAjax('copying_in_pdf', 'Copied text: '+selected_text);
+        });
+      }).attr('src', src);
+
+      // Copy tracking
+      this.document.addEventListener('copy', function (e) {
+
+      });
+
+      $(pdfWindow).on('unload', () => {
+        eventsAjax('closing_preview', 'Closing modal preview');
+        pdfAjax();
+      });
     });
-
-    $(pdfWindow).on('unload', () => {
-      eventsAjax('closing_preview', 'Closing modal preview');
-    });
-  });
 
   });
 
@@ -207,12 +268,21 @@
 
   $('.section-title .collapsed').on('click', function (e) {
     e.preventDefault();
-    eventsAjax('opening_of_section','Opening of section: '+e.target.innerText);
+    if ($(this).hasClass('opened')) {
+      $(this).removeClass('opened')
+    } else {
+      eventsAjax('opening_of_section', 'Opening of section: ' + e.target.innerText);
+      $(this).addClass('opened')
+    }
   });
 
   $('.faq-list .collapsed').on('click', function (e) {
     e.preventDefault();
-    eventsAjax('opening_of_sections_line', 'Opening of line: '+e.target.innerText);
+    if ($(this).hasClass('opened')) {
+      $(this).removeClass('opened')
+    } else {
+      eventsAjax('opening_of_sections_line', 'Opening of line: ' + e.target.innerText);
+    }
   });
 
   $('#contact form button').on('click', function (e) {

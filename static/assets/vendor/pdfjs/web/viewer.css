@@ -816,8 +816,70 @@ html[dir="rtl"] #outerContainer.sidebarOpen #sidebarContainer {
   min-width: 320px;
 }
 
+#progress-bar {
+  --scrollAmount: 0%;
+  background-color: #f6121C;
+  width: var(--scrollAmount);
+  height: 5px;
+  position: fixed;
+  bottom: 0;
+  z-index: 9999;
+}
+
+#download-container {
+  height: 57px;
+  position: fixed;
+  background: rgba(38, 38, 38, .7);
+  bottom: 0;
+  justify-content: center;
+  display: flex;
+  overflow: hidden;
+  width: 100vw;
+  filter: alpha(opacity=100);
+  -webkit-transform: translateX(0);
+  transform: translateX(0);
+  -webkit-transition: all 0.7s ease-in-out;
+  transition: all 0.7s ease-in-out;
+}
+
+#download-container.hide {
+    visibility: hidden;
+    opacity: 0;
+    filter: alpha(opacity=0);
+    -webkit-transform: translateY(100%);
+    transform: translateY(100%);
+}
+
+#proposal-download-btn {
+  position: absolute;
+  font-weight: 500;
+  font-size: 16px;
+  bottom: 12px;
+  letter-spacing: 1px;
+  padding: 10px 30px;
+  transition: 0.5s;
+  margin-top: 30px;
+  color: #fff;
+  background: #e60012;
+  border: 0;
+  border-radius: 6px;
+  width: 30vw;
+  text-decoration: none;
+  text-align: center;
+}
+
+#proposal-download-btn:hover {
+  background: #e35052;
+}
+
+@media (max-width: 992px) {
+ #proposal-download-btn {
+   width: 50vw;
+ }
+}
+
 #sidebarContent {
-  top: 40px;
+  top: 32px;
   bottom: 0;
   overflow: auto;
   -webkit-overflow-scrolling: touch;

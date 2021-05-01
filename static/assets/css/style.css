@@ -40,7 +40,7 @@ main:before {
   right: 0;
 }
 /*--------------------------------------------------------------
-# General
+# Progress Bar
 --------------------------------------------------------------*/
 
 #progress-bar {
@@ -475,6 +475,7 @@ main:before {
 .pdf-viewer {
   width: 100vw;
   height: 90vh;
+  overflow: scroll;
 }
 
 @media (max-width: 992px) {

@@ -300,6 +300,12 @@ See https://github.com/adobe-type-tools/cmap-resources
 
         <div id="viewerContainer" tabindex="0">
           <div id="viewer" class="pdfViewer"></div>
+          <div id="download-container" class="hide">
+            <a class="btn-download" id="proposal-download-btn" href="data:application/pdf;base64,{{ document_body }}" download="{{document_name}}">
+              <span data-l10n-id="download">Download</span>
+            </a>
+          </div>
+          <div id="progress-bar"></div>
         </div>
 
         <div id="errorWrapper" hidden='true'>

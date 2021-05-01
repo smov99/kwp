@@ -286,7 +286,7 @@ def get_creator_img(url):
     return img64
 
 
-@timed_cache(seconds=3600)
+# @timed_cache(seconds=3600)
 def get_pdf_for_review(proposal_id):
     """Getting PDF for review.
 
@@ -302,13 +302,15 @@ def get_pdf_for_review(proposal_id):
     response['title'] = ' '.join(single_document['Title'].split('_'))
     document_link = get_document_link(document_id)
     bytes_document = get_document(document_link)
-    document_path = os.path.join(settings.MEDIA_ROOT, single_document['Title']+'.pdf')
+    file_name = single_document['Title']+'.pdf'
+    document_path = os.path.join(settings.MEDIA_ROOT, file_name)
     try:
         with open(document_path, 'wb') as doc:
             doc.write(bytes_document)
     except FileExistsError:
         pass
     response['document_base64'] = base64.b64encode(bytes_document).decode()
+    response['file_name'] = file_name
     response['document_link'] = os.path.join(settings.MEDIA_URL, single_document['Title']+'.pdf')
     return response
 

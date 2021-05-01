@@ -25,11 +25,11 @@ let sheet = (function() {
     addElemFromSecondaryToPrimary('numPages', 'toolbarViewerMiddle')
   
     //adding elements to right part of toolbar
-    addElemFromSecondaryToPrimary('download', 'toolbarViewerRight')
     addElemFromSecondaryToPrimary('documentProperties', 'toolbarViewerRight')
   
     /* Hiding elements */
     removeElement('secondaryToolbarToggle')
+    removeElement('download')
     removeElement('scaleSelectContainer')
     removeElement('presentationMode')
     removeElement('openFile')

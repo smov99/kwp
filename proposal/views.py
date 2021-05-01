@@ -1,10 +1,9 @@
 import os
-
 from django.shortcuts import render, redirect
 from django.http.response import HttpResponse
 from django.views import View
 from django.views.decorators.clickjacking import xframe_options_exempt
-from django.core.files.base import ContentFile
+from django.http import Http404
 
 from kwp import settings
 from faq.models import Section
@@ -39,6 +38,7 @@ class ConfirmationView(View):
                     message='Trying to access a non-existent Proposal.',
                     client_ip=request.session['client_ip']
                 )
+            raise Http404()
 
     @services.clock
     def post(self, request, proposal_id) -> HttpResponse:
@@ -69,7 +69,7 @@ class ConfirmationView(View):
                 message='Trying to access Proposal with a non-valid Email.',
                 client_ip=request.session['client_ip']
             )
-            pass
+            raise Http404('email')
 
 
 class ProposalView(View):
@@ -84,6 +84,8 @@ class ProposalView(View):
         request.session['proposal_name'] = proposal['Name']
         request.session['proposal_account_id'] = proposal['Account__c']
         if proposal:
+            if not proposal['Published__c']:
+                raise Http404('published')
             request.session['proposal_id'] = proposal_id
             request.session['is_proposalexist'] = proposal['Published__c']
             welcome_message = proposal['Welcome_message__c']
@@ -99,7 +101,7 @@ class ProposalView(View):
                                                      'client_name': client_name
                                                      })
         else:
-            return redirect('error-404')
+            raise Http404()
 
 
 class ProposalPDFView(View):
@@ -107,7 +109,7 @@ class ProposalPDFView(View):
         try:
             services.additional_email_verification(request, proposal_id)
         except KeyError:
-            pass
+            raise Http404('email')
         document = services.get_pdf_for_review(proposal_id)
         document_link = document['document_link']
         document_title = document['title']
@@ -164,4 +166,4 @@ class EventsView(View):
             contact_account_id=request.session['contact_account_id'],
             proposal_name=request.session['proposal_name']
         )
-        return HttpResponse('ok')
+        return HttpResponse({'ok': True})

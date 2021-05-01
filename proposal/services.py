@@ -4,6 +4,8 @@ import requests
 from datetime import datetime, timedelta
 import functools
 import time
+
+from django.http import Http404
 from django.shortcuts import redirect
 
 from kwp import settings
@@ -468,7 +470,7 @@ def additional_confirmation(request, is_contactcreated, proposal, proposal_id):
             contact_created=is_contactcreated,
             message='Proposal not published'
         )
-        pass
+        raise Http404('published')
     session = Session.objects.create(
         proposal_id=proposal_id,
         email=request.session['email'],

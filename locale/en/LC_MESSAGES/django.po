@@ -43,6 +43,12 @@ msgstr "Members of:"
 msgid "Reciba nuestras novedades! "
 msgstr "Receive our news!"
 
+msgid "Hola, esta propuesta aún no está lista. Por favor contáctenos si esperaba una propuesta aquí"
+msgstr "Hello, this proposal is not quite ready yet. Please contact us if you were expecting a proposal here"
+
+msgid "Esta dirección de correo electrónico no coincide con nuestros registros. Comuníquese con nosotros si cree que se trata de un error"
+msgstr "This email address does not match our records. Please contact us if you think this is an error"
+
 #: .\templates\base.html:159
 msgid "Por favor introduzca una dirección de correo electrónico válida "
 msgstr "Please enter a valid email"
@@ -92,6 +98,15 @@ msgstr "Invalid email."
 msgid "Quienes somos"
 msgstr "Who we are"
 
+msgid "Error del Servidor"
+msgstr "Server error"
+
+msgid "Falta de coincidencia del token CSRF"
+msgstr "CSRF token mismatch"
+
+msgid "Método de solicitud no admitido"
+msgstr "Unsupported request method"
+
 #: .\templates\proposal.html:15 .\templates\proposal.html:41
 #: .\templates\proposal.html:234
 msgid "PMF"
@@ -100,11 +115,8 @@ msgstr "FAQ"
 msgid "Propuesta"
 msgstr "Proposal"
 
-msgid "Esta dirección de correo electrónico no coincide con nuestros registros. Comuníquese con nosotros si cree que se trata de un error."
-msgstr "This email address does not match our records. Please contact us if you think this is an error."
-
-msgid "Lo sentimos, esta página no existe."
-msgstr "We’re sorry, this page that does not exist."
+msgid "Lo sentimos, esta página no existe"
+msgstr "We’re sorry, this page that does not exist"
 
 msgid "Energice su negocio con energía solar. Ponga las área de techo no usadas a trabajar para usted, y asegure tarifas de electricidad bajas y en pesos. Facilitaremos la transición de su negocio a una electricidad solar limpia y moderna."
 msgstr "Energize your business with solar power. Put your unused rooftop area to work for you, and lock-in low electricity rates in pesos. We will facilitate your business transition to modern and clean solar electricity."

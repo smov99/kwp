@@ -334,6 +334,8 @@ def create_sf_proposal_engagement(
 
     :return: Created record
     """
+    if len(event_name) > 50:
+        event_name = event_name[0: 30] + '...' + event_name[(len(event_name) - 15): len(event_name)]
     data = {
         'Web_Proposal__c': proposal_id,
         'Account__c': proposal_account_id,
@@ -380,7 +382,7 @@ def create_event_record(
         event_name=event_name,
         message=message
     )
-    if not email == settings.TRUSTED_EMAIL:
+    if email != settings.TRUSTED_EMAIL:
         if message:
             create_case_record(
                 message=message,

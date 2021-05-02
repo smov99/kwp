@@ -271,7 +271,7 @@
     if ($(this).hasClass('opened')) {
       $(this).removeClass('opened')
     } else {
-      eventsAjax('opening_of_section', 'Opening of section: ' + e.target.innerText);
+      eventsAjax('opening_of_section', 'Opening of section: ' + e.target.textContent);
       $(this).addClass('opened')
     }
   });
@@ -281,7 +281,7 @@
     if ($(this).hasClass('opened')) {
       $(this).removeClass('opened')
     } else {
-      eventsAjax('opening_of_sections_line', 'Opening of line: ' + e.target.innerText);
+      eventsAjax('opening_of_sections_line', 'Opening of line: ' + e.target.textContent);
     }
   });
 

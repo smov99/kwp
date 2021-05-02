@@ -818,11 +818,12 @@ table#change-history tbody th {
     overflow: hidden;
 }
 
-#header a:link, #header a:visited {
+#header a:link, #header a:visited, #header a {
     color: #fff;
 }
 
 #header a:focus , #header a:hover {
+    color: rgba(255,255,255, .6) !important;
     text-decoration: underline;
 }
 

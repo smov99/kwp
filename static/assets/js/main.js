@@ -208,7 +208,7 @@
           spentTime;
 
         valDict.oldVal = inputVal.val()
-        setTimeout(eventsAjax('page_opened', "Opened page number: "+valDict.oldVal), 3000);
+        eventsAjax('page_opened', "Opened page number: "+valDict.oldVal)
 
         $(downloadBtn).on('click', function () {
           eventsAjax('download', 'PDF downloaded');

@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="09261db6-e477-4638-a4b0-2d0875373965" name="Default Changelist" comment="error templates and logic">
+    <list default="true" id="09261db6-e477-4638-a4b0-2d0875373965" name="Default Changelist" comment="templates corrections">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/faq/services.py" beforeDir="false" afterPath="$PROJECT_DIR$/faq/services.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/kwp/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/kwp/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/kwp/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/kwp/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/proposal/services.py" beforeDir="false" afterPath="$PROJECT_DIR$/proposal/services.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/proposal/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/proposal/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/admin/css/base.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/admin/css/base.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/static/assets/js/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/assets/js/main.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tmp/kwp/210903_KiwaProposal_GrupoLogrand_JSE_PPA_01NB_841kW (3).pdf" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -20,9 +22,9 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Python Script" />
         <option value="JavaScript File" />
         <option value="HTML File" />
+        <option value="Python Script" />
       </list>
     </option>
   </component>
@@ -60,7 +62,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="ToolWindowDuplicates.ShowToolbar" value="false" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/templates" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../simple_api" />
     <property name="settings.editor.selected.configurable" value="preferences.sourceCode.JavaScript" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
@@ -178,21 +180,7 @@
       <workItem from="1619193627622" duration="112801000" />
       <workItem from="1619642851569" duration="3031000" />
       <workItem from="1619646536721" duration="65803000" />
-      <workItem from="1619884224804" duration="15126000" />
-    </task>
-    <task id="LOCAL-00014" summary="tracking events and templates fixes">
-      <created>1618005295423</created>
-      <option name="number" value="00014" />
-      <option name="presentableId" value="LOCAL-00014" />
-      <option name="project" value="LOCAL" />
-      <updated>1618005295423</updated>
-    </task>
-    <task id="LOCAL-00015" summary="tracking events and templates fixes">
-      <created>1618014718066</created>
-      <option name="number" value="00015" />
-      <option name="presentableId" value="LOCAL-00015" />
-      <option name="project" value="LOCAL" />
-      <updated>1618014718066</updated>
+      <workItem from="1619884224804" duration="35806000" />
     </task>
     <task id="LOCAL-00016" summary="section models">
       <created>1618181781504</created>
@@ -523,7 +511,21 @@
       <option name="project" value="LOCAL" />
       <updated>1619907868368</updated>
     </task>
-    <option name="localTasksCounter" value="63" />
+    <task id="LOCAL-00063" summary="templates corrections">
+      <created>1619950874442</created>
+      <option name="number" value="00063" />
+      <option name="presentableId" value="LOCAL-00063" />
+      <option name="project" value="LOCAL" />
+      <updated>1619950874442</updated>
+    </task>
+    <task id="LOCAL-00064" summary="templates corrections">
+      <created>1619952463830</created>
+      <option name="number" value="00064" />
+      <option name="presentableId" value="LOCAL-00064" />
+      <option name="project" value="LOCAL" />
+      <updated>1619952463830</updated>
+    </task>
+    <option name="localTasksCounter" value="65" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -562,11 +564,11 @@
     <MESSAGE value="cases recording" />
     <MESSAGE value="faq's model &amp; admin" />
     <MESSAGE value="corrections" />
-    <MESSAGE value="templates corrections" />
     <MESSAGE value="pdf viewer" />
     <MESSAGE value="pdf viewer corrections" />
     <MESSAGE value="pdf viewer events tracking" />
     <MESSAGE value="error templates and logic" />
-    <option name="LAST_COMMIT_MESSAGE" value="error templates and logic" />
+    <MESSAGE value="templates corrections" />
+    <option name="LAST_COMMIT_MESSAGE" value="templates corrections" />
   </component>
 </project>

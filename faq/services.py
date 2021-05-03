@@ -120,7 +120,6 @@ def create_sections_and_articles(section_return, article_return):
                 this_article = section_articles[article]
                 order = article
                 guid = this_article['en_US']['guid']
-                print('\n\n\n'+guid+'\n\n\n')
                 question = this_article['en_US']['question']
                 answer = this_article['en_US']['answer']
                 question_es = this_article['es']['question']

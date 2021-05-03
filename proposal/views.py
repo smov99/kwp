@@ -153,7 +153,6 @@ class EventsView(View):
             request.session['contact_account_id'] = None
         request.session['event_type'] = request.POST['event_type']
         request.session['event_name'] = request.POST['event_name']
-        event_name = request.session['event_name']
         services.create_event_record(
             session_id=request.session['session_id'],
             event_type=request.POST['event_type'],

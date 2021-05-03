@@ -26,11 +26,10 @@ urlpatterns = [
     path('kwp/', admin.site.urls),
     path('viewer', views.Viewer.as_view(), name='viewer'),
     path('update_sections/', include('faq.urls')),
+    path('api/', include('api.urls')),
     path('i18n/', include('django.conf.urls.i18n')),
 ]
 
 urlpatterns += i18n_patterns(
     path('<proposal_id>/', include('proposal.urls')),
 )
-
-urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

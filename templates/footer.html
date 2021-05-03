@@ -7,7 +7,7 @@
       <div class="container">
         <div class="row">
 
-          <div class="col-lg-3 footer-contact">
+          <div class="col-lg-5 footer-contact">
             <div class="row">
               <div class="scale footer-img">
                 <a href="https://www.kiwapower.com/"><img src="{% static 'assets/img/footerkwlogo.png' %}" alt=""></a>
@@ -53,7 +53,7 @@
             </ul>
           </div>
 
-          <div class="col-lg-3 footer-links">
+          <div class="col-lg-5 footer-links">
             <ul>
               <li>
                 <div class="row">
@@ -78,24 +78,6 @@
                 </div>
               </li>
             </ul>
-          </div>
-
-          <div class="col-lg-4 footer-newsletter">
-            <form action="" method="post" role="form">
-              {% csrf_token %}
-              <div class="text-center"><h4>{% trans 'Reciba nuestras novedades! ' %}</h4></div>
-              <div class="form-group">
-                <input type="email" class="form-control" name="email" id="email" placeholder="{% trans 'Correo electrónico..' %}" data-rule="email" data-msg="{% trans 'Por favor introduzca una dirección de correo electrónico válida ' %}" />
-              </div>
-              <div class="form-check mb-3">
-                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                <label class="form-check-label" for="flexCheckDefault">
-                  {% trans 'Acepto la política de privacidad' %}
-                </label>
-              </div>
-              <div class="text-center"><button type="submit">{% trans 'Suscribir' %}</button></div>
-              <div class="text-center"><a href="{% trans 'https://www.kiwapower.com/aviso-de-privacidad/' %}">{% trans 'Aviso de privacidad' %}</a></div>
-            </form>
           </div>
 
         </div>

@@ -121,7 +121,7 @@ def get_user_email_information(proposal_account_id):
     :return: Info relevant to email address.
     """
     query = f"SELECT Authorized_contact__c, Authorized_domain__c, Authorized_email__c FROM Authorized_emails__c where Account__c='{proposal_account_id}' and  isDeleted=false"
-    response = sf_api_call(f'/services/data/{settings.SF_API_VERSION}/query/', {'q': query})['records'][0]
+    response = sf_api_call(f'/services/data/{settings.SF_API_VERSION}/query/', {'q': query})['records']
     return response
 
 
@@ -149,31 +149,31 @@ def user_email_validation(proposal_account_id, email):
     """
     validated_info = {}
     email_domain = email.split('@')[1]
-    email_response = get_user_email_information(proposal_account_id)
-    if email == email_response['Authorized_email__c']:
-        validated_info['contact_id'] = email_response['Authorized_contact__c']
-        validated_info['contact_account_id'] = proposal_account_id
-        validated_info['is_contactcreated'] = False
-    elif email_domain == email_response['Authorized_domain__c']:
-        domain_response = email_domain_validation(email)
-        try:
-            valid_email = domain_response[0]['Email']
-        except TypeError:
-            valid_email = False
-        if valid_email:
-            if valid_email == email:
-                validated_info['contact_id'] = domain_response[0]['Id']
-                validated_info['contact_account_id'] = domain_response[0]['AccountId']
-                validated_info['is_contactcreated'] = False
-                return validated_info
-        else:
+    email_responses = get_user_email_information(proposal_account_id)
+    for email_response in email_responses:
+        if email == email_response['Authorized_email__c']:
+            validated_info['contact_id'] = email_response['Authorized_contact__c']
             validated_info['contact_account_id'] = proposal_account_id
-            created_contact_response = create_contact(email, validated_info['contact_account_id'])
-            validated_info['contact_id'] = created_contact_response['id']
-            validated_info['is_contactcreated'] = True
-    else:
-        return False
-    return validated_info
+            validated_info['is_contactcreated'] = False
+        elif email_domain == email_response['Authorized_domain__c']:
+            domain_response = email_domain_validation(email)
+            try:
+                valid_email = domain_response[0]['Email']
+            except TypeError:
+                valid_email = False
+            if valid_email:
+                if valid_email == email:
+                    validated_info['contact_id'] = domain_response[0]['Id']
+                    validated_info['contact_account_id'] = domain_response[0]['AccountId']
+                    validated_info['is_contactcreated'] = False
+                    return validated_info
+            else:
+                validated_info['contact_account_id'] = proposal_account_id
+                created_contact_response = create_contact(email, validated_info['contact_account_id'])
+                validated_info['contact_id'] = created_contact_response['id']
+                validated_info['is_contactcreated'] = True
+                return validated_info
+    return False
 
 
 def email_domain_validation(email):

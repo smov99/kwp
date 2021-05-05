@@ -974,75 +974,7 @@ section {
   #footer .footer-link-p {
     display: block;
     padding-left: 60px;
-}
-}
-
-#footer .footer-newsletter {
-  font-size: 16px;
-  letter-spacing: 0.7px;
-  margin-bottom: 40px;
-  margin-top: 40px;
-  padding: 0 0 0 35px;
-  position: relative;
-  align-items: center;
-  border-width: 0 0 0 1px;
-  border-style: solid;
-  border-color: rgba(255, 255, 255, 0.036);
-}
-
-#footer .footer-newsletter h4 {
-  font-size: 16px;
-  letter-spacing: 0.7px;
-  font-weight: bold;
-  position: relative;
-  margin-bottom: 20px;
-}
-
-#footer .footer-newsletter form {
-  padding: 30px;
-  top: 15%;
-  position: relative;
-}
-
-#footer .footer-newsletter form input {
-  box-shadow: none;
-  font-size: 16px;
-  letter-spacing: 0.7px;
-  padding: 20px 15px;
-  border: 1;
-  border-color: #818a91;
-  color: #818a91;
-  border-radius: 0;
-  background-color: #262626;
-}
-
-#footer .footer-newsletter form input:focus {
-  border-color: #818a91;
-}
-
-#footer .footer-newsletter form button[type="submit"] {
-  background: #e60012;
-  border: 0;
-  padding: 10px 32px;
-  color: #fff;
-  width: 100%;
-  transition: 0.4s;
-  border-radius: 0;
-}
-
-#footer .footer-newsletter form button[type="submit"]:hover {
-  background: #e35052;
-}
-
-#footer .footer-newsletter form a {
-  text-decoration: underline;
-  font-size: 12px;
-  color: #fff;
-  font-style:initial;
-}
-
-#footer .footer-newsletter form a:hover {
-  color: #e60012;
+  }
 }
 
 @-webkit-keyframes animate-loading {
@@ -1067,6 +999,17 @@ section {
 @media (min-width: 1200px) {
   #footer .footer-link-img {
     margin-left: 40px;
+  }
+  #footer .footer-links .footer-img {
+    margin-left: 150px;
+  }
+
+  #footer .footer-link-p {
+    padding-left: 220px;
+  }
+
+  #footer .footer-links .footer-link-member {
+    margin-left: 83px;
   }
 }
 
@@ -1148,12 +1091,18 @@ section {
     display: block;
     padding-left: 30px;
   }
+}
 
-  #footer .footer-newsletter {
-    border-width: 1px 0 0 0;
-    border-style: solid;
-    border-color: rgba(255, 255, 255, 0.036);
-    margin: 0 35px 35px 35px;
-    padding: 35px 0 0 0;
+@media (min-width: 992px) {
+  #footer .footer-links .footer-img {
+    margin-left: 100px;
+  }
+
+  #footer .footer-link-p {
+    padding-left: 130px;
+  }
+
+  #footer .footer-links .footer-link-member {
+    margin-left: 50px;
   }
 }

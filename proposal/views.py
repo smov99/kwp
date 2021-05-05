@@ -13,10 +13,8 @@ from .forms import VerificationForm
 
 
 class ConfirmationView(View):
-    @services.clock
     def get(self, request, proposal_id) -> HttpResponse:
         proposal = services.get_proposal(proposal_id)
-        request.session['client_ip'] = request.META.get("REMOTE_ADDR")
         if proposal:
             return render(request, 'confirmation.html', {'proposal_id': proposal_id})
         else:
@@ -24,23 +22,9 @@ class ConfirmationView(View):
                 email = request.session['email']
             except KeyError:
                 email = False
-            if email:
-                Session.objects.get_or_create(
-                    proposal_id=proposal_id,
-                    email=request.session['email'],
-                    email_valid=request.session['is_emailvalid'],
-                    message='Trying to access a non-existent Proposal.',
-                    client_ip=request.session['client_ip']
-                )
-            else:
-                Session.objects.get_or_create(
-                    proposal_id=proposal_id,
-                    message='Trying to access a non-existent Proposal.',
-                    client_ip=request.session['client_ip']
-                )
-            raise Http404()
+            client_ip = request.META['HTTP_X_REAL_IP']
+            services.create_failed_session_record(request, proposal_id, email, client_ip)
 
-    @services.clock
     def post(self, request, proposal_id) -> HttpResponse:
         form = VerificationForm(request.POST)
         if not form.is_valid():
@@ -67,13 +51,12 @@ class ConfirmationView(View):
                 proposal_id=proposal_id,
                 email=request.session['email'],
                 message='Trying to access Proposal with a non-valid Email.',
-                client_ip=request.session['client_ip']
+                client_ip=request.META['HTTP_X_REAL_IP']
             )
             raise Http404('email')
 
 
 class ProposalView(View):
-    @services.clock
     def get(self, request, proposal_id) -> HttpResponse:
         try:
             services.additional_email_verification(request, proposal_id)
@@ -119,7 +102,7 @@ class ProposalPDFView(View):
                                             })
 
     def post(self, request, proposal_id):
-        if request.POST['url'] == request.META.get('HTTP_REFERER'):
+        if request.POST['url'] == request.META['HTTP_REFERER']:
             document = services.get_pdf_for_review(proposal_id)
             file_name = document['file_name']
             os.remove(os.path.join(settings.MEDIA_ROOT, file_name))

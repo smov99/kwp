@@ -97,7 +97,7 @@ def sf_api_call(action, parameters={}, method='get', data={}):
         raise Exception('API error when calling %s : %s' % (r.url, r.content))
 
 
-@timed_cache(seconds=3600)
+@timed_cache(seconds=180)
 def get_proposal(proposal_id):
     """Getting proposal info.
 
@@ -125,7 +125,7 @@ def get_user_email_information(proposal_account_id):
     return response
 
 
-@timed_cache(seconds=3600)
+@timed_cache(seconds=600)
 def get_client_name(proposal_account_id):
     """Getting owner info of new Contact object.
 
@@ -138,7 +138,7 @@ def get_client_name(proposal_account_id):
     return response
 
 
-@timed_cache(seconds=3600)
+@timed_cache(seconds=600)
 def user_email_validation(proposal_account_id, email):
     """User email validation
 
@@ -157,20 +157,20 @@ def user_email_validation(proposal_account_id, email):
     elif email_domain == email_response['Authorized_domain__c']:
         domain_response = email_domain_validation(email)
         try:
-            valid_email = domain_response['Email']
-        except KeyError:
+            valid_email = domain_response[0]['Email']
+        except TypeError:
             valid_email = False
         if valid_email:
             if valid_email == email:
-                validated_info['contact_id'] = domain_response['Id']
-                validated_info['contact_account_id'] = domain_response['AccountId']
+                validated_info['contact_id'] = domain_response[0]['Id']
+                validated_info['contact_account_id'] = domain_response[0]['AccountId']
                 validated_info['is_contactcreated'] = False
                 return validated_info
-            else:
-                validated_info['contact_account_id'] = proposal_account_id
-                created_contact_response = create_contact(email, validated_info['contact_account_id'])
-                validated_info['contact_id'] = created_contact_response['Id']
-                validated_info['is_contactcreated'] = True
+        else:
+            validated_info['contact_account_id'] = proposal_account_id
+            created_contact_response = create_contact(email, validated_info['contact_account_id'])
+            validated_info['contact_id'] = created_contact_response['id']
+            validated_info['is_contactcreated'] = True
     else:
         return False
     return validated_info
@@ -188,7 +188,7 @@ def email_domain_validation(email):
     return response
 
 
-@timed_cache(seconds=3600)
+@timed_cache(seconds=600)
 def get_owner_id(contact_account_id):
     """Getting owner info of new Contact object.
 
@@ -197,7 +197,7 @@ def get_owner_id(contact_account_id):
     :return: Response containing owner info.
     """
     query = f"SELECT OwnerID from Account where Id = '{contact_account_id}'"
-    response = sf_api_call(f'/services/data/{settings.SF_API_VERSION}/query/', {'q': query})
+    response = sf_api_call(f'/services/data/{settings.SF_API_VERSION}/query/', {'q': query})['records'][0]['OwnerId']
     return response
 
 
@@ -209,18 +209,19 @@ def create_contact(email, contact_account_id):
 
     :return: Response containing new users info.
     """
+    owner_id = get_owner_id(contact_account_id)
     data = {
         'Email': email,
         'LastName': email.split('@')[0],
         'AccountId': contact_account_id,
         'From_django__c': True,
-        'OwnerId': get_owner_id(contact_account_id)
+        'OwnerId': owner_id
     }
-    response = sf_api_call(f"/services/data/{settings.SF_API_VERSION}/sobjects/Contact", method='post', data=data)['records'][0]
+    response = sf_api_call(f"/services/data/{settings.SF_API_VERSION}/sobjects/Contact", method='post', data=data)
     return response
 
 
-@timed_cache(seconds=3600)
+@timed_cache(seconds=600)
 def get_proposals_creator(user_id):
     """Getting proposal author info.
 
@@ -269,7 +270,7 @@ def get_document_link(content_document_id):
     return response
 
 
-@timed_cache(seconds=3600)
+@timed_cache(seconds=600)
 def get_document(url):
     """Getting needed document.
 
@@ -438,6 +439,7 @@ def create_case_record(
 
 
 def additional_email_verification(request, proposal_id):
+    client_ip = request.META['HTTP_X_REAL_IP']
     try:
         email = request.session['email']
         if email == settings.TRUSTED_EMAIL:
@@ -453,51 +455,75 @@ def additional_email_verification(request, proposal_id):
                 email=request.session['email'],
                 email_valid=request.session['is_emailvalid'],
                 message='Trying to access a Proposal without authorization.',
-                client_ip=request.session['client_ip']
+                client_ip=client_ip
             )
         else:
             Session.objects.create(
                 proposal_id=proposal_id,
                 message='Trying to access a Proposal without authorization.',
-                client_ip=request.session['client_ip']
+                client_ip=client_ip
             )
         return redirect('confirmation', proposal_id)
 
 
 def additional_confirmation(request, is_contactcreated, proposal, proposal_id):
-    if not proposal['Published__c']:
-        Session.objects.get_or_create(
+    client_ip = request.META['HTTP_X_REAL_IP']
+    if client_ip != '127.0.0.1':
+        if not proposal['Published__c']:
+
+            Session.objects.get_or_create(
+                proposal_id=proposal_id,
+                email=request.session['email'],
+                email_valid=True,
+                account_id=proposal['Account__c'],
+                client_ip=client_ip,
+                proposal_exists=True,
+                contact_id=request.session['contact_id'],
+                contact_created=is_contactcreated,
+                message='Proposal not published'
+            )
+            raise Http404('published')
+        session = Session.objects.create(
             proposal_id=proposal_id,
             email=request.session['email'],
             email_valid=True,
             account_id=proposal['Account__c'],
-            client_ip=request.session['client_ip'],
+            client_ip=client_ip,
             proposal_exists=True,
             contact_id=request.session['contact_id'],
-            contact_created=is_contactcreated,
-            message='Proposal not published'
+            contact_created=is_contactcreated
         )
-        raise Http404('published')
-    session = Session.objects.create(
-        proposal_id=proposal_id,
-        email=request.session['email'],
-        email_valid=True,
-        account_id=proposal['Account__c'],
-        client_ip=request.session['client_ip'],
-        proposal_exists=True,
-        contact_id=request.session['contact_id'],
-        contact_created=is_contactcreated
-    )
-    request.session['session_id'] = session.pk
+        request.session['session_id'] = session.pk
 
 
 def additional_trusted_email_confirmation(request, proposal_id):
-    session = Session.objects.create(
-        proposal_id=proposal_id,
-        email=request.session['email'],
-        client_ip=request.session['client_ip'],
-        email_valid=True,
-        proposal_exists=True,
-        message='Backdoor email access.'
-    )
-    request.session['session_id'] = session.pk
+    client_ip = request.META['HTTP_X_REAL_IP']
+    if client_ip != '127.0.0.1':
+        session = Session.objects.create(
+            proposal_id=proposal_id,
+            email=request.session['email'],
+            client_ip=client_ip,
+            email_valid=True,
+            proposal_exists=True,
+            message='Backdoor email access.'
+        )
+        request.session['session_id'] = session.pk
+
+
+def create_failed_session_record(request, proposal_id, email, client_ip):
+    if client_ip != '127.0.0.1':
+        if email:
+            Session.objects.get_or_create(
+                proposal_id=proposal_id,
+                email=email,
+                email_valid=request.session['is_emailvalid'],
+                message='Trying to access a non-existent Proposal.',
+                client_ip=client_ip
+            )
+        else:
+            Session.objects.get_or_create(
+                proposal_id=proposal_id,
+                message='Trying to access a non-existent Proposal.',
+                client_ip=client_ip
+            )
+        raise Http404()

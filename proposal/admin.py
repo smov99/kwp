@@ -16,6 +16,7 @@ class SessionAdmin(admin.ModelAdmin):
     list_display = (
         'id',
         'created',
+        'proposal_id',
         'proposal_exists',
         '_email',
         'email_valid',
@@ -51,6 +52,7 @@ class SessionAdmin(admin.ModelAdmin):
     )
     search_fields = ('proposal_id', 'account_id', 'contact_id')
     ordering = ('-created',)
+    list_per_page = 8
     list_display_links = None
     actions = None
     has_add_permission = false
@@ -67,6 +69,7 @@ class SessionEventAdmin(admin.ModelAdmin):
     model = SessionEvent
     list_display = ('session_id', 'id', 'created', 'event_type', 'event_name', 'message')
     ordering = ('-created',)
+    list_per_page = 8
     list_display_links = None
     actions = None
     has_add_permission = false

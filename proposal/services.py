@@ -111,7 +111,11 @@ def get_proposal(proposal_id):
     try:
         error = response[0]['errorCode']
     except KeyError:
-        response = response['records'][0]
+        print(response)
+        try:
+            response = response['records'][0]
+        except IndexError:
+            response = False
     else:
         if error == 'INVALID_QUERY_FILTER_OPERATOR':
             response = False
@@ -448,7 +452,7 @@ def create_case_record(
 
 def additional_email_verification(request, proposal_id):
     client_ip = request.META['HTTP_X_REAL_IP']
-    # client_ip = None
+    client_ip = None
     try:
         email = request.session['email']
         if email == settings.TRUSTED_EMAIL:
@@ -507,7 +511,7 @@ def additional_confirmation(request, is_contactcreated, proposal, proposal_id):
 
 def additional_trusted_email_confirmation(request, proposal_id):
     client_ip = request.META['HTTP_X_REAL_IP']
-    # client_ip = None
+    client_ip = None
     session = Session.objects.create(
         proposal_id=proposal_id,
         email=request.session['email'],

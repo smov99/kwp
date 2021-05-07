@@ -110,7 +110,7 @@ def get_proposal(proposal_id):
     response = sf_api_call(f'/services/data/{settings.SF_API_VERSION}/query/', {'q': query})
     try:
         error = response[0]['errorCode']
-    except TypeError:
+    except KeyError:
         response = response['records'][0]
     else:
         if error == 'INVALID_QUERY_FILTER_OPERATOR':
@@ -448,6 +448,7 @@ def create_case_record(
 
 def additional_email_verification(request, proposal_id):
     client_ip = request.META['HTTP_X_REAL_IP']
+    # client_ip = None
     try:
         email = request.session['email']
         if email == settings.TRUSTED_EMAIL:
@@ -506,25 +507,29 @@ def additional_confirmation(request, is_contactcreated, proposal, proposal_id):
 
 def additional_trusted_email_confirmation(request, proposal_id):
     client_ip = request.META['HTTP_X_REAL_IP']
-    if client_ip != '127.0.0.1':
-        session = Session.objects.create(
-            proposal_id=proposal_id,
-            email=request.session['email'],
-            client_ip=client_ip,
-            email_valid=True,
-            proposal_exists=True,
-            message='Backdoor email access.'
-        )
-        request.session['session_id'] = session.pk
+    # client_ip = None
+    session = Session.objects.create(
+        proposal_id=proposal_id,
+        email=request.session['email'],
+        client_ip=client_ip,
+        email_valid=True,
+        proposal_exists=True,
+        message='Backdoor email access.'
+    )
+    request.session['session_id'] = session.pk
 
 
 def create_failed_session_record(request, proposal_id, email, client_ip):
     if client_ip != '127.0.0.1':
+        try:
+            is_email_valid = request.session['is_emailvalid']
+        except KeyError:
+            is_email_valid = False
         if email:
             Session.objects.get_or_create(
                 proposal_id=proposal_id,
                 email=email,
-                email_valid=request.session['is_emailvalid'],
+                email_valid=is_email_valid,
                 message='Trying to access a non-existent Proposal.',
                 client_ip=client_ip
             )

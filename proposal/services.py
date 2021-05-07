@@ -116,7 +116,7 @@ def get_proposal(proposal_id):
         if error == 'INVALID_QUERY_FILTER_OPERATOR':
             response = False
         else:
-            response = get_proposal(proposal_id)
+            get_proposal(proposal_id)
     return response
 
 

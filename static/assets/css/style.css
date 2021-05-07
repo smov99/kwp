@@ -1005,11 +1005,11 @@ section {
   }
 
   #footer .footer-link-p {
-    padding-left: 220px;
+    padding-left: 210px;
   }
 
   #footer .footer-links .footer-link-member {
-    margin-left: 83px;
+    margin-left: 79px;
   }
 }
 
@@ -1093,7 +1093,7 @@ section {
   }
 }
 
-@media (min-width: 992px) {
+@media (min-width: 992px) and (max-width: 1200px) {
   #footer .footer-links .footer-img {
     margin-left: 100px;
   }

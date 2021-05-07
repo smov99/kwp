@@ -83,6 +83,7 @@ def sf_api_call(action, parameters={}, method='get', data={}):
                 return r.content
         else:
             r = requests.request(method, instance_url + action, headers=headers, params=parameters, timeout=30)
+            return r.json()
     elif method in ['post', 'patch']:
         r = requests.request(method, instance_url + action, headers=headers, json=data, params=parameters, timeout=10)
     else:
@@ -97,7 +98,7 @@ def sf_api_call(action, parameters={}, method='get', data={}):
         raise Exception('API error when calling %s : %s' % (r.url, r.content))
 
 
-@timed_cache(seconds=180)
+@timed_cache(seconds=360)
 def get_proposal(proposal_id):
     """Getting proposal info.
 
@@ -106,10 +107,16 @@ def get_proposal(proposal_id):
     :return: Proposal info
     """
     query = f"SELECT Id,Account__c,Welcome_message__c,Description__c,CreatedById,Published__c,Name FROM Web_Proposals__c where IsDeleted = false and Id = '{proposal_id}'"
+    response = sf_api_call(f'/services/data/{settings.SF_API_VERSION}/query/', {'q': query})
     try:
-        response = sf_api_call(f'/services/data/{settings.SF_API_VERSION}/query/', {'q': query})['records'][0]
-    except:
-        response = False
+        error = response[0]['errorCode']
+    except TypeError:
+        response = response['records'][0]
+    else:
+        if error == 'INVALID_QUERY_FILTER_OPERATOR':
+            response = False
+        else:
+            response = get_proposal(proposal_id)
     return response
 
 
@@ -155,6 +162,7 @@ def user_email_validation(proposal_account_id, email):
             validated_info['contact_id'] = email_response['Authorized_contact__c']
             validated_info['contact_account_id'] = proposal_account_id
             validated_info['is_contactcreated'] = False
+            return validated_info
         elif email_domain == email_response['Authorized_domain__c']:
             domain_response = email_domain_validation(email)
             try:

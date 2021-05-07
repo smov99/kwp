@@ -399,7 +399,7 @@ textarea {
 
 input[type=text], input[type=password], input[type=email], input[type=url],
 input[type=number], input[type=tel], textarea, select, .vTextField {
-    border: 1px solid #ccc;
+    border: 1px solid #000 !important;
     border-radius: 4px;
     padding: 5px 6px;
     margin-top: 0;

@@ -13,6 +13,7 @@ from .forms import VerificationForm
 
 
 class ConfirmationView(View):
+    @services.clock
     def get(self, request, proposal_id) -> HttpResponse:
         proposal = services.get_proposal(proposal_id)
         if proposal:
@@ -22,7 +23,8 @@ class ConfirmationView(View):
                 email = request.session['email']
             except KeyError:
                 email = False
-            client_ip = request.META['HTTP_X_REAL_IP']
+            # client_ip = request.META['HTTP_X_REAL_IP']
+            client_ip = None
             services.create_failed_session_record(request, proposal_id, email, client_ip)
 
     def post(self, request, proposal_id) -> HttpResponse:
@@ -51,7 +53,8 @@ class ConfirmationView(View):
                 proposal_id=proposal_id,
                 email=request.session['email'],
                 message='Trying to access Proposal with a non-valid Email.',
-                client_ip=request.META['HTTP_X_REAL_IP']
+                # client_ip=request.META['HTTP_X_REAL_IP']
+                client_ip=None
             )
             raise Http404('email')
 

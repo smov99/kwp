@@ -1,4 +1,5 @@
 import os
+
 from django.shortcuts import render, redirect
 from django.http.response import HttpResponse
 from django.views import View
@@ -15,17 +16,17 @@ from .forms import VerificationForm
 class ConfirmationView(View):
     @services.clock
     def get(self, request, proposal_id) -> HttpResponse:
-        proposal = services.get_proposal(proposal_id)
+        proposal = services.get_proposal_(proposal_id)
+        print(services.get_user_device(request))
         if proposal:
+            request.session['proposal'] = proposal
             return render(request, 'confirmation.html', {'proposal_id': proposal_id})
         else:
             try:
                 email = request.session['email']
             except KeyError:
                 email = False
-            client_ip = request.META['HTTP_X_REAL_IP']
-            # client_ip = None
-            services.create_failed_session_record(request, proposal_id, email, client_ip)
+            services.create_failed_session_record(request, proposal_id, email)
 
     def post(self, request, proposal_id) -> HttpResponse:
         form = VerificationForm(request.POST)
@@ -34,7 +35,7 @@ class ConfirmationView(View):
             return HttpResponse({'error': True})
         email = request.POST['email']
         request.session['email'] = email
-        proposal = services.get_proposal(proposal_id)
+        proposal = request.session['proposal']
         if email == settings.TRUSTED_EMAIL:
             services.additional_trusted_email_confirmation(request, proposal_id)
             request.session['is_emailvalid'] = True
@@ -47,14 +48,17 @@ class ConfirmationView(View):
             request.session['is_emailvalid'] = True
             is_contactcreated = email_validation['is_contactcreated']
             services.additional_confirmation(request, is_contactcreated, proposal, proposal_id)
+            print(request.session['sf_session_id'])
             return redirect('proposal', proposal_id)
         else:
-            Session.objects.get_or_create(
+            Session.objects.create(
                 proposal_id=proposal_id,
                 email=request.session['email'],
                 message='Trying to access Proposal with a non-valid Email.',
-                client_ip=request.META['HTTP_X_REAL_IP']
-                # client_ip=None
+                client_ip=request.META['HTTP_X_REAL_IP'],
+                # client_ip=request.META['REMOTE_ADDR'],
+                client_geolocation=None,
+                device=services.get_user_device(request)
             )
             raise Http404('email')
 
@@ -66,7 +70,7 @@ class ProposalView(View):
         except KeyError:
             return redirect('confirmation', proposal_id)
         sections = Section.objects.filter(is_active=True).all()
-        proposal = services.get_proposal(proposal_id)
+        proposal = request.session['proposal']
         request.session['proposal_name'] = proposal['Name']
         request.session['proposal_account_id'] = proposal['Account__c']
         if proposal:
@@ -75,8 +79,8 @@ class ProposalView(View):
             request.session['proposal_id'] = proposal_id
             request.session['is_proposalexist'] = proposal['Published__c']
             welcome_message = proposal['Welcome_message__c']
-            creator = services.get_proposals_creator(proposal['CreatedById'])
-            client_name = services.get_client_name(proposal['Account__c'])
+            creator = services.get_proposals_creator(proposal['Account__c'])
+            client_name = creator['client_name']
             img = services.get_creator_img(creator['MediumPhotoUrl'])
             creator_name = creator['Name']
             return render(request, 'proposal.html', {'proposal_id': proposal_id,
@@ -145,11 +149,11 @@ class EventsView(View):
             event_name=request.POST['event_name'],
             time_spent=time_spent,
             message=message,
-            proposal_id=proposal_id,
+            sf_session_id=request.session['sf_session_id'],
             proposal_account_id=request.session['proposal_account_id'],
             contact_id=request.session['contact_id'],
             email=request.session['email'],
             contact_account_id=request.session['contact_account_id'],
             proposal_name=request.session['proposal_name']
         )
-        return HttpResponse({'ok': True})
+        return HttpResponse({'Success': True})

@@ -19,6 +19,8 @@ class Session(BaseModel):
     contact_created = models.BooleanField(default=False)
     message = models.CharField(max_length=255, blank=True, null=True)
     client_ip = models.CharField(max_length=64, null=True)
+    client_geolocation = models.CharField(max_length=255, blank=True, null=True)
+    device = models.CharField(max_length=64, blank=True, null=True)
 
     class Meta:
         ordering = ('created',)

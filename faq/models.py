@@ -24,6 +24,7 @@ class Article(models.Model):
 
     class Meta:
         ordering = ('order',)
+        verbose_name = 'Question'
 
     def __str__(self):
         return self.question

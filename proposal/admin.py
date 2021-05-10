@@ -24,7 +24,8 @@ class SessionAdmin(admin.ModelAdmin):
         'contact_id',
         'contact_created',
         'message',
-        'client_ip'
+        'client_ip',
+        'device'
     )
     readonly_fields = (
         'proposal_id',
@@ -37,7 +38,9 @@ class SessionAdmin(admin.ModelAdmin):
         'contact_id',
         'contact_created',
         'message',
-        'client_ip'
+        'client_ip',
+        'client_geolocation',
+        'device'
     )
     list_filter = (
         ('created', DateTimeRangeFilter),
@@ -48,7 +51,8 @@ class SessionAdmin(admin.ModelAdmin):
         'email',
         'account_id',
         'contact_id',
-        'client_ip'
+        'client_ip',
+        'client_geolocation'
     )
     search_fields = ('proposal_id', 'account_id', 'contact_id')
     ordering = ('-created',)

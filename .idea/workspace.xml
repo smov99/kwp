@@ -3,9 +3,15 @@
   <component name="ChangeListManager">
     <list default="true" id="09261db6-e477-4638-a4b0-2d0875373965" name="Default Changelist" comment="verification corrections">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/faq/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/faq/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/kwp/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/kwp/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/proposal/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/proposal/admin.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/proposal/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/proposal/models.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/proposal/services.py" beforeDir="false" afterPath="$PROJECT_DIR$/proposal/services.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/proposal/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/proposal/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/log.log" beforeDir="false" afterPath="$PROJECT_DIR$/src/log.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/js/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/assets/js/main.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -71,11 +77,11 @@
       <recent name="F:\workspace\django\kiwapower_web_proposal\static\js" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="F:\workspace\django\kiwapower_web_proposal\src\geoip_db" />
       <recent name="F:\workspace\django\kiwapower_web_proposal\templates" />
       <recent name="F:\workspace\django\kiwapower_web_proposal\users" />
       <recent name="F:\workspace\django\kiwapower_web_proposal" />
       <recent name="F:\workspace\django\kiwapower_web_proposal\kwp\proposal" />
-      <recent name="F:\workspace\django\kiwapower_web_proposal\kwp" />
     </key>
   </component>
   <component name="RunManager" selected="Django Server.kiwapower">
@@ -177,28 +183,7 @@
       <workItem from="1619642851569" duration="3031000" />
       <workItem from="1619646536721" duration="65803000" />
       <workItem from="1619884224804" duration="42213000" />
-      <workItem from="1620214379349" duration="34146000" />
-    </task>
-    <task id="LOCAL-00025" summary="corrected translation, template and verification logic">
-      <created>1618874481362</created>
-      <option name="number" value="00025" />
-      <option name="presentableId" value="LOCAL-00025" />
-      <option name="project" value="LOCAL" />
-      <updated>1618874481362</updated>
-    </task>
-    <task id="LOCAL-00026" summary="corrected translation, template and verification logic">
-      <created>1618874869174</created>
-      <option name="number" value="00026" />
-      <option name="presentableId" value="LOCAL-00026" />
-      <option name="project" value="LOCAL" />
-      <updated>1618874869174</updated>
-    </task>
-    <task id="LOCAL-00027" summary="corrected translation, template and verification logic">
-      <created>1618875264486</created>
-      <option name="number" value="00027" />
-      <option name="presentableId" value="LOCAL-00027" />
-      <option name="project" value="LOCAL" />
-      <updated>1618875264486</updated>
+      <workItem from="1620214379349" duration="64368000" />
     </task>
     <task id="LOCAL-00028" summary="some corrections">
       <created>1618922498086</created>
@@ -522,7 +507,28 @@
       <option name="project" value="LOCAL" />
       <updated>1620405874716</updated>
     </task>
-    <option name="localTasksCounter" value="74" />
+    <task id="LOCAL-00074" summary="verification corrections">
+      <created>1620414189043</created>
+      <option name="number" value="00074" />
+      <option name="presentableId" value="LOCAL-00074" />
+      <option name="project" value="LOCAL" />
+      <updated>1620414189043</updated>
+    </task>
+    <task id="LOCAL-00075" summary="verification corrections">
+      <created>1620414294529</created>
+      <option name="number" value="00075" />
+      <option name="presentableId" value="LOCAL-00075" />
+      <option name="project" value="LOCAL" />
+      <updated>1620414294529</updated>
+    </task>
+    <task id="LOCAL-00076" summary="verification corrections">
+      <created>1620416358075</created>
+      <option name="number" value="00076" />
+      <option name="presentableId" value="LOCAL-00076" />
+      <option name="project" value="LOCAL" />
+      <updated>1620416358075</updated>
+    </task>
+    <option name="localTasksCounter" value="77" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

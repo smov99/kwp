@@ -4,13 +4,14 @@ import requests
 from datetime import datetime, timedelta
 import functools
 import time
+from user_agents import parse
 
 from django.http import Http404
 from django.shortcuts import redirect
+from django.contrib.gis.geoip2 import GeoIP2
 
 from kwp import settings
 from .models import SessionEvent, Session
-
 
 params = {
     'grant_type': 'password',
@@ -36,6 +37,29 @@ def clock(func):
         return result
 
     return clocked
+
+
+def get_geolocation(client_ip):
+    """Getting user geolocation.
+
+    :param client_ip: User ip address.
+    :return: User geolocation.
+    """
+    try:
+        geolocation = GeoIP2(settings.GEOIP_CITY).city(client_ip)
+    except:
+        response = None
+    else:
+        response = geolocation['country_name'] + ', ' + geolocation['city']
+    return response
+
+
+def get_user_device(request):
+    device = parse(request.META['HTTP_USER_AGENT'])
+    response = device.os.family + ' ' + '.'.join(map(str, device.os.version))
+    if device.device.family != 'Other':
+        response += ', ' + device.device.brand + ' ' + device.device.family
+    return response
 
 
 def timed_cache(**timedelta_kwargs):
@@ -99,19 +123,19 @@ def sf_api_call(action, parameters={}, method='get', data={}):
 
 
 @timed_cache(seconds=360)
-def get_proposal(proposal_id):
+def get_proposal(proposal_id, restart=None):
     """Getting proposal info.
 
+    :param restart: Optional parameter for func rerun.
     :param proposal_id: Proposal Id from url.
 
     :return: Proposal info
     """
-    query = f"SELECT Id,Account__c,Welcome_message__c,Description__c,CreatedById,Published__c,Name FROM Web_Proposals__c where IsDeleted = false and Id = '{proposal_id}'"
+    query = f"SELECT Id,Account__c,Welcome_message__c,Description__c,Published__c,Name FROM Web_Proposals__c where IsDeleted = false and Id = '{proposal_id}'"
     response = sf_api_call(f'/services/data/{settings.SF_API_VERSION}/query/', {'q': query})
     try:
         error = response[0]['errorCode']
     except KeyError:
-        print(response)
         try:
             response = response['records'][0]
         except IndexError:
@@ -120,8 +144,19 @@ def get_proposal(proposal_id):
         if error == 'INVALID_QUERY_FILTER_OPERATOR':
             response = False
         else:
-            get_proposal(proposal_id)
+            response = 'restart'
     return response
+
+
+def get_proposal_(proposal_id):
+    proposal_response = get_proposal(proposal_id)
+    if proposal_response == 'restart':
+        for i in range(1, 20):
+            proposal_response = get_proposal(proposal_id, i)
+            if proposal_response != 'restart':
+                return proposal_response
+        proposal_response = False
+    return proposal_response
 
 
 def get_user_email_information(proposal_account_id):
@@ -133,19 +168,6 @@ def get_user_email_information(proposal_account_id):
     """
     query = f"SELECT Authorized_contact__c, Authorized_domain__c, Authorized_email__c FROM Authorized_emails__c where Account__c='{proposal_account_id}' and  isDeleted=false"
     response = sf_api_call(f'/services/data/{settings.SF_API_VERSION}/query/', {'q': query})['records']
-    return response
-
-
-@timed_cache(seconds=600)
-def get_client_name(proposal_account_id):
-    """Getting owner info of new Contact object.
-
-    :param proposal_account_id: Account__c value from 'get_proposal' requests response.
-
-    :return: Client name.
-    """
-    query = f"SELECT Name FROM Account where id='{proposal_account_id}'"
-    response = sf_api_call(f'/services/data/{settings.SF_API_VERSION}/query/', {'q': query})['records'][0]['Name']
     return response
 
 
@@ -201,6 +223,13 @@ def email_domain_validation(email):
 
 
 @timed_cache(seconds=600)
+def get_client_info(proposal_account_id):
+    query = f"Select name, OwnerId from Account where id = '{proposal_account_id}'"
+    response = sf_api_call(f'/services/data/{settings.SF_API_VERSION}/query/', {'q': query})['records'][0]
+    return response
+
+
+@timed_cache(seconds=600)
 def get_owner_id(contact_account_id):
     """Getting owner info of new Contact object.
 
@@ -234,15 +263,18 @@ def create_contact(email, contact_account_id):
 
 
 @timed_cache(seconds=600)
-def get_proposals_creator(user_id):
+def get_proposals_creator(proposal_account_id):
     """Getting proposal author info.
 
-    :param user_id: CreatedById from 'get_proposal's response.
+    :param proposal_account_id: Account__c from 'get_proposal's response.
 
     :return: Author info.
     """
+    client = get_client_info(proposal_account_id)
+    user_id = client['OwnerId']
     query = f"SELECT Name,MediumPhotoUrl,SmallPhotoUrl FROM User where id='{user_id}'"
     response = sf_api_call(f'/services/data/{settings.SF_API_VERSION}/query/', {'q': query})['records'][0]
+    response['client_name'] = client['Name']
     return response
 
 
@@ -278,11 +310,12 @@ def get_document_link(content_document_id):
     :return: Document link.
     """
     query = f"SELECT VersionData FROM ContentVersion WHERE ContentDocumentId='{content_document_id}' and isLatest = true"
-    response = sf_api_call(f'/services/data/{settings.SF_API_VERSION}/query/', {'q': query})['records'][0]['VersionData']
+    response = sf_api_call(f'/services/data/{settings.SF_API_VERSION}/query/', {'q': query})['records'][0][
+        'VersionData']
     return response
 
 
-@timed_cache(seconds=600)
+@timed_cache(seconds=3600)
 def get_document(url):
     """Getting needed document.
 
@@ -306,7 +339,7 @@ def get_creator_img(url):
     return img64
 
 
-# @timed_cache(seconds=3600)
+@timed_cache(seconds=600)
 def get_pdf_for_review(proposal_id):
     """Getting PDF for review.
 
@@ -322,7 +355,7 @@ def get_pdf_for_review(proposal_id):
     response['title'] = ' '.join(single_document['Title'].split('_'))
     document_link = get_document_link(document_id)
     bytes_document = get_document(document_link)
-    file_name = single_document['Title']+'.pdf'
+    file_name = single_document['Title'] + '.pdf'
     document_path = os.path.join(settings.MEDIA_ROOT, file_name)
     try:
         with open(document_path, 'wb') as doc:
@@ -331,46 +364,75 @@ def get_pdf_for_review(proposal_id):
         pass
     response['document_base64'] = base64.b64encode(bytes_document).decode()
     response['file_name'] = file_name
-    response['document_link'] = os.path.join(settings.MEDIA_URL, single_document['Title']+'.pdf')
+    response['document_link'] = os.path.join(settings.MEDIA_URL, single_document['Title'] + '.pdf')
     return response
 
 
-def create_sf_proposal_engagement(
+def create_sf_session_record(
         proposal_id,
         proposal_account_id,
         contact_id,
-        event_name,
-        time_spent=None
+        device,
+        ip_address,
+        ip_geolocation
 ):
-    """Creating an event record in Salesforce.
+    """Creating an session record in Salesforce.
 
+    :param ip_geolocation: User geolocation.
+    :param ip_address: User ip address.
+    :param device: User device.
     :param proposal_id: Proposal Id from url.
     :param proposal_account_id: Account__c value from 'get_proposal' requests response.
     :param contact_id: 'contact_id' from 'user_email_validation' response.
-    :param event_name: Event name.
-    :param time_spent: Time spent on page(if available).
 
-    :return: Created record
+    :return: Created record id.
     """
-    if len(event_name) > 50:
-        event_name = event_name[0: 30] + '...' + event_name[(len(event_name) - 15): len(event_name)]
     data = {
         'Web_Proposal__c': proposal_id,
         'Account__c': proposal_account_id,
         'Contact__c': contact_id,
-        'Event_type__c': event_name,
-        'Event_date__c': datetime.utcnow().__format__('%Y-%m-%dT%H:%M:%S.%UZ'),
-        'Time_spent__c': time_spent,
+        'IP_Address__c': ip_address,
+        'IP_geolocation__c': ip_geolocation,
+        'Device_OS__c': device,
+        'Login_date__c': datetime.utcnow().__format__('%Y-%m-%dT%H:%M:%S.%UZ'),
         'OwnerId': settings.SF_USER_ID
     }
-    response = sf_api_call(f"/services/data/{settings.SF_API_VERSION}/sobjects/Proposal_engagement__c", method='post', data=data)
-    return response
+    response = sf_api_call(f"/services/data/{settings.SF_API_VERSION}/sobjects/Proposal_engagement_header__c",
+                           method='post',
+                           data=data)
+    return response['id']
+
+
+def create_sf_event_record(
+        sf_session_id,
+        event_name,
+        time_spent=None,
+        case_id=None
+):
+    """Creating an session record in Salesforce.
+
+    :param case_id: Case Salesforce record Id.
+    :param time_spent: Time spent.
+    :param event_name: Event name.
+    :param sf_session_id: Session id of Salesforce record.
+
+    """
+    data = {
+        'Proposal_engagement_header__c': sf_session_id,
+        'Event_date__c': datetime.utcnow().__format__('%Y-%m-%dT%H:%M:%S.%UZ'),
+        'Event_type__c': event_name,
+        'Time_spent__c': time_spent,
+        'Case__c': case_id
+    }
+    sf_api_call(f"/services/data/{settings.SF_API_VERSION}/sobjects/Proposal_engagement__c",
+                method='post',
+                data=data)
 
 
 def create_event_record(
         session_id,
+        sf_session_id,
         event_type,
-        proposal_id,
         proposal_name,
         proposal_account_id,
         contact_account_id,
@@ -382,12 +444,12 @@ def create_event_record(
 ):
     """Creating an event record in both systems, Salesforce and Django.
 
+    :param sf_session_id: Session id of Salesforce record.
     :param contact_account_id: AccountId from 'email_domain_validation' response.
     :param proposal_name: 'Name' from 'get_proposal' requests response.
     :param email: Provided email address of user.
     :param session_id: Session Id.
     :param event_type: Event type.
-    :param proposal_id: Proposal Id from url.
     :param proposal_account_id: Account__c value from 'get_proposal' requests response.
     :param contact_id: 'contact_id' from 'user_email_validation' response.
     :param event_name: Event name.
@@ -401,8 +463,9 @@ def create_event_record(
         message=message
     )
     if email != settings.TRUSTED_EMAIL:
+        case_id = None
         if message:
-            create_case_record(
+            case_id = create_case_record(
                 message=message,
                 proposal_name=proposal_name,
                 event_name=event_name,
@@ -410,14 +473,13 @@ def create_event_record(
                 proposal_account_id=proposal_account_id,
                 contact_id=contact_id
             )
-        else:
-            create_sf_proposal_engagement(
-                proposal_id=proposal_id,
-                proposal_account_id=proposal_account_id,
-                contact_id=contact_id,
-                event_name=event_name,
-                time_spent=time_spent
-            )
+            event_name = 'Question submitted'
+        create_sf_event_record(
+            sf_session_id=sf_session_id,
+            event_name=event_name,
+            time_spent=time_spent,
+            case_id=case_id
+        )
 
 
 def create_case_record(
@@ -438,7 +500,9 @@ def create_case_record(
     :param contact_id: 'contact_id' from 'user_email_validation' response.
     """
     owner_id = get_owner_id(contact_account_id)
-    subject = ['Question or Feedback' if 'Feedback-Form' in event_name else 'Meeting request' + ', WebProposal{}'.format(proposal_name)]
+    subject = [
+        'Question or Feedback' if 'Feedback-Form' in event_name else 'Meeting request' + ', WebProposal{}'.format(
+            proposal_name)]
     data = {
         'Description': message,
         'From_django__c': True,
@@ -447,12 +511,13 @@ def create_case_record(
         'ContactId': contact_id,
         'Subject': subject
     }
-    sf_api_call(f"/services/data/{settings.SF_API_VERSION}/sobjects/Case", method='post', data=data)
+    response = sf_api_call(f"/services/data/{settings.SF_API_VERSION}/sobjects/Case", method='post', data=data)
+    return response['id']
 
 
 def additional_email_verification(request, proposal_id):
     client_ip = request.META['HTTP_X_REAL_IP']
-    client_ip = None
+    # client_ip = None
     try:
         email = request.session['email']
         if email == settings.TRUSTED_EMAIL:
@@ -468,32 +533,44 @@ def additional_email_verification(request, proposal_id):
                 email=request.session['email'],
                 email_valid=request.session['is_emailvalid'],
                 message='Trying to access a Proposal without authorization.',
-                client_ip=client_ip
+                client_ip=client_ip,
+                client_geolocation=get_geolocation(client_ip),
+                device=get_user_device(request)
             )
         else:
             Session.objects.create(
                 proposal_id=proposal_id,
                 message='Trying to access a Proposal without authorization.',
-                client_ip=client_ip
+                client_ip=client_ip,
+                client_geolocation=get_geolocation(client_ip),
+                device=get_user_device(request)
             )
         return redirect('confirmation', proposal_id)
 
 
 def additional_confirmation(request, is_contactcreated, proposal, proposal_id):
     client_ip = request.META['HTTP_X_REAL_IP']
+    # client_ip = '1'
     if client_ip != '127.0.0.1':
+        request.session['sf_session_id'] = create_sf_session_record(proposal_id,
+                                                                    request.session['proposal_account_id'],
+                                                                    request.session['contact_id'],
+                                                                    get_user_device(request),
+                                                                    client_ip,
+                                                                    get_geolocation(client_ip))
         if not proposal['Published__c']:
-
-            Session.objects.get_or_create(
+            Session.objects.create(
                 proposal_id=proposal_id,
                 email=request.session['email'],
                 email_valid=True,
                 account_id=proposal['Account__c'],
                 client_ip=client_ip,
+                client_geolocation=get_geolocation(client_ip),
                 proposal_exists=True,
                 contact_id=request.session['contact_id'],
                 contact_created=is_contactcreated,
-                message='Proposal not published'
+                message='Proposal not published',
+                device=get_user_device(request)
             )
             raise Http404('published')
         session = Session.objects.create(
@@ -502,45 +579,55 @@ def additional_confirmation(request, is_contactcreated, proposal, proposal_id):
             email_valid=True,
             account_id=proposal['Account__c'],
             client_ip=client_ip,
+            client_geolocation=get_geolocation(client_ip),
             proposal_exists=True,
             contact_id=request.session['contact_id'],
-            contact_created=is_contactcreated
+            contact_created=is_contactcreated,
+            device=get_user_device(request)
         )
         request.session['session_id'] = session.pk
 
 
 def additional_trusted_email_confirmation(request, proposal_id):
     client_ip = request.META['HTTP_X_REAL_IP']
-    client_ip = None
+    # client_ip = None
     session = Session.objects.create(
         proposal_id=proposal_id,
         email=request.session['email'],
         client_ip=client_ip,
+        client_geolocation=get_geolocation(client_ip),
         email_valid=True,
         proposal_exists=True,
-        message='Backdoor email access.'
+        message='Backdoor email access.',
+        device=get_user_device(request)
     )
     request.session['session_id'] = session.pk
 
 
-def create_failed_session_record(request, proposal_id, email, client_ip):
+def create_failed_session_record(request, proposal_id, email):
+    client_ip = request.META['HTTP_X_REAL_IP']
+    # client_ip = '1'
     if client_ip != '127.0.0.1':
         try:
             is_email_valid = request.session['is_emailvalid']
         except KeyError:
             is_email_valid = False
         if email:
-            Session.objects.get_or_create(
+            Session.objects.create(
                 proposal_id=proposal_id,
                 email=email,
                 email_valid=is_email_valid,
                 message='Trying to access a non-existent Proposal.',
-                client_ip=client_ip
+                client_ip=client_ip,
+                client_geolocation=get_geolocation(client_ip),
+                device=get_user_device(request)
             )
         else:
-            Session.objects.get_or_create(
+            Session.objects.create(
                 proposal_id=proposal_id,
                 message='Trying to access a non-existent Proposal.',
-                client_ip=client_ip
+                client_ip=client_ip,
+                client_geolocation=get_geolocation(client_ip),
+                device=get_user_device(request)
             )
         raise Http404()

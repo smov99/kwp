@@ -21,7 +21,7 @@
 
   // Ajax requests
   function eventsAjax(event_type, event_name, time_spent, message) {
-    var _path = window.location.href.replace('proposal/', 'events/')
+    var _path = window.location.href.replace('proposal/', 'events/');
     $.ajax({
       headers: {"X-CSRFToken": csrftoken},
       url: _path,
@@ -183,7 +183,7 @@
       pdfWindow;
     e.preventDefault();
 
-    eventsAjax('open_pdf', 'Open PDF document');
+    eventsAjax('open_pdf', 'PDF open');
 
     if ($(window).width()) {
       pdfWindow = window.open(pdf_url,"", 'width='+modal_width+',height='+modal_height);}
@@ -208,7 +208,7 @@
           spentTime;
 
         valDict.oldVal = inputVal.val()
-        eventsAjax('page_opened', "Opened page number: "+valDict.oldVal)
+        eventsAjax('page_opened', 'PDF page 1')
 
         $(downloadBtn).on('click', function () {
           eventsAjax('download', 'PDF downloaded');
@@ -233,7 +233,7 @@
             endPage = new Date().getTime()
             spentTime = ((endPage - startPage) / 1000)+'seconds'
             eventsAjax('spent_time', 'Spent '+spentTime+' seconds on page number '+valDict.oldVal, spentTime+'s')
-            eventsAjax('page_opened', "Opened page number: "+valDict.newVal);
+            eventsAjax('page_opened', "Pdf page "+valDict.newVal);
             valDict.oldVal = valDict.newVal
             startPage = new Date().getTime()
           }
@@ -249,13 +249,8 @@
         });
       }).attr('src', src);
 
-      // Copy tracking
-      this.document.addEventListener('copy', function (e) {
-
-      });
-
       $(pdfWindow).on('unload', () => {
-        eventsAjax('closing_preview', 'Closing modal preview');
+        eventsAjax('closing_preview', 'Pdf close');
         pdfAjax();
       });
     });
@@ -269,9 +264,10 @@
   $('.section-title .collapsed').on('click', function (e) {
     e.preventDefault();
     if ($(this).hasClass('opened')) {
+      eventsAjax('opening_of_section', 'Section ' + e.target.textContent + ' close');
       $(this).removeClass('opened')
     } else {
-      eventsAjax('opening_of_section', 'Opening of section: ' + e.target.textContent);
+      eventsAjax('opening_of_section', 'Section ' + e.target.textContent + ' open');
       $(this).addClass('opened')
     }
   });
@@ -279,9 +275,10 @@
   $('.faq-list .collapsed').on('click', function (e) {
     e.preventDefault();
     if ($(this).hasClass('opened')) {
+      eventsAjax('opening_of_sections_line', 'Question ' + e.target.textContent + ' close');
       $(this).removeClass('opened')
     } else {
-      eventsAjax('opening_of_sections_line', 'Opening of line: ' + e.target.textContent);
+      eventsAjax('opening_of_sections_line', 'Question ' + e.target.textContent + ' open');
     }
   });
 
@@ -290,7 +287,7 @@
     let message = $(this).closest("form").find('textarea'),
       _value = message;
     if (_value.val().replace(/ /g,'').length) {
-      eventsAjax('click_on_submit_button', 'Click on submit button in ' + $(this).closest("form").attr('id'), '', '' + message.val());
+      eventsAjax('click_on_submit_button', 'Question submitted ' + $(this).closest("form").attr('id'), '', '' + message.val());
       message.val('')
     }
   });

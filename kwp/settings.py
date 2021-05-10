@@ -42,6 +42,7 @@ DEFAULT_APPS = [
 THIRD_PARTY_APPS = [
     'rest_framework',
     'rangefilter',
+    'user_agents',
 ]
 
 LOCAL_APPS = [
@@ -62,6 +63,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django_user_agents.middleware.UserAgentMiddleware',
 ]
 
 ROOT_URLCONF = 'kwp.urls'
@@ -212,6 +214,12 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'tmp/static/')
 MEDIA_URL = '/tmp/kwp/'
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'tmp/kwp/')
+
+GEOIP_PATH = os.path.join(BASE_DIR, 'src/geoip_db/GeoLite2-ASN.mmdb')
+
+GEOIP_CITY = os.path.join(BASE_DIR, 'src/geoip_db/GeoLite2-City.mmdb')
+
+GEOIP_COUNTRY = os.path.join(BASE_DIR, 'src/geoip_db/GeoLite2-Country.mmdb')
 
 # kwp
 PRODUCT_VERSION = 'Beta'

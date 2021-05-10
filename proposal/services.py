@@ -350,7 +350,7 @@ def get_pdf_for_review(proposal_id):
     response = {}
     document_list = get_documents_list(proposal_id)[0]
     document_id = document_list['ContentDocumentId']
-    document_id = '069040000005geEAAQ'  # Used for tests
+    # document_id = '069040000005geEAAQ'  # Used for tests
     single_document = get_single_document(document_id)
     response['title'] = ' '.join(single_document['Title'].split('_'))
     document_link = get_document_link(document_id)

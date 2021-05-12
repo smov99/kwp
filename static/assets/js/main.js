@@ -67,6 +67,14 @@
     document.getElementById('progress-bar').style.setProperty('--scrollAmount', scrollPercent);
   });
 
+  // Preloader
+  $(window).on('load', function () {
+    let preloader = document.getElementById('preloader');
+    setTimeout(function () {
+      preloader.classList.add('loaded')
+    }, 1000)
+  });
+
   // Smooth scroll for the navigation menu and links with .scrollto classes
   var scrolltoOffset = $('#header').outerHeight() - 5;
   $(document).on('click', '.nav-menu a, .mobile-nav a, .scrollto', function(e) {
@@ -285,10 +293,19 @@
   $('#contact form button').on('click', function (e) {
     e.preventDefault();
     let message = $(this).closest("form").find('textarea'),
-      _value = message;
+      _value = message,
+      sentMessage = $(this).closest('form').find('.sent-message');
     if (_value.val().replace(/ /g,'').length) {
       eventsAjax('click_on_submit_button', 'Question submitted ' + $(this).closest("form").attr('id'), '', '' + message.val());
-      message.val('')
+      message.val('');
+      $(sentMessage).slideDown(250).fadeIn(100, function () {
+        $(sentMessage).css({'display': 'flex'})
+      });
+      setTimeout(function () {
+        $(sentMessage).slideUp(250, 'linear').fadeOut(100, function () {
+          $(sentMessage).css({'display':'none'})
+        })
+      }, 4000)
     }
   });
 

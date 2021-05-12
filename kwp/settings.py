@@ -21,7 +21,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'at#96-#7p!4bzqreegk@8e&*8whx^ciky5t_o)x04fti31r%8h'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = [
     '*',
@@ -145,36 +145,36 @@ AUTH_USER_MODEL = 'users.User'
 
 # Logging
 
-LOGGING = {
-    'version': 1,
-    'disable_existing_loggers': False,
-    'formatters': {
-        'verbose': {
-            'format': '{levelname} {asctime} {module} {process:d} {thread:d} {message}',
-            'style': '{',
-        },
-    },
-    'handlers': {
-        'file': {
-            'level': 'DEBUG',
-            'class': 'logging.FileHandler',
-            'formatter': 'verbose',
-            'filename': os.path.join(BASE_DIR, 'src/log.log'),
-        },
-    },
-    'loggers': {
-        'django.server': {
-            'handlers': ['file'],
-            'level': 'WARNING',
-            'propagate': True,
-        },
-        'django.request': {
-            'handlers': ['file'],
-            'level': 'WARNING',
-            'propagate': True,
-        },
-    }
-}
+# LOGGING = {
+#     'version': 1,
+#     'disable_existing_loggers': False,
+#     'formatters': {
+#         'verbose': {
+#             'format': '{levelname} {asctime} {module} {process:d} {thread:d} {message}',
+#             'style': '{',
+#         },
+#     },
+#     'handlers': {
+#         'file': {
+#             'level': 'DEBUG',
+#             'class': 'logging.FileHandler',
+#             'formatter': 'verbose',
+#             'filename': os.path.join(BASE_DIR, 'src/log.log'),
+#         },
+#     },
+#     'loggers': {
+#         'django.server': {
+#             'handlers': ['file'],
+#             'level': 'WARNING',
+#             'propagate': True,
+#         },
+#         'django.request': {
+#             'handlers': ['file'],
+#             'level': 'WARNING',
+#             'propagate': True,
+#         },
+#     }
+# }
 
 # Internationalization
 # https://docs.djangoproject.com/en/3.1/topics/i18n/
@@ -215,11 +215,10 @@ MEDIA_URL = '/tmp/kwp/'
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'tmp/kwp/')
 
-GEOIP_PATH = os.path.join(BASE_DIR, 'src/geoip_db/GeoLite2-ASN.mmdb')
 
-GEOIP_CITY = os.path.join(BASE_DIR, 'src/geoip_db/GeoLite2-City.mmdb')
+# IP geolocation
 
-GEOIP_COUNTRY = os.path.join(BASE_DIR, 'src/geoip_db/GeoLite2-Country.mmdb')
+IPDATA_TOKEN = '5d721175bef6ff7756ec1ef843876cbf5e3559fb2f1c051f46ff9dec'
 
 # kwp
 PRODUCT_VERSION = 'Beta'

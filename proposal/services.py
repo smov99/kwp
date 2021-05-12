@@ -5,10 +5,10 @@ from datetime import datetime, timedelta
 import functools
 import time
 from user_agents import parse
+from ipdata import ipdata
 
 from django.http import Http404
 from django.shortcuts import redirect
-from django.contrib.gis.geoip2 import GeoIP2
 
 from kwp import settings
 from .models import SessionEvent, Session
@@ -37,29 +37,6 @@ def clock(func):
         return result
 
     return clocked
-
-
-def get_geolocation(client_ip):
-    """Getting user geolocation.
-
-    :param client_ip: User ip address.
-    :return: User geolocation.
-    """
-    try:
-        geolocation = GeoIP2(settings.GEOIP_CITY).city(client_ip)
-    except:
-        response = None
-    else:
-        response = geolocation['country_name'] + ', ' + geolocation['city']
-    return response
-
-
-def get_user_device(request):
-    device = parse(request.META['HTTP_USER_AGENT'])
-    response = device.os.family + ' ' + '.'.join(map(str, device.os.version))
-    if device.device.family != 'Other':
-        response += ', ' + device.device.brand + ' ' + device.device.family
-    return response
 
 
 def timed_cache(**timedelta_kwargs):
@@ -120,6 +97,34 @@ def sf_api_call(action, parameters={}, method='get', data={}):
 
     else:
         raise Exception('API error when calling %s : %s' % (r.url, r.content))
+
+
+@timed_cache(seconds=600)
+def get_geolocation(client_ip):
+    """Getting user geolocation.
+
+    :param client_ip: User ip address.
+    :return: User geolocation.
+    """
+    try:
+        _ipdata = ipdata.IPData(settings.IPDATA_TOKEN)
+        geolocation = _ipdata.lookup(client_ip, fields=['continent_name', 'country_name', 'city', 'region'])
+    except:
+        response = None
+    else:
+        response = geolocation['continent_name'] + ', ' +\
+                   geolocation['country_name'] + ', ' +\
+                   geolocation['city'] + ', ' +\
+                   geolocation['region']
+    return response
+
+
+def get_user_device(request):
+    device = parse(request.META['HTTP_USER_AGENT'])
+    response = device.os.family + ' ' + '.'.join(map(str, device.os.version))
+    if device.device.family != 'Other':
+        response += ', ' + device.device.brand + ' ' + device.device.family
+    return response
 
 
 @timed_cache(seconds=360)
@@ -339,7 +344,6 @@ def get_creator_img(url):
     return img64
 
 
-@timed_cache(seconds=600)
 def get_pdf_for_review(proposal_id):
     """Getting PDF for review.
 
@@ -349,8 +353,8 @@ def get_pdf_for_review(proposal_id):
     """
     response = {}
     document_list = get_documents_list(proposal_id)[0]
-    document_id = document_list['ContentDocumentId']
-    # document_id = '069040000005geEAAQ'  # Used for tests
+    # document_id = document_list['ContentDocumentId']
+    document_id = '069040000005geEAAQ'  # Used for tests
     single_document = get_single_document(document_id)
     response['title'] = ' '.join(single_document['Title'].split('_'))
     document_link = get_document_link(document_id)

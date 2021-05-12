@@ -1,1 +1,525 @@
 
+ERROR 2021-05-06 01:28:37,583 log 24988 11888 Internal Server Error: /en/a0P04000000GGHQEA4/
+Traceback (most recent call last):
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\views\generic\base.py", line 70, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\views\generic\base.py", line 98, in dispatch
+    return handler(request, *args, **kwargs)
+  File "F:\workspace\django\kiwapower_web_proposal\proposal\views.py", line 37, in post
+    services.additional_trusted_email_confirmation(request, proposal_id)
+  File "F:\workspace\django\kiwapower_web_proposal\proposal\services.py", line 500, in additional_trusted_email_confirmation
+    client_ip = request.META['HTTP_X_REAL_IP']
+KeyError: 'HTTP_X_REAL_IP'
+ERROR 2021-05-06 01:28:37,724 basehttp 24988 11888 "POST /en/a0P04000000GGHQEA4/ HTTP/1.1" 500 3053
+WARNING 2021-05-06 21:25:48,135 log 19448 25212 Not Found: /static/assets/js/main.js
+WARNING 2021-05-06 21:25:48,170 basehttp 19448 25212 "GET /static/assets/js/main.js HTTP/1.1" 404 3141
+WARNING 2021-05-06 21:25:48,238 log 19448 22400 Not Found: /static/assets/css/style.css
+WARNING 2021-05-06 21:25:48,239 basehttp 19448 22400 "GET /static/assets/css/style.css HTTP/1.1" 404 3141
+WARNING 2021-05-06 21:25:48,414 log 19448 22400 Not Found: /static/assets/js/main.js
+WARNING 2021-05-06 21:25:48,415 basehttp 19448 22400 "GET /static/assets/js/main.js HTTP/1.1" 404 3141
+WARNING 2021-05-06 21:25:48,549 log 19448 22400 Not Found: /static/assets/img/favicon.ico
+WARNING 2021-05-06 21:25:48,550 basehttp 19448 22400 "GET /static/assets/img/favicon.ico HTTP/1.1" 404 3141
+WARNING 2021-05-06 21:26:13,142 log 19448 22400 Not Found: /static/assets/css/style.css
+WARNING 2021-05-06 21:26:13,142 basehttp 19448 22400 "GET /static/assets/css/style.css HTTP/1.1" 404 3141
+WARNING 2021-05-06 21:26:13,165 log 19448 25212 Not Found: /static/assets/js/main.js
+WARNING 2021-05-06 21:26:13,166 basehttp 19448 25212 "GET /static/assets/js/main.js HTTP/1.1" 404 3141
+WARNING 2021-05-06 21:26:24,605 log 19448 25212 Not Found: /static/assets/css/style.css
+WARNING 2021-05-06 21:26:24,605 basehttp 19448 25212 "GET /static/assets/css/style.css HTTP/1.1" 404 3141
+WARNING 2021-05-06 21:26:24,611 log 19448 22400 Not Found: /static/assets/js/main.js
+WARNING 2021-05-06 21:26:24,611 basehttp 19448 22400 "GET /static/assets/js/main.js HTTP/1.1" 404 3141
+WARNING 2021-05-06 21:26:28,183 log 19448 25212 Not Found: /static/assets/js/main.js
+WARNING 2021-05-06 21:26:28,184 basehttp 19448 25212 "GET /static/assets/js/main.js HTTP/1.1" 404 3141
+WARNING 2021-05-06 21:26:28,185 log 19448 22400 Not Found: /static/assets/css/style.css
+WARNING 2021-05-06 21:26:28,186 basehttp 19448 22400 "GET /static/assets/css/style.css HTTP/1.1" 404 3141
+WARNING 2021-05-06 21:26:28,258 log 19448 22400 Not Found: /static/assets/js/main.js
+WARNING 2021-05-06 21:26:28,258 basehttp 19448 22400 "GET /static/assets/js/main.js HTTP/1.1" 404 3141
+WARNING 2021-05-06 21:26:29,272 log 19448 22400 Not Found: /static/assets/css/style.css
+WARNING 2021-05-06 21:26:29,273 basehttp 19448 22400 "GET /static/assets/css/style.css HTTP/1.1" 404 3141
+WARNING 2021-05-06 21:26:29,290 log 19448 25212 Not Found: /static/assets/js/main.js
+WARNING 2021-05-06 21:26:29,291 basehttp 19448 25212 "GET /static/assets/js/main.js HTTP/1.1" 404 3141
+WARNING 2021-05-06 21:26:30,892 log 19448 25212 Not Found: /static/assets/css/style.css
+WARNING 2021-05-06 21:26:30,893 basehttp 19448 25212 "GET /static/assets/css/style.css HTTP/1.1" 404 3141
+WARNING 2021-05-06 21:26:30,906 log 19448 22400 Not Found: /static/assets/js/main.js
+WARNING 2021-05-06 21:26:30,907 basehttp 19448 22400 "GET /static/assets/js/main.js HTTP/1.1" 404 3141
+WARNING 2021-05-06 21:26:36,537 log 19448 22400 Not Found: /static/assets/css/style.css
+WARNING 2021-05-06 21:26:36,537 basehttp 19448 22400 "GET /static/assets/css/style.css HTTP/1.1" 404 3141
+WARNING 2021-05-06 21:26:36,543 log 19448 25212 Not Found: /static/assets/js/main.js
+WARNING 2021-05-06 21:26:36,543 basehttp 19448 25212 "GET /static/assets/js/main.js HTTP/1.1" 404 3141
+ERROR 2021-05-07 19:54:00,386 log 25088 16536 Internal Server Error: /en/a0P04000000ERUrEAO/
+Traceback (most recent call last):
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\views\generic\base.py", line 70, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\views\generic\base.py", line 98, in dispatch
+    return handler(request, *args, **kwargs)
+  File "F:\workspace\django\kiwapower_web_proposal\proposal\services.py", line 32, in clocked
+    result = func(*args, **kwargs)  # вызов декорированной функции
+  File "F:\workspace\django\kiwapower_web_proposal\proposal\views.py", line 18, in get
+    proposal = services.get_proposal(proposal_id)
+  File "F:\workspace\django\kiwapower_web_proposal\proposal\services.py", line 55, in _wrapped
+    return f(*args, **kwargs)
+  File "F:\workspace\django\kiwapower_web_proposal\proposal\services.py", line 112, in get_proposal
+    error = response[0]['errorCode']
+KeyError: 0
+ERROR 2021-05-07 19:54:00,401 basehttp 25088 16536 "GET /en/a0P04000000ERUrEAO/ HTTP/1.1" 500 92118
+ERROR 2021-05-07 19:54:01,841 log 25088 13072 Internal Server Error: /en/favicon.ico/
+Traceback (most recent call last):
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\db\models\query.py", line 581, in get_or_create
+    return self.get(**kwargs), False
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\db\models\query.py", line 435, in get
+    raise self.model.DoesNotExist(
+proposal.models.Session.DoesNotExist: Session matching query does not exist.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\db\backends\utils.py", line 84, in _execute
+    return self.cursor.execute(sql, params)
+psycopg2.errors.NotNullViolation: ОШИБКА:  значение NULL в столбце "client_ip" отношения "proposal_session" нарушает ограничение NOT NULL
+DETAIL:  Ошибочная строка содержит (103, 2021-05-07 16:54:01.558305+00, 2021-05-07 16:54:01.558305+00, favicon.ico, f, null, null, f, null, f, Trying to access a non-existent Proposal., null).
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\views\generic\base.py", line 70, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\views\generic\base.py", line 98, in dispatch
+    return handler(request, *args, **kwargs)
+  File "F:\workspace\django\kiwapower_web_proposal\proposal\services.py", line 32, in clocked
+    result = func(*args, **kwargs)  # вызов декорированной функции
+  File "F:\workspace\django\kiwapower_web_proposal\proposal\views.py", line 28, in get
+    services.create_failed_session_record(request, proposal_id, email, client_ip)
+  File "F:\workspace\django\kiwapower_web_proposal\proposal\services.py", line 532, in create_failed_session_record
+    Session.objects.get_or_create(
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\db\models\manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\db\models\query.py", line 588, in get_or_create
+    return self.create(**params), True
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\db\models\query.py", line 453, in create
+    obj.save(force_insert=True, using=self.db)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\db\models\base.py", line 726, in save
+    self.save_base(using=using, force_insert=force_insert,
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\db\models\base.py", line 763, in save_base
+    updated = self._save_table(
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\db\models\base.py", line 868, in _save_table
+    results = self._do_insert(cls._base_manager, using, fields, returning_fields, raw)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\db\models\base.py", line 906, in _do_insert
+    return manager._insert(
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\db\models\manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\db\models\query.py", line 1270, in _insert
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\db\models\sql\compiler.py", line 1410, in execute_sql
+    cursor.execute(sql, params)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\db\backends\utils.py", line 98, in execute
+    return super().execute(sql, params)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\db\backends\utils.py", line 66, in execute
+    return self._execute_with_wrappers(sql, params, many=False, executor=self._execute)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\db\backends\utils.py", line 75, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\db\backends\utils.py", line 84, in _execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\db\utils.py", line 90, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\db\backends\utils.py", line 84, in _execute
+    return self.cursor.execute(sql, params)
+django.db.utils.IntegrityError: ОШИБКА:  значение NULL в столбце "client_ip" отношения "proposal_session" нарушает ограничение NOT NULL
+DETAIL:  Ошибочная строка содержит (103, 2021-05-07 16:54:01.558305+00, 2021-05-07 16:54:01.558305+00, favicon.ico, f, null, null, f, null, f, Trying to access a non-existent Proposal., null).
+
+ERROR 2021-05-07 19:54:01,847 basehttp 25088 13072 "GET /en/favicon.ico/ HTTP/1.1" 500 191238
+ERROR 2021-05-07 19:55:02,442 log 25088 13072 Internal Server Error: /en/a0P04000000/
+Traceback (most recent call last):
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\db\models\query.py", line 581, in get_or_create
+    return self.get(**kwargs), False
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\db\models\query.py", line 435, in get
+    raise self.model.DoesNotExist(
+proposal.models.Session.DoesNotExist: Session matching query does not exist.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\db\backends\utils.py", line 84, in _execute
+    return self.cursor.execute(sql, params)
+psycopg2.errors.NotNullViolation: ОШИБКА:  значение NULL в столбце "client_ip" отношения "proposal_session" нарушает ограничение NOT NULL
+DETAIL:  Ошибочная строка содержит (104, 2021-05-07 16:55:02.379198+00, 2021-05-07 16:55:02.379198+00, a0P04000000, f, null, null, f, null, f, Trying to access a non-existent Proposal., null).
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\views\generic\base.py", line 70, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\views\generic\base.py", line 98, in dispatch
+    return handler(request, *args, **kwargs)
+  File "F:\workspace\django\kiwapower_web_proposal\proposal\services.py", line 32, in clocked
+    result = func(*args, **kwargs)  # вызов декорированной функции
+  File "F:\workspace\django\kiwapower_web_proposal\proposal\views.py", line 28, in get
+    services.create_failed_session_record(request, proposal_id, email, client_ip)
+  File "F:\workspace\django\kiwapower_web_proposal\proposal\services.py", line 532, in create_failed_session_record
+    Session.objects.get_or_create(
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\db\models\manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\db\models\query.py", line 588, in get_or_create
+    return self.create(**params), True
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\db\models\query.py", line 453, in create
+    obj.save(force_insert=True, using=self.db)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\db\models\base.py", line 726, in save
+    self.save_base(using=using, force_insert=force_insert,
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\db\models\base.py", line 763, in save_base
+    updated = self._save_table(
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\db\models\base.py", line 868, in _save_table
+    results = self._do_insert(cls._base_manager, using, fields, returning_fields, raw)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\db\models\base.py", line 906, in _do_insert
+    return manager._insert(
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\db\models\manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\db\models\query.py", line 1270, in _insert
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\db\models\sql\compiler.py", line 1410, in execute_sql
+    cursor.execute(sql, params)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\db\backends\utils.py", line 98, in execute
+    return super().execute(sql, params)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\db\backends\utils.py", line 66, in execute
+    return self._execute_with_wrappers(sql, params, many=False, executor=self._execute)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\db\backends\utils.py", line 75, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\db\backends\utils.py", line 84, in _execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\db\utils.py", line 90, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\db\backends\utils.py", line 84, in _execute
+    return self.cursor.execute(sql, params)
+django.db.utils.IntegrityError: ОШИБКА:  значение NULL в столбце "client_ip" отношения "proposal_session" нарушает ограничение NOT NULL
+DETAIL:  Ошибочная строка содержит (104, 2021-05-07 16:55:02.379198+00, 2021-05-07 16:55:02.379198+00, a0P04000000, f, null, null, f, null, f, Trying to access a non-existent Proposal., null).
+
+ERROR 2021-05-07 19:55:02,445 basehttp 25088 13072 "GET /en/a0P04000000/ HTTP/1.1" 500 191147
+ERROR 2021-05-07 19:55:02,730 log 25088 24568 Internal Server Error: /en/favicon.ico/
+Traceback (most recent call last):
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\db\models\query.py", line 581, in get_or_create
+    return self.get(**kwargs), False
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\db\models\query.py", line 435, in get
+    raise self.model.DoesNotExist(
+proposal.models.Session.DoesNotExist: Session matching query does not exist.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\db\backends\utils.py", line 84, in _execute
+    return self.cursor.execute(sql, params)
+psycopg2.errors.NotNullViolation: ОШИБКА:  значение NULL в столбце "client_ip" отношения "proposal_session" нарушает ограничение NOT NULL
+DETAIL:  Ошибочная строка содержит (105, 2021-05-07 16:55:02.667439+00, 2021-05-07 16:55:02.667439+00, favicon.ico, f, null, null, f, null, f, Trying to access a non-existent Proposal., null).
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\views\generic\base.py", line 70, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\views\generic\base.py", line 98, in dispatch
+    return handler(request, *args, **kwargs)
+  File "F:\workspace\django\kiwapower_web_proposal\proposal\services.py", line 32, in clocked
+    result = func(*args, **kwargs)  # вызов декорированной функции
+  File "F:\workspace\django\kiwapower_web_proposal\proposal\views.py", line 28, in get
+    services.create_failed_session_record(request, proposal_id, email, client_ip)
+  File "F:\workspace\django\kiwapower_web_proposal\proposal\services.py", line 532, in create_failed_session_record
+    Session.objects.get_or_create(
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\db\models\manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\db\models\query.py", line 588, in get_or_create
+    return self.create(**params), True
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\db\models\query.py", line 453, in create
+    obj.save(force_insert=True, using=self.db)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\db\models\base.py", line 726, in save
+    self.save_base(using=using, force_insert=force_insert,
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\db\models\base.py", line 763, in save_base
+    updated = self._save_table(
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\db\models\base.py", line 868, in _save_table
+    results = self._do_insert(cls._base_manager, using, fields, returning_fields, raw)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\db\models\base.py", line 906, in _do_insert
+    return manager._insert(
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\db\models\manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\db\models\query.py", line 1270, in _insert
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\db\models\sql\compiler.py", line 1410, in execute_sql
+    cursor.execute(sql, params)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\db\backends\utils.py", line 98, in execute
+    return super().execute(sql, params)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\db\backends\utils.py", line 66, in execute
+    return self._execute_with_wrappers(sql, params, many=False, executor=self._execute)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\db\backends\utils.py", line 75, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\db\backends\utils.py", line 84, in _execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\db\utils.py", line 90, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\db\backends\utils.py", line 84, in _execute
+    return self.cursor.execute(sql, params)
+django.db.utils.IntegrityError: ОШИБКА:  значение NULL в столбце "client_ip" отношения "proposal_session" нарушает ограничение NOT NULL
+DETAIL:  Ошибочная строка содержит (105, 2021-05-07 16:55:02.667439+00, 2021-05-07 16:55:02.667439+00, favicon.ico, f, null, null, f, null, f, Trying to access a non-existent Proposal., null).
+
+ERROR 2021-05-07 19:55:02,735 basehttp 25088 24568 "GET /en/favicon.ico/ HTTP/1.1" 500 190966
+ERROR 2021-05-07 19:55:08,015 log 25088 24568 Internal Server Error: /en/a0P04000000/
+Traceback (most recent call last):
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\db\models\query.py", line 581, in get_or_create
+    return self.get(**kwargs), False
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\db\models\query.py", line 435, in get
+    raise self.model.DoesNotExist(
+proposal.models.Session.DoesNotExist: Session matching query does not exist.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\db\backends\utils.py", line 84, in _execute
+    return self.cursor.execute(sql, params)
+psycopg2.errors.NotNullViolation: ОШИБКА:  значение NULL в столбце "client_ip" отношения "proposal_session" нарушает ограничение NOT NULL
+DETAIL:  Ошибочная строка содержит (106, 2021-05-07 16:55:07.953785+00, 2021-05-07 16:55:07.953785+00, a0P04000000, f, null, null, f, null, f, Trying to access a non-existent Proposal., null).
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\views\generic\base.py", line 70, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\views\generic\base.py", line 98, in dispatch
+    return handler(request, *args, **kwargs)
+  File "F:\workspace\django\kiwapower_web_proposal\proposal\services.py", line 32, in clocked
+    result = func(*args, **kwargs)  # вызов декорированной функции
+  File "F:\workspace\django\kiwapower_web_proposal\proposal\views.py", line 28, in get
+    services.create_failed_session_record(request, proposal_id, email, client_ip)
+  File "F:\workspace\django\kiwapower_web_proposal\proposal\services.py", line 532, in create_failed_session_record
+    Session.objects.get_or_create(
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\db\models\manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\db\models\query.py", line 588, in get_or_create
+    return self.create(**params), True
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\db\models\query.py", line 453, in create
+    obj.save(force_insert=True, using=self.db)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\db\models\base.py", line 726, in save
+    self.save_base(using=using, force_insert=force_insert,
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\db\models\base.py", line 763, in save_base
+    updated = self._save_table(
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\db\models\base.py", line 868, in _save_table
+    results = self._do_insert(cls._base_manager, using, fields, returning_fields, raw)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\db\models\base.py", line 906, in _do_insert
+    return manager._insert(
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\db\models\manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\db\models\query.py", line 1270, in _insert
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\db\models\sql\compiler.py", line 1410, in execute_sql
+    cursor.execute(sql, params)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\db\backends\utils.py", line 98, in execute
+    return super().execute(sql, params)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\db\backends\utils.py", line 66, in execute
+    return self._execute_with_wrappers(sql, params, many=False, executor=self._execute)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\db\backends\utils.py", line 75, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\db\backends\utils.py", line 84, in _execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\db\utils.py", line 90, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\db\backends\utils.py", line 84, in _execute
+    return self.cursor.execute(sql, params)
+django.db.utils.IntegrityError: ОШИБКА:  значение NULL в столбце "client_ip" отношения "proposal_session" нарушает ограничение NOT NULL
+DETAIL:  Ошибочная строка содержит (106, 2021-05-07 16:55:07.953785+00, 2021-05-07 16:55:07.953785+00, a0P04000000, f, null, null, f, null, f, Trying to access a non-existent Proposal., null).
+
+ERROR 2021-05-07 19:55:08,022 basehttp 25088 24568 "GET /en/a0P04000000/ HTTP/1.1" 500 191284
+ERROR 2021-05-07 19:55:08,279 log 25088 18828 Internal Server Error: /en/favicon.ico/
+Traceback (most recent call last):
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\db\models\query.py", line 581, in get_or_create
+    return self.get(**kwargs), False
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\db\models\query.py", line 435, in get
+    raise self.model.DoesNotExist(
+proposal.models.Session.DoesNotExist: Session matching query does not exist.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\db\backends\utils.py", line 84, in _execute
+    return self.cursor.execute(sql, params)
+psycopg2.errors.NotNullViolation: ОШИБКА:  значение NULL в столбце "client_ip" отношения "proposal_session" нарушает ограничение NOT NULL
+DETAIL:  Ошибочная строка содержит (107, 2021-05-07 16:55:08.207764+00, 2021-05-07 16:55:08.207764+00, favicon.ico, f, null, null, f, null, f, Trying to access a non-existent Proposal., null).
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\views\generic\base.py", line 70, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\views\generic\base.py", line 98, in dispatch
+    return handler(request, *args, **kwargs)
+  File "F:\workspace\django\kiwapower_web_proposal\proposal\services.py", line 32, in clocked
+    result = func(*args, **kwargs)  # вызов декорированной функции
+  File "F:\workspace\django\kiwapower_web_proposal\proposal\views.py", line 28, in get
+    services.create_failed_session_record(request, proposal_id, email, client_ip)
+  File "F:\workspace\django\kiwapower_web_proposal\proposal\services.py", line 532, in create_failed_session_record
+    Session.objects.get_or_create(
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\db\models\manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\db\models\query.py", line 588, in get_or_create
+    return self.create(**params), True
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\db\models\query.py", line 453, in create
+    obj.save(force_insert=True, using=self.db)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\db\models\base.py", line 726, in save
+    self.save_base(using=using, force_insert=force_insert,
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\db\models\base.py", line 763, in save_base
+    updated = self._save_table(
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\db\models\base.py", line 868, in _save_table
+    results = self._do_insert(cls._base_manager, using, fields, returning_fields, raw)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\db\models\base.py", line 906, in _do_insert
+    return manager._insert(
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\db\models\manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\db\models\query.py", line 1270, in _insert
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\db\models\sql\compiler.py", line 1410, in execute_sql
+    cursor.execute(sql, params)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\db\backends\utils.py", line 98, in execute
+    return super().execute(sql, params)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\db\backends\utils.py", line 66, in execute
+    return self._execute_with_wrappers(sql, params, many=False, executor=self._execute)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\db\backends\utils.py", line 75, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\db\backends\utils.py", line 84, in _execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\db\utils.py", line 90, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\db\backends\utils.py", line 84, in _execute
+    return self.cursor.execute(sql, params)
+django.db.utils.IntegrityError: ОШИБКА:  значение NULL в столбце "client_ip" отношения "proposal_session" нарушает ограничение NOT NULL
+DETAIL:  Ошибочная строка содержит (107, 2021-05-07 16:55:08.207764+00, 2021-05-07 16:55:08.207764+00, favicon.ico, f, null, null, f, null, f, Trying to access a non-existent Proposal., null).
+
+ERROR 2021-05-07 19:55:08,283 basehttp 25088 18828 "GET /en/favicon.ico/ HTTP/1.1" 500 191231
+WARNING 2021-05-07 21:30:08,455 log 24012 4036 Not Found: /en/a0P04000000/
+WARNING 2021-05-07 21:30:08,456 basehttp 24012 4036 "GET /en/a0P04000000/ HTTP/1.1" 404 2786
+WARNING 2021-05-07 21:30:09,817 log 24012 3660 Not Found: /en/favicon.ico/
+WARNING 2021-05-07 21:30:09,818 basehttp 24012 3660 "GET /en/favicon.ico/ HTTP/1.1" 404 2786
+ERROR 2021-05-07 21:30:14,229 log 24012 3660 Internal Server Error: /en/a0P04000000ERUrEAO/
+Traceback (most recent call last):
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\views\generic\base.py", line 70, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\views\generic\base.py", line 98, in dispatch
+    return handler(request, *args, **kwargs)
+  File "F:\workspace\django\kiwapower_web_proposal\proposal\services.py", line 32, in clocked
+    result = func(*args, **kwargs)  # вызов декорированной функции
+  File "F:\workspace\django\kiwapower_web_proposal\proposal\views.py", line 18, in get
+    proposal = services.get_proposal(proposal_id)
+  File "F:\workspace\django\kiwapower_web_proposal\proposal\services.py", line 55, in _wrapped
+    return f(*args, **kwargs)
+  File "F:\workspace\django\kiwapower_web_proposal\proposal\services.py", line 112, in get_proposal
+    error = response[0]['errorCode']
+KeyError: 0
+ERROR 2021-05-07 21:30:14,231 basehttp 24012 3660 "GET /en/a0P04000000ERUrEAO/ HTTP/1.1" 500 91761
+WARNING 2021-05-07 21:34:47,922 log 24684 3584 Not Found: /en/a0P0400000/
+WARNING 2021-05-07 21:34:47,922 basehttp 24684 3584 "GET /en/a0P0400000/ HTTP/1.1" 404 2783
+ERROR 2021-05-07 21:51:17,825 log 3656 8308 Internal Server Error: /en/a0P04000000ERUrEAO/
+Traceback (most recent call last):
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\views\generic\base.py", line 70, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\views\generic\base.py", line 98, in dispatch
+    return handler(request, *args, **kwargs)
+  File "F:\workspace\django\kiwapower_web_proposal\proposal\views.py", line 39, in post
+    services.additional_trusted_email_confirmation(request, proposal_id)
+  File "F:\workspace\django\kiwapower_web_proposal\proposal\services.py", line 508, in additional_trusted_email_confirmation
+    client_ip = request.META['HTTP_X_REAL_IP']
+KeyError: 'HTTP_X_REAL_IP'
+ERROR 2021-05-07 21:51:17,833 basehttp 3656 8308 "POST /en/a0P04000000ERUrEAO/ HTTP/1.1" 500 84473
+ERROR 2021-05-07 22:26:14,527 log 16036 23464 Internal Server Error: /en/a0P04000000GGHQEA4/
+Traceback (most recent call last):
+  File "F:\workspace\django\kiwapower_web_proposal\proposal\services.py", line 112, in get_proposal
+    error = response[0]['errorCode']
+KeyError: 0
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\views\generic\base.py", line 70, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\views\generic\base.py", line 98, in dispatch
+    return handler(request, *args, **kwargs)
+  File "F:\workspace\django\kiwapower_web_proposal\proposal\services.py", line 32, in clocked
+    result = func(*args, **kwargs)  # вызов декорированной функции
+  File "F:\workspace\django\kiwapower_web_proposal\proposal\views.py", line 18, in get
+    proposal = services.get_proposal(proposal_id)
+  File "F:\workspace\django\kiwapower_web_proposal\proposal\services.py", line 55, in _wrapped
+    return f(*args, **kwargs)
+  File "F:\workspace\django\kiwapower_web_proposal\proposal\services.py", line 114, in get_proposal
+    response = response['records'][0]
+IndexError: list index out of range
+ERROR 2021-05-07 22:26:14,725 basehttp 16036 23464 "GET /en/a0P04000000GGHQEA4/ HTTP/1.1" 500 3053
+WARNING 2021-05-07 22:26:14,814 log 16036 24236 Not Found: /static/assets/js/main.js
+WARNING 2021-05-07 22:26:14,816 log 16036 23464 Not Found: /static/assets/css/style.css
+WARNING 2021-05-07 22:26:14,816 basehttp 16036 24236 "GET /static/assets/js/main.js HTTP/1.1" 404 3141
+WARNING 2021-05-07 22:26:14,816 basehttp 16036 23464 "GET /static/assets/css/style.css HTTP/1.1" 404 3141
+WARNING 2021-05-07 22:26:14,863 log 16036 24236 Not Found: /static/assets/js/main.js
+WARNING 2021-05-07 22:26:14,863 basehttp 16036 24236 "GET /static/assets/js/main.js HTTP/1.1" 404 3141
+WARNING 2021-05-07 22:26:14,997 log 16036 24236 Not Found: /static/assets/img/favicon.ico
+WARNING 2021-05-07 22:26:14,997 basehttp 16036 24236 "GET /static/assets/img/favicon.ico HTTP/1.1" 404 3141
+ERROR 2021-05-07 22:28:52,945 log 20796 22212 Internal Server Error: /en/a0P04000000GGHQEA4/
+Traceback (most recent call last):
+  File "F:\workspace\django\kiwapower_web_proposal\proposal\services.py", line 112, in get_proposal
+    error = response[0]['errorCode']
+KeyError: 0
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\views\generic\base.py", line 70, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\views\generic\base.py", line 98, in dispatch
+    return handler(request, *args, **kwargs)
+  File "F:\workspace\django\kiwapower_web_proposal\proposal\services.py", line 32, in clocked
+    result = func(*args, **kwargs)  # вызов декорированной функции
+  File "F:\workspace\django\kiwapower_web_proposal\proposal\views.py", line 18, in get
+    proposal = services.get_proposal(proposal_id)
+  File "F:\workspace\django\kiwapower_web_proposal\proposal\services.py", line 55, in _wrapped
+    return f(*args, **kwargs)
+  File "F:\workspace\django\kiwapower_web_proposal\proposal\services.py", line 114, in get_proposal
+    response = response['records'][0]
+IndexError: list index out of range
+ERROR 2021-05-07 22:28:52,949 basehttp 20796 22212 "GET /en/a0P04000000GGHQEA4/ HTTP/1.1" 500 95163

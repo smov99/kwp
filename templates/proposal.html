@@ -145,6 +145,9 @@
               <div class="form-group">
                 <textarea class="form-control" name="message" rows="5" data-rule="required" data-msg="{% trans 'Por favor escribe algo para nosotros' %}" placeholder="{% trans 'Ingrese su pregunta' %}"></textarea>
               </div>
+              <div class="mb-3">
+                <div class="sent-message">{% trans 'Gracias por su consulta, nos comunicaremos con usted a la brevedad' %}</div>
+              </div>
               <div class="text-center"><button type="submit">{% trans 'Enviar' %}</button></div>
             </form>
           </div>
@@ -157,6 +160,9 @@
               {% csrf_token %}
               <div class="form-group">
                 <textarea class="form-control" name="message" rows="5" data-rule="required" data-msg="{% trans 'Por favor escribe algo para nosotros' %}" placeholder="{% trans 'Indique el mejor momento y la mejor forma para que Kiwapower se comunique con usted' %}"></textarea>
+              </div>
+              <div class="mb-3">
+                <div class="sent-message">{% trans 'Gracias por su consulta, nos comunicaremos con usted a la brevedad' %}</div>
               </div>
               <div class="text-center"><button type="submit">{% trans 'Enviar' %}</button></div>
             </form>

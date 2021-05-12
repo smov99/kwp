@@ -46,18 +46,20 @@ class ConfirmationView(View):
             request.session['contact_account_id'] = email_validation['contact_account_id']
             request.session['contact_id'] = email_validation['contact_id']
             request.session['is_emailvalid'] = True
+            request.session['document'] = services.get_pdf_for_review(proposal_id)
             is_contactcreated = email_validation['is_contactcreated']
             services.additional_confirmation(request, is_contactcreated, proposal, proposal_id)
             print(request.session['sf_session_id'])
             return redirect('proposal', proposal_id)
         else:
+            client_ip = request.META['HTTP_X_REAL_IP']
+            # client_ip = request.META['REMOTE_ADDR']
             Session.objects.create(
                 proposal_id=proposal_id,
                 email=request.session['email'],
                 message='Trying to access Proposal with a non-valid Email.',
-                client_ip=request.META['HTTP_X_REAL_IP'],
-                # client_ip=request.META['REMOTE_ADDR'],
-                client_geolocation=None,
+                client_ip=client_ip,
+                client_geolocation=services.get_geolocation(client_ip),
                 device=services.get_user_device(request)
             )
             raise Http404('email')
@@ -100,7 +102,7 @@ class ProposalPDFView(View):
             services.additional_email_verification(request, proposal_id)
         except KeyError:
             raise Http404('email')
-        document = services.get_pdf_for_review(proposal_id)
+        document = request.session['document']
         document_link = document['document_link']
         document_title = document['title']
         return render(request, 'pdf.html', {'proposal_id': proposal_id,

@@ -25,6 +25,7 @@ class SessionAdmin(admin.ModelAdmin):
         'contact_created',
         'message',
         'client_ip',
+        'client_geolocation',
         'device'
     )
     readonly_fields = (

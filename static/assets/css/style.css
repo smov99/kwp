@@ -39,6 +39,90 @@ main:before {
   left: 0;
   right: 0;
 }
+
+/*--------------------------------------------------------------
+# Preloader
+--------------------------------------------------------------*/
+@-webkit-keyframes clockwise {
+  to {transform: rotate(360deg) translatez(0);}
+}
+
+@keyframes clockwise {
+  to {transform: rotate(360deg) translatez(0);}
+}
+
+#preloader {
+  position: fixed;
+  display: flex;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 9998;
+  align-items: center;
+  justify-content: center;
+}
+
+#loader {
+  height: 100px;
+  width:  100px;
+  border-width: 7px;
+  display: block;
+  position: relative;
+  border-style: solid;
+  border-color: transparent transparent transparent hsla(355, 100%, 45%, 1);
+  border-radius: 100%;
+  -webkit-animation: clockwise 0.35s linear infinite;
+  animation: clockwise 0.35s linear infinite;
+  z-index: 9999;
+}
+
+#preloader .loader-section {
+  position: fixed;
+  width: 100%;
+  height: 51%;
+  background: #fff;
+  z-index: 9998;
+  -webkit-transform: translateX(0);
+  -ms-transform: translateX(0);
+  transform: translateX(0);
+}
+
+#preloader .loader-section.section-top {
+    top: 0;
+}
+
+#preloader .loader-section.section-bottom {
+  bottom: 0;
+}
+
+#preloader.loaded .loader-section.section-top {
+  -webkit-transform: translateY(-100%);
+      -ms-transform: translateY(-100%);
+          transform: translateY(-100%);
+
+  -webkit-transition: all 0.7s 0.3s cubic-bezier(0.645, 0.045, 0.355, 1.000);
+          transition: all 0.7s 0.3s cubic-bezier(0.645, 0.045, 0.355, 1.000);
+}
+
+#preloader.loaded .loader-section.section-bottom {
+  -webkit-transform: translateY(100%);
+      -ms-transform: translateY(100%);
+          transform: translateY(100%);
+
+  -webkit-transition: all 0.7s 0.3s cubic-bezier(0.645, 0.045, 0.355, 1.000);
+    transition: all 0.7s 0.3s cubic-bezier(0.645, 0.045, 0.355, 1.000);
+}
+
+#preloader.loaded #loader {
+  opacity: 0;
+  -webkit-transition: all 0.3s ease-out;
+          transition: all 0.3s ease-out;
+}
+ #preloader.loaded {
+  visibility: hidden;
+}
+
 /*--------------------------------------------------------------
 # Progress Bar
 --------------------------------------------------------------*/
@@ -50,7 +134,7 @@ main:before {
   height: 5px;
   position: fixed;
   bottom: 0;
-  z-index: 9999;
+  z-index: 9997;
 }
 
 /*--------------------------------------------------------------
@@ -858,6 +942,17 @@ section {
 
 .contact .contact-form button[type="submit"]:hover {
   background: #e35052;
+}
+
+.contact .contact-form .sent-message {
+  display: none;
+  color: #fff;
+  width: 100%;
+  background: #18d26e;
+  justify-content: center;
+  text-align: center;
+  padding: 15px;
+  font-weight: 600;
 }
 
 @media (max-width: 800px) {

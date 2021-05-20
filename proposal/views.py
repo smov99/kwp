@@ -16,18 +16,15 @@ from .forms import VerificationForm
 class ConfirmationView(View):
     @services.clock
     def get(self, request, proposal_id) -> HttpResponse:
-        proposal = services.get_proposal_(proposal_id)
-        print(services.get_user_device(request))
+        proposal = services.get_proposal(proposal_id)
         if proposal:
             request.session['proposal'] = proposal
             return render(request, 'confirmation.html', {'proposal_id': proposal_id})
         else:
-            try:
-                email = request.session['email']
-            except KeyError:
-                email = False
+            email = request.session.get('email')
             services.create_failed_session_record(request, proposal_id, email)
 
+    @services.clock
     def post(self, request, proposal_id) -> HttpResponse:
         form = VerificationForm(request.POST)
         if not form.is_valid():
@@ -39,6 +36,7 @@ class ConfirmationView(View):
         if email == settings.TRUSTED_EMAIL:
             services.additional_trusted_email_confirmation(request, proposal_id)
             request.session['is_emailvalid'] = True
+            request.session['document'] = services.get_pdf_for_review(proposal_id)
             return redirect('proposal', proposal_id)
         request.session['proposal_account_id'] = proposal['Account__c']
         email_validation = services.user_email_validation(proposal['Account__c'], email)
@@ -80,6 +78,7 @@ class ProposalView(View):
                 raise Http404('published')
             request.session['proposal_id'] = proposal_id
             request.session['is_proposalexist'] = proposal['Published__c']
+            document = request.session['document']
             welcome_message = proposal['Welcome_message__c']
             creator = services.get_proposals_creator(proposal['Account__c'])
             client_name = creator['client_name']
@@ -90,7 +89,8 @@ class ProposalView(View):
                                                      'message': welcome_message,
                                                      'creator_name': creator_name,
                                                      'img': img,
-                                                     'client_name': client_name
+                                                     'client_name': client_name,
+                                                     'document': document
                                                      })
         else:
             raise Http404()
@@ -112,7 +112,7 @@ class ProposalPDFView(View):
 
     def post(self, request, proposal_id):
         if request.POST['url'] == request.META['HTTP_REFERER']:
-            document = services.get_pdf_for_review(proposal_id)
+            document = request.session['document']
             file_name = document['file_name']
             os.remove(os.path.join(settings.MEDIA_ROOT, file_name))
         return HttpResponse({'ok': True})
@@ -125,7 +125,7 @@ class Viewer(View):
             proposal_id = request.session['proposal_id']
         except KeyError:
             return HttpResponse('Session time expired. Please reopen this page.')
-        document = services.get_pdf_for_review(proposal_id)
+        document = request.session['document']
         return render(request, 'viewer.html', {'document_body': document['document_base64'],
                                                'document_name': document['file_name']})
 
@@ -136,6 +136,7 @@ class EventsView(View):
             time_spent = request.POST['time_spent']
         except KeyError:
             time_spent = None
+        print(time_spent)
         try:
             message = request.POST['message']
         except KeyError:

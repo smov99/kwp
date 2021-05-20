@@ -532,11 +532,13 @@ main:before {
 #introduction-error {
   width: 100%;
   height: 87vh;
+  height: calc(var(--vh, 1vh) * 87);
   background: url("../img/bg-proposals.png") bottom fixed no-repeat;
   background-size: 100vw;
   position: relative;
   text-align: center;
   margin-top: 13vh;
+  margin-top: calc(var(--vh, 1vh) * 13);
 }
 
 #introduction-error:before {
@@ -571,7 +573,9 @@ main:before {
 @media (max-width: 992px) {
   #introduction-error {
     margin-top: 10vh;
+    margin-top: calc(var(--vh, 1vh) * 10);
     height: 90vh;
+    height: calc(var(--vh, 1vh) * 90);
   }
 
   #introduction-error h1 {
@@ -595,6 +599,7 @@ main:before {
 #introduction-pdf {
   width: 100%;
   height: 10vh;
+  height: calc(var(--vh, 1vh) * 10);
   background: url("../img/bg-proposals.png") top fixed no-repeat;
   background-size: 100vw;
   position: relative;
@@ -624,7 +629,9 @@ main:before {
 
 .pdf-viewer {
   width: 100vw;
+  width: calc(var(--vw, 1vh) * 100);
   height: 90vh;
+  height: calc(var(--vh, 1vh) * 90);
   overflow: scroll;
 }
 
@@ -1179,7 +1186,7 @@ section {
     margin-right: auto;
     align-content: center;
     width: 110px;
-    padding-left: 20px;
+    padding-left: 25px;
   }
 
   #footer .footer-link-p {

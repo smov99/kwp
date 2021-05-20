@@ -30,7 +30,12 @@ class Session(BaseModel):
 
 
 class SessionEvent(BaseModel):
-    session_id = models.ForeignKey(Session, to_field='id', on_delete=models.CASCADE)
+    session_id = models.ForeignKey(
+        Session,
+        to_field='id',
+        on_delete=models.CASCADE,
+        related_name='events'
+    )
     event_type = models.CharField(max_length=255)
     event_name = models.CharField(max_length=255)
     message = models.TextField(blank=True, null=True)

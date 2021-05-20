@@ -4,6 +4,8 @@ import requests
 from datetime import datetime, timedelta
 import functools
 import time
+
+from asgiref.sync import sync_to_async
 from user_agents import parse
 from ipdata import ipdata
 
@@ -13,24 +15,12 @@ from django.shortcuts import redirect
 from kwp import settings
 from .models import SessionEvent, Session
 
-params = {
-    'grant_type': 'password',
-    'client_id': settings.SF_CONSUMER_KEY,
-    'client_secret': settings.SF_CONSUMER_SECRET,
-    'username': settings.SF_USER_NAME,
-    'password': settings.SF_PASSWORD,
-}
-
-r = requests.post(settings.SF_LOGIN_URL, params=params)
-access_token = r.json().get('access_token')
-instance_url = r.json().get('instance_url')
-
 
 def clock(func):
     def clocked(*args, **kwargs):
         t0 = time.time()
 
-        result = func(*args, **kwargs)  # вызов декорированной функции
+        result = func(*args, **kwargs)
 
         elapsed = time.time() - t0
         print(elapsed)
@@ -60,11 +50,26 @@ def timed_cache(**timedelta_kwargs):
     return _wrapper
 
 
+def salesforce_login():
+    params = {
+        'grant_type': 'password',
+        'client_id': settings.SF_CONSUMER_KEY,
+        'client_secret': settings.SF_CONSUMER_SECRET,
+        'username': settings.SF_USER_NAME,
+        'password': settings.SF_PASSWORD,
+    }
+    response = requests.post('https://test.salesforce.com/services/oauth2/token', params=params)
+    return response
+
+
 def sf_api_call(action, parameters={}, method='get', data={}):
     """
     Helper function to make calls to Salesforce REST API.
-    Parameters: action (the URL), URL params, method (get, post or patch), data for POST/PATCH.
+    Parameters: action (the URL), URL params, method (get, post or patch), data for POST/PATCH, client.
     """
+    sf_login = salesforce_login()
+    access_token = sf_login.json().get('access_token')
+    instance_url = sf_login.json().get('instance_url')
     headers = {
         'Content-type': 'application/json',
         'Accept-Encoding': 'gzip',
@@ -127,7 +132,6 @@ def get_user_device(request):
     return response
 
 
-@timed_cache(seconds=360)
 def get_proposal(proposal_id, restart=None):
     """Getting proposal info.
 
@@ -146,13 +150,11 @@ def get_proposal(proposal_id, restart=None):
         except IndexError:
             response = False
     else:
-        if error == 'INVALID_QUERY_FILTER_OPERATOR':
-            response = False
-        else:
-            response = 'restart'
+        response = False
     return response
 
 
+@timed_cache(seconds=600)
 def get_proposal_(proposal_id):
     proposal_response = get_proposal(proposal_id)
     if proposal_response == 'restart':
@@ -164,6 +166,7 @@ def get_proposal_(proposal_id):
     return proposal_response
 
 
+@timed_cache(seconds=600)
 def get_user_email_information(proposal_account_id):
     """Getting information corresponding to the provided proposal.
 
@@ -176,7 +179,6 @@ def get_user_email_information(proposal_account_id):
     return response
 
 
-@timed_cache(seconds=600)
 def user_email_validation(proposal_account_id, email):
     """User email validation
 
@@ -303,7 +305,11 @@ def get_single_document(content_document_id):
     :return: Document.
     """
     query = f"SELECT Id, ContentSize, CreatedDate, Description, FileExtension, FileType, OwnerId, ParentId, PublishStatus, SharingOption, SharingPrivacy, Title FROM ContentDocument where Id='{content_document_id}' and FileType='PDF' order by CreatedDate DESC"
-    response = sf_api_call(f'/services/data/{settings.SF_API_VERSION}/query/', {'q': query})['records'][0]
+    response = sf_api_call(f'/services/data/{settings.SF_API_VERSION}/query/', {'q': query})
+    try:
+        response = response['records'][0]
+    except:
+        response = None
     return response
 
 
@@ -332,6 +338,7 @@ def get_document(url):
     return response
 
 
+@timed_cache(seconds=600)
 def get_creator_img(url):
     """Getting creator image.
 
@@ -353,22 +360,25 @@ def get_pdf_for_review(proposal_id):
     """
     response = {}
     document_list = get_documents_list(proposal_id)[0]
-    # document_id = document_list['ContentDocumentId']
-    document_id = '069040000005geEAAQ'  # Used for tests
+    document_id = document_list['ContentDocumentId']
+    # document_id = '069040000005geEAAQ'  # Used for tests
     single_document = get_single_document(document_id)
-    response['title'] = ' '.join(single_document['Title'].split('_'))
-    document_link = get_document_link(document_id)
-    bytes_document = get_document(document_link)
-    file_name = single_document['Title'] + '.pdf'
-    document_path = os.path.join(settings.MEDIA_ROOT, file_name)
-    try:
-        with open(document_path, 'wb') as doc:
-            doc.write(bytes_document)
-    except FileExistsError:
-        pass
-    response['document_base64'] = base64.b64encode(bytes_document).decode()
-    response['file_name'] = file_name
-    response['document_link'] = os.path.join(settings.MEDIA_URL, single_document['Title'] + '.pdf')
+    if single_document:
+        response['title'] = ' '.join(single_document['Title'].split('_'))
+        document_link = get_document_link(document_id)
+        bytes_document = get_document(document_link)
+        file_name = single_document['Title'] + '.pdf'
+        document_path = os.path.join(settings.MEDIA_ROOT, file_name)
+        try:
+            with open(document_path, 'wb') as doc:
+                doc.write(bytes_document)
+        except FileExistsError:
+            pass
+        response['document_base64'] = base64.b64encode(bytes_document).decode()
+        response['file_name'] = file_name
+        response['document_link'] = os.path.join(settings.MEDIA_URL, single_document['Title'] + '.pdf')
+    else:
+        response = None
     return response
 
 

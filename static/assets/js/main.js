@@ -165,7 +165,7 @@
   // Toggle .header-scrolled class to #header when page is scrolled
   $(window).scroll(function() {
     if ($(window).width() > 992) {
-      if ($(this).scrollTop() > 100) {
+      if ($(this).scrollTop() > 50) {
         $('#header').addClass('header-scrolled');
       } else {
         $('#header').removeClass('header-scrolled');
@@ -184,6 +184,12 @@
   });
 
   //PDF preview and events
+  let vh = window.innerHeight * 0.01,
+    vw = window.innerWidth * 0.01;
+
+  document.documentElement.style.setProperty('--vh', `${vh}px`)
+  document.documentElement.style.setProperty('--vw', `${vw}px`)
+
   $("#proposal-pdf-link").click(function (e) {
     var pdf_url = window.location.href + 'pdf',
       modal_width = screen.width,
@@ -198,8 +204,13 @@
 
     $(pdfWindow).on('load', function () {
       var timeTracker = {},
+        vh = this.window.innerHeight * 0.01,
+        vw = this.window.innerWidth * 0.01,
         iframe = this.document.getElementById('pdf-iframe'),
         src = $(iframe).attr('src');
+
+      this.document.documentElement.style.setProperty('--vh', `${vh}px`)
+      this.document.documentElement.style.setProperty('--vw', `${vw}px`)
 
       timeTracker['pageStart'] = new Date();
 

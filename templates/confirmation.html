@@ -20,7 +20,7 @@
   {% for lang in languages %}
     {% if lang.code != LANGUAGE_CODE %}
     <li class="nav-item d-block ml-4 mb-1">
-      <a class="nav-link" href="/{{ lang.code }}/{{ proposal_id }}">{% trans 'EN' %}</a>
+{#      <a class="nav-link" href="{% if lang.code != 'es' %}/{{ lang.code }}{% endif %}/{{ proposal_id }}">{% trans 'EN' %}</a>#}
     </li>
     {% endif %}
   {% endfor %}

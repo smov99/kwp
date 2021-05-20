@@ -29,7 +29,7 @@
     {% for lang in languages %}
     {% if lang.code != LANGUAGE_CODE %}
     <li class="nav-item d-block ml-4 mb-1">
-      <a class="nav-link" href="/{{ lang.code }}/{{ proposal_id }}/proposal">{% trans 'EN' %}</a>
+      <a class="nav-link" href="{% if lang.code != 'es' %}/{{ lang.code }}{% endif %}/{{ proposal_id }}/proposal">{% trans 'EN' %}</a>
     </li>
     {% endif %}
     {% endfor %}
@@ -89,6 +89,7 @@
     </section><!-- End Prepared Section -->
 
     <!-- ======= Proposal Link Section ======= -->
+  {% if document %}
     <section id="proposal-link" class="proposal-link">
       <div class="container">
         <div class="row">
@@ -100,6 +101,7 @@
         </div>
       </div>
     </section><!-- End Proposal Link Section -->
+  {% endif %}
 
     <!-- ======= Why Kiwapower Section ======= -->
     <section id="whykiwapower" class="faq">

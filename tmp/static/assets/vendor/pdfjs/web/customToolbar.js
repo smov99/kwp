@@ -4,6 +4,7 @@ let sheet = (function() {
     document.head.appendChild(style);
     return style.sheet;
    })();
+   initialBookmark = "page=1";
    function editToolBar(){
     //when the page is resized, the viewer hides and move some buttons around.
     //this function forcibly show all buttons so none of them disappear or re-appear on page resize

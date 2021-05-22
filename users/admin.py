@@ -34,4 +34,4 @@ class UserAdmin(BaseUserAdmin):
 
 admin.site.unregister(Group)
 admin.site.site_header = 'Kiwapower administration'
-admin.site.site_title = 'Web proposal administration'
+admin.site.site_title = 'Kiwapower site admin'

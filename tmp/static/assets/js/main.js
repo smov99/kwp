@@ -21,7 +21,7 @@
 
   // Ajax requests
   function eventsAjax(event_type, event_name, time_spent, message) {
-    var _path = window.location.href.replace('proposal/', 'events/')
+    var _path = window.location.origin + '/events/';
     $.ajax({
       headers: {"X-CSRFToken": csrftoken},
       url: _path,
@@ -65,6 +65,14 @@
         scrollPercent = scrollTop / scrollBottom * 100 + '%';
 
     document.getElementById('progress-bar').style.setProperty('--scrollAmount', scrollPercent);
+  });
+
+  // Preloader
+  $(window).on('load', function () {
+    let preloader = document.getElementById('preloader');
+    setTimeout(function () {
+      preloader.classList.add('loaded')
+    }, 1000)
   });
 
   // Smooth scroll for the navigation menu and links with .scrollto classes
@@ -157,7 +165,7 @@
   // Toggle .header-scrolled class to #header when page is scrolled
   $(window).scroll(function() {
     if ($(window).width() > 992) {
-      if ($(this).scrollTop() > 100) {
+      if ($(this).scrollTop() > 50) {
         $('#header').addClass('header-scrolled');
       } else {
         $('#header').removeClass('header-scrolled');
@@ -176,6 +184,12 @@
   });
 
   //PDF preview and events
+  let vh = window.innerHeight * 0.01,
+    vw = window.innerWidth * 0.01;
+
+  document.documentElement.style.setProperty('--vh', `${vh}px`)
+  document.documentElement.style.setProperty('--vw', `${vw}px`)
+
   $("#proposal-pdf-link").click(function (e) {
     var pdf_url = window.location.href + 'pdf',
       modal_width = screen.width,
@@ -183,15 +197,20 @@
       pdfWindow;
     e.preventDefault();
 
-    eventsAjax('open_pdf', 'Open PDF document');
+    eventsAjax('open_pdf', 'PDF open');
 
     if ($(window).width()) {
       pdfWindow = window.open(pdf_url,"", 'width='+modal_width+',height='+modal_height);}
 
     $(pdfWindow).on('load', function () {
       var timeTracker = {},
+        vh = this.window.innerHeight * 0.01,
+        vw = this.window.innerWidth * 0.01,
         iframe = this.document.getElementById('pdf-iframe'),
         src = $(iframe).attr('src');
+
+      this.document.documentElement.style.setProperty('--vh', `${vh}px`)
+      this.document.documentElement.style.setProperty('--vw', `${vw}px`)
 
       timeTracker['pageStart'] = new Date();
 
@@ -208,7 +227,7 @@
           spentTime;
 
         valDict.oldVal = inputVal.val()
-        eventsAjax('page_opened', "Opened page number: "+valDict.oldVal)
+        eventsAjax('page_opened', 'PDF page 1')
 
         $(downloadBtn).on('click', function () {
           eventsAjax('download', 'PDF downloaded');
@@ -233,7 +252,7 @@
             endPage = new Date().getTime()
             spentTime = ((endPage - startPage) / 1000)+'seconds'
             eventsAjax('spent_time', 'Spent '+spentTime+' seconds on page number '+valDict.oldVal, spentTime+'s')
-            eventsAjax('page_opened', "Opened page number: "+valDict.newVal);
+            eventsAjax('page_opened', "Pdf page "+valDict.newVal);
             valDict.oldVal = valDict.newVal
             startPage = new Date().getTime()
           }
@@ -249,13 +268,8 @@
         });
       }).attr('src', src);
 
-      // Copy tracking
-      this.document.addEventListener('copy', function (e) {
-
-      });
-
       $(pdfWindow).on('unload', () => {
-        eventsAjax('closing_preview', 'Closing modal preview');
+        eventsAjax('closing_preview', 'Pdf close');
         pdfAjax();
       });
     });
@@ -269,29 +283,46 @@
   $('.section-title .collapsed').on('click', function (e) {
     e.preventDefault();
     if ($(this).hasClass('opened')) {
+      eventsAjax('opening_of_section', 'Section ' + e.target.textContent + ' close');
       $(this).removeClass('opened')
     } else {
-      eventsAjax('opening_of_section', 'Opening of section: ' + e.target.textContent);
+      eventsAjax('opening_of_section', 'Section ' + e.target.textContent + ' open');
       $(this).addClass('opened')
     }
   });
 
   $('.faq-list .collapsed').on('click', function (e) {
     e.preventDefault();
+    let selected_text = 'Question ' + e.target.textContent,
+      l = selected_text.length;
+    if (l > 50) {
+        selected_text = selected_text.substring(0, 20) + ' ... ' + selected_text.substring(l-19, l);
+    }
     if ($(this).hasClass('opened')) {
+      eventsAjax('opening_of_sections_line', selected_text + ' close');
       $(this).removeClass('opened')
     } else {
-      eventsAjax('opening_of_sections_line', 'Opening of line: ' + e.target.textContent);
+      eventsAjax('opening_of_sections_line', selected_text + ' open');
+      $(this).addClass('opened')
     }
   });
 
   $('#contact form button').on('click', function (e) {
     e.preventDefault();
     let message = $(this).closest("form").find('textarea'),
-      _value = message;
+      _value = message,
+      sentMessage = $(this).closest('form').find('.sent-message');
     if (_value.val().replace(/ /g,'').length) {
-      eventsAjax('click_on_submit_button', 'Click on submit button in ' + $(this).closest("form").attr('id'), '', '' + message.val());
-      message.val('')
+      eventsAjax('click_on_submit_button', 'Question submitted ' + $(this).closest("form").attr('id'), '', '' + message.val());
+      message.val('');
+      $(sentMessage).slideDown(250).fadeIn(100, function () {
+        $(sentMessage).css({'display': 'flex'})
+      });
+      setTimeout(function () {
+        $(sentMessage).slideUp(250, 'linear').fadeOut(100, function () {
+          $(sentMessage).css({'display':'none'})
+        })
+      }, 4000)
     }
   });
 

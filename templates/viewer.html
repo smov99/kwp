@@ -40,6 +40,7 @@ See https://github.com/adobe-type-tools/cmap-resources
 
   <script src="{% static 'assets/vendor/pdfjs/web/viewer.js' %}"></script>
   <script src="{% static 'assets/vendor/jquery/jquery.min.js' %}"></script>
+  <script src="{% static 'assets/vendor/pdfjs/web/main.js' %}"></script>
   <script src="{% static 'assets/vendor/pdfjs/web/customToolbar.js' %}"></script>
 
   </head>
@@ -413,6 +414,12 @@ See https://github.com/adobe-type-tools/cmap-resources
 
     </div> <!-- outerContainer -->
     <div id="printContainer"></div>
+
+    <!-- Preloader -->
+    <div id="preloader">
+      <div class="loader-section section-top"></div>
+      <div class="loader-section section-bottom"></div>
+    </div>
   </body>
 </html>
 

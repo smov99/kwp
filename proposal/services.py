@@ -117,9 +117,9 @@ def get_geolocation(client_ip):
     except:
         response = None
     else:
-        response = geolocation['continent_name'] + ', ' +\
-                   geolocation['country_name'] + ', ' +\
-                   geolocation['city'] + ', ' +\
+        response = geolocation['continent_name'] + ', ' + \
+                   geolocation['country_name'] + ', ' + \
+                   geolocation['city'] + ', ' + \
                    geolocation['region']
     return response
 
@@ -200,7 +200,7 @@ def user_email_validation(proposal_account_id, email):
             domain_response = email_domain_validation(email)
             try:
                 valid_email = domain_response[0]['Email']
-            except TypeError:
+            except:
                 valid_email = False
             if valid_email:
                 if valid_email == email:
@@ -326,7 +326,7 @@ def get_document_link(content_document_id):
     return response
 
 
-@timed_cache(seconds=3600)
+@timed_cache(seconds=600)
 def get_document(url):
     """Getting needed document.
 
@@ -438,9 +438,10 @@ def create_sf_event_record(
         'Time_spent__c': time_spent,
         'Case__c': case_id
     }
-    sf_api_call(f"/services/data/{settings.SF_API_VERSION}/sobjects/Proposal_engagement__c",
+    r = sf_api_call(f"/services/data/{settings.SF_API_VERSION}/sobjects/Proposal_engagement__c",
                 method='post',
                 data=data)
+    print(r)
 
 
 def create_event_record(
@@ -485,7 +486,8 @@ def create_event_record(
                 event_name=event_name,
                 contact_account_id=contact_account_id,
                 proposal_account_id=proposal_account_id,
-                contact_id=contact_id
+                contact_id=contact_id,
+                user_email=email,
             )
             event_name = 'Question submitted'
         create_sf_event_record(
@@ -502,10 +504,12 @@ def create_case_record(
         event_name,
         contact_account_id,
         proposal_account_id,
+        user_email,
         contact_id
 ):
     """Creating a Case record.
 
+    :param user_email: User email.
     :param message: Message(if available).
     :param proposal_name: 'Name' from 'get_proposal' requests response.
     :param event_name: Event name.
@@ -522,6 +526,7 @@ def create_case_record(
         'From_django__c': True,
         'AccountId': proposal_account_id,
         'OwnerId': owner_id,
+        'ContactEmail': user_email,
         'ContactId': contact_id,
         'Subject': subject
     }
@@ -566,12 +571,14 @@ def additional_confirmation(request, is_contactcreated, proposal, proposal_id):
     client_ip = request.META['HTTP_X_REAL_IP']
     # client_ip = '1'
     if client_ip != '127.0.0.1':
-        request.session['sf_session_id'] = create_sf_session_record(proposal_id,
-                                                                    request.session['proposal_account_id'],
-                                                                    request.session['contact_id'],
-                                                                    get_user_device(request),
-                                                                    client_ip,
-                                                                    get_geolocation(client_ip))
+        request.session['sf_session_id'] = create_sf_session_record(
+            proposal_id,
+            request.session['proposal_account_id'],
+            request.session['contact_id'],
+            get_user_device(request),
+            client_ip,
+            get_geolocation(client_ip)
+        )
         if not proposal['Published__c']:
             Session.objects.create(
                 proposal_id=proposal_id,

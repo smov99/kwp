@@ -646,7 +646,7 @@ class DefaultExternalServices {
 
 exports.DefaultExternalServices = DefaultExternalServices;
 const PDFViewerApplication = {
-  initialBookmark: document.location.hash.substring(1),
+  initialBookmark: "page=1",
   _initializedCapability: (0, _pdfjsLib.createPromiseCapability)(),
   fellback: false,
   appConfig: null,
@@ -2102,12 +2102,12 @@ const PDFViewerApplication = {
     });
 
     if (this.pdfHistory.initialBookmark) {
-      this.initialBookmark = this.pdfHistory.initialBookmark;
+      this.initialBookmark = "page=1";
       this.initialRotation = this.pdfHistory.initialRotation;
     }
 
     if (initialDest && !this.initialBookmark && viewOnLoad === ViewOnLoad.UNKNOWN) {
-      this.initialBookmark = JSON.stringify(initialDest);
+      this.initialBookmark = "page=1";
       this.pdfHistory.push({
         explicitDest: initialDest,
         pageNumber: null

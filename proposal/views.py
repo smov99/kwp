@@ -36,7 +36,6 @@ class ConfirmationView(View):
         if email == settings.TRUSTED_EMAIL:
             services.additional_trusted_email_confirmation(request, proposal_id)
             request.session['is_emailvalid'] = True
-            request.session['document'] = services.get_pdf_for_review(proposal_id)
             return redirect('proposal', proposal_id)
         request.session['proposal_account_id'] = proposal['Account__c']
         email_validation = services.user_email_validation(proposal['Account__c'], email)
@@ -44,7 +43,6 @@ class ConfirmationView(View):
             request.session['contact_account_id'] = email_validation['contact_account_id']
             request.session['contact_id'] = email_validation['contact_id']
             request.session['is_emailvalid'] = True
-            request.session['document'] = services.get_pdf_for_review(proposal_id)
             is_contactcreated = email_validation['is_contactcreated']
             services.additional_confirmation(request, is_contactcreated, proposal, proposal_id)
             print(request.session['sf_session_id'])
@@ -78,7 +76,8 @@ class ProposalView(View):
                 raise Http404('published')
             request.session['proposal_id'] = proposal_id
             request.session['is_proposalexist'] = proposal['Published__c']
-            document = request.session['document']
+            document = services.get_pdf_for_review(proposal_id)
+            request.session['document'] = document
             welcome_message = proposal['Welcome_message__c']
             creator = services.get_proposals_creator(proposal['Account__c'])
             client_name = creator['client_name']
@@ -95,6 +94,13 @@ class ProposalView(View):
         else:
             raise Http404()
 
+    def post(self, request, proposal_id):
+        if request.POST['url'] == request.META['HTTP_REFERER']:
+            document = request.session['document']
+            file_name = document['file_name']
+            os.remove(os.path.join(settings.MEDIA_ROOT, file_name))
+        return HttpResponse({'ok': True})
+
 
 class ProposalPDFView(View):
     def get(self, request, proposal_id) -> HttpResponse:
@@ -110,13 +116,6 @@ class ProposalPDFView(View):
                                             'document_title': document_title
                                             })
 
-    def post(self, request, proposal_id):
-        if request.POST['url'] == request.META['HTTP_REFERER']:
-            document = request.session['document']
-            file_name = document['file_name']
-            os.remove(os.path.join(settings.MEDIA_ROOT, file_name))
-        return HttpResponse({'ok': True})
-
 
 class Viewer(View):
     @xframe_options_exempt
@@ -131,28 +130,26 @@ class Viewer(View):
 
 
 class EventsView(View):
-    def post(self, request, proposal_id):
+    def post(self, request):
         try:
-            time_spent = request.POST['time_spent']
+            time_spent = float(request.POST['time_spent'])
         except KeyError:
             time_spent = None
         print(time_spent)
-        try:
-            message = request.POST['message']
-        except KeyError:
-            message = None
+        message = request.POST.get('message')
         if request.session['email'] == settings.TRUSTED_EMAIL:
             request.session['contact_id'] = None
             request.session['contact_account_id'] = None
         request.session['event_type'] = request.POST['event_type']
         request.session['event_name'] = request.POST['event_name']
+        sf_session = request.session.get('sf_session_id')
         services.create_event_record(
             session_id=request.session['session_id'],
             event_type=request.POST['event_type'],
             event_name=request.POST['event_name'],
             time_spent=time_spent,
             message=message,
-            sf_session_id=request.session['sf_session_id'],
+            sf_session_id=sf_session,
             proposal_account_id=request.session['proposal_account_id'],
             contact_id=request.session['contact_id'],
             email=request.session['email'],

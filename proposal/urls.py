@@ -2,8 +2,7 @@ from django.urls import path
 from proposal import views
 
 urlpatterns = [
-    path('', views.ConfirmationView.as_view(), name='confirmation'),
-    path('proposal/', views.ProposalView.as_view(), name='proposal'),
-    path('proposal/pdf/', views.ProposalPDFView.as_view(), name='pdf'),
-    path('events/', views.EventsView.as_view(), name='events'),
+    path('<slug:proposal_id>/', views.ConfirmationView.as_view(), name='confirmation'),
+    path('<slug:proposal_id>/proposal/', views.ProposalView.as_view(), name='proposal'),
+    path('<slug:proposal_id>/proposal/pdf/', views.ProposalPDFView.as_view(), name='pdf'),
 ]

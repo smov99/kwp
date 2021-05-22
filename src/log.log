@@ -523,3 +523,7 @@ Traceback (most recent call last):
     response = response['records'][0]
 IndexError: list index out of range
 ERROR 2021-05-07 22:28:52,949 basehttp 20796 22212 "GET /en/a0P04000000GGHQEA4/ HTTP/1.1" 500 95163
+WARNING 2021-05-20 15:08:08,042 log 19188 10376 Not Found: /static/assets/css/style.css
+WARNING 2021-05-20 15:08:08,059 log 19188 19644 Not Found: /static/assets/js/main.js
+WARNING 2021-05-20 15:08:08,060 basehttp 19188 19644 "GET /static/assets/js/main.js HTTP/1.1" 404 3309
+WARNING 2021-05-20 15:08:08,060 basehttp 19188 10376 "GET /static/assets/css/style.css HTTP/1.1" 404 3309

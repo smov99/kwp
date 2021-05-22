@@ -21,7 +21,7 @@
 
   // Ajax requests
   function eventsAjax(event_type, event_name, time_spent, message) {
-    var _path = window.location.href.replace('proposal/', 'events/');
+    var _path = window.location.origin + '/events/';
     $.ajax({
       headers: {"X-CSRFToken": csrftoken},
       url: _path,
@@ -49,7 +49,7 @@
     var _path = window.location.href;
     $.ajax({
       headers: {"X-CSRFToken": csrftoken},
-      url: _path+'pdf/',
+      url: _path,
       method: "POST",
       data: {"url": _path},
       dataType: "json"
@@ -183,7 +183,7 @@
     aos_init();
   });
 
-  //PDF preview and events
+  //Events
   let vh = window.innerHeight * 0.01,
     vw = window.innerWidth * 0.01;
 
@@ -200,81 +200,24 @@
     eventsAjax('open_pdf', 'PDF open');
 
     if ($(window).width()) {
-      pdfWindow = window.open(pdf_url,"", 'width='+modal_width+',height='+modal_height);}
-
-    $(pdfWindow).on('load', function () {
-      var timeTracker = {},
-        vh = this.window.innerHeight * 0.01,
-        vw = this.window.innerWidth * 0.01,
-        iframe = this.document.getElementById('pdf-iframe'),
-        src = $(iframe).attr('src');
-
-      this.document.documentElement.style.setProperty('--vh', `${vh}px`)
-      this.document.documentElement.style.setProperty('--vw', `${vw}px`)
-
-      timeTracker['pageStart'] = new Date();
-
-      $(iframe).on('load', function (e) {
-        var iframeDocument = iframe.contentDocument || iframe.contentWindow.document,
-          iframeInput = iframeDocument.getElementById('pageNumber'),
-          docContainer = iframeDocument.getElementById('viewerContainer'),
-          downloadContainer = iframeDocument.getElementById('download-container'),
-          downloadBtn = iframeDocument.getElementById('proposal-download-btn'),
-          inputVal = $(iframeInput),
-          valDict = {},
-          startPage = new Date().getTime(),
-          endPage,
-          spentTime;
-
-        valDict.oldVal = inputVal.val()
-        eventsAjax('page_opened', 'PDF page 1')
-
-        $(downloadBtn).on('click', function () {
-          eventsAjax('download', 'PDF downloaded');
-        })
-
-        $(docContainer).on('scroll', function () {
-          let docElem = docContainer,
-            scrollTop = docElem['scrollTop'],
-            scrollBottom = docElem['scrollHeight'] - iframe.contentWindow.innerHeight,
-            scrollPercent = scrollTop / scrollBottom * 100 + '%';
-
-          if ((scrollTop / scrollBottom)*100 >= 50) {
-            $(downloadContainer).removeClass('hide')
-          } else {
-            $(downloadContainer).addClass('hide')
-          }
-
-          iframeDocument.getElementById('progress-bar').style.setProperty('--scrollAmount', scrollPercent);
-          valDict.newVal = inputVal.val()
-
-          if (valDict.newVal !== valDict.oldVal) {
-            endPage = new Date().getTime()
-            spentTime = ((endPage - startPage) / 1000)+'seconds'
-            eventsAjax('spent_time', 'Spent '+spentTime+' seconds on page number '+valDict.oldVal, spentTime+'s')
-            eventsAjax('page_opened', "Pdf page "+valDict.newVal);
-            valDict.oldVal = valDict.newVal
-            startPage = new Date().getTime()
-          }
-        });
-
-        $(iframeDocument).on('copy', function () {
-          let selected_text = iframeDocument.getSelection().toString().replace("\n", ' '),
-            l = selected_text.length;
-          if (l > 50) {
-              selected_text = selected_text.substring(0, 20) + ' ... ' + selected_text.substring(l-20, l);
-          }
-          eventsAjax('copying_in_pdf', 'Copied text: '+selected_text);
-        });
-      }).attr('src', src);
-
-      $(pdfWindow).on('unload', () => {
-        eventsAjax('closing_preview', 'Pdf close');
-        pdfAjax();
-      });
-    });
-
+      window.open(pdf_url,"", 'width='+modal_width+',height='+modal_height);}
   });
+
+  if (window.location.href.includes('proposal')) {
+    if (window.location.href.includes('pdf')) {
+      $(window).on('load', function () {
+        $(window).on('unload', function () {
+          eventsAjax('closing_preview', 'Pdf close');
+        });
+      });
+    } else {
+      $(window).on('load', function () {
+        $(window).on('unload', function () {
+          pdfAjax();
+        });
+      });
+    }
+  }
 
   function checkCheckbox () {
     return !!$('#flexCheckIntro').is(':checked');
@@ -293,11 +236,17 @@
 
   $('.faq-list .collapsed').on('click', function (e) {
     e.preventDefault();
+    let selected_text = 'Question ' + e.target.textContent,
+      l = selected_text.length;
+    if (l > 50) {
+        selected_text = selected_text.substring(0, 20) + ' ... ' + selected_text.substring(l-19, l);
+    }
     if ($(this).hasClass('opened')) {
-      eventsAjax('opening_of_sections_line', 'Question ' + e.target.textContent + ' close');
+      eventsAjax('opening_of_sections_line', selected_text + ' close');
       $(this).removeClass('opened')
     } else {
-      eventsAjax('opening_of_sections_line', 'Question ' + e.target.textContent + ' open');
+      eventsAjax('opening_of_sections_line', selected_text + ' open');
+      $(this).addClass('opened')
     }
   });
 

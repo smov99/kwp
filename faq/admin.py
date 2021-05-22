@@ -13,6 +13,7 @@ class SectionAdmin(TranslationAdmin):
     search_fields = ('label_en', 'label_es')
     list_filter = ('is_active',)
     ordering = ('order', '-is_active')
+    list_per_page = 10
 
     def _label(self, obj):
         base_url = reverse('admin:faq_article_changelist')
@@ -22,6 +23,9 @@ class SectionAdmin(TranslationAdmin):
             obj.label
         ))
 
+    class Media:
+        js = ['assets/js/menu_filter_collapse.js']
+
 
 @admin.register(Article)
 class ArticleAdmin(TranslationAdmin):
@@ -30,3 +34,7 @@ class ArticleAdmin(TranslationAdmin):
     list_filter = ('section', 'is_active')
     list_display_links = ('question', 'guid')
     ordering = ('section', 'order', '-is_active')
+    list_per_page = 10
+
+    class Media:
+        js = ['assets/js/menu_filter_collapse.js']

@@ -96,8 +96,6 @@ def create_sections_and_articles(section_return, article_return):
     :param section_return: Response from 'get_sections' func.
     :param article_return: Response from 'get_articles' func.
     """
-    update_attr(Section.objects.filter(is_active=True).all(), False)
-    update_attr(Article.objects.filter(is_active=True).all(), False)
     for section in section_return:
         try:
             section_articles = article_return[section]
@@ -108,7 +106,7 @@ def create_sections_and_articles(section_return, article_return):
         guid = section_return[section]['guid']
         label_es = section_return[section]['spanish_label']
         label_en = section_return[section]['english_label']
-        Section.objects.create(
+        Section.objects.get_or_create(
             order=order,
             guid=guid,
             label=label,
@@ -126,11 +124,11 @@ def create_sections_and_articles(section_return, article_return):
                 question_en = this_article['en_US']['question']
                 answer_es = this_article['es']['answer']
                 answer_en = this_article['en_US']['answer']
-                _section = Section.objects.filter(is_active=True).get(label=label)
-                Article.objects.create(
+                section_ = Section.objects.filter(is_active=True).get(label_en=label)
+                Article.objects.get_or_create(
                     order=order,
                     guid=guid,
-                    section=_section,
+                    section=section_,
                     question=question,
                     answer=answer,
                     question_en=question_en,

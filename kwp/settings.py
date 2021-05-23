@@ -96,10 +96,24 @@ DATABASES = {
         'PASSWORD': '6zSppdu9ZHy4Q1nB',
         'HOST': 'localhost',
         'PORT': '5432',
-        }
+    }
 }
 
 REST_FRAMEWORK = {
+    # 'DEFAULT_PAGINATION_CLASS':
+    #     'api.custompagination.LimitOffsetPaginationWithUpperBound',
+    #     'PAGE_SIZE': 4,
+    'DEFAULT_FILTER_BACKENDS': (
+        'django_filters.rest_framework.DjangoFilterBackend',
+        'rest_framework.filters.OrderingFilter',
+        'rest_framework.filters.SearchFilter',
+    ),
+    # 'DEFAULT_AUTHENTICATION_CLASSES': (
+    #     'rest_framework.authentication.BasicAuthentication',
+    #     'rest_framework.authentication.SessionAuthentication',
+    # ),
+    'DEFAULT_VERSIONING_CLASS':
+        'rest_framework.versioning.NamespaceVersioning',
 }
 
 # Salesforce API
@@ -137,11 +151,9 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Authentication parameters
 
 AUTH_USER_MODEL = 'users.User'
-
 
 # Logging
 
@@ -199,14 +211,13 @@ LOCALE_PATHS = (
     os.path.join(BASE_DIR, 'locale'),
 )
 
-
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
 
 STATICFILES_DIRS = [
-   os.path.join(BASE_DIR, 'static'),
+    os.path.join(BASE_DIR, 'static'),
 ]
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'tmp/static/')
@@ -214,7 +225,6 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'tmp/static/')
 MEDIA_URL = '/tmp/kwp/'
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'tmp/kwp/')
-
 
 # IP geolocation
 

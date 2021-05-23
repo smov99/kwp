@@ -133,9 +133,8 @@ class EventsView(View):
     def post(self, request):
         try:
             time_spent = float(request.POST['time_spent'])
-        except KeyError:
+        except:
             time_spent = None
-        print(time_spent)
         message = request.POST.get('message')
         if request.session['email'] == settings.TRUSTED_EMAIL:
             request.session['contact_id'] = None
@@ -150,7 +149,6 @@ class EventsView(View):
             time_spent=time_spent,
             message=message,
             sf_session_id=sf_session,
-            proposal_account_id=request.session['proposal_account_id'],
             contact_id=request.session['contact_id'],
             email=request.session['email'],
             contact_account_id=request.session['contact_account_id'],

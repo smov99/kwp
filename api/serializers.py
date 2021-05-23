@@ -28,7 +28,7 @@ class SessionEventSerializer(serializers.HyperlinkedModelSerializer):
 class SessionSerializer(serializers.HyperlinkedModelSerializer):
     events = SessionEventSerializer(
         many=True,
-        read_only=True
+        read_only=True,
     )
 
     class Meta:

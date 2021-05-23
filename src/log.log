@@ -527,3 +527,682 @@ WARNING 2021-05-20 15:08:08,042 log 19188 10376 Not Found: /static/assets/css/st
 WARNING 2021-05-20 15:08:08,059 log 19188 19644 Not Found: /static/assets/js/main.js
 WARNING 2021-05-20 15:08:08,060 basehttp 19188 19644 "GET /static/assets/js/main.js HTTP/1.1" 404 3309
 WARNING 2021-05-20 15:08:08,060 basehttp 19188 10376 "GET /static/assets/css/style.css HTTP/1.1" 404 3309
+WARNING 2021-05-22 12:09:10,262 log 23104 17908 Not Found: /favicon.ico
+WARNING 2021-05-22 12:09:10,262 basehttp 23104 17908 "GET /favicon.ico HTTP/1.1" 404 3465
+ERROR 2021-05-23 17:39:44,911 log 21860 15280 Internal Server Error: /events/
+Traceback (most recent call last):
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\views\generic\base.py", line 70, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\views\generic\base.py", line 98, in dispatch
+    return handler(request, *args, **kwargs)
+  File "F:\workspace\django\kiwapower_web_proposal\proposal\views.py", line 135, in post
+    time_spent = float(request.POST['time_spent'])
+ValueError: could not convert string to float: ''
+ERROR 2021-05-23 17:39:44,914 basehttp 21860 15280 "POST /events/ HTTP/1.1" 500 78818
+ERROR 2021-05-23 17:53:08,254 log 20976 20732 Internal Server Error: /events/
+Traceback (most recent call last):
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\views\generic\base.py", line 70, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\views\generic\base.py", line 98, in dispatch
+    return handler(request, *args, **kwargs)
+  File "F:\workspace\django\kiwapower_web_proposal\proposal\views.py", line 143, in post
+    services.create_event_record(
+  File "F:\workspace\django\kiwapower_web_proposal\proposal\services.py", line 482, in create_event_record
+    time_spent = float(time_spent)
+ValueError: could not convert string to float: ''
+ERROR 2021-05-23 17:53:08,256 basehttp 20976 20732 "POST /events/ HTTP/1.1" 500 84939
+ERROR 2021-05-23 17:54:11,922 log 21668 9272 Internal Server Error: /events/
+Traceback (most recent call last):
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\views\generic\base.py", line 70, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\views\generic\base.py", line 98, in dispatch
+    return handler(request, *args, **kwargs)
+  File "F:\workspace\django\kiwapower_web_proposal\proposal\views.py", line 143, in post
+    services.create_event_record(
+  File "F:\workspace\django\kiwapower_web_proposal\proposal\services.py", line 485, in create_event_record
+    case_id = create_case_record(
+  File "F:\workspace\django\kiwapower_web_proposal\proposal\services.py", line 535, in create_case_record
+    response = sf_api_call(f"/services/data/{settings.SF_API_VERSION}/sobjects/Case", method='post', data=data)
+  File "F:\workspace\django\kiwapower_web_proposal\proposal\services.py", line 104, in sf_api_call
+    raise Exception('API error when calling %s : %s' % (r.url, r.content))
+Exception: API error when calling https://kiwapower--march18.my.salesforce.com/services/data/v51.0/sobjects/Case : b'[{"message":"Cannot deserialize instance of string from START_ARRAY value [line:1, column:199]","errorCode":"JSON_PARSER_ERROR"}]'
+ERROR 2021-05-23 17:54:11,925 basehttp 21668 9272 "POST /events/ HTTP/1.1" 500 97944
+ERROR 2021-05-23 17:56:00,015 log 18056 22768 Internal Server Error: /events/
+Traceback (most recent call last):
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\views\generic\base.py", line 70, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\views\generic\base.py", line 98, in dispatch
+    return handler(request, *args, **kwargs)
+  File "F:\workspace\django\kiwapower_web_proposal\proposal\views.py", line 135, in post
+    time_spent = float(request.POST['time_spent'])
+ValueError: could not convert string to float: ''
+ERROR 2021-05-23 17:56:00,017 basehttp 18056 22768 "POST /events/ HTTP/1.1" 500 78818
+ERROR 2021-05-23 17:56:30,761 log 1732 18512 Internal Server Error: /events/
+Traceback (most recent call last):
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\views\generic\base.py", line 70, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\views\generic\base.py", line 98, in dispatch
+    return handler(request, *args, **kwargs)
+  File "F:\workspace\django\kiwapower_web_proposal\proposal\views.py", line 146, in post
+    services.create_event_record(
+  File "F:\workspace\django\kiwapower_web_proposal\proposal\services.py", line 485, in create_event_record
+    case_id = create_case_record(
+  File "F:\workspace\django\kiwapower_web_proposal\proposal\services.py", line 535, in create_case_record
+    response = sf_api_call(f"/services/data/{settings.SF_API_VERSION}/sobjects/Case", method='post', data=data)
+  File "F:\workspace\django\kiwapower_web_proposal\proposal\services.py", line 104, in sf_api_call
+    raise Exception('API error when calling %s : %s' % (r.url, r.content))
+Exception: API error when calling https://kiwapower--march18.my.salesforce.com/services/data/v51.0/sobjects/Case : b'[{"message":"Cannot deserialize instance of string from START_ARRAY value [line:1, column:197]","errorCode":"JSON_PARSER_ERROR"}]'
+ERROR 2021-05-23 17:56:30,763 basehttp 1732 18512 "POST /events/ HTTP/1.1" 500 97916
+ERROR 2021-05-23 17:57:25,572 log 19100 21916 Internal Server Error: /events/
+Traceback (most recent call last):
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\views\generic\base.py", line 70, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\views\generic\base.py", line 98, in dispatch
+    return handler(request, *args, **kwargs)
+  File "F:\workspace\django\kiwapower_web_proposal\proposal\views.py", line 146, in post
+    services.create_event_record(
+  File "F:\workspace\django\kiwapower_web_proposal\proposal\services.py", line 483, in create_event_record
+    case_id = create_case_record(
+  File "F:\workspace\django\kiwapower_web_proposal\proposal\services.py", line 533, in create_case_record
+    response = sf_api_call(f"/services/data/{settings.SF_API_VERSION}/sobjects/Case", method='post', data=data)
+  File "F:\workspace\django\kiwapower_web_proposal\proposal\services.py", line 104, in sf_api_call
+    raise Exception('API error when calling %s : %s' % (r.url, r.content))
+Exception: API error when calling https://kiwapower--march18.my.salesforce.com/services/data/v51.0/sobjects/Case : b'[{"message":"Cannot deserialize instance of string from START_ARRAY value [line:1, column:197]","errorCode":"JSON_PARSER_ERROR"}]'
+ERROR 2021-05-23 17:57:25,572 basehttp 19100 21916 "POST /events/ HTTP/1.1" 500 97912
+ERROR 2021-05-23 18:04:31,800 log 22420 23352 Internal Server Error: /events/
+Traceback (most recent call last):
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\views\generic\base.py", line 70, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\views\generic\base.py", line 98, in dispatch
+    return handler(request, *args, **kwargs)
+  File "F:\workspace\django\kiwapower_web_proposal\proposal\views.py", line 146, in post
+    services.create_event_record(
+  File "F:\workspace\django\kiwapower_web_proposal\proposal\services.py", line 483, in create_event_record
+    case_id = create_case_record(
+  File "F:\workspace\django\kiwapower_web_proposal\proposal\services.py", line 533, in create_case_record
+    response = sf_api_call(f"/services/data/{settings.SF_API_VERSION}/sobjects/Case", method='post', data=data)
+  File "F:\workspace\django\kiwapower_web_proposal\proposal\services.py", line 104, in sf_api_call
+    raise Exception('API error when calling %s : %s' % (r.url, r.content))
+Exception: API error when calling https://kiwapower--march18.my.salesforce.com/services/data/v51.0/sobjects/Case : b'[{"message":"Cannot deserialize instance of string from START_ARRAY value [line:1, column:197]","errorCode":"JSON_PARSER_ERROR"}]'
+ERROR 2021-05-23 18:04:31,802 basehttp 22420 23352 "POST /events/ HTTP/1.1" 500 97896
+ERROR 2021-05-23 18:12:08,233 log 12832 14984 Internal Server Error: /events/
+Traceback (most recent call last):
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\views\generic\base.py", line 70, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\views\generic\base.py", line 98, in dispatch
+    return handler(request, *args, **kwargs)
+  File "F:\workspace\django\kiwapower_web_proposal\proposal\views.py", line 146, in post
+    services.create_event_record(
+  File "F:\workspace\django\kiwapower_web_proposal\proposal\services.py", line 484, in create_event_record
+    case_id = create_case_record(
+  File "F:\workspace\django\kiwapower_web_proposal\proposal\services.py", line 534, in create_case_record
+    response = sf_api_call(f"/services/data/{settings.SF_API_VERSION}/sobjects/Case", method='post', data=data)
+  File "F:\workspace\django\kiwapower_web_proposal\proposal\services.py", line 105, in sf_api_call
+    raise Exception('API error when calling %s : %s' % (r.url, r.content))
+Exception: API error when calling https://kiwapower--march18.my.salesforce.com/services/data/v51.0/sobjects/Case : b'[{"message":"Cannot deserialize instance of string from START_ARRAY value [line:1, column:199]","errorCode":"JSON_PARSER_ERROR"}]'
+ERROR 2021-05-23 18:12:08,235 basehttp 12832 14984 "POST /events/ HTTP/1.1" 500 97906
+ERROR 2021-05-23 18:16:08,107 log 18760 3740 Internal Server Error: /events/
+Traceback (most recent call last):
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\views\generic\base.py", line 70, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\views\generic\base.py", line 98, in dispatch
+    return handler(request, *args, **kwargs)
+  File "F:\workspace\django\kiwapower_web_proposal\proposal\views.py", line 140, in post
+    if request.session['email'] == settings.TRUSTED_EMAIL:
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\contrib\sessions\backends\base.py", line 65, in __getitem__
+    return self._session[key]
+KeyError: 'email'
+ERROR 2021-05-23 18:16:08,110 basehttp 18760 3740 "POST /events/ HTTP/1.1" 500 83139
+ERROR 2021-05-23 18:17:06,863 log 18760 3740 Internal Server Error: /events/
+Traceback (most recent call last):
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\views\generic\base.py", line 70, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\views\generic\base.py", line 98, in dispatch
+    return handler(request, *args, **kwargs)
+  File "F:\workspace\django\kiwapower_web_proposal\proposal\views.py", line 146, in post
+    services.create_event_record(
+  File "F:\workspace\django\kiwapower_web_proposal\proposal\services.py", line 483, in create_event_record
+    case_id = create_case_record(
+  File "F:\workspace\django\kiwapower_web_proposal\proposal\services.py", line 534, in create_case_record
+    response = sf_api_call(f"/services/data/{settings.SF_API_VERSION}/sobjects/Case", method='post', data=data)
+  File "F:\workspace\django\kiwapower_web_proposal\proposal\services.py", line 104, in sf_api_call
+    raise Exception('API error when calling %s : %s' % (r.url, r.content))
+Exception: API error when calling https://kiwapower--march18.my.salesforce.com/services/data/v51.0/sobjects/Case : b'[{"message":"Cannot deserialize instance of string from START_ARRAY value [line:1, column:197]","errorCode":"JSON_PARSER_ERROR"}]'
+ERROR 2021-05-23 18:17:06,868 basehttp 18760 3740 "POST /events/ HTTP/1.1" 500 97896
+ERROR 2021-05-23 18:18:25,974 log 18664 14304 Internal Server Error: /events/
+Traceback (most recent call last):
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\views\generic\base.py", line 70, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\views\generic\base.py", line 98, in dispatch
+    return handler(request, *args, **kwargs)
+  File "F:\workspace\django\kiwapower_web_proposal\proposal\views.py", line 146, in post
+    services.create_event_record(
+  File "F:\workspace\django\kiwapower_web_proposal\proposal\services.py", line 483, in create_event_record
+    case_id = create_case_record(
+  File "F:\workspace\django\kiwapower_web_proposal\proposal\services.py", line 533, in create_case_record
+    response = sf_api_call(f"/services/data/{settings.SF_API_VERSION}/sobjects/Case", method='post', data=data)
+  File "F:\workspace\django\kiwapower_web_proposal\proposal\services.py", line 104, in sf_api_call
+    raise Exception('API error when calling %s : %s' % (r.url, r.content))
+Exception: API error when calling https://kiwapower--march18.my.salesforce.com/services/data/v51.0/sobjects/Case : b'[{"message":"Unable to create/update fields: AccountId, ContactEmail. Please check the security settings of this field and verify that it is read/write for your profile or permission set.","errorCode":"INVALID_FIELD_FOR_INSERT_UPDATE","fields":["AccountId","ContactEmail"]}]'
+ERROR 2021-05-23 18:18:25,976 basehttp 18664 14304 "POST /events/ HTTP/1.1" 500 98590
+ERROR 2021-05-23 18:19:22,323 log 18664 14304 Internal Server Error: /events/
+Traceback (most recent call last):
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\views\generic\base.py", line 70, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\views\generic\base.py", line 98, in dispatch
+    return handler(request, *args, **kwargs)
+  File "F:\workspace\django\kiwapower_web_proposal\proposal\views.py", line 146, in post
+    services.create_event_record(
+  File "F:\workspace\django\kiwapower_web_proposal\proposal\services.py", line 483, in create_event_record
+    case_id = create_case_record(
+  File "F:\workspace\django\kiwapower_web_proposal\proposal\services.py", line 533, in create_case_record
+    response = sf_api_call(f"/services/data/{settings.SF_API_VERSION}/sobjects/Case", method='post', data=data)
+  File "F:\workspace\django\kiwapower_web_proposal\proposal\services.py", line 104, in sf_api_call
+    raise Exception('API error when calling %s : %s' % (r.url, r.content))
+Exception: API error when calling https://kiwapower--march18.my.salesforce.com/services/data/v51.0/sobjects/Case : b'[{"message":"Unable to create/update fields: AccountId, ContactEmail. Please check the security settings of this field and verify that it is read/write for your profile or permission set.","errorCode":"INVALID_FIELD_FOR_INSERT_UPDATE","fields":["AccountId","ContactEmail"]}]'
+ERROR 2021-05-23 18:19:22,325 basehttp 18664 14304 "POST /events/ HTTP/1.1" 500 98608
+ERROR 2021-05-23 18:20:39,913 log 18960 18996 Internal Server Error: /events/
+Traceback (most recent call last):
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\views\generic\base.py", line 70, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\views\generic\base.py", line 98, in dispatch
+    return handler(request, *args, **kwargs)
+  File "F:\workspace\django\kiwapower_web_proposal\proposal\views.py", line 146, in post
+    services.create_event_record(
+  File "F:\workspace\django\kiwapower_web_proposal\proposal\services.py", line 483, in create_event_record
+    case_id = create_case_record(
+  File "F:\workspace\django\kiwapower_web_proposal\proposal\services.py", line 534, in create_case_record
+    response = sf_api_call(f"/services/data/{settings.SF_API_VERSION}/sobjects/Case", method='post', data=data)
+  File "F:\workspace\django\kiwapower_web_proposal\proposal\services.py", line 104, in sf_api_call
+    raise Exception('API error when calling %s : %s' % (r.url, r.content))
+Exception: API error when calling https://kiwapower--march18.my.salesforce.com/services/data/v51.0/sobjects/Case : b'[{"message":"Unable to create/update fields: AccountId, ContactEmail. Please check the security settings of this field and verify that it is read/write for your profile or permission set.","errorCode":"INVALID_FIELD_FOR_INSERT_UPDATE","fields":["AccountId","ContactEmail"]}]'
+ERROR 2021-05-23 18:20:39,915 basehttp 18960 18996 "POST /events/ HTTP/1.1" 500 98608
+ERROR 2021-05-23 18:30:04,539 log 18212 22596 Internal Server Error: /events/
+Traceback (most recent call last):
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\views\generic\base.py", line 70, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\views\generic\base.py", line 98, in dispatch
+    return handler(request, *args, **kwargs)
+  File "F:\workspace\django\kiwapower_web_proposal\proposal\views.py", line 146, in post
+    services.create_event_record(
+  File "F:\workspace\django\kiwapower_web_proposal\proposal\services.py", line 483, in create_event_record
+    case_id = create_case_record(
+  File "F:\workspace\django\kiwapower_web_proposal\proposal\services.py", line 533, in create_case_record
+    response = sf_api_call(f"/services/data/{settings.SF_API_VERSION}/sobjects/Case", method='post', data=data)
+  File "F:\workspace\django\kiwapower_web_proposal\proposal\services.py", line 104, in sf_api_call
+    raise Exception('API error when calling %s : %s' % (r.url, r.content))
+Exception: API error when calling https://kiwapower--march18.my.salesforce.com/services/data/v51.0/sobjects/Case : b'[{"message":"Unable to create/update fields: AccountId. Please check the security settings of this field and verify that it is read/write for your profile or permission set.","errorCode":"INVALID_FIELD_FOR_INSERT_UPDATE","fields":["AccountId"]}]'
+ERROR 2021-05-23 18:30:04,541 basehttp 18212 22596 "POST /events/ HTTP/1.1" 500 98294
+ERROR 2021-05-23 18:50:53,483 log 20264 19256 Internal Server Error: /a0P04000000Gew4EAC/
+Traceback (most recent call last):
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\urllib3\connection.py", line 169, in _new_conn
+    conn = connection.create_connection(
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\urllib3\util\connection.py", line 73, in create_connection
+    for res in socket.getaddrinfo(host, port, family, socket.SOCK_STREAM):
+  File "c:\users\vsevo\appdata\local\programs\python\python39\lib\socket.py", line 953, in getaddrinfo
+    for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+socket.gaierror: [Errno 11001] getaddrinfo failed
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\urllib3\connectionpool.py", line 699, in urlopen
+    httplib_response = self._make_request(
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\urllib3\connectionpool.py", line 382, in _make_request
+    self._validate_conn(conn)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\urllib3\connectionpool.py", line 1010, in _validate_conn
+    conn.connect()
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\urllib3\connection.py", line 353, in connect
+    conn = self._new_conn()
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\urllib3\connection.py", line 181, in _new_conn
+    raise NewConnectionError(
+urllib3.exceptions.NewConnectionError: <urllib3.connection.HTTPSConnection object at 0x0000029848219CA0>: Failed to establish a new connection: [Errno 11001] getaddrinfo failed
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\requests\adapters.py", line 439, in send
+    resp = conn.urlopen(
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\urllib3\connectionpool.py", line 755, in urlopen
+    retries = retries.increment(
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\urllib3\util\retry.py", line 574, in increment
+    raise MaxRetryError(_pool, url, error or ResponseError(cause))
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='kiwapower--march18.my.salesforce.com', port=443): Max retries exceeded with url: /services/data/v51.0/query/?q=SELECT+Authorized_contact__c%2C+Authorized_domain__c%2C+Authorized_email__c+FROM+Authorized_emails__c+where+Account__c%3D%270016g00000FWctuAAD%27+and++isDeleted%3Dfalse (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x0000029848219CA0>: Failed to establish a new connection: [Errno 11001] getaddrinfo failed'))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\views\generic\base.py", line 70, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\views\generic\base.py", line 98, in dispatch
+    return handler(request, *args, **kwargs)
+  File "F:\workspace\django\kiwapower_web_proposal\proposal\services.py", line 23, in clocked
+    result = func(*args, **kwargs)
+  File "F:\workspace\django\kiwapower_web_proposal\proposal\views.py", line 41, in post
+    email_validation = services.user_email_validation(proposal['Account__c'], email)
+  File "F:\workspace\django\kiwapower_web_proposal\proposal\services.py", line 192, in user_email_validation
+    email_responses = get_user_email_information(proposal_account_id)
+  File "F:\workspace\django\kiwapower_web_proposal\proposal\services.py", line 46, in _wrapped
+    return f(*args, **kwargs)
+  File "F:\workspace\django\kiwapower_web_proposal\proposal\services.py", line 178, in get_user_email_information
+    response = sf_api_call(f'/services/data/{settings.SF_API_VERSION}/query/', {'q': query})['records']
+  File "F:\workspace\django\kiwapower_web_proposal\proposal\services.py", line 91, in sf_api_call
+    r = requests.request(method, instance_url + action, headers=headers, params=parameters, timeout=30)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\requests\api.py", line 61, in request
+    return session.request(method=method, url=url, **kwargs)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\requests\sessions.py", line 542, in request
+    resp = self.send(prep, **send_kwargs)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\requests\sessions.py", line 655, in send
+    r = adapter.send(request, **kwargs)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\requests\adapters.py", line 516, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPSConnectionPool(host='kiwapower--march18.my.salesforce.com', port=443): Max retries exceeded with url: /services/data/v51.0/query/?q=SELECT+Authorized_contact__c%2C+Authorized_domain__c%2C+Authorized_email__c+FROM+Authorized_emails__c+where+Account__c%3D%270016g00000FWctuAAD%27+and++isDeleted%3Dfalse (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x0000029848219CA0>: Failed to establish a new connection: [Errno 11001] getaddrinfo failed'))
+ERROR 2021-05-23 18:50:53,489 basehttp 20264 19256 "POST /a0P04000000Gew4EAC/ HTTP/1.1" 500 192090
+WARNING 2021-05-23 18:50:53,916 log 20264 19256 Not Found: /favicon.ico
+WARNING 2021-05-23 18:50:53,916 basehttp 20264 19256 "GET /favicon.ico HTTP/1.1" 404 3337
+ERROR 2021-05-23 18:52:22,875 log 20264 22268 Internal Server Error: /events/
+Traceback (most recent call last):
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\utils\datastructures.py", line 76, in __getitem__
+    list_ = super().__getitem__(key)
+KeyError: 'time_spent'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\views\generic\base.py", line 70, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\views\generic\base.py", line 98, in dispatch
+    return handler(request, *args, **kwargs)
+  File "F:\workspace\django\kiwapower_web_proposal\proposal\views.py", line 135, in post
+    time_spent = float(request.POST['time_spent'])
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\utils\datastructures.py", line 78, in __getitem__
+    raise MultiValueDictKeyError(key)
+django.utils.datastructures.MultiValueDictKeyError: 'time_spent'
+ERROR 2021-05-23 18:52:22,877 basehttp 20264 22268 "POST /events/ HTTP/1.1" 500 87064
+WARNING 2021-05-23 18:55:51,632 basehttp 23528 18220 "GET /static/assets/vendor/pdfjs/web/static/assets/vendor/pdfjs/images/toolbarButton-menuArrow.svg HTTP/1.1" 404 1883
+WARNING 2021-05-23 20:49:46,461 log 23528 11188 Not Found: /favicon.ico
+WARNING 2021-05-23 20:49:46,461 basehttp 23528 11188 "GET /favicon.ico HTTP/1.1" 404 3465
+ERROR 2021-05-23 21:18:30,680 log 18732 11644 Internal Server Error: /update_sections/
+Traceback (most recent call last):
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\views\generic\base.py", line 70, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\views\generic\base.py", line 98, in dispatch
+    return handler(request, *args, **kwargs)
+  File "F:\workspace\django\kiwapower_web_proposal\faq\views.py", line 11, in post
+    services.create_sections_and_articles(sections, articles)
+  File "F:\workspace\django\kiwapower_web_proposal\faq\services.py", line 129, in create_sections_and_articles
+    section_ = Section.objects.filter(is_active=True).get(label=label)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\db\models\query.py", line 435, in get
+    raise self.model.DoesNotExist(
+faq.models.Section.DoesNotExist: Section matching query does not exist.
+ERROR 2021-05-23 21:18:30,683 basehttp 18732 11644 "POST /update_sections/ HTTP/1.1" 500 109442
+ERROR 2021-05-23 21:20:17,330 log 21964 16732 Internal Server Error: /update_sections/
+Traceback (most recent call last):
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\views\generic\base.py", line 70, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\views\generic\base.py", line 98, in dispatch
+    return handler(request, *args, **kwargs)
+  File "F:\workspace\django\kiwapower_web_proposal\faq\views.py", line 11, in post
+    services.create_sections_and_articles(sections, articles)
+  File "F:\workspace\django\kiwapower_web_proposal\faq\services.py", line 131, in create_sections_and_articles
+    section_ = Section.objects.filter(is_active=True).get(label=label)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\db\models\query.py", line 435, in get
+    raise self.model.DoesNotExist(
+faq.models.Section.DoesNotExist: Section matching query does not exist.
+ERROR 2021-05-23 21:20:17,333 basehttp 21964 16732 "POST /update_sections/ HTTP/1.1" 500 109442
+ERROR 2021-05-23 21:23:12,365 log 1868 7388 Internal Server Error: /update_sections/
+Traceback (most recent call last):
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\views\generic\base.py", line 70, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\views\generic\base.py", line 98, in dispatch
+    return handler(request, *args, **kwargs)
+  File "F:\workspace\django\kiwapower_web_proposal\faq\views.py", line 11, in post
+    services.create_sections_and_articles(sections, articles)
+  File "F:\workspace\django\kiwapower_web_proposal\faq\services.py", line 129, in create_sections_and_articles
+    section_ = Section.objects.filter(is_active=True).get(label=label)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\db\models\query.py", line 435, in get
+    raise self.model.DoesNotExist(
+faq.models.Section.DoesNotExist: Section matching query does not exist.
+ERROR 2021-05-23 21:23:12,368 basehttp 1868 7388 "POST /update_sections/ HTTP/1.1" 500 109447
+ERROR 2021-05-23 21:24:36,396 log 19856 18884 Internal Server Error: /update_sections/
+Traceback (most recent call last):
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\views\generic\base.py", line 70, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\views\generic\base.py", line 98, in dispatch
+    return handler(request, *args, **kwargs)
+  File "F:\workspace\django\kiwapower_web_proposal\faq\views.py", line 11, in post
+    services.create_sections_and_articles(sections, articles)
+  File "F:\workspace\django\kiwapower_web_proposal\faq\services.py", line 131, in create_sections_and_articles
+    section_ = Section.objects.filter(is_active=True).get(label=label)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\db\models\query.py", line 435, in get
+    raise self.model.DoesNotExist(
+faq.models.Section.DoesNotExist: Section matching query does not exist.
+ERROR 2021-05-23 21:24:36,399 basehttp 19856 18884 "POST /update_sections/ HTTP/1.1" 500 109447
+ERROR 2021-05-23 21:30:53,561 log 22940 15948 Internal Server Error: /update_sections/
+Traceback (most recent call last):
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\views\generic\base.py", line 70, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\views\generic\base.py", line 98, in dispatch
+    return handler(request, *args, **kwargs)
+  File "F:\workspace\django\kiwapower_web_proposal\faq\views.py", line 11, in post
+    services.create_sections_and_articles(sections, articles)
+  File "F:\workspace\django\kiwapower_web_proposal\faq\services.py", line 132, in create_sections_and_articles
+    section_ = Section.objects.filter(is_active=True).get(label=label)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\db\models\query.py", line 435, in get
+    raise self.model.DoesNotExist(
+faq.models.Section.DoesNotExist: Section matching query does not exist.
+ERROR 2021-05-23 21:30:53,564 basehttp 22940 15948 "POST /update_sections/ HTTP/1.1" 500 109628
+ERROR 2021-05-23 21:31:56,511 log 17888 7204 Internal Server Error: /update_sections/
+Traceback (most recent call last):
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\views\generic\base.py", line 70, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\views\generic\base.py", line 98, in dispatch
+    return handler(request, *args, **kwargs)
+  File "F:\workspace\django\kiwapower_web_proposal\faq\views.py", line 11, in post
+    services.create_sections_and_articles(sections, articles)
+  File "F:\workspace\django\kiwapower_web_proposal\faq\services.py", line 132, in create_sections_and_articles
+    section_ = Section.objects.filter(is_active=True).get(label=label)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\db\models\query.py", line 435, in get
+    raise self.model.DoesNotExist(
+faq.models.Section.DoesNotExist: Section matching query does not exist.
+ERROR 2021-05-23 21:31:56,513 basehttp 17888 7204 "POST /update_sections/ HTTP/1.1" 500 109628
+WARNING 2021-05-23 21:34:27,597 log 17888 7204 Not Found: /
+WARNING 2021-05-23 21:34:27,598 basehttp 17888 7204 "GET / HTTP/1.1" 404 3414
+WARNING 2021-05-23 22:50:44,456 log 19988 23336 Not Found: /api/v1/session-list/
+WARNING 2021-05-23 22:50:44,456 basehttp 19988 23336 "GET /api/v1/session-list/ HTTP/1.1" 404 4364
+ERROR 2021-05-23 23:28:21,689 log 17936 14420 Internal Server Error: /api/v1/session-event-detail/288
+Traceback (most recent call last):
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\views\generic\base.py", line 70, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\rest_framework\generics.py", line 208, in get
+    return self.retrieve(request, *args, **kwargs)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\rest_framework\mixins.py", line 56, in retrieve
+    return Response(serializer.data)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\rest_framework\serializers.py", line 548, in data
+    ret = super().data
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\rest_framework\serializers.py", line 246, in data
+    self._data = self.to_representation(self.instance)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\rest_framework\serializers.py", line 515, in to_representation
+    ret[field.field_name] = field.to_representation(attribute)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\rest_framework\fields.py", line 1881, in to_representation
+    method = getattr(self.parent, self.method_name)
+AttributeError: 'SessionEventSerializer' object has no attribute 'get_session_url'
+ERROR 2021-05-23 23:28:21,693 basehttp 17936 14420 "GET /api/v1/session-event-detail/288 HTTP/1.1" 500 120755
+ERROR 2021-05-23 23:28:53,047 log 22120 22308 Internal Server Error: /api/v1/session-event-detail/288
+Traceback (most recent call last):
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\views\generic\base.py", line 70, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\rest_framework\generics.py", line 208, in get
+    return self.retrieve(request, *args, **kwargs)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\rest_framework\mixins.py", line 56, in retrieve
+    return Response(serializer.data)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\rest_framework\serializers.py", line 548, in data
+    ret = super().data
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\rest_framework\serializers.py", line 246, in data
+    self._data = self.to_representation(self.instance)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\rest_framework\serializers.py", line 515, in to_representation
+    ret[field.field_name] = field.to_representation(attribute)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\rest_framework\fields.py", line 1882, in to_representation
+    return method(value)
+TypeError: get_session_url() takes 1 positional argument but 2 were given
+ERROR 2021-05-23 23:28:53,053 basehttp 22120 22308 "GET /api/v1/session-event-detail/288 HTTP/1.1" 500 121264
+ERROR 2021-05-23 23:29:16,023 log 11708 22972 Internal Server Error: /api/v1/session-event-detail/288
+Traceback (most recent call last):
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\core\handlers\base.py", line 204, in _get_response
+    response = response.render()
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\template\response.py", line 105, in render
+    self.content = self.rendered_content
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\rest_framework\response.py", line 70, in rendered_content
+    ret = renderer.render(self.data, accepted_media_type, context)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\rest_framework\renderers.py", line 724, in render
+    context = self.get_context(data, accepted_media_type, renderer_context)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\rest_framework\renderers.py", line 680, in get_context
+    'content': self.get_content(renderer, data, accepted_media_type, renderer_context),
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\rest_framework\renderers.py", line 413, in get_content
+    content = renderer.render(data, accepted_media_type, renderer_context)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\rest_framework\renderers.py", line 100, in render
+    ret = json.dumps(
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\rest_framework\utils\json.py", line 25, in dumps
+    return json.dumps(*args, **kwargs)
+  File "c:\users\vsevo\appdata\local\programs\python\python39\lib\json\__init__.py", line 234, in dumps
+    return cls(
+  File "c:\users\vsevo\appdata\local\programs\python\python39\lib\json\encoder.py", line 201, in encode
+    chunks = list(chunks)
+  File "c:\users\vsevo\appdata\local\programs\python\python39\lib\json\encoder.py", line 431, in _iterencode
+    yield from _iterencode_dict(o, _current_indent_level)
+  File "c:\users\vsevo\appdata\local\programs\python\python39\lib\json\encoder.py", line 405, in _iterencode_dict
+    yield from chunks
+  File "c:\users\vsevo\appdata\local\programs\python\python39\lib\json\encoder.py", line 438, in _iterencode
+    o = _default(o)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\rest_framework\utils\encoders.py", line 67, in default
+    return super().default(obj)
+  File "c:\users\vsevo\appdata\local\programs\python\python39\lib\json\encoder.py", line 179, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+TypeError: Object of type HyperlinkedRelatedField is not JSON serializable
+ERROR 2021-05-23 23:29:16,026 basehttp 11708 22972 "GET /api/v1/session-event-detail/288 HTTP/1.1" 500 148186
+ERROR 2021-05-23 23:39:13,344 log 11040 11028 Internal Server Error: /api/v1/session-event-detail/288
+Traceback (most recent call last):
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\core\handlers\base.py", line 204, in _get_response
+    response = response.render()
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\template\response.py", line 105, in render
+    self.content = self.rendered_content
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\rest_framework\response.py", line 70, in rendered_content
+    ret = renderer.render(self.data, accepted_media_type, context)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\rest_framework\renderers.py", line 724, in render
+    context = self.get_context(data, accepted_media_type, renderer_context)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\rest_framework\renderers.py", line 680, in get_context
+    'content': self.get_content(renderer, data, accepted_media_type, renderer_context),
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\rest_framework\renderers.py", line 413, in get_content
+    content = renderer.render(data, accepted_media_type, renderer_context)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\rest_framework\renderers.py", line 100, in render
+    ret = json.dumps(
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\rest_framework\utils\json.py", line 25, in dumps
+    return json.dumps(*args, **kwargs)
+  File "c:\users\vsevo\appdata\local\programs\python\python39\lib\json\__init__.py", line 234, in dumps
+    return cls(
+  File "c:\users\vsevo\appdata\local\programs\python\python39\lib\json\encoder.py", line 201, in encode
+    chunks = list(chunks)
+  File "c:\users\vsevo\appdata\local\programs\python\python39\lib\json\encoder.py", line 431, in _iterencode
+    yield from _iterencode_dict(o, _current_indent_level)
+  File "c:\users\vsevo\appdata\local\programs\python\python39\lib\json\encoder.py", line 405, in _iterencode_dict
+    yield from chunks
+  File "c:\users\vsevo\appdata\local\programs\python\python39\lib\json\encoder.py", line 438, in _iterencode
+    o = _default(o)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\rest_framework\utils\encoders.py", line 67, in default
+    return super().default(obj)
+  File "c:\users\vsevo\appdata\local\programs\python\python39\lib\json\encoder.py", line 179, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+TypeError: Object of type HyperlinkedRelatedField is not JSON serializable
+ERROR 2021-05-23 23:39:13,347 basehttp 11040 11028 "GET /api/v1/session-event-detail/288 HTTP/1.1" 500 148186
+ERROR 2021-05-23 23:42:35,802 log 18216 22068 Internal Server Error: /api/v1/session-event-detail/288
+Traceback (most recent call last):
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\views\generic\base.py", line 70, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\rest_framework\generics.py", line 208, in get
+    return self.retrieve(request, *args, **kwargs)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\rest_framework\mixins.py", line 56, in retrieve
+    return Response(serializer.data)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\rest_framework\serializers.py", line 548, in data
+    ret = super().data
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\rest_framework\serializers.py", line 246, in data
+    self._data = self.to_representation(self.instance)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\rest_framework\serializers.py", line 515, in to_representation
+    ret[field.field_name] = field.to_representation(attribute)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\rest_framework\fields.py", line 1881, in to_representation
+    method = getattr(self.parent, self.method_name)
+AttributeError: 'SessionEventSerializer' object has no attribute 'get_session_url'
+ERROR 2021-05-23 23:42:35,806 basehttp 18216 22068 "GET /api/v1/session-event-detail/288 HTTP/1.1" 500 120534
+ERROR 2021-05-23 23:59:27,895 log 16992 17864 Internal Server Error: /api/v1/session-event-detail/288
+Traceback (most recent call last):
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\views\generic\base.py", line 70, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\rest_framework\generics.py", line 208, in get
+    return self.retrieve(request, *args, **kwargs)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\rest_framework\mixins.py", line 56, in retrieve
+    return Response(serializer.data)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\rest_framework\serializers.py", line 548, in data
+    ret = super().data
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\rest_framework\serializers.py", line 246, in data
+    self._data = self.to_representation(self.instance)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\rest_framework\serializers.py", line 500, in to_representation
+    for field in fields:
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\rest_framework\serializers.py", line 361, in _readable_fields
+    for field in self.fields.values():
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\utils\functional.py", line 48, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\rest_framework\serializers.py", line 349, in fields
+    for key, value in self.get_fields().items():
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\rest_framework\serializers.py", line 1029, in get_fields
+    field_names = self.get_field_names(declared_fields, info)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\rest_framework\serializers.py", line 1125, in get_field_names
+    assert field_name in fields, (
+AssertionError: The field 'session_url' was declared on serializer SessionEventSerializer, but has not been included in the 'fields' option.
+ERROR 2021-05-23 23:59:27,900 basehttp 16992 17864 "GET /api/v1/session-event-detail/288 HTTP/1.1" 500 139861

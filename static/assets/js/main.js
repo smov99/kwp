@@ -224,20 +224,23 @@
   }
 
   $('.section-title .collapsed').on('click', function (e) {
+    e = e || window.event;
     e.preventDefault();
     if ($(this).hasClass('opened')) {
-      eventsAjax('opening_of_section', 'Section ' + e.target.textContent + ' close');
+      eventsAjax('opening_of_section', 'Section ' + $(e.target).text() + ' close');
       $(this).removeClass('opened')
     } else {
-      eventsAjax('opening_of_section', 'Section ' + e.target.textContent + ' open');
+      eventsAjax('opening_of_section', 'Section ' + $(e.target).text() + ' open');
       $(this).addClass('opened')
     }
   });
 
   $('.faq-list .collapsed').on('click', function (e) {
+    e = e || window.event;
     e.preventDefault();
-    let selected_text = 'Question ' + e.target.textContent,
+    let selected_text = $(e.target).text(),
       l = selected_text.length;
+    selected_text = 'Question ' + selected_text
     if (l > 50) {
         selected_text = selected_text.substring(0, 20) + ' ... ' + selected_text.substring(l-19, l);
     }

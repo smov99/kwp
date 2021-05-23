@@ -438,10 +438,10 @@ def create_sf_event_record(
         'Time_spent__c': time_spent,
         'Case__c': case_id
     }
-    r = sf_api_call(f"/services/data/{settings.SF_API_VERSION}/sobjects/Proposal_engagement__c",
+    sf_api_call(f"/services/data/{settings.SF_API_VERSION}/sobjects/Proposal_engagement__c",
                 method='post',
-                data=data)
-    print(r)
+                data=data
+                )
 
 
 def create_event_record(
@@ -449,7 +449,6 @@ def create_event_record(
         sf_session_id,
         event_type,
         proposal_name,
-        proposal_account_id,
         contact_account_id,
         event_name,
         email,
@@ -465,7 +464,6 @@ def create_event_record(
     :param email: Provided email address of user.
     :param session_id: Session Id.
     :param event_type: Event type.
-    :param proposal_account_id: Account__c value from 'get_proposal' requests response.
     :param contact_id: 'contact_id' from 'user_email_validation' response.
     :param event_name: Event name.
     :param time_spent: Time spent on page(if available).
@@ -485,10 +483,8 @@ def create_event_record(
                 proposal_name=proposal_name,
                 event_name=event_name,
                 contact_account_id=contact_account_id,
-                proposal_account_id=proposal_account_id,
                 contact_id=contact_id,
-                user_email=email,
-            )
+            )['id']
             event_name = 'Question submitted'
         create_sf_event_record(
             sf_session_id=sf_session_id,
@@ -503,35 +499,29 @@ def create_case_record(
         proposal_name,
         event_name,
         contact_account_id,
-        proposal_account_id,
-        user_email,
         contact_id
 ):
     """Creating a Case record.
 
-    :param user_email: User email.
     :param message: Message(if available).
     :param proposal_name: 'Name' from 'get_proposal' requests response.
     :param event_name: Event name.
     :param contact_account_id: AccountId from 'email_domain_validation' response.
-    :param proposal_account_id: Account__c value from 'get_proposal' requests response.
     :param contact_id: 'contact_id' from 'user_email_validation' response.
     """
     owner_id = get_owner_id(contact_account_id)
-    subject = [
-        'Question or Feedback' if 'Feedback-Form' in event_name else 'Meeting request' + ', WebProposal{}'.format(
-            proposal_name)]
+    subject = 'Question or Feedback' if 'Feedback-Form' in event_name else 'Meeting request' + ', WebProposal{}'.format(
+        proposal_name
+    )
     data = {
         'Description': message,
         'From_django__c': True,
-        'AccountId': proposal_account_id,
         'OwnerId': owner_id,
-        'ContactEmail': user_email,
         'ContactId': contact_id,
         'Subject': subject
     }
     response = sf_api_call(f"/services/data/{settings.SF_API_VERSION}/sobjects/Case", method='post', data=data)
-    return response['id']
+    return response
 
 
 def additional_email_verification(request, proposal_id):

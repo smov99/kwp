@@ -1206,3 +1206,373 @@ Traceback (most recent call last):
     assert field_name in fields, (
 AssertionError: The field 'session_url' was declared on serializer SessionEventSerializer, but has not been included in the 'fields' option.
 ERROR 2021-05-23 23:59:27,900 basehttp 16992 17864 "GET /api/v1/session-event-detail/288 HTTP/1.1" 500 139861
+ERROR 2021-05-24 00:49:32,394 log 3756 21820 Internal Server Error: /docs/
+Traceback (most recent call last):
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\views\generic\base.py", line 70, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\views\generic\base.py", line 98, in dispatch
+    return handler(request, *args, **kwargs)
+  File "F:\workspace\django\kiwapower_web_proposal\proposal\services.py", line 23, in clocked
+    result = func(*args, **kwargs)
+  File "F:\workspace\django\kiwapower_web_proposal\proposal\views.py", line 25, in get
+    services.create_failed_session_record(request, proposal_id, email)
+  File "F:\workspace\django\kiwapower_web_proposal\proposal\services.py", line 619, in create_failed_session_record
+    client_ip = request.META['HTTP_X_REAL_IP']
+KeyError: 'HTTP_X_REAL_IP'
+ERROR 2021-05-24 00:49:32,396 basehttp 3756 21820 "GET /docs/ HTTP/1.1" 500 86418
+ERROR 2021-05-24 00:49:59,230 log 9884 1904 Internal Server Error: /docs/
+Traceback (most recent call last):
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\core\handlers\base.py", line 204, in _get_response
+    response = response.render()
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\template\response.py", line 105, in render
+    self.content = self.rendered_content
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\template\response.py", line 83, in rendered_content
+    return template.render(context, self._request)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\template\backends\django.py", line 61, in render
+    return self.template.render(context)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\template\base.py", line 170, in render
+    return self._render(context)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\template\base.py", line 162, in _render
+    return self.nodelist.render(context)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\template\base.py", line 938, in render
+    bit = node.render_annotated(context)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\template\base.py", line 905, in render_annotated
+    return self.render(context)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\template\defaulttags.py", line 446, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\urls\base.py", line 86, in reverse
+    return resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\urls\resolvers.py", line 694, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'openapi-schema' not found. 'openapi-schema' is not a valid view function or pattern name.
+ERROR 2021-05-24 00:49:59,235 basehttp 9884 1904 "GET /docs/ HTTP/1.1" 500 115796
+ERROR 2021-05-24 00:51:14,125 log 21080 7888 Internal Server Error: /docs/
+Traceback (most recent call last):
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\core\handlers\base.py", line 204, in _get_response
+    response = response.render()
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\template\response.py", line 105, in render
+    self.content = self.rendered_content
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\template\response.py", line 83, in rendered_content
+    return template.render(context, self._request)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\template\backends\django.py", line 61, in render
+    return self.template.render(context)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\template\base.py", line 170, in render
+    return self._render(context)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\template\base.py", line 162, in _render
+    return self.nodelist.render(context)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\template\base.py", line 938, in render
+    bit = node.render_annotated(context)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\template\base.py", line 905, in render_annotated
+    return self.render(context)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\template\defaulttags.py", line 446, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\urls\base.py", line 86, in reverse
+    return resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\urls\resolvers.py", line 694, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'openapi-schema' not found. 'openapi-schema' is not a valid view function or pattern name.
+ERROR 2021-05-24 00:51:14,129 basehttp 21080 7888 "GET /docs/ HTTP/1.1" 500 115796
+ERROR 2021-05-24 00:51:16,392 log 21080 7888 Internal Server Error: /docs/
+Traceback (most recent call last):
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\core\handlers\base.py", line 204, in _get_response
+    response = response.render()
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\template\response.py", line 105, in render
+    self.content = self.rendered_content
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\template\response.py", line 83, in rendered_content
+    return template.render(context, self._request)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\template\backends\django.py", line 61, in render
+    return self.template.render(context)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\template\base.py", line 170, in render
+    return self._render(context)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\template\base.py", line 162, in _render
+    return self.nodelist.render(context)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\template\base.py", line 938, in render
+    bit = node.render_annotated(context)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\template\base.py", line 905, in render_annotated
+    return self.render(context)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\template\defaulttags.py", line 446, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\urls\base.py", line 86, in reverse
+    return resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\urls\resolvers.py", line 694, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'openapi-schema' not found. 'openapi-schema' is not a valid view function or pattern name.
+ERROR 2021-05-24 00:51:16,394 basehttp 21080 7888 "GET /docs/ HTTP/1.1" 500 115796
+ERROR 2021-05-24 00:52:56,733 log 21080 7888 Internal Server Error: /docs/
+Traceback (most recent call last):
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\core\handlers\base.py", line 204, in _get_response
+    response = response.render()
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\template\response.py", line 105, in render
+    self.content = self.rendered_content
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\template\response.py", line 83, in rendered_content
+    return template.render(context, self._request)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\template\backends\django.py", line 61, in render
+    return self.template.render(context)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\template\base.py", line 170, in render
+    return self._render(context)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\template\base.py", line 162, in _render
+    return self.nodelist.render(context)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\template\base.py", line 938, in render
+    bit = node.render_annotated(context)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\template\base.py", line 905, in render_annotated
+    return self.render(context)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\template\defaulttags.py", line 446, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\urls\base.py", line 86, in reverse
+    return resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\urls\resolvers.py", line 694, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'openapi-schema' not found. 'openapi-schema' is not a valid view function or pattern name.
+ERROR 2021-05-24 00:52:56,735 basehttp 21080 7888 "GET /docs/ HTTP/1.1" 500 115796
+ERROR 2021-05-24 00:52:58,177 log 21080 7888 Internal Server Error: /docs/
+Traceback (most recent call last):
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\core\handlers\base.py", line 204, in _get_response
+    response = response.render()
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\template\response.py", line 105, in render
+    self.content = self.rendered_content
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\template\response.py", line 83, in rendered_content
+    return template.render(context, self._request)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\template\backends\django.py", line 61, in render
+    return self.template.render(context)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\template\base.py", line 170, in render
+    return self._render(context)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\template\base.py", line 162, in _render
+    return self.nodelist.render(context)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\template\base.py", line 938, in render
+    bit = node.render_annotated(context)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\template\base.py", line 905, in render_annotated
+    return self.render(context)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\template\defaulttags.py", line 446, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\urls\base.py", line 86, in reverse
+    return resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\urls\resolvers.py", line 694, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'openapi-schema' not found. 'openapi-schema' is not a valid view function or pattern name.
+ERROR 2021-05-24 00:52:58,180 basehttp 21080 7888 "GET /docs/ HTTP/1.1" 500 115796
+ERROR 2021-05-24 01:00:57,640 log 8068 14904 Internal Server Error: /api/v1/openapi
+Traceback (most recent call last):
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\views\generic\base.py", line 70, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\rest_framework\schemas\views.py", line 48, in handle_exception
+    return super().handle_exception(exc)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\rest_framework\schemas\views.py", line 37, in get
+    schema = self.schema_generator.get_schema(request, self.public)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\rest_framework\schemas\openapi.py", line 81, in get_schema
+    operation = view.schema.get_operation(path, method)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\rest_framework\schemas\openapi.py", line 147, in get_operation
+    operation['operationId'] = self.get_operation_id(path, method)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\rest_framework\schemas\openapi.py", line 260, in get_operation_id
+    name = self.get_operation_id_base(path, method, action)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\rest_framework\schemas\openapi.py", line 225, in get_operation_id_base
+    elif self.get_serializer(path, method) is not None:
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\rest_framework\schemas\openapi.py", line 610, in get_serializer
+    return view.get_serializer()
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\rest_framework\generics.py", line 108, in get_serializer
+    serializer_class = self.get_serializer_class()
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\rest_framework\generics.py", line 122, in get_serializer_class
+    assert self.serializer_class is not None, (
+AssertionError: 'ApiRoot' should either include a `serializer_class` attribute, or override the `get_serializer_class()` method.
+ERROR 2021-05-24 01:00:57,644 basehttp 8068 14904 "GET /api/v1/openapi HTTP/1.1" 500 131861
+ERROR 2021-05-24 01:01:09,668 log 8068 14904 Internal Server Error: /api/v1/openapi
+Traceback (most recent call last):
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\views\generic\base.py", line 70, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\rest_framework\schemas\views.py", line 48, in handle_exception
+    return super().handle_exception(exc)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\rest_framework\schemas\views.py", line 37, in get
+    schema = self.schema_generator.get_schema(request, self.public)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\rest_framework\schemas\openapi.py", line 81, in get_schema
+    operation = view.schema.get_operation(path, method)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\rest_framework\schemas\openapi.py", line 147, in get_operation
+    operation['operationId'] = self.get_operation_id(path, method)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\rest_framework\schemas\openapi.py", line 260, in get_operation_id
+    name = self.get_operation_id_base(path, method, action)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\rest_framework\schemas\openapi.py", line 225, in get_operation_id_base
+    elif self.get_serializer(path, method) is not None:
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\rest_framework\schemas\openapi.py", line 610, in get_serializer
+    return view.get_serializer()
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\rest_framework\generics.py", line 108, in get_serializer
+    serializer_class = self.get_serializer_class()
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\rest_framework\generics.py", line 122, in get_serializer_class
+    assert self.serializer_class is not None, (
+AssertionError: 'ApiRoot' should either include a `serializer_class` attribute, or override the `get_serializer_class()` method.
+ERROR 2021-05-24 01:01:09,671 basehttp 8068 14904 "GET /api/v1/openapi HTTP/1.1" 500 131861
+ERROR 2021-05-24 01:03:03,413 log 8068 14904 Internal Server Error: /api/v1/openapi
+Traceback (most recent call last):
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\views\generic\base.py", line 70, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\rest_framework\schemas\views.py", line 48, in handle_exception
+    return super().handle_exception(exc)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\rest_framework\schemas\views.py", line 37, in get
+    schema = self.schema_generator.get_schema(request, self.public)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\rest_framework\schemas\openapi.py", line 81, in get_schema
+    operation = view.schema.get_operation(path, method)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\rest_framework\schemas\openapi.py", line 147, in get_operation
+    operation['operationId'] = self.get_operation_id(path, method)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\rest_framework\schemas\openapi.py", line 260, in get_operation_id
+    name = self.get_operation_id_base(path, method, action)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\rest_framework\schemas\openapi.py", line 225, in get_operation_id_base
+    elif self.get_serializer(path, method) is not None:
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\rest_framework\schemas\openapi.py", line 610, in get_serializer
+    return view.get_serializer()
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\rest_framework\generics.py", line 108, in get_serializer
+    serializer_class = self.get_serializer_class()
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\rest_framework\generics.py", line 122, in get_serializer_class
+    assert self.serializer_class is not None, (
+AssertionError: 'ApiRoot' should either include a `serializer_class` attribute, or override the `get_serializer_class()` method.
+ERROR 2021-05-24 01:03:03,416 basehttp 8068 14904 "GET /api/v1/openapi HTTP/1.1" 500 131861
+WARNING 2021-05-24 01:17:54,230 log 19508 19592 Not Found: /api/v1/doc
+WARNING 2021-05-24 01:17:54,230 basehttp 19508 19592 "GET /api/v1/doc HTTP/1.1" 404 4575
+WARNING 2021-05-24 01:22:51,402 log 23536 21820 Not Found: /static/drf-yasg/url-polyfill.min.js
+WARNING 2021-05-24 01:22:51,404 log 23536 22032 Not Found: /static/drf-yasg/redoc-init.js
+WARNING 2021-05-24 01:22:51,405 basehttp 23536 21820 "GET /static/drf-yasg/url-polyfill.min.js HTTP/1.1" 404 3309
+WARNING 2021-05-24 01:22:51,408 log 23536 18376 Not Found: /static/drf-yasg/redoc/redoc.min.js
+WARNING 2021-05-24 01:22:51,408 basehttp 23536 22032 "GET /static/drf-yasg/redoc-init.js HTTP/1.1" 404 3309
+WARNING 2021-05-24 01:22:51,409 log 23536 21476 Not Found: /static/drf-yasg/style.css
+WARNING 2021-05-24 01:22:51,410 log 23536 19796 Not Found: /static/drf-yasg/insQ.min.js
+WARNING 2021-05-24 01:22:51,411 basehttp 23536 21476 "GET /static/drf-yasg/style.css HTTP/1.1" 404 3309
+WARNING 2021-05-24 01:22:51,411 basehttp 23536 18376 "GET /static/drf-yasg/redoc/redoc.min.js HTTP/1.1" 404 3309
+WARNING 2021-05-24 01:22:51,412 basehttp 23536 19796 "GET /static/drf-yasg/insQ.min.js HTTP/1.1" 404 3309
+WARNING 2021-05-24 01:22:51,418 log 23536 19796 Not Found: /static/drf-yasg/url-polyfill.min.js
+WARNING 2021-05-24 01:22:51,418 basehttp 23536 19796 "GET /static/drf-yasg/url-polyfill.min.js HTTP/1.1" 404 3309
+WARNING 2021-05-24 01:22:51,424 log 23536 19796 Not Found: /static/drf-yasg/redoc-init.js
+WARNING 2021-05-24 01:22:51,424 basehttp 23536 19796 "GET /static/drf-yasg/redoc-init.js HTTP/1.1" 404 3309
+WARNING 2021-05-24 01:22:51,429 log 23536 19796 Not Found: /static/drf-yasg/redoc/redoc.min.js
+WARNING 2021-05-24 01:22:51,429 basehttp 23536 19796 "GET /static/drf-yasg/redoc/redoc.min.js HTTP/1.1" 404 3309
+WARNING 2021-05-24 01:22:51,435 log 23536 19796 Not Found: /static/drf-yasg/redoc/redoc-logo.png
+WARNING 2021-05-24 01:22:51,435 basehttp 23536 19796 "GET /static/drf-yasg/redoc/redoc-logo.png HTTP/1.1" 404 3309
+WARNING 2021-05-24 01:23:02,171 log 23536 19796 Not Found: /static/drf-yasg/style.css
+WARNING 2021-05-24 01:23:02,174 log 23536 21476 Not Found: /static/drf-yasg/swagger-ui-dist/swagger-ui.css
+WARNING 2021-05-24 01:23:02,178 log 23536 18376 Not Found: /static/drf-yasg/swagger-ui-dist/swagger-ui-bundle.js
+WARNING 2021-05-24 01:23:02,180 log 23536 22032 Not Found: /static/drf-yasg/swagger-ui-dist/swagger-ui-standalone-preset.js
+WARNING 2021-05-24 01:23:02,182 log 23536 21820 Not Found: /static/drf-yasg/insQ.min.js
+WARNING 2021-05-24 01:23:02,185 log 23536 22648 Not Found: /static/drf-yasg/immutable.min.js
+WARNING 2021-05-24 01:23:02,185 basehttp 23536 21476 "GET /static/drf-yasg/swagger-ui-dist/swagger-ui.css HTTP/1.1" 404 3309
+WARNING 2021-05-24 01:23:02,186 basehttp 23536 19796 "GET /static/drf-yasg/style.css HTTP/1.1" 404 3309
+WARNING 2021-05-24 01:23:02,186 basehttp 23536 18376 "GET /static/drf-yasg/swagger-ui-dist/swagger-ui-bundle.js HTTP/1.1" 404 3309
+WARNING 2021-05-24 01:23:02,187 basehttp 23536 22032 "GET /static/drf-yasg/swagger-ui-dist/swagger-ui-standalone-preset.js HTTP/1.1" 404 3309
+WARNING 2021-05-24 01:23:02,188 basehttp 23536 21820 "GET /static/drf-yasg/insQ.min.js HTTP/1.1" 404 3309
+WARNING 2021-05-24 01:23:02,189 basehttp 23536 22648 "GET /static/drf-yasg/immutable.min.js HTTP/1.1" 404 3309
+WARNING 2021-05-24 01:23:02,193 log 23536 19796 Not Found: /static/drf-yasg/swagger-ui-init.js
+WARNING 2021-05-24 01:23:02,196 log 23536 21476 Not Found: /static/drf-yasg/url-polyfill.min.js
+WARNING 2021-05-24 01:23:02,198 log 23536 21820 Not Found: /static/drf-yasg/immutable.min.js
+WARNING 2021-05-24 01:23:02,199 basehttp 23536 19796 "GET /static/drf-yasg/swagger-ui-init.js HTTP/1.1" 404 3309
+WARNING 2021-05-24 01:23:02,199 basehttp 23536 21820 "GET /static/drf-yasg/immutable.min.js HTTP/1.1" 404 3309
+WARNING 2021-05-24 01:23:02,200 basehttp 23536 21476 "GET /static/drf-yasg/url-polyfill.min.js HTTP/1.1" 404 3309
+WARNING 2021-05-24 01:23:02,206 log 23536 21476 Not Found: /static/drf-yasg/swagger-ui-init.js
+WARNING 2021-05-24 01:23:02,207 basehttp 23536 21476 "GET /static/drf-yasg/swagger-ui-init.js HTTP/1.1" 404 3309
+WARNING 2021-05-24 01:23:06,162 log 23536 21476 Not Found: /accounts/login/
+WARNING 2021-05-24 01:23:06,162 basehttp 23536 21476 "GET /accounts/login/?next=/api/v1/swagger/ HTTP/1.1" 404 3309
+WARNING 2021-05-24 01:23:06,211 log 23536 21476 Not Found: /static/assets/vendor/bootstrap/css/bootstrap.min.css
+WARNING 2021-05-24 01:23:06,214 log 23536 21820 Not Found: /static/assets/vendor/font-awesome-pro/css/all.min.css
+WARNING 2021-05-24 01:23:06,217 log 23536 19796 Not Found: /static/assets/vendor/boxicons/css/boxicons.min.css
+WARNING 2021-05-24 01:23:06,219 log 23536 18376 Not Found: /static/assets/vendor/aos/aos.css
+WARNING 2021-05-24 01:23:06,222 log 23536 22032 Not Found: /static/assets/vendor/remixicon/remixicon.css
+WARNING 2021-05-24 01:23:06,222 basehttp 23536 21476 "GET /static/assets/vendor/bootstrap/css/bootstrap.min.css HTTP/1.1" 404 3309
+WARNING 2021-05-24 01:23:06,226 log 23536 22648 Not Found: /static/assets/vendor/venobox/venobox.css
+WARNING 2021-05-24 01:23:06,228 log 23536 21476 Not Found: /static/assets/css/style.css
+WARNING 2021-05-24 01:23:06,228 basehttp 23536 19796 "GET /static/assets/vendor/boxicons/css/boxicons.min.css HTTP/1.1" 404 3309
+WARNING 2021-05-24 01:23:06,229 basehttp 23536 22032 "GET /static/assets/vendor/remixicon/remixicon.css HTTP/1.1" 404 3309
+WARNING 2021-05-24 01:23:06,229 basehttp 23536 18376 "GET /static/assets/vendor/aos/aos.css HTTP/1.1" 404 3309
+WARNING 2021-05-24 01:23:06,229 basehttp 23536 21820 "GET /static/assets/vendor/font-awesome-pro/css/all.min.css HTTP/1.1" 404 3309
+WARNING 2021-05-24 01:23:06,230 basehttp 23536 21476 "GET /static/assets/css/style.css HTTP/1.1" 404 3309
+WARNING 2021-05-24 01:23:06,233 log 23536 17612 Not Found: /static/assets/vendor/bootstrap/js/bootstrap.bundle.min.js
+WARNING 2021-05-24 01:23:06,236 log 23536 22032 Not Found: /static/assets/vendor/jquery.easing/jquery.easing.min.js
+WARNING 2021-05-24 01:23:06,236 basehttp 23536 22648 "GET /static/assets/vendor/venobox/venobox.css HTTP/1.1" 404 3309
+WARNING 2021-05-24 01:23:06,238 log 23536 19796 Not Found: /static/assets/vendor/waypoints/jquery.waypoints.min.js
+WARNING 2021-05-24 01:23:06,240 log 23536 21820 Not Found: /static/assets/vendor/jquery/jquery.min.js
+WARNING 2021-05-24 01:23:06,242 log 23536 21476 Not Found: /static/assets/vendor/isotope-layout/isotope.pkgd.min.js
+WARNING 2021-05-24 01:23:06,247 log 23536 6420 Not Found: /static/assets/vendor/venobox/venobox.min.js
+WARNING 2021-05-24 01:23:06,248 basehttp 23536 19796 "GET /static/assets/vendor/waypoints/jquery.waypoints.min.js HTTP/1.1" 404 3309
+WARNING 2021-05-24 01:23:06,249 basehttp 23536 22032 "GET /static/assets/vendor/jquery.easing/jquery.easing.min.js HTTP/1.1" 404 3309
+WARNING 2021-05-24 01:23:06,249 basehttp 23536 17612 "GET /static/assets/vendor/bootstrap/js/bootstrap.bundle.min.js HTTP/1.1" 404 3309
+WARNING 2021-05-24 01:23:06,253 log 23536 3316 Not Found: /static/assets/vendor/aos/aos.js
+WARNING 2021-05-24 01:23:06,254 basehttp 23536 21820 "GET /static/assets/vendor/jquery/jquery.min.js HTTP/1.1" 404 3309
+WARNING 2021-05-24 01:23:06,254 basehttp 23536 21476 "GET /static/assets/vendor/isotope-layout/isotope.pkgd.min.js HTTP/1.1" 404 3309
+WARNING 2021-05-24 01:23:06,257 log 23536 19796 Not Found: /static/assets/img/kwlogo.png
+WARNING 2021-05-24 01:23:06,260 log 23536 23096 Not Found: /static/assets/img/group.png
+WARNING 2021-05-24 01:23:06,263 log 23536 17612 Not Found: /static/assets/js/main.js
+WARNING 2021-05-24 01:23:06,264 basehttp 23536 6420 "GET /static/assets/vendor/venobox/venobox.min.js HTTP/1.1" 404 3309
+WARNING 2021-05-24 01:23:06,264 basehttp 23536 3316 "GET /static/assets/vendor/aos/aos.js HTTP/1.1" 404 3309
+WARNING 2021-05-24 01:23:06,266 basehttp 23536 23096 "GET /static/assets/img/group.png HTTP/1.1" 404 3309
+WARNING 2021-05-24 01:23:06,266 basehttp 23536 17612 "GET /static/assets/js/main.js HTTP/1.1" 404 3309
+WARNING 2021-05-24 01:23:06,267 basehttp 23536 19796 "GET /static/assets/img/kwlogo.png HTTP/1.1" 404 3309
+WARNING 2021-05-24 01:23:06,411 log 23536 19796 Not Found: /static/assets/vendor/bootstrap/js/bootstrap.bundle.min.js
+WARNING 2021-05-24 01:23:06,411 basehttp 23536 19796 "GET /static/assets/vendor/bootstrap/js/bootstrap.bundle.min.js HTTP/1.1" 404 3309
+WARNING 2021-05-24 01:23:06,420 log 23536 19796 Not Found: /static/assets/vendor/jquery.easing/jquery.easing.min.js
+WARNING 2021-05-24 01:23:06,420 basehttp 23536 19796 "GET /static/assets/vendor/jquery.easing/jquery.easing.min.js HTTP/1.1" 404 3309
+WARNING 2021-05-24 01:23:06,424 log 23536 19796 Not Found: /static/assets/vendor/waypoints/jquery.waypoints.min.js
+WARNING 2021-05-24 01:23:06,425 basehttp 23536 19796 "GET /static/assets/vendor/waypoints/jquery.waypoints.min.js HTTP/1.1" 404 3309
+WARNING 2021-05-24 01:23:06,429 log 23536 19796 Not Found: /static/assets/vendor/isotope-layout/isotope.pkgd.min.js
+WARNING 2021-05-24 01:23:06,429 basehttp 23536 19796 "GET /static/assets/vendor/isotope-layout/isotope.pkgd.min.js HTTP/1.1" 404 3309
+WARNING 2021-05-24 01:23:06,435 log 23536 19796 Not Found: /static/assets/vendor/venobox/venobox.min.js
+WARNING 2021-05-24 01:23:06,435 basehttp 23536 19796 "GET /static/assets/vendor/venobox/venobox.min.js HTTP/1.1" 404 3309
+WARNING 2021-05-24 01:23:06,439 log 23536 19796 Not Found: /static/assets/vendor/aos/aos.js
+WARNING 2021-05-24 01:23:06,439 basehttp 23536 19796 "GET /static/assets/vendor/aos/aos.js HTTP/1.1" 404 3309
+WARNING 2021-05-24 01:23:06,444 log 23536 19796 Not Found: /static/assets/js/main.js
+WARNING 2021-05-24 01:23:06,444 basehttp 23536 19796 "GET /static/assets/js/main.js HTTP/1.1" 404 3309
+WARNING 2021-05-24 01:23:06,453 log 23536 19796 Not Found: /static/assets/img/favicon.ico
+WARNING 2021-05-24 01:23:06,454 basehttp 23536 19796 "GET /static/assets/img/favicon.ico HTTP/1.1" 404 3309
+WARNING 2021-05-24 01:23:09,575 log 23536 19796 Not Found: /static/drf-yasg/swagger-ui-dist/swagger-ui-bundle.js
+WARNING 2021-05-24 01:23:09,576 basehttp 23536 19796 "GET /static/drf-yasg/swagger-ui-dist/swagger-ui-bundle.js HTTP/1.1" 404 3309
+WARNING 2021-05-24 01:23:34,656 log 20344 16948 Not Found: /accounts/login/
+WARNING 2021-05-24 01:23:34,656 basehttp 20344 16948 "GET /accounts/login/?next=/api/v1/swagger/ HTTP/1.1" 404 3371
+WARNING 2021-05-24 01:25:27,972 log 20344 16948 Not Found: /accounts/login/
+WARNING 2021-05-24 01:25:27,973 basehttp 20344 16948 "GET /accounts/login/?next=/api/v1/swagger/ HTTP/1.1" 404 3371

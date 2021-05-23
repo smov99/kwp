@@ -43,6 +43,7 @@ THIRD_PARTY_APPS = [
     'rest_framework',
     'rangefilter',
     'user_agents',
+    'drf_yasg',
 ]
 
 LOCAL_APPS = [

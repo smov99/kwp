@@ -97,6 +97,9 @@ msgstr "Proposal for"
 msgid "Email inválido."
 msgstr "Invalid email."
 
+msgid "Documentación de la propuesta web de Kiwapower"
+msgstr "Kiwapower web proposal documentation"
+
 #: .\templates\proposal.html:14 .\templates\proposal.html:38
 msgid "Quienes somos"
 msgstr "Who we are"

@@ -469,10 +469,14 @@ def create_event_record(
     :param time_spent: Time spent on page(if available).
     :param message: Message(if available).
     """
+    if time_spent is not None:
+        event_name_ = event_name + str(time_spent)
+    else:
+        event_name_ = event_name
     SessionEvent.objects.create(
         session_id_id=session_id,
         event_type=event_type,
-        event_name=event_name,
+        event_name=event_name_,
         message=message
     )
     if email != settings.TRUSTED_EMAIL:

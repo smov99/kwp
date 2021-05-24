@@ -470,7 +470,7 @@ def create_event_record(
     :param message: Message(if available).
     """
     if time_spent is not None:
-        event_name_ = event_name + str(time_spent)
+        event_name_ = event_name + ' ' + str(time_spent)
     else:
         event_name_ = event_name
     SessionEvent.objects.create(

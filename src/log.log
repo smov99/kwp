@@ -1576,3 +1576,65 @@ WARNING 2021-05-24 01:23:34,656 log 20344 16948 Not Found: /accounts/login/
 WARNING 2021-05-24 01:23:34,656 basehttp 20344 16948 "GET /accounts/login/?next=/api/v1/swagger/ HTTP/1.1" 404 3371
 WARNING 2021-05-24 01:25:27,972 log 20344 16948 Not Found: /accounts/login/
 WARNING 2021-05-24 01:25:27,973 basehttp 20344 16948 "GET /accounts/login/?next=/api/v1/swagger/ HTTP/1.1" 404 3371
+WARNING 2021-05-24 15:35:51,194 log 15392 7328 Not Found: /static/assets/css/style.css
+WARNING 2021-05-24 15:35:51,194 basehttp 15392 7328 "GET /static/assets/css/style.css HTTP/1.1" 404 3309
+WARNING 2021-05-24 15:35:51,225 log 15392 22180 Not Found: /static/assets/vendor/bootstrap/js/bootstrap.bundle.min.js
+WARNING 2021-05-24 15:35:51,227 basehttp 15392 22180 "GET /static/assets/vendor/bootstrap/js/bootstrap.bundle.min.js HTTP/1.1" 404 3309
+WARNING 2021-05-24 15:35:51,249 log 15392 13120 Not Found: /static/assets/vendor/jquery.easing/jquery.easing.min.js
+WARNING 2021-05-24 15:35:51,250 basehttp 15392 13120 "GET /static/assets/vendor/jquery.easing/jquery.easing.min.js HTTP/1.1" 404 3309
+WARNING 2021-05-24 15:35:51,251 log 15392 16256 Not Found: /static/assets/vendor/waypoints/jquery.waypoints.min.js
+WARNING 2021-05-24 15:35:51,251 basehttp 15392 16256 "GET /static/assets/vendor/waypoints/jquery.waypoints.min.js HTTP/1.1" 404 3309
+WARNING 2021-05-24 15:35:51,259 log 15392 17648 Not Found: /static/assets/vendor/isotope-layout/isotope.pkgd.min.js
+WARNING 2021-05-24 15:35:51,264 log 15392 22980 Not Found: /static/assets/vendor/jquery/jquery.min.js
+WARNING 2021-05-24 15:35:51,264 basehttp 15392 17648 "GET /static/assets/vendor/isotope-layout/isotope.pkgd.min.js HTTP/1.1" 404 3309
+WARNING 2021-05-24 15:35:51,265 basehttp 15392 22980 "GET /static/assets/vendor/jquery/jquery.min.js HTTP/1.1" 404 3309
+WARNING 2021-05-24 15:35:51,298 log 15392 7328 Not Found: /static/assets/vendor/venobox/venobox.min.js
+WARNING 2021-05-24 15:35:51,298 basehttp 15392 7328 "GET /static/assets/vendor/venobox/venobox.min.js HTTP/1.1" 404 3309
+WARNING 2021-05-24 15:35:51,354 log 15392 22180 Not Found: /static/assets/vendor/aos/aos.js
+WARNING 2021-05-24 15:35:51,355 basehttp 15392 22180 "GET /static/assets/vendor/aos/aos.js HTTP/1.1" 404 3309
+WARNING 2021-05-24 15:35:51,371 log 15392 13120 Not Found: /static/assets/js/main.js
+WARNING 2021-05-24 15:35:51,374 basehttp 15392 13120 "GET /static/assets/js/main.js HTTP/1.1" 404 3309
+WARNING 2021-05-24 15:35:51,387 log 15392 16256 Not Found: /static/assets/img/kwlogo.png
+WARNING 2021-05-24 15:35:51,387 basehttp 15392 16256 "GET /static/assets/img/kwlogo.png HTTP/1.1" 404 3309
+WARNING 2021-05-24 15:35:51,388 log 15392 22980 Not Found: /static/assets/img/group.png
+WARNING 2021-05-24 15:35:51,389 basehttp 15392 22980 "GET /static/assets/img/group.png HTTP/1.1" 404 3309
+WARNING 2021-05-24 15:35:51,390 log 15392 17648 Not Found: /static/assets/img/footerkwlogo.png
+WARNING 2021-05-24 15:35:51,390 basehttp 15392 17648 "GET /static/assets/img/footerkwlogo.png HTTP/1.1" 404 3309
+WARNING 2021-05-24 15:35:51,432 log 15392 7328 Not Found: /static/assets/img/footergroup.png
+WARNING 2021-05-24 15:35:51,433 basehttp 15392 7328 "GET /static/assets/img/footergroup.png HTTP/1.1" 404 3309
+WARNING 2021-05-24 15:35:51,479 log 15392 22180 Not Found: /static/assets/img/bequerel_2.png
+WARNING 2021-05-24 15:35:51,479 basehttp 15392 22180 "GET /static/assets/img/bequerel_2.png HTTP/1.1" 404 3309
+WARNING 2021-05-24 15:35:51,587 log 15392 13120 Not Found: /static/assets/img/asolmex.png
+WARNING 2021-05-24 15:35:51,588 basehttp 15392 13120 "GET /static/assets/img/asolmex.png HTTP/1.1" 404 3309
+WARNING 2021-05-24 15:35:51,600 log 15392 17648 Not Found: /static/assets/img/solar_panels.mp4
+WARNING 2021-05-24 15:35:51,600 basehttp 15392 17648 "GET /static/assets/img/solar_panels.mp4 HTTP/1.1" 404 3309
+WARNING 2021-05-24 15:35:51,787 log 15392 13120 Not Found: /static/assets/vendor/font-awesome-pro/webfonts/pro-fa-solid-900-5.10.2.woff2
+WARNING 2021-05-24 15:35:51,787 basehttp 15392 13120 "GET /static/assets/vendor/font-awesome-pro/webfonts/pro-fa-solid-900-5.10.2.woff2 HTTP/1.1" 404 3309
+WARNING 2021-05-24 15:35:51,788 log 15392 17648 Not Found: /static/assets/vendor/font-awesome-pro/webfonts/pro-fa-solid-900-5.0.0.woff2
+WARNING 2021-05-24 15:35:51,789 basehttp 15392 17648 "GET /static/assets/vendor/font-awesome-pro/webfonts/pro-fa-solid-900-5.0.0.woff2 HTTP/1.1" 404 3309
+WARNING 2021-05-24 15:35:51,806 log 15392 22180 Not Found: /static/assets/vendor/bootstrap/js/bootstrap.bundle.min.js
+WARNING 2021-05-24 15:35:51,806 basehttp 15392 22180 "GET /static/assets/vendor/bootstrap/js/bootstrap.bundle.min.js HTTP/1.1" 404 3309
+WARNING 2021-05-24 15:35:51,877 log 15392 17648 Not Found: /static/assets/vendor/font-awesome-pro/webfonts/pro-fa-solid-900-5.10.2.woff
+WARNING 2021-05-24 15:35:51,878 basehttp 15392 17648 "GET /static/assets/vendor/font-awesome-pro/webfonts/pro-fa-solid-900-5.10.2.woff HTTP/1.1" 404 3309
+WARNING 2021-05-24 15:35:51,880 log 15392 13120 Not Found: /static/assets/vendor/font-awesome-pro/webfonts/pro-fa-solid-900-5.0.0.woff
+WARNING 2021-05-24 15:35:51,880 basehttp 15392 13120 "GET /static/assets/vendor/font-awesome-pro/webfonts/pro-fa-solid-900-5.0.0.woff HTTP/1.1" 404 3309
+WARNING 2021-05-24 15:35:51,902 log 15392 22180 Not Found: /static/assets/vendor/jquery.easing/jquery.easing.min.js
+WARNING 2021-05-24 15:35:51,902 basehttp 15392 22180 "GET /static/assets/vendor/jquery.easing/jquery.easing.min.js HTTP/1.1" 404 3309
+WARNING 2021-05-24 15:35:51,961 log 15392 17648 Not Found: /static/assets/vendor/font-awesome-pro/webfonts/pro-fa-solid-900-5.0.0.ttf
+WARNING 2021-05-24 15:35:51,963 basehttp 15392 17648 "GET /static/assets/vendor/font-awesome-pro/webfonts/pro-fa-solid-900-5.0.0.ttf HTTP/1.1" 404 3309
+WARNING 2021-05-24 15:35:51,965 log 15392 13120 Not Found: /static/assets/vendor/font-awesome-pro/webfonts/pro-fa-solid-900-5.10.2.ttf
+WARNING 2021-05-24 15:35:51,965 basehttp 15392 13120 "GET /static/assets/vendor/font-awesome-pro/webfonts/pro-fa-solid-900-5.10.2.ttf HTTP/1.1" 404 3309
+WARNING 2021-05-24 15:35:51,983 log 15392 22180 Not Found: /static/assets/vendor/waypoints/jquery.waypoints.min.js
+WARNING 2021-05-24 15:35:51,983 basehttp 15392 22180 "GET /static/assets/vendor/waypoints/jquery.waypoints.min.js HTTP/1.1" 404 3309
+WARNING 2021-05-24 15:35:52,042 log 15392 22180 Not Found: /static/assets/vendor/isotope-layout/isotope.pkgd.min.js
+WARNING 2021-05-24 15:35:52,042 basehttp 15392 22180 "GET /static/assets/vendor/isotope-layout/isotope.pkgd.min.js HTTP/1.1" 404 3309
+WARNING 2021-05-24 15:35:52,101 log 15392 22180 Not Found: /static/assets/vendor/venobox/venobox.min.js
+WARNING 2021-05-24 15:35:52,101 basehttp 15392 22180 "GET /static/assets/vendor/venobox/venobox.min.js HTTP/1.1" 404 3309
+WARNING 2021-05-24 15:35:52,165 log 15392 22180 Not Found: /static/assets/vendor/aos/aos.js
+WARNING 2021-05-24 15:35:52,166 basehttp 15392 22180 "GET /static/assets/vendor/aos/aos.js HTTP/1.1" 404 3309
+WARNING 2021-05-24 15:35:52,230 log 15392 22180 Not Found: /static/assets/js/main.js
+WARNING 2021-05-24 15:35:52,230 basehttp 15392 22180 "GET /static/assets/js/main.js HTTP/1.1" 404 3309
+WARNING 2021-05-24 17:32:55,563 basehttp 20788 20524 "GET /static/assets/vendor/pdfjs/web/static/assets/vendor/pdfjs/images/toolbarButton-menuArrow.svg HTTP/1.1" 404 1883
+WARNING 2021-05-24 17:34:46,645 basehttp 20788 22692 "GET /static/assets/vendor/pdfjs/web/static/assets/vendor/pdfjs/images/toolbarButton-menuArrow.svg HTTP/1.1" 404 1883
+WARNING 2021-05-24 17:37:37,736 basehttp 20788 13152 "GET /static/assets/vendor/pdfjs/web/static/assets/vendor/pdfjs/images/toolbarButton-menuArrow.svg HTTP/1.1" 404 1883
+WARNING 2021-05-24 17:38:34,567 basehttp 20788 16928 "GET /static/assets/vendor/pdfjs/web/static/assets/vendor/pdfjs/images/toolbarButton-menuArrow.svg HTTP/1.1" 404 1883

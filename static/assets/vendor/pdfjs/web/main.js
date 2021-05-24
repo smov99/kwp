@@ -77,8 +77,10 @@
       if (valDict.newVal !== valDict.oldVal) {
         endPage = new Date().getTime()
         spentTime = ((endPage - startPage) / 1000)
-        eventsAjax('spent_time', 'Spent seconds on page number ' + valDict.oldVal, '' + spentTime)
-        eventsAjax('page_opened', "Pdf page " + valDict.newVal);
+        if (valDict.oldVal !== '0') {
+          eventsAjax('spent_time', 'Spent seconds on page number ' + valDict.oldVal, '' + spentTime)
+          eventsAjax('page_opened', "PDF page " + valDict.newVal);
+        }
         valDict.oldVal = valDict.newVal
         startPage = new Date().getTime()
       }

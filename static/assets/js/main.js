@@ -229,10 +229,10 @@
       e = e || window.event;
       e.preventDefault();
       if ($(this).hasClass('opened')) {
-        eventsAjax('closing_of_section', 'Section ' + $(e.target).text() + ' close');
+        eventsAjax('closing_of_section', 'Section ' + $(e.target).closest('h2').text() + ' close');
         $(this).removeClass('opened')
       } else {
-        eventsAjax('opening_of_section', 'Section ' + $(e.target).text() + ' open');
+        eventsAjax('opening_of_section', 'Section ' + $(e.target).closest('h2').text() + ' open');
         $(this).addClass('opened')
       }
     });
@@ -240,7 +240,7 @@
     $('.faq-list .collapsed').on('click', function (e) {
       e = e || window.event;
       e.preventDefault();
-      let selected_text = $(e.target).text(),
+      let selected_text = $(e.target).closest('a').text(),
         l = selected_text.length;
       selected_text = 'Question ' + selected_text
       if (l > 50) {

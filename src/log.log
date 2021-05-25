@@ -1851,3 +1851,141 @@ KeyError: 'HTTP_X_REAL_IP'
 ERROR 2021-05-25 18:08:35,150 basehttp 21660 25168 "POST /a0P04000000Gew4EAC/ HTTP/1.1" 500 88916
 WARNING 2021-05-25 18:08:35,496 log 21660 25168 Not Found: /favicon.ico
 WARNING 2021-05-25 18:08:35,496 basehttp 21660 25168 "GET /favicon.ico HTTP/1.1" 404 3337
+WARNING 2021-05-25 19:12:51,375 log 19212 20704 Not Found: /viewer
+WARNING 2021-05-25 19:12:51,376 basehttp 19212 20704 "GET /viewer?file=/tmp/kwp/Solar%20Power%20Finance%20and%20Investment%20Summit%202018%20-%20Agenda.pdf HTTP/1.1" 404 3309
+WARNING 2021-05-25 19:12:51,555 log 19212 20704 Not Found: /static/assets/css/style.css
+WARNING 2021-05-25 19:12:51,556 basehttp 19212 20704 "GET /static/assets/css/style.css HTTP/1.1" 404 3309
+WARNING 2021-05-25 19:12:51,583 log 19212 20704 Not Found: /static/assets/js/main.js
+WARNING 2021-05-25 19:12:51,584 basehttp 19212 20704 "GET /static/assets/js/main.js HTTP/1.1" 404 3309
+WARNING 2021-05-25 19:12:51,857 log 19212 20704 Not Found: /static/assets/js/main.js
+WARNING 2021-05-25 19:12:51,858 basehttp 19212 20704 "GET /static/assets/js/main.js HTTP/1.1" 404 3309
+WARNING 2021-05-25 19:13:47,561 log 23576 25584 Not Found: /viewer
+WARNING 2021-05-25 19:13:47,562 basehttp 23576 25584 "GET /viewer?file=/tmp/kwp/Solar%20Power%20Finance%20and%20Investment%20Summit%202018%20-%20Agenda.pdf HTTP/1.1" 404 2820
+WARNING 2021-05-25 19:13:47,711 log 23576 25584 Not Found: /favicon.ico
+WARNING 2021-05-25 19:13:47,711 basehttp 23576 25584 "GET /favicon.ico HTTP/1.1" 404 3512
+WARNING 2021-05-25 19:14:21,216 log 23576 25584 Not Found: /viewer
+WARNING 2021-05-25 19:14:21,217 basehttp 23576 25584 "GET /viewer?file=/tmp/kwp/Solar%20Power%20Finance%20and%20Investment%20Summit%202018%20-%20Agenda.pdf HTTP/1.1" 404 2820
+WARNING 2021-05-25 19:14:24,966 log 23576 25584 Not Found: /viewer
+WARNING 2021-05-25 19:14:24,966 basehttp 23576 25584 "GET /viewer?file=/tmp/kwp/Solar%20Power%20Finance%20and%20Investment%20Summit%202018%20-%20Agenda.pdf HTTP/1.1" 404 2820
+WARNING 2021-05-25 19:14:26,429 log 23576 25584 Not Found: /viewer
+WARNING 2021-05-25 19:14:26,430 basehttp 23576 25584 "GET /viewer?file=/tmp/kwp/Solar%20Power%20Finance%20and%20Investment%20Summit%202018%20-%20Agenda.pdf HTTP/1.1" 404 2820
+WARNING 2021-05-25 19:14:27,152 log 23576 25584 Not Found: /viewer
+WARNING 2021-05-25 19:14:27,152 basehttp 23576 25584 "GET /viewer?file=/tmp/kwp/Solar%20Power%20Finance%20and%20Investment%20Summit%202018%20-%20Agenda.pdf HTTP/1.1" 404 2820
+WARNING 2021-05-25 19:14:27,580 log 23576 25584 Not Found: /viewer
+WARNING 2021-05-25 19:14:27,580 basehttp 23576 25584 "GET /viewer?file=/tmp/kwp/Solar%20Power%20Finance%20and%20Investment%20Summit%202018%20-%20Agenda.pdf HTTP/1.1" 404 2820
+WARNING 2021-05-25 19:14:28,115 log 23576 25584 Not Found: /viewer
+WARNING 2021-05-25 19:14:28,115 basehttp 23576 25584 "GET /viewer?file=/tmp/kwp/Solar%20Power%20Finance%20and%20Investment%20Summit%202018%20-%20Agenda.pdf HTTP/1.1" 404 2820
+WARNING 2021-05-25 19:14:28,590 log 23576 25584 Not Found: /viewer
+WARNING 2021-05-25 19:14:28,590 basehttp 23576 25584 "GET /viewer?file=/tmp/kwp/Solar%20Power%20Finance%20and%20Investment%20Summit%202018%20-%20Agenda.pdf HTTP/1.1" 404 2820
+WARNING 2021-05-25 19:14:28,890 log 23576 25584 Not Found: /viewer
+WARNING 2021-05-25 19:14:28,891 basehttp 23576 25584 "GET /viewer?file=/tmp/kwp/Solar%20Power%20Finance%20and%20Investment%20Summit%202018%20-%20Agenda.pdf HTTP/1.1" 404 2820
+WARNING 2021-05-25 19:14:29,712 log 23576 25584 Not Found: /viewer
+WARNING 2021-05-25 19:14:29,713 basehttp 23576 25584 "GET /viewer?file=/tmp/kwp/Solar%20Power%20Finance%20and%20Investment%20Summit%202018%20-%20Agenda.pdf HTTP/1.1" 404 2820
+WARNING 2021-05-25 19:15:04,251 log 23576 15860 Not Found: /viewer
+WARNING 2021-05-25 19:15:04,252 basehttp 23576 15860 "GET /viewer?file=/tmp/kwp/Solar%20Power%20Finance%20and%20Investment%20Summit%202018%20-%20Agenda.pdf HTTP/1.1" 404 2820
+WARNING 2021-05-25 19:15:07,432 log 23576 15860 Not Found: /viewer
+WARNING 2021-05-25 19:15:07,433 basehttp 23576 15860 "GET /viewer?file=/tmp/kwp/Solar%20Power%20Finance%20and%20Investment%20Summit%202018%20-%20Agenda.pdf HTTP/1.1" 404 2820
+WARNING 2021-05-25 19:15:08,497 log 23576 15860 Not Found: /viewer
+WARNING 2021-05-25 19:15:08,498 basehttp 23576 15860 "GET /viewer?file=/tmp/kwp/Solar%20Power%20Finance%20and%20Investment%20Summit%202018%20-%20Agenda.pdf HTTP/1.1" 404 2820
+WARNING 2021-05-25 19:15:15,710 log 23576 15860 Not Found: /viewer
+WARNING 2021-05-25 19:15:15,710 basehttp 23576 15860 "GET /viewer?file=/tmp/kwp/Solar%20Power%20Finance%20and%20Investment%20Summit%202018%20-%20Agenda.pdf HTTP/1.1" 404 2820
+WARNING 2021-05-25 19:18:21,973 log 23576 15860 Not Found: /viewer
+WARNING 2021-05-25 19:18:21,974 basehttp 23576 15860 "GET /viewer?file=/tmp/kwp/Solar%20Power%20Finance%20and%20Investment%20Summit%202018%20-%20Agenda.pdf HTTP/1.1" 404 2820
+WARNING 2021-05-25 19:18:22,179 log 23576 15860 Not Found: /favicon.ico
+WARNING 2021-05-25 19:18:22,180 basehttp 23576 15860 "GET /favicon.ico HTTP/1.1" 404 3512
+WARNING 2021-05-25 19:20:50,145 basehttp 15392 24928 "GET /static/assets/vendor/pdfjs/web/static/assets/vendor/pdfjs/images/toolbarButton-menuArrow.svg HTTP/1.1" 404 1883
+WARNING 2021-05-25 19:21:02,058 basehttp 15392 14840 "GET /static/assets/vendor/pdfjs/web/static/assets/vendor/pdfjs/images/toolbarButton-menuArrow.svg HTTP/1.1" 404 1883
+WARNING 2021-05-25 19:21:06,448 basehttp 15392 12932 "GET /static/assets/vendor/pdfjs/web/static/assets/vendor/pdfjs/images/toolbarButton-menuArrow.svg HTTP/1.1" 404 1883
+WARNING 2021-05-25 19:23:26,629 basehttp 15392 7888 "GET /static/assets/vendor/pdfjs/web/static/assets/vendor/pdfjs/images/toolbarButton-menuArrow.svg HTTP/1.1" 404 1883
+WARNING 2021-05-25 19:24:01,546 basehttp 15392 16516 "GET /static/assets/vendor/pdfjs/web/static/assets/vendor/pdfjs/images/toolbarButton-menuArrow.svg HTTP/1.1" 404 1883
+WARNING 2021-05-25 19:24:23,589 basehttp 15392 768 "GET /static/assets/vendor/pdfjs/web/static/assets/vendor/pdfjs/images/toolbarButton-menuArrow.svg HTTP/1.1" 404 1883
+WARNING 2021-05-25 19:27:35,977 basehttp 15392 2152 "GET /static/assets/vendor/pdfjs/web/static/assets/vendor/pdfjs/images/toolbarButton-menuArrow.svg HTTP/1.1" 404 1883
+WARNING 2021-05-25 19:28:06,263 basehttp 15392 5048 "GET /static/assets/vendor/pdfjs/web/static/assets/vendor/pdfjs/images/toolbarButton-menuArrow.svg HTTP/1.1" 404 1883
+WARNING 2021-05-25 19:28:32,536 basehttp 15392 17084 "GET /static/assets/vendor/pdfjs/web/static/assets/vendor/pdfjs/images/toolbarButton-menuArrow.svg HTTP/1.1" 404 1883
+WARNING 2021-05-25 19:29:13,709 basehttp 15392 24668 "GET /static/assets/vendor/pdfjs/web/static/assets/vendor/pdfjs/images/toolbarButton-menuArrow.svg HTTP/1.1" 404 1883
+WARNING 2021-05-25 19:29:36,006 basehttp 15392 2516 "GET /static/assets/vendor/pdfjs/web/static/assets/vendor/pdfjs/images/toolbarButton-menuArrow.svg HTTP/1.1" 404 1883
+WARNING 2021-05-25 19:31:24,300 basehttp 15392 17808 "GET /static/assets/vendor/pdfjs/web/static/assets/vendor/pdfjs/images/toolbarButton-menuArrow.svg HTTP/1.1" 404 1883
+WARNING 2021-05-25 19:32:48,024 log 24668 22084 Not Found: /static/assets/css/style.css
+WARNING 2021-05-25 19:32:48,025 basehttp 24668 22084 "GET /static/assets/css/style.css HTTP/1.1" 404 3309
+WARNING 2021-05-25 19:32:48,090 log 24668 20396 Not Found: /static/assets/js/main.js
+WARNING 2021-05-25 19:32:48,090 basehttp 24668 20396 "GET /static/assets/js/main.js HTTP/1.1" 404 3309
+WARNING 2021-05-25 19:32:48,643 log 24668 20396 Not Found: /static/assets/vendor/pdfjs/web/static/assets/vendor/pdfjs/images/toolbarButton-menuArrow.svg
+WARNING 2021-05-25 19:32:48,644 basehttp 24668 20396 "GET /static/assets/vendor/pdfjs/web/static/assets/vendor/pdfjs/images/toolbarButton-menuArrow.svg HTTP/1.1" 404 3309
+WARNING 2021-05-25 19:32:48,865 log 24668 24788 Not Found: /tmp/kwp/Solar Power Finance and Investment Summit 2018 - Agenda.pdf
+WARNING 2021-05-25 19:32:48,865 basehttp 24668 24788 "GET /tmp/kwp/Solar%20Power%20Finance%20and%20Investment%20Summit%202018%20-%20Agenda.pdf HTTP/1.1" 404 3309
+WARNING 2021-05-25 19:32:49,001 log 24668 22084 Not Found: /static/assets/img/favicon.ico
+WARNING 2021-05-25 19:32:49,001 basehttp 24668 22084 "GET /static/assets/img/favicon.ico HTTP/1.1" 404 3309
+WARNING 2021-05-25 19:32:51,454 log 24668 22084 Not Found: /static/assets/css/style.css
+WARNING 2021-05-25 19:32:51,454 basehttp 24668 22084 "GET /static/assets/css/style.css HTTP/1.1" 404 3309
+WARNING 2021-05-25 19:32:51,575 log 24668 24788 Not Found: /static/assets/vendor/pdfjs/build/pdf.js.map
+WARNING 2021-05-25 19:32:51,591 basehttp 24668 24788 "GET /static/assets/vendor/pdfjs/build/pdf.js.map HTTP/1.1" 404 3309
+WARNING 2021-05-25 19:32:51,606 log 24668 20396 Not Found: /static/assets/vendor/bootstrap/js/bootstrap.bundle.min.js.map
+WARNING 2021-05-25 19:32:51,607 basehttp 24668 20396 "GET /static/assets/vendor/bootstrap/js/bootstrap.bundle.min.js.map HTTP/1.1" 404 3309
+WARNING 2021-05-25 19:32:51,645 log 24668 18088 Not Found: /static/assets/vendor/pdfjs/build/pdf.worker.js.map
+WARNING 2021-05-25 19:32:51,646 basehttp 24668 18088 "GET /static/assets/vendor/pdfjs/build/pdf.worker.js.map HTTP/1.1" 404 3309
+WARNING 2021-05-25 19:32:51,677 log 24668 2516 Not Found: /static/assets/vendor/pdfjs/web/viewer.js.map
+WARNING 2021-05-25 19:32:51,678 basehttp 24668 2516 "GET /static/assets/vendor/pdfjs/web/viewer.js.map HTTP/1.1" 404 3309
+WARNING 2021-05-25 19:32:52,574 log 24668 2516 Not Found: /static/assets/vendor/bootstrap/css/bootstrap.min.css.map
+WARNING 2021-05-25 19:32:52,574 basehttp 24668 2516 "GET /static/assets/vendor/bootstrap/css/bootstrap.min.css.map HTTP/1.1" 404 3309
+WARNING 2021-05-25 19:32:55,412 log 24668 2516 Not Found: /static/assets/vendor/bootstrap/css/bootstrap.min.css
+WARNING 2021-05-25 19:32:55,413 basehttp 24668 2516 "GET /static/assets/vendor/bootstrap/css/bootstrap.min.css HTTP/1.1" 404 3309
+WARNING 2021-05-25 19:32:55,722 log 24668 24788 Not Found: /static/assets/vendor/remixicon/remixicon.css
+WARNING 2021-05-25 19:32:55,724 basehttp 24668 24788 "GET /static/assets/vendor/remixicon/remixicon.css HTTP/1.1" 404 3309
+WARNING 2021-05-25 19:32:55,815 log 24668 22084 Not Found: /static/assets/vendor/venobox/venobox.css
+WARNING 2021-05-25 19:32:55,816 basehttp 24668 22084 "GET /static/assets/vendor/venobox/venobox.css HTTP/1.1" 404 3309
+WARNING 2021-05-25 19:32:55,862 log 24668 20396 Not Found: /static/assets/vendor/boxicons/css/boxicons.min.css
+WARNING 2021-05-25 19:32:55,862 basehttp 24668 20396 "GET /static/assets/vendor/boxicons/css/boxicons.min.css HTTP/1.1" 404 3309
+WARNING 2021-05-25 19:32:56,189 log 24668 18088 Not Found: /static/assets/vendor/font-awesome-pro/css/all.min.css
+WARNING 2021-05-25 19:32:56,189 basehttp 24668 18088 "GET /static/assets/vendor/font-awesome-pro/css/all.min.css HTTP/1.1" 404 3309
+WARNING 2021-05-25 19:32:56,790 log 24668 14556 Not Found: /static/assets/vendor/aos/aos.css
+WARNING 2021-05-25 19:32:56,790 basehttp 24668 14556 "GET /static/assets/vendor/aos/aos.css HTTP/1.1" 404 3309
+WARNING 2021-05-25 19:32:57,016 log 24668 2516 Not Found: /static/assets/css/style.css
+WARNING 2021-05-25 19:32:57,017 basehttp 24668 2516 "GET /static/assets/css/style.css HTTP/1.1" 404 3309
+WARNING 2021-05-25 19:32:57,441 log 24668 20396 Not Found: /static/assets/vendor/bootstrap/js/bootstrap.bundle.min.js
+WARNING 2021-05-25 19:32:57,442 basehttp 24668 20396 "GET /static/assets/vendor/bootstrap/js/bootstrap.bundle.min.js HTTP/1.1" 404 3309
+WARNING 2021-05-25 19:32:57,788 log 24668 22084 Not Found: /static/assets/vendor/jquery/jquery.min.js
+WARNING 2021-05-25 19:32:57,789 basehttp 24668 22084 "GET /static/assets/vendor/jquery/jquery.min.js HTTP/1.1" 404 3309
+WARNING 2021-05-25 19:32:58,083 log 24668 18088 Not Found: /static/assets/vendor/jquery.easing/jquery.easing.min.js
+WARNING 2021-05-25 19:32:58,084 basehttp 24668 18088 "GET /static/assets/vendor/jquery.easing/jquery.easing.min.js HTTP/1.1" 404 3309
+WARNING 2021-05-25 19:32:58,128 log 24668 14556 Not Found: /static/assets/vendor/waypoints/jquery.waypoints.min.js
+WARNING 2021-05-25 19:32:58,129 basehttp 24668 14556 "GET /static/assets/vendor/waypoints/jquery.waypoints.min.js HTTP/1.1" 404 3309
+WARNING 2021-05-25 19:32:58,147 log 24668 2516 Not Found: /static/assets/vendor/isotope-layout/isotope.pkgd.min.js
+WARNING 2021-05-25 19:32:58,148 basehttp 24668 2516 "GET /static/assets/vendor/isotope-layout/isotope.pkgd.min.js HTTP/1.1" 404 3309
+WARNING 2021-05-25 19:32:58,690 log 24668 24788 Not Found: /static/assets/vendor/venobox/venobox.min.js
+WARNING 2021-05-25 19:32:58,691 basehttp 24668 24788 "GET /static/assets/vendor/venobox/venobox.min.js HTTP/1.1" 404 3309
+WARNING 2021-05-25 19:32:58,725 log 24668 20396 Not Found: /static/assets/vendor/pdfjs/web/viewer.css
+WARNING 2021-05-25 19:32:58,726 basehttp 24668 20396 "GET /static/assets/vendor/pdfjs/web/viewer.css HTTP/1.1" 404 3309
+WARNING 2021-05-25 19:32:58,768 log 24668 22084 Not Found: /static/assets/vendor/aos/aos.js
+WARNING 2021-05-25 19:32:58,769 basehttp 24668 22084 "GET /static/assets/vendor/aos/aos.js HTTP/1.1" 404 3309
+WARNING 2021-05-25 19:32:58,822 log 24668 14556 Not Found: /static/assets/vendor/pdfjs/build/pdf.js
+WARNING 2021-05-25 19:32:58,822 basehttp 24668 14556 "GET /static/assets/vendor/pdfjs/build/pdf.js HTTP/1.1" 404 3309
+WARNING 2021-05-25 19:32:58,874 log 24668 18088 Not Found: /static/assets/js/main.js
+WARNING 2021-05-25 19:32:58,878 basehttp 24668 18088 "GET /static/assets/js/main.js HTTP/1.1" 404 3309
+WARNING 2021-05-25 19:32:58,911 log 24668 2516 Not Found: /static/assets/vendor/jquery/jquery.min.js
+WARNING 2021-05-25 19:32:58,911 basehttp 24668 2516 "GET /static/assets/vendor/jquery/jquery.min.js HTTP/1.1" 404 3309
+WARNING 2021-05-25 19:32:59,060 log 24668 24788 Not Found: /static/assets/vendor/pdfjs/web/viewer.js
+WARNING 2021-05-25 19:32:59,060 basehttp 24668 24788 "GET /static/assets/vendor/pdfjs/web/viewer.js HTTP/1.1" 404 3309
+WARNING 2021-05-25 19:32:59,633 log 24668 20396 Not Found: /static/assets/vendor/pdfjs/web/main.js
+WARNING 2021-05-25 19:32:59,634 basehttp 24668 20396 "GET /static/assets/vendor/pdfjs/web/main.js HTTP/1.1" 404 3309
+WARNING 2021-05-25 19:33:00,478 log 24668 22084 Not Found: /static/assets/vendor/pdfjs/web/customToolbar.js
+WARNING 2021-05-25 19:33:00,478 basehttp 24668 22084 "GET /static/assets/vendor/pdfjs/web/customToolbar.js HTTP/1.1" 404 3309
+WARNING 2021-05-25 19:33:00,869 log 24668 14556 Not Found: /static/assets/vendor/bootstrap/js/bootstrap.bundle.min.js
+WARNING 2021-05-25 19:33:00,870 basehttp 24668 14556 "GET /static/assets/vendor/bootstrap/js/bootstrap.bundle.min.js HTTP/1.1" 404 3309
+WARNING 2021-05-25 19:33:01,273 log 24668 24788 Not Found: /static/assets/vendor/jquery/jquery.min.js
+WARNING 2021-05-25 19:33:01,274 basehttp 24668 24788 "GET /static/assets/vendor/jquery/jquery.min.js HTTP/1.1" 404 3309
+WARNING 2021-05-25 19:33:01,683 log 24668 14556 Not Found: /static/assets/vendor/jquery.easing/jquery.easing.min.js
+WARNING 2021-05-25 19:33:01,683 basehttp 24668 14556 "GET /static/assets/vendor/jquery.easing/jquery.easing.min.js HTTP/1.1" 404 3309
+WARNING 2021-05-25 19:33:02,251 log 24668 24788 Not Found: /static/assets/vendor/pdfjs/web/main.js
+WARNING 2021-05-25 19:33:02,251 basehttp 24668 24788 "GET /static/assets/vendor/pdfjs/web/main.js HTTP/1.1" 404 3309
+WARNING 2021-05-25 19:33:02,733 log 24668 14556 Not Found: /static/assets/vendor/waypoints/jquery.waypoints.min.js
+WARNING 2021-05-25 19:33:02,734 basehttp 24668 14556 "GET /static/assets/vendor/waypoints/jquery.waypoints.min.js HTTP/1.1" 404 3309
+WARNING 2021-05-25 19:33:03,639 log 24668 24788 Not Found: /static/assets/vendor/pdfjs/web/customToolbar.js
+WARNING 2021-05-25 19:33:03,639 basehttp 24668 24788 "GET /static/assets/vendor/pdfjs/web/customToolbar.js HTTP/1.1" 404 3309
+WARNING 2021-05-25 19:33:03,928 log 24668 14556 Not Found: /static/assets/vendor/isotope-layout/isotope.pkgd.min.js
+WARNING 2021-05-25 19:33:03,928 basehttp 24668 14556 "GET /static/assets/vendor/isotope-layout/isotope.pkgd.min.js HTTP/1.1" 404 3309
+WARNING 2021-05-25 19:33:04,216 log 24668 14556 Not Found: /static/assets/vendor/venobox/venobox.min.js
+WARNING 2021-05-25 19:33:04,216 basehttp 24668 14556 "GET /static/assets/vendor/venobox/venobox.min.js HTTP/1.1" 404 3309
+WARNING 2021-05-25 19:33:04,929 log 24668 14556 Not Found: /static/assets/vendor/aos/aos.js
+WARNING 2021-05-25 19:33:04,930 basehttp 24668 14556 "GET /static/assets/vendor/aos/aos.js HTTP/1.1" 404 3309
+WARNING 2021-05-25 19:33:09,619 basehttp 14732 7412 "GET /static/assets/vendor/pdfjs/web/static/assets/vendor/pdfjs/images/toolbarButton-menuArrow.svg HTTP/1.1" 404 1883
+WARNING 2021-05-25 19:33:31,908 basehttp 14732 13624 "GET /static/assets/vendor/pdfjs/web/static/assets/vendor/pdfjs/images/toolbarButton-menuArrow.svg HTTP/1.1" 404 1883

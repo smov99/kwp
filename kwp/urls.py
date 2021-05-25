@@ -22,16 +22,16 @@ from kwp import settings
 from proposal import views
 
 urlpatterns = [
+    path('i18n/', include('django.conf.urls.i18n')),
     path('viewer', views.Viewer.as_view(), name='viewer'),
     path('update_sections/', include('faq.urls')),
-    path('api/v1/', include('api.urls')),
-    path('i18n/', include('django.conf.urls.i18n')),
     path('events/', views.EventsView.as_view(), name='events'),
 ]
 
 urlpatterns += i18n_patterns(
     path('kwp/', admin.site.urls, name='admin-root'),
     path('', include('proposal.urls')),
+    path('api/v1/', include('api.urls')),
     prefix_default_language=False,
 )
 

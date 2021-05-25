@@ -240,7 +240,6 @@
         $(this).removeClass('opened');
       } else {
         valDict[sectionName] = new Date().getTime();
-        console.log(valDict)
         eventsAjax('opening_of_section', 'Section ' + sectionName + ' open');
         $(this).addClass('opened');
       }

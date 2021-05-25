@@ -123,10 +123,8 @@ class Viewer(View):
         try:
             proposal_id = request.session['proposal_id']
         except KeyError:
-            return HttpResponse('Session time expired. Please reopen this page.')
-        document = request.session['document']
-        return render(request, 'viewer.html', {'document_body': document['document_base64'],
-                                               'document_name': document['file_name']})
+            raise Http404()
+        return render(request, 'viewer.html')
 
 
 class EventsView(View):

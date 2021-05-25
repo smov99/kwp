@@ -193,21 +193,21 @@
   $("#proposal-pdf-link").click(function (e) {
     var pdf_url = window.location.href + 'pdf',
       modal_width = screen.width,
-      modal_height = screen.height,
-      pdfWindow;
+      modal_height = screen.height;
     e.preventDefault();
 
     eventsAjax('open_pdf', 'PDF open');
 
     if ($(window).width()) {
-      window.open(pdf_url,"", 'width='+modal_width+',height='+modal_height);}
+      window.open(pdf_url,"", 'width='+modal_width+',height='+modal_height);
+    }
   });
 
   if (window.location.href.includes('proposal')) {
     if (window.location.href.includes('pdf')) {
       $(window).on('load', function () {
         $(window).on('unload', function () {
-          eventsAjax('closing_preview', 'Pdf close');
+          eventsAjax('closing_preview', 'PDF close');
         });
       });
     } else {
@@ -223,31 +223,36 @@
     return !!$('#flexCheckIntro').is(':checked');
   }
 
-  $('.section-title .collapsed').on('click', function (e) {
-    e.preventDefault();
-    if ($(this).hasClass('opened')) {
-      eventsAjax('opening_of_section', 'Section ' + e.target.textContent + ' close');
-      $(this).removeClass('opened')
-    } else {
-      eventsAjax('opening_of_section', 'Section ' + e.target.textContent + ' open');
-      $(this).addClass('opened')
-    }
-  });
+  $(window).on('load', function () {
+    $('.section-title .collapsed').on('click', function (e) {
+      e = e || window.event;
+      e.preventDefault();
+      if ($(this).hasClass('opened')) {
+        eventsAjax('closing_of_section', 'Section ' + $(e.target).closest('h2').text() + ' close');
+        $(this).removeClass('opened')
+      } else {
+        eventsAjax('opening_of_section', 'Section ' + $(e.target).closest('h2').text() + ' open');
+        $(this).addClass('opened')
+      }
+    });
 
-  $('.faq-list .collapsed').on('click', function (e) {
-    e.preventDefault();
-    let selected_text = 'Question ' + e.target.textContent,
-      l = selected_text.length;
-    if (l > 50) {
-        selected_text = selected_text.substring(0, 20) + ' ... ' + selected_text.substring(l-19, l);
-    }
-    if ($(this).hasClass('opened')) {
-      eventsAjax('opening_of_sections_line', selected_text + ' close');
-      $(this).removeClass('opened')
-    } else {
-      eventsAjax('opening_of_sections_line', selected_text + ' open');
-      $(this).addClass('opened')
-    }
+    $('.faq-list .collapsed').on('click', function (e) {
+      e = e || window.event;
+      e.preventDefault();
+      let selected_text = $(e.target).closest('a').text(),
+        l = selected_text.length;
+      selected_text = 'Question ' + selected_text
+      if (l > 50) {
+        selected_text = selected_text.substring(0, 20) + ' ... ' + selected_text.substring(l - 19, l);
+      }
+      if ($(this).hasClass('opened')) {
+        eventsAjax('closing_of_sections_line', selected_text + ' close');
+        $(this).removeClass('opened')
+      } else {
+        eventsAjax('opening_of_sections_line', selected_text + ' open');
+        $(this).addClass('opened')
+      }
+    });
   });
 
   $('#contact form button').on('click', function (e) {

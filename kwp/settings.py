@@ -100,6 +100,7 @@ DATABASES = {
     }
 }
 
+# Rest settings
 REST_FRAMEWORK = {
     # 'DEFAULT_PAGINATION_CLASS':
     #     'api.custompagination.LimitOffsetPaginationWithUpperBound',

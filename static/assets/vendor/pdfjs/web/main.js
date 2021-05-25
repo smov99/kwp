@@ -31,16 +31,17 @@
     });
   }
 
+
   // Preloader
   $(window).on('load', function () {
     let preloader = document.getElementById('preloader');
+    if ($(window).width() > 840) {
+      $('#sidebarToggle').trigger('click');
+    }
     setTimeout(function () {
       preloader.classList.add('loaded')
-    }, 1000)
+    }, 1000);
 
-    var timeTracker = {};
-
-    timeTracker['pageStart'] = new Date();
     var iframeInput = document.getElementById('pageNumber'),
       docContainer = document.getElementById('viewerContainer'),
       downloadBtn = document.getElementById('proposal-download-btn'),
@@ -63,7 +64,7 @@
         scrollTop = docElem['scrollTop'],
         scrollBottom = (docElem['scrollHeight']) - window.innerHeight,
         scrollPercent = scrollTop / scrollBottom * 100 + '%',
-        downloadContainer = document.getElementById('download-container');
+        downloadContainer = document.getElementById('download');
 
       document.getElementById('progress-bar').style.setProperty('--scrollAmount', scrollPercent);
 

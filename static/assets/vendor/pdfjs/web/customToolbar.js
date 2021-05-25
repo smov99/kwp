@@ -26,11 +26,11 @@ let sheet = (function() {
     addElemFromSecondaryToPrimary('numPages', 'toolbarViewerMiddle')
   
     //adding elements to right part of toolbar
+    addElemFromSecondaryToPrimary('download', 'toolbarViewerRight')
     addElemFromSecondaryToPrimary('documentProperties', 'toolbarViewerRight')
   
     /* Hiding elements */
     removeElement('secondaryToolbarToggle')
-    removeElement('download')
     removeElement('scaleSelectContainer')
     removeElement('presentationMode')
     removeElement('openFile')
@@ -42,14 +42,6 @@ let sheet = (function() {
     removeElement('viewFind')
     removeElement('splitToolbarButton')
    }
-  function changeIcon(elemID, iconUrl){
-      let element = $('#'+elemID)
-      let classNames = element[0].className;
-      classNames = elemID.includes('Toggle')? 'toolbarButton#'+elemID : classNames.split(' ').join('.');
-      classNames = elemID.includes('view')?  '#'+elemID+'.toolbarButton' : '.'+classNames
-      classNames+= "::before";
-      addCSSRule(sheet, classNames, `content: url(${iconUrl}) !important`, 0)
-  }
   function addElemFromSecondaryToPrimary(elemID, parentID){
       let element = $('#'+elemID);
       let parent = $('#'+parentID);

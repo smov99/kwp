@@ -1,26 +1,5 @@
 <!DOCTYPE html>
-<!--
-Copyright 2012 Mozilla Foundation
-
-Licensed under the Apache License, Version 2.0 (the "License");
-you may not use this file except in compliance with the License.
-You may obtain a copy of the License at
-
-    http://www.apache.org/licenses/LICENSE-2.0
-
-Unless required by applicable law or agreed to in writing, software
-distributed under the License is distributed on an "AS IS" BASIS,
-WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-See the License for the specific language governing permissions and
-limitations under the License.
-
-Adobe CMap resources are covered by their own copyright but the same license:
-
-    Copyright 1990-2015 Adobe Systems Incorporated.
-
-See https://github.com/adobe-type-tools/cmap-resources
--->
-{% load static %}
+{% load static i18n %}
 <html dir="ltr" mozdisallowselectionprint>
   <head>
     <meta charset="utf-8">
@@ -239,7 +218,7 @@ See https://github.com/adobe-type-tools/cmap-resources
                   <span data-l10n-id="print_label">Print</span>
                 </button>
 
-                <button id="download" class="toolbarButton download hiddenMediumView" title="Download" tabindex="34" data-l10n-id="download">
+                <button id="download" class="toolbarButton download hiddenMediumView hide" title="Download" tabindex="34" data-l10n-id="download">
                   <span data-l10n-id="download_label">Download</span>
                 </button>
                 <a href="#" id="viewBookmark" class="toolbarButton bookmark hiddenSmallView" title="Current view (copy or open in new window)" tabindex="35" data-l10n-id="bookmark">
@@ -301,12 +280,6 @@ See https://github.com/adobe-type-tools/cmap-resources
 
         <div id="viewerContainer" tabindex="0">
           <div id="viewer" class="pdfViewer"></div>
-          <div id="download-container" class="hide">
-            <a class="btn-download" id="proposal-download-btn" href="data:application/pdf;base64,{{ document_body }}" download="{{document_name}}">
-              <span data-l10n-id="download">Download</span>
-            </a>
-          </div>
-          <div id="progress-bar"></div>
         </div>
 
         <div id="errorWrapper" hidden='true'>
@@ -420,6 +393,7 @@ See https://github.com/adobe-type-tools/cmap-resources
       <div class="loader-section section-top"></div>
       <div class="loader-section section-bottom"></div>
     </div>
+    <div id="progress-bar"></div>
   </body>
 </html>
 

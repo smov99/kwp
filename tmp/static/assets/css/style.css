@@ -6,6 +6,10 @@ body {
   color: #444444;
 }
 
+body::-webkit-scrollbar {
+  width: 0;
+}
+
 a {
   color: #e60012;
 }

@@ -571,6 +571,14 @@ body {
   background-color: var(--body-bg-color);
 }
 
+::-webkit-scrollbar {
+  width: 0;
+}
+
+/*::-webkit-scrollbar-button {*/
+/*  width: 0;*/
+/*}*/
+
 @media (prefers-color-scheme: dark) {
 
   body {
@@ -882,59 +890,15 @@ html[dir="rtl"] #outerContainer.sidebarOpen #sidebarContainer {
   height: 5px;
   position: fixed;
   bottom: 0;
-  z-index: 9999;
+  z-index: 99;
 }
 
-#download-container {
-  height: 57px;
-  position: fixed;
-  background: rgba(38, 38, 38, .7);
-  bottom: 0;
-  justify-content: center;
-  display: flex;
-  overflow: hidden;
-  width: 100vw;
-  filter: alpha(opacity=100);
-  -webkit-transform: translateX(0);
-  transform: translateX(0);
-  -webkit-transition: all 0.7s ease-in-out;
-  transition: all 0.7s ease-in-out;
-}
-
-#download-container.hide {
+#download.hide {
     visibility: hidden;
     opacity: 0;
     filter: alpha(opacity=0);
-    -webkit-transform: translateY(100%);
-    transform: translateY(100%);
-}
-
-#proposal-download-btn {
-  position: absolute;
-  font-weight: 500;
-  font-size: 16px;
-  bottom: 12px;
-  letter-spacing: 1px;
-  padding: 10px 30px;
-  transition: 0.5s;
-  margin-top: 30px;
-  color: #fff;
-  background: #e60012;
-  border: 0;
-  border-radius: 6px;
-  width: 30vw;
-  text-decoration: none;
-  text-align: center;
-}
-
-#proposal-download-btn:hover {
-  background: #e35052;
-}
-
-@media (max-width: 992px) {
- #proposal-download-btn {
-   width: 50vw;
- }
+    -webkit-transform: translateY(-100%);
+    transform: translateY(-100%);
 }
 
 #sidebarContent {
@@ -2352,7 +2316,6 @@ html[dir="rtl"] #toolbarViewerLeft > .toolbarButton:first-child {
   pointer-events: none;
 
   -webkit-mask-image: url(../images/toolbarButton-menuArrow.svg);
-
   -webkit-mask-image: var(--toolbarButton-menuArrow-icon);
   mask-image: url(../images/toolbarButton-menuArrow.svg);
   mask-image: var(--toolbarButton-menuArrow-icon);
@@ -2656,11 +2619,25 @@ html[dir="rtl"] .toolbarButton#secondaryToolbarToggle::before {
   mask-image: url(../images/toolbarButton-openFile.svg);
 }
 
+.toolbarButton.download {
+  -webkit-transform: translateX(0);
+  transform: translateX(0);
+  -webkit-transition: all 0.7s ease-in-out;
+  transition: all 0.7s ease-in-out;
+}
+
 .toolbarButton.download::before {
   -webkit-mask-image: var(--toolbarButton-download-icon);
   -webkit-mask-image: url(../images/toolbarButton-download.svg);
   mask-image: var(--toolbarButton-download-icon);
   mask-image: url(../images/toolbarButton-download.svg);
+}
+
+.secondaryToolbarButton.download {
+  -webkit-transform: translateX(0);
+  transform: translateX(0);
+  -webkit-transition: all 0.7s ease-in-out;
+  transition: all 0.7s ease-in-out;
 }
 
 .secondaryToolbarButton.download::before {

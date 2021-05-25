@@ -1638,3 +1638,216 @@ WARNING 2021-05-24 17:32:55,563 basehttp 20788 20524 "GET /static/assets/vendor/
 WARNING 2021-05-24 17:34:46,645 basehttp 20788 22692 "GET /static/assets/vendor/pdfjs/web/static/assets/vendor/pdfjs/images/toolbarButton-menuArrow.svg HTTP/1.1" 404 1883
 WARNING 2021-05-24 17:37:37,736 basehttp 20788 13152 "GET /static/assets/vendor/pdfjs/web/static/assets/vendor/pdfjs/images/toolbarButton-menuArrow.svg HTTP/1.1" 404 1883
 WARNING 2021-05-24 17:38:34,567 basehttp 20788 16928 "GET /static/assets/vendor/pdfjs/web/static/assets/vendor/pdfjs/images/toolbarButton-menuArrow.svg HTTP/1.1" 404 1883
+WARNING 2021-05-25 15:47:09,512 basehttp 14424 7976 "GET /static/assets/vendor/pdfjs/web/static/assets/vendor/pdfjs/images/toolbarButton-menuArrow.svg HTTP/1.1" 404 1883
+WARNING 2021-05-25 15:49:53,483 basehttp 14424 24068 "GET /static/assets/vendor/pdfjs/web/static/assets/vendor/pdfjs/images/toolbarButton-menuArrow.svg HTTP/1.1" 404 1883
+WARNING 2021-05-25 15:51:04,607 basehttp 740 3312 "GET /static/assets/vendor/pdfjs/web/static/assets/vendor/pdfjs/images/toolbarButton-menuArrow.svg HTTP/1.1" 404 1883
+WARNING 2021-05-25 15:51:59,464 basehttp 740 17648 "GET /static/assets/vendor/pdfjs/web/static/assets/vendor/pdfjs/images/toolbarButton-menuArrow.svg HTTP/1.1" 404 1883
+WARNING 2021-05-25 15:52:00,568 log 740 11704 Not Found: /favicon.ico
+WARNING 2021-05-25 15:52:00,568 basehttp 740 11704 "GET /favicon.ico HTTP/1.1" 404 3465
+WARNING 2021-05-25 15:52:11,261 basehttp 740 21040 "GET /static/assets/vendor/pdfjs/web/static/assets/vendor/pdfjs/images/toolbarButton-menuArrow.svg HTTP/1.1" 404 1883
+WARNING 2021-05-25 15:52:12,928 log 740 11860 Not Found: /favicon.ico
+WARNING 2021-05-25 15:52:12,929 basehttp 740 11860 "GET /favicon.ico HTTP/1.1" 404 3465
+WARNING 2021-05-25 15:52:24,033 basehttp 740 7584 "GET /static/assets/vendor/pdfjs/web/static/assets/vendor/pdfjs/images/toolbarButton-menuArrow.svg HTTP/1.1" 404 1883
+WARNING 2021-05-25 15:53:01,978 basehttp 740 17904 "GET /static/assets/vendor/pdfjs/web/static/assets/vendor/pdfjs/images/toolbarButton-menuArrow.svg HTTP/1.1" 404 1883
+WARNING 2021-05-25 15:53:08,560 log 740 24224 Not Found: /favicon.ico
+WARNING 2021-05-25 15:53:08,561 basehttp 740 24224 "GET /favicon.ico HTTP/1.1" 404 3465
+WARNING 2021-05-25 15:53:24,234 basehttp 740 11704 "GET /static/assets/vendor/pdfjs/web/static/assets/vendor/pdfjs/images/toolbarButton-menuArrow.svg HTTP/1.1" 404 1883
+WARNING 2021-05-25 15:59:45,501 basehttp 16160 21864 "GET /static/assets/vendor/pdfjs/web/static/assets/vendor/pdfjs/images/toolbarButton-menuArrow.svg HTTP/1.1" 404 1883
+WARNING 2021-05-25 15:59:57,749 basehttp 16160 14708 "GET /static/assets/vendor/pdfjs/web/static/assets/vendor/pdfjs/images/toolbarButton-menuArrow.svg HTTP/1.1" 404 1883
+WARNING 2021-05-25 15:59:58,977 log 16160 23460 Not Found: /favicon.ico
+WARNING 2021-05-25 15:59:58,978 basehttp 16160 23460 "GET /favicon.ico HTTP/1.1" 404 3465
+WARNING 2021-05-25 16:00:47,930 basehttp 16160 12868 "GET /static/assets/vendor/pdfjs/web/static/assets/vendor/pdfjs/images/toolbarButton-menuArrow.svg HTTP/1.1" 404 1883
+WARNING 2021-05-25 16:02:48,729 basehttp 16160 19880 "GET /static/assets/vendor/pdfjs/web/static/assets/vendor/pdfjs/images/toolbarButton-menuArrow.svg HTTP/1.1" 404 1883
+WARNING 2021-05-25 16:02:49,921 log 16160 17616 Not Found: /favicon.ico
+WARNING 2021-05-25 16:02:49,922 basehttp 16160 17616 "GET /favicon.ico HTTP/1.1" 404 3465
+WARNING 2021-05-25 16:03:57,288 basehttp 22904 7764 "GET /static/assets/vendor/pdfjs/web/static/assets/vendor/pdfjs/images/toolbarButton-menuArrow.svg HTTP/1.1" 404 1883
+WARNING 2021-05-25 16:03:58,453 log 22904 8512 Not Found: /favicon.ico
+WARNING 2021-05-25 16:03:58,454 basehttp 22904 8512 "GET /favicon.ico HTTP/1.1" 404 3465
+WARNING 2021-05-25 16:16:02,267 basehttp 22904 7324 "GET /static/assets/vendor/pdfjs/web/static/assets/vendor/pdfjs/images/toolbarButton-menuArrow.svg HTTP/1.1" 404 1883
+WARNING 2021-05-25 16:16:03,468 log 22904 18368 Not Found: /favicon.ico
+WARNING 2021-05-25 16:16:03,468 basehttp 22904 18368 "GET /favicon.ico HTTP/1.1" 404 3465
+WARNING 2021-05-25 16:20:59,671 basehttp 22904 22968 "GET /static/assets/vendor/pdfjs/web/static/assets/vendor/pdfjs/images/toolbarButton-menuArrow.svg HTTP/1.1" 404 1883
+WARNING 2021-05-25 16:21:00,880 log 22904 14096 Not Found: /favicon.ico
+WARNING 2021-05-25 16:21:00,881 basehttp 22904 14096 "GET /favicon.ico HTTP/1.1" 404 3465
+WARNING 2021-05-25 16:21:44,173 basehttp 22904 24616 "GET /static/assets/vendor/pdfjs/web/static/assets/vendor/pdfjs/images/toolbarButton-menuArrow.svg HTTP/1.1" 404 1883
+WARNING 2021-05-25 16:21:45,373 log 22904 16988 Not Found: /favicon.ico
+WARNING 2021-05-25 16:21:45,374 basehttp 22904 16988 "GET /favicon.ico HTTP/1.1" 404 3465
+WARNING 2021-05-25 16:22:10,260 basehttp 22904 16988 "GET /static/assets/vendor/pdfjs/web/static/assets/vendor/pdfjs/images/toolbarButton-menuArrow.svg HTTP/1.1" 404 1883
+WARNING 2021-05-25 16:26:14,781 basehttp 22904 17188 "GET /static/assets/vendor/pdfjs/web/static/assets/vendor/pdfjs/images/toolbarButton-menuArrow.svg HTTP/1.1" 404 1883
+WARNING 2021-05-25 16:26:16,122 log 22904 1416 Not Found: /favicon.ico
+WARNING 2021-05-25 16:26:16,123 basehttp 22904 1416 "GET /favicon.ico HTTP/1.1" 404 3465
+WARNING 2021-05-25 16:29:35,905 basehttp 22904 13616 "GET /static/assets/vendor/pdfjs/web/static/assets/vendor/pdfjs/images/toolbarButton-menuArrow.svg HTTP/1.1" 404 1883
+WARNING 2021-05-25 16:29:37,141 log 22904 14096 Not Found: /favicon.ico
+WARNING 2021-05-25 16:29:37,142 basehttp 22904 14096 "GET /favicon.ico HTTP/1.1" 404 3465
+WARNING 2021-05-25 16:31:59,686 basehttp 24644 19652 "GET /static/assets/vendor/pdfjs/web/static/assets/vendor/pdfjs/images/toolbarButton-menuArrow.svg HTTP/1.1" 404 1883
+WARNING 2021-05-25 16:35:36,058 basehttp 24644 10992 "GET /static/assets/vendor/pdfjs/web/static/assets/vendor/pdfjs/images/toolbarButton-menuArrow.svg HTTP/1.1" 404 1883
+WARNING 2021-05-25 16:35:36,617 log 24644 22576 Not Found: /favicon.ico
+WARNING 2021-05-25 16:35:36,618 basehttp 24644 22576 "GET /favicon.ico HTTP/1.1" 404 3465
+WARNING 2021-05-25 16:36:50,792 basehttp 24644 16472 "GET /static/assets/vendor/pdfjs/web/static/assets/vendor/pdfjs/images/toolbarButton-menuArrow.svg HTTP/1.1" 404 1883
+WARNING 2021-05-25 16:36:51,350 log 24644 2792 Not Found: /favicon.ico
+WARNING 2021-05-25 16:36:51,351 basehttp 24644 2792 "GET /favicon.ico HTTP/1.1" 404 3465
+WARNING 2021-05-25 16:37:09,369 basehttp 24644 22576 "GET /static/assets/vendor/pdfjs/web/static/assets/vendor/pdfjs/images/toolbarButton-menuArrow.svg HTTP/1.1" 404 1883
+WARNING 2021-05-25 16:40:07,650 basehttp 24644 8416 "GET /static/assets/vendor/pdfjs/web/static/assets/vendor/pdfjs/images/toolbarButton-menuArrow.svg HTTP/1.1" 404 1883
+WARNING 2021-05-25 16:40:08,932 log 24644 2792 Not Found: /favicon.ico
+WARNING 2021-05-25 16:40:08,954 basehttp 24644 2792 "GET /favicon.ico HTTP/1.1" 404 3465
+WARNING 2021-05-25 16:40:21,131 basehttp 24644 9272 "GET /static/assets/vendor/pdfjs/web/static/assets/vendor/pdfjs/images/toolbarButton-menuArrow.svg HTTP/1.1" 404 1883
+WARNING 2021-05-25 16:40:22,329 log 24644 22900 Not Found: /favicon.ico
+WARNING 2021-05-25 16:40:22,329 basehttp 24644 22900 "GET /favicon.ico HTTP/1.1" 404 3465
+WARNING 2021-05-25 16:41:36,134 basehttp 24644 25112 "GET /static/assets/vendor/pdfjs/web/static/assets/vendor/pdfjs/images/toolbarButton-menuArrow.svg HTTP/1.1" 404 1883
+WARNING 2021-05-25 16:41:37,536 log 24644 12632 Not Found: /favicon.ico
+WARNING 2021-05-25 16:41:37,536 basehttp 24644 12632 "GET /favicon.ico HTTP/1.1" 404 3465
+WARNING 2021-05-25 16:42:09,277 basehttp 24644 20384 "GET /static/assets/vendor/pdfjs/web/static/assets/vendor/pdfjs/images/toolbarButton-menuArrow.svg HTTP/1.1" 404 1883
+WARNING 2021-05-25 16:42:33,281 basehttp 24644 12632 "GET /static/assets/vendor/pdfjs/web/static/assets/vendor/pdfjs/images/toolbarButton-menuArrow.svg HTTP/1.1" 404 1883
+WARNING 2021-05-25 16:42:34,692 log 24644 22900 Not Found: /favicon.ico
+WARNING 2021-05-25 16:42:34,693 basehttp 24644 22900 "GET /favicon.ico HTTP/1.1" 404 3465
+WARNING 2021-05-25 16:43:24,288 basehttp 24644 24444 "GET /static/assets/vendor/pdfjs/web/static/assets/vendor/pdfjs/images/toolbarButton-menuArrow.svg HTTP/1.1" 404 1883
+WARNING 2021-05-25 16:43:25,628 log 24644 15392 Not Found: /favicon.ico
+WARNING 2021-05-25 16:43:25,629 basehttp 24644 15392 "GET /favicon.ico HTTP/1.1" 404 3465
+WARNING 2021-05-25 16:47:12,362 basehttp 24644 15392 "GET /static/assets/vendor/pdfjs/web/static/assets/vendor/pdfjs/images/toolbarButton-menuArrow.svg HTTP/1.1" 404 1883
+WARNING 2021-05-25 16:47:13,733 log 24644 24524 Not Found: /favicon.ico
+WARNING 2021-05-25 16:47:13,736 basehttp 24644 24524 "GET /favicon.ico HTTP/1.1" 404 3465
+WARNING 2021-05-25 16:48:31,178 basehttp 24644 2792 "GET /static/assets/vendor/pdfjs/web/static/assets/vendor/pdfjs/images/toolbarButton-menuArrow.svg HTTP/1.1" 404 1883
+WARNING 2021-05-25 16:48:32,678 log 24644 5832 Not Found: /favicon.ico
+WARNING 2021-05-25 16:48:32,678 basehttp 24644 5832 "GET /favicon.ico HTTP/1.1" 404 3465
+WARNING 2021-05-25 16:48:50,277 basehttp 24644 22900 "GET /static/assets/vendor/pdfjs/web/static/assets/vendor/pdfjs/images/toolbarButton-menuArrow.svg HTTP/1.1" 404 1883
+WARNING 2021-05-25 16:48:51,605 log 24644 24144 Not Found: /favicon.ico
+WARNING 2021-05-25 16:48:51,608 basehttp 24644 24144 "GET /favicon.ico HTTP/1.1" 404 3465
+WARNING 2021-05-25 16:48:58,127 basehttp 24644 5832 "GET /static/assets/vendor/pdfjs/web/static/assets/vendor/pdfjs/images/toolbarButton-menuArrow.svg HTTP/1.1" 404 1883
+WARNING 2021-05-25 16:49:44,985 basehttp 24644 19212 "GET /static/assets/vendor/pdfjs/web/static/assets/vendor/pdfjs/images/toolbarButton-menuArrow.svg HTTP/1.1" 404 1883
+WARNING 2021-05-25 16:49:46,152 log 24644 11076 Not Found: /favicon.ico
+WARNING 2021-05-25 16:49:46,153 basehttp 24644 11076 "GET /favicon.ico HTTP/1.1" 404 3465
+WARNING 2021-05-25 16:49:49,393 basehttp 24644 18304 "GET /static/assets/vendor/pdfjs/web/static/assets/vendor/pdfjs/images/toolbarButton-menuArrow.svg HTTP/1.1" 404 1883
+WARNING 2021-05-25 16:51:25,277 basehttp 24644 11076 "GET /static/assets/vendor/pdfjs/web/static/assets/vendor/pdfjs/images/toolbarButton-menuArrow.svg HTTP/1.1" 404 1883
+WARNING 2021-05-25 16:51:25,809 log 24644 24524 Not Found: /favicon.ico
+WARNING 2021-05-25 16:51:25,809 basehttp 24644 24524 "GET /favicon.ico HTTP/1.1" 404 3465
+WARNING 2021-05-25 16:55:02,415 basehttp 24644 24524 "GET /static/assets/vendor/pdfjs/web/static/assets/vendor/pdfjs/images/toolbarButton-menuArrow.svg HTTP/1.1" 404 1883
+WARNING 2021-05-25 16:55:02,803 log 24644 16632 Not Found: /favicon.ico
+WARNING 2021-05-25 16:55:02,804 basehttp 24644 16632 "GET /favicon.ico HTTP/1.1" 404 3465
+WARNING 2021-05-25 16:55:40,359 basehttp 24644 21032 "GET /static/assets/vendor/pdfjs/web/static/assets/vendor/pdfjs/images/toolbarButton-menuArrow.svg HTTP/1.1" 404 1883
+WARNING 2021-05-25 16:55:40,364 basehttp 24644 25548 "GET /static/assets/vendor/pdfjs/web/static/assets/vendor/pdfjs/images/toolbarButton-menuArrow.svg HTTP/1.1" 404 1883
+WARNING 2021-05-25 16:55:40,739 log 24644 24144 Not Found: /favicon.ico
+WARNING 2021-05-25 16:55:40,740 basehttp 24644 24144 "GET /favicon.ico HTTP/1.1" 404 3465
+WARNING 2021-05-25 16:56:43,122 basehttp 24644 20928 "GET /static/assets/vendor/pdfjs/web/static/assets/vendor/pdfjs/images/toolbarButton-menuArrow.svg HTTP/1.1" 404 1883
+WARNING 2021-05-25 16:56:44,000 log 24644 4344 Not Found: /favicon.ico
+WARNING 2021-05-25 16:56:44,001 basehttp 24644 4344 "GET /favicon.ico HTTP/1.1" 404 3465
+WARNING 2021-05-25 16:56:56,738 basehttp 24644 4344 "GET /static/assets/vendor/pdfjs/web/static/assets/vendor/pdfjs/images/toolbarButton-menuArrow.svg HTTP/1.1" 404 1883
+WARNING 2021-05-25 16:57:12,858 basehttp 24644 16632 "GET /static/assets/vendor/pdfjs/web/static/assets/vendor/pdfjs/images/toolbarButton-menuArrow.svg HTTP/1.1" 404 1883
+WARNING 2021-05-25 16:57:29,894 basehttp 24644 22768 "GET /static/assets/vendor/pdfjs/web/static/assets/vendor/pdfjs/images/toolbarButton-menuArrow.svg HTTP/1.1" 404 1883
+WARNING 2021-05-25 16:57:36,742 basehttp 24644 14644 "GET /static/assets/vendor/pdfjs/web/static/assets/vendor/pdfjs/images/toolbarButton-menuArrow.svg HTTP/1.1" 404 1883
+WARNING 2021-05-25 16:57:36,746 basehttp 24644 19096 "GET /static/assets/vendor/pdfjs/web/static/assets/vendor/pdfjs/images/toolbarButton-menuArrow.svg HTTP/1.1" 404 1883
+WARNING 2021-05-25 16:57:37,288 log 24644 24144 Not Found: /favicon.ico
+WARNING 2021-05-25 16:57:37,289 basehttp 24644 24144 "GET /favicon.ico HTTP/1.1" 404 3465
+WARNING 2021-05-25 16:57:51,878 basehttp 24644 24144 "GET /static/assets/vendor/pdfjs/web/static/assets/vendor/pdfjs/images/toolbarButton-menuArrow.svg HTTP/1.1" 404 1883
+WARNING 2021-05-25 16:58:01,307 basehttp 24644 18528 "GET /static/assets/vendor/pdfjs/web/static/assets/vendor/pdfjs/images/toolbarButton-menuArrow.svg HTTP/1.1" 404 1883
+WARNING 2021-05-25 16:58:14,593 basehttp 24644 3752 "GET /static/assets/vendor/pdfjs/web/static/assets/vendor/pdfjs/images/toolbarButton-menuArrow.svg HTTP/1.1" 404 1883
+WARNING 2021-05-25 16:59:10,795 basehttp 24644 24828 "GET /static/assets/vendor/pdfjs/web/static/assets/vendor/pdfjs/images/toolbarButton-menuArrow.svg HTTP/1.1" 404 1883
+WARNING 2021-05-25 16:59:19,514 basehttp 24644 12324 "GET /static/assets/vendor/pdfjs/web/static/assets/vendor/pdfjs/images/toolbarButton-menuArrow.svg HTTP/1.1" 404 1883
+WARNING 2021-05-25 16:59:28,110 basehttp 24644 24120 "GET /static/assets/vendor/pdfjs/web/static/assets/vendor/pdfjs/images/toolbarButton-menuArrow.svg HTTP/1.1" 404 1883
+WARNING 2021-05-25 16:59:34,688 basehttp 24644 22300 "GET /static/assets/vendor/pdfjs/web/static/assets/vendor/pdfjs/images/toolbarButton-menuArrow.svg HTTP/1.1" 404 1883
+WARNING 2021-05-25 16:59:35,149 log 24644 1440 Not Found: /favicon.ico
+WARNING 2021-05-25 16:59:35,150 basehttp 24644 1440 "GET /favicon.ico HTTP/1.1" 404 3465
+WARNING 2021-05-25 16:59:54,517 basehttp 24644 4732 "GET /static/assets/vendor/pdfjs/web/static/assets/vendor/pdfjs/images/toolbarButton-menuArrow.svg HTTP/1.1" 404 1883
+WARNING 2021-05-25 17:00:19,238 basehttp 24644 13696 "GET /static/assets/vendor/pdfjs/web/static/assets/vendor/pdfjs/images/toolbarButton-menuArrow.svg HTTP/1.1" 404 1883
+WARNING 2021-05-25 17:00:20,410 log 24644 24976 Not Found: /favicon.ico
+WARNING 2021-05-25 17:00:20,411 basehttp 24644 24976 "GET /favicon.ico HTTP/1.1" 404 3465
+WARNING 2021-05-25 17:00:40,996 basehttp 24644 1440 "GET /static/assets/vendor/pdfjs/web/static/assets/vendor/pdfjs/images/toolbarButton-menuArrow.svg HTTP/1.1" 404 1883
+WARNING 2021-05-25 17:00:57,926 basehttp 24644 24976 "GET /static/assets/vendor/pdfjs/web/static/assets/vendor/pdfjs/images/toolbarButton-menuArrow.svg HTTP/1.1" 404 1883
+WARNING 2021-05-25 17:01:05,375 basehttp 24644 24824 "GET /static/assets/vendor/pdfjs/web/static/assets/vendor/pdfjs/images/toolbarButton-menuArrow.svg HTTP/1.1" 404 1883
+WARNING 2021-05-25 17:01:06,448 log 24644 1280 Not Found: /favicon.ico
+WARNING 2021-05-25 17:01:06,448 basehttp 24644 1280 "GET /favicon.ico HTTP/1.1" 404 3465
+WARNING 2021-05-25 17:01:12,534 basehttp 24644 7604 "GET /static/assets/vendor/pdfjs/web/static/assets/vendor/pdfjs/images/toolbarButton-menuArrow.svg HTTP/1.1" 404 1883
+WARNING 2021-05-25 17:01:28,604 basehttp 24644 2352 "GET /static/assets/vendor/pdfjs/web/static/assets/vendor/pdfjs/images/toolbarButton-menuArrow.svg HTTP/1.1" 404 1883
+ERROR 2021-05-25 18:07:53,177 log 21072 12376 Internal Server Error: /a0P04000000Gew4EAC/
+Traceback (most recent call last):
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\views\generic\base.py", line 70, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\views\generic\base.py", line 98, in dispatch
+    return handler(request, *args, **kwargs)
+  File "F:\workspace\django\kiwapower_web_proposal\proposal\services.py", line 23, in clocked
+    result = func(*args, **kwargs)
+  File "F:\workspace\django\kiwapower_web_proposal\proposal\views.py", line 37, in post
+    services.additional_trusted_email_confirmation(request, proposal_id)
+  File "F:\workspace\django\kiwapower_web_proposal\proposal\services.py", line 607, in additional_trusted_email_confirmation
+    client_ip = request.META['HTTP_X_REAL_IP']
+KeyError: 'HTTP_X_REAL_IP'
+ERROR 2021-05-25 18:07:53,179 basehttp 21072 12376 "POST /a0P04000000Gew4EAC/ HTTP/1.1" 500 88916
+WARNING 2021-05-25 18:07:53,529 log 21072 12376 Not Found: /favicon.ico
+WARNING 2021-05-25 18:07:53,530 basehttp 21072 12376 "GET /favicon.ico HTTP/1.1" 404 3337
+ERROR 2021-05-25 18:08:05,840 log 21660 18804 Internal Server Error: /a0P04000000Gew4EAC/
+Traceback (most recent call last):
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\views\generic\base.py", line 70, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\views\generic\base.py", line 98, in dispatch
+    return handler(request, *args, **kwargs)
+  File "F:\workspace\django\kiwapower_web_proposal\proposal\services.py", line 23, in clocked
+    result = func(*args, **kwargs)
+  File "F:\workspace\django\kiwapower_web_proposal\proposal\views.py", line 37, in post
+    services.additional_trusted_email_confirmation(request, proposal_id)
+  File "F:\workspace\django\kiwapower_web_proposal\proposal\services.py", line 607, in additional_trusted_email_confirmation
+    client_ip = request.META['HTTP_X_REAL_IP']
+KeyError: 'HTTP_X_REAL_IP'
+ERROR 2021-05-25 18:08:05,842 basehttp 21660 18804 "POST /a0P04000000Gew4EAC/ HTTP/1.1" 500 88913
+ERROR 2021-05-25 18:08:09,464 log 21660 18804 Internal Server Error: /a0P04000000Gew4EAC/
+Traceback (most recent call last):
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\views\generic\base.py", line 70, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\views\generic\base.py", line 98, in dispatch
+    return handler(request, *args, **kwargs)
+  File "F:\workspace\django\kiwapower_web_proposal\proposal\services.py", line 23, in clocked
+    result = func(*args, **kwargs)
+  File "F:\workspace\django\kiwapower_web_proposal\proposal\views.py", line 37, in post
+    services.additional_trusted_email_confirmation(request, proposal_id)
+  File "F:\workspace\django\kiwapower_web_proposal\proposal\services.py", line 607, in additional_trusted_email_confirmation
+    client_ip = request.META['HTTP_X_REAL_IP']
+KeyError: 'HTTP_X_REAL_IP'
+ERROR 2021-05-25 18:08:09,466 basehttp 21660 18804 "POST /a0P04000000Gew4EAC/ HTTP/1.1" 500 88915
+ERROR 2021-05-25 18:08:15,185 log 21660 18804 Internal Server Error: /a0P04000000Gew4EAC/
+Traceback (most recent call last):
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\views\generic\base.py", line 70, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\views\generic\base.py", line 98, in dispatch
+    return handler(request, *args, **kwargs)
+  File "F:\workspace\django\kiwapower_web_proposal\proposal\services.py", line 23, in clocked
+    result = func(*args, **kwargs)
+  File "F:\workspace\django\kiwapower_web_proposal\proposal\views.py", line 37, in post
+    services.additional_trusted_email_confirmation(request, proposal_id)
+  File "F:\workspace\django\kiwapower_web_proposal\proposal\services.py", line 607, in additional_trusted_email_confirmation
+    client_ip = request.META['HTTP_X_REAL_IP']
+KeyError: 'HTTP_X_REAL_IP'
+ERROR 2021-05-25 18:08:15,188 basehttp 21660 18804 "POST /a0P04000000Gew4EAC/ HTTP/1.1" 500 88916
+ERROR 2021-05-25 18:08:35,149 log 21660 25168 Internal Server Error: /a0P04000000Gew4EAC/
+Traceback (most recent call last):
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\views\generic\base.py", line 70, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\views\generic\base.py", line 98, in dispatch
+    return handler(request, *args, **kwargs)
+  File "F:\workspace\django\kiwapower_web_proposal\proposal\services.py", line 23, in clocked
+    result = func(*args, **kwargs)
+  File "F:\workspace\django\kiwapower_web_proposal\proposal\views.py", line 37, in post
+    services.additional_trusted_email_confirmation(request, proposal_id)
+  File "F:\workspace\django\kiwapower_web_proposal\proposal\services.py", line 607, in additional_trusted_email_confirmation
+    client_ip = request.META['HTTP_X_REAL_IP']
+KeyError: 'HTTP_X_REAL_IP'
+ERROR 2021-05-25 18:08:35,150 basehttp 21660 25168 "POST /a0P04000000Gew4EAC/ HTTP/1.1" 500 88916
+WARNING 2021-05-25 18:08:35,496 log 21660 25168 Not Found: /favicon.ico
+WARNING 2021-05-25 18:08:35,496 basehttp 21660 25168 "GET /favicon.ico HTTP/1.1" 404 3337

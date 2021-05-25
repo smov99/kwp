@@ -31,12 +31,16 @@
     });
   }
 
+
   // Preloader
   $(window).on('load', function () {
     let preloader = document.getElementById('preloader');
+    if ($(window).width() > 840) {
+      $('#sidebarToggle').trigger('click');
+    }
     setTimeout(function () {
       preloader.classList.add('loaded')
-    }, 1000)
+    }, 1000);
 
     var timeTracker = {};
 
@@ -63,7 +67,7 @@
         scrollTop = docElem['scrollTop'],
         scrollBottom = (docElem['scrollHeight']) - window.innerHeight,
         scrollPercent = scrollTop / scrollBottom * 100 + '%',
-        downloadContainer = document.getElementById('download-container');
+        downloadContainer = document.getElementById('download');
 
       document.getElementById('progress-bar').style.setProperty('--scrollAmount', scrollPercent);
 
@@ -77,8 +81,10 @@
       if (valDict.newVal !== valDict.oldVal) {
         endPage = new Date().getTime()
         spentTime = ((endPage - startPage) / 1000)
-        eventsAjax('spent_time', 'Spent ' + spentTime + ' seconds on page number ' + valDict.oldVal, '' + spentTime)
-        eventsAjax('page_opened', "Pdf page " + valDict.newVal);
+        if (valDict.oldVal !== '0') {
+          eventsAjax('spent_time', 'Spent seconds on page number ' + valDict.oldVal, '' + spentTime)
+          eventsAjax('page_opened', "PDF page " + valDict.newVal);
+        }
         valDict.oldVal = valDict.newVal
         startPage = new Date().getTime()
       }

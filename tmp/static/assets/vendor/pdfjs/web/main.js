@@ -42,9 +42,6 @@
       preloader.classList.add('loaded')
     }, 1000);
 
-    var timeTracker = {};
-
-    timeTracker['pageStart'] = new Date();
     var iframeInput = document.getElementById('pageNumber'),
       docContainer = document.getElementById('viewerContainer'),
       downloadBtn = document.getElementById('proposal-download-btn'),

@@ -224,33 +224,46 @@
   }
 
   $(window).on('load', function () {
+    var spentTime,
+      valDict = {},
+      endSection,
+      endQuestion;
+
     $('.section-title .collapsed').on('click', function (e) {
       e = e || window.event;
       e.preventDefault();
+      var sectionName = $(e.target).closest('h2').text();
       if ($(this).hasClass('opened')) {
-        eventsAjax('closing_of_section', 'Section ' + $(e.target).closest('h2').text() + ' close');
-        $(this).removeClass('opened')
+        endSection = new Date().getTime();
+        spentTime = (endSection - valDict[sectionName]) / 1000;
+        eventsAjax('closing_of_section', 'Section ' + sectionName + ' close', '' + spentTime);
+        $(this).removeClass('opened');
       } else {
-        eventsAjax('opening_of_section', 'Section ' + $(e.target).closest('h2').text() + ' open');
-        $(this).addClass('opened')
+        valDict[sectionName] = new Date().getTime();
+        console.log(valDict)
+        eventsAjax('opening_of_section', 'Section ' + sectionName + ' open');
+        $(this).addClass('opened');
       }
     });
 
     $('.faq-list .collapsed').on('click', function (e) {
       e = e || window.event;
       e.preventDefault();
-      let selected_text = $(e.target).closest('a').text(),
-        l = selected_text.length;
-      selected_text = 'Question ' + selected_text
+      let questionText = $(e.target).closest('a').text(),
+        l = questionText.length;
+      questionText = 'Question ' + questionText;
       if (l > 50) {
-        selected_text = selected_text.substring(0, 20) + ' ... ' + selected_text.substring(l - 19, l);
+        questionText = questionText.substring(0, 20) + ' ... ' + questionText.substring(l - 19, l);
       }
       if ($(this).hasClass('opened')) {
-        eventsAjax('closing_of_sections_line', selected_text + ' close');
-        $(this).removeClass('opened')
+        endQuestion = new Date().getTime();
+        spentTime = (endQuestion - valDict[questionText]) / 1000;
+        eventsAjax('closing_of_sections_line', questionText + ' close', '' + spentTime);
+        $(this).removeClass('opened');
       } else {
-        eventsAjax('opening_of_sections_line', selected_text + ' open');
-        $(this).addClass('opened')
+        valDict[questionText] = new Date().getTime();
+        eventsAjax('opening_of_sections_line', questionText + ' open');
+        $(this).addClass('opened');
       }
     });
   });
@@ -264,13 +277,13 @@
       eventsAjax('click_on_submit_button', 'Question submitted ' + $(this).closest("form").attr('id'), '', '' + message.val());
       message.val('');
       $(sentMessage).slideDown(250).fadeIn(100, function () {
-        $(sentMessage).css({'display': 'flex'})
+        $(sentMessage).css({'display': 'flex'});
       });
       setTimeout(function () {
         $(sentMessage).slideUp(250, 'linear').fadeOut(100, function () {
-          $(sentMessage).css({'display':'none'})
+          $(sentMessage).css({'display':'none'});
         })
-      }, 4000)
+      }, 4000);
     }
   });
 
@@ -281,10 +294,10 @@
         re = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/;
       if (!re.test(String(email).toLowerCase())) {
         e.preventDefault();
-        formAjax(email)
+        formAjax(email);
       }
     } else {
-      e.preventDefault()
+      e.preventDefault();
     }
   });
 

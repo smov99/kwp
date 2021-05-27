@@ -107,3 +107,6 @@ class ErrorLogAdmin(admin.ModelAdmin):
     has_add_permission = false
     has_delete_permission = false
     log_change = false
+
+    class Media:
+        js = ['assets/js/menu_filter_collapse.js']

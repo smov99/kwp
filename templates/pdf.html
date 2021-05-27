@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% load static i18n %}
+
+{% block title %}{{ document_title }}{% endblock title %}
+
+{% block introduction %}
+<section id="introduction-pdf" class="d-flex align-items-center">
+
+  <div class="container-fluid">
+    <div class="row justify-content-center">
+      <div class="col-xl-10">
+          <h1>{{ document_title }}</h1>
+      </div>
+    </div>
+  </div>
+
+</section><!-- End introduction -->
+{% endblock introduction %}
+
+{% block content %}
+  <main id="main">
+    <div id="pdf-viewer" class="embed-responsive pdf-viewer">
+      <iframe id="pdf-iframe" class="embed-responsive-item" src="/viewer?file={{ document }}"></iframe>
+    </div>
+  </main>
+{% endblock content %}

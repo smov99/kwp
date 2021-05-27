@@ -1,0 +1,76 @@
+{% extends 'base.html' %}
+{% load static i18n %}
+
+{% block title %}{% trans 'Confirmación por correo electrónico - Kiwapower' %}{% endblock title %}
+
+{% block description %}{% endblock description %}
+
+{% block keywords %}{% endblock keywords %}
+
+{% block header %}
+{% include 'header.html' %}
+{% endblock header %}
+
+{% block mobile_nav %}
+{% get_current_language as LANGUAGE_CODE %}
+{% get_available_languages as LANGUAGES %}
+{% get_language_info_list for LANGUAGES as languages %}
+<div class="navbar-collapse collapse" id="mobile-nav">
+  <ul class="navbar-nav">
+  {% for lang in languages %}
+    {% if lang.code != LANGUAGE_CODE %}
+    <li class="nav-item d-block ml-4 mb-1">
+{#      <a class="nav-link" href="{% if lang.code != 'es' %}/{{ lang.code }}{% endif %}/{{ proposal_id }}">{% trans 'EN' %}</a>#}
+    </li>
+    {% endif %}
+  {% endfor %}
+  </ul>
+</div>
+{% endblock mobile_nav %}
+
+{% block introduction %}
+
+<section id="introduction" class="d-flex align-items-center">
+
+  <video loop="loop" autoplay="" muted="" src="{% static 'assets/img/solar_panels.mp4' %}">
+  </video>
+
+  <div class="container-fluid" data-aos="zoom-out" data-aos-delay="100">
+    <div class="row justify-content-center">
+      <div class="col-lg-10">
+        <div class="row">
+          <div class="col-lg-5 introduction-bg">
+            <h1>{% trans 'Bienvenidos a su propuesta de Kiwapower.' %}</h1>
+            <h2>{% trans 'Ingrese su correo electrónico para acceder directamente.' %}</h2>
+            <div class="introduction-form">
+              <form class="validForm" action="" method="post">
+                {% csrf_token %}
+                <input type="email" name="email" placeholder="{% trans 'Correo electrónico...' %}"><input type="submit" value="{% trans 'Confirmar' %}">
+              </form>
+            </div>
+            <div class="form-error d-none" id="form-error" data-aos="fade-up" data-aos-delay="100">{% trans 'Email inválido.' %}</div>
+            <div class="row">
+              <div class="col-lg-6">
+                <div class="form-check mb-3">
+                  <input class="form-check-input" type="checkbox" value="" id="flexCheckIntro">
+                  <label class="form-check-label" for="flexCheckIntro">
+                    {% trans 'Acepto la política de privacidad' %}
+                  </label>
+                </div>
+              </div>
+              <div class="col-lg-6">
+                <div class="mb-3 intro-privacy"><a href="{% trans 'https://www.kiwapower.com/aviso-de-privacidad/' %}">{% trans 'Aviso de privacidad' %}</a></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</section><!-- End introduction -->
+{% endblock introduction %}
+
+{% block footer %}
+  {% include 'footer.html' %}
+{% endblock footer %}

@@ -1,0 +1,98 @@
+
+/* VARIABLE DEFINITIONS */
+:root {
+  --primary: #9f8983;
+  --secondary: #262626;
+  --accent: #fff;
+  --primary-fg: #eceff1;
+
+  --body-fg: #263238;
+  --body-bg: #f4f2f2;
+  --body-quiet-color: #424242;
+  --body-loud-color: #262626;
+
+  --header-color-fg: #cfd8dc;
+  --header-color: #263238;
+  --header-branding-color: var(--accent);
+  --header-bg: var(--secondary);
+  --header-link-color: var(--primary-fg);
+
+  --breadcrumbs-fg: #151817;
+  --breadcrumbs-link-fg: var(--body-fg);
+  --breadcrumbs-bg: var(--primary);
+
+  --link-fg: #616161;
+  --link-hover-color: #262626;
+  --link-selected-fg: #71564e;
+
+  --hairline-color: #e3dada;
+  --border-color: #ccc;
+
+  --error-fg: #ba2121;
+
+  --message-success-bg: #dfd;
+  --message-warning-bg: #ffc;
+  --message-error-bg: #ffefef;
+
+  --darkened-bg: #f0eded; /* A bit darker than --body-bg */
+  --selected-bg: #e4e4e4; /* E.g. selected table cells */
+  --selected-row: #c7bdbd;
+
+  --button-fg: #fff;
+  --button-bg: var(--primary);
+  --button-hover-bg: #609ab6;
+  --default-button-bg: var(--secondary);
+  --default-button-hover-bg: #205067;
+  --close-button-bg: #888; /* Previously #bbb, contrast 1.92 */
+  --close-button-hover-bg: #747474;
+  --delete-button-bg: #ba2121;
+  --delete-button-hover-bg: #a41515;
+
+  --object-tools-fg: var(--button-fg);
+  --object-tools-bg: var(--close-button-bg);
+  --object-tools-hover-bg: var(--close-button-hover-bg);
+}
+
+html, body {
+    height: 100%;
+}
+
+input[type=submit],
+.admindatefilter input[type=button],
+.admindatefilter .submit-row input,
+.admindatefilter a.button,
+.admindatefilter .button,
+.admindatefilter input[type=reset] {
+    background: var(--button-bg) !important;
+    color: #fff !important;
+}
+
+#toolbar #searchbar {
+    outline: none !important;
+    border: 1px solid #71564e !important;
+}
+
+.results tbody a:link , .results tbody a:visited {
+    color: #71564e;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.update-content {
+    position: relative;
+    color: var(--primary-fg) !important;
+    float: right !important;
+}
+
+.update-content:hover {
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+#content-updater {
+    display: none;
+}
+
+#header {
+    color: var(--header-color-fg);
+}

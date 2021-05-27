@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% load static i18n %}
+
+{% block title %}
+{% trans 'Falta de coincidencia del token CSRF' %} - Kiwapower
+{% endblock title %}
+
+{% block header %}
+  {% include 'error_header.html' %}
+{% endblock header %}
+
+{% block introduction %}
+<section id="introduction-error" class="d-flex align-items-center">
+
+  <div class="container-fluid">
+    <div class="row justify-content-center">
+      <div class="col-xl-10">
+          <h1>403</h1>
+          <h3>{% trans 'Falta de coincidencia del token CSRF' %}</h3>
+      </div>
+    </div>
+  </div>
+
+</section><!-- End introduction -->
+{% endblock introduction %}

@@ -1,0 +1,176 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-04-09 00:32+0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: .\templates\base.html:91
+msgid ""
+"Vólcan 150, Piso 4, Suite 432, Miguel Hidalgo, C.P. 11910, Ciudad de Mexico, "
+"Mexico"
+msgstr ""
+"Volcan 150, Floor 4, Suite 432, Miguel Hidalgo, C.P. 11910, Mexico City, "
+"Mexico "
+
+#: .\templates\base.html:120 .\templates\proposal.html:13
+#: .\templates\proposal.html:35
+msgid "Casa"
+msgstr "Home"
+
+#: .\templates\base.html:121
+msgid "Quienes somos "
+msgstr "Who we are"
+
+#: .\templates\base.html:143
+msgid "Miembros de:"
+msgstr "Members of:"
+
+#: .\templates\base.html:157
+msgid "Reciba nuestras novedades! "
+msgstr "Receive our news!"
+
+msgid "Hola, esta propuesta aún no está lista. Por favor contáctenos si esperaba una propuesta aquí"
+msgstr "Hello, this proposal is not quite ready yet. Please contact us if you were expecting a proposal here"
+
+msgid "Esta dirección de correo electrónico no coincide con nuestros registros. Comuníquese con nosotros si cree que se trata de un error"
+msgstr "This email address does not match our records. Please contact us if you think this is an error"
+
+#: .\templates\base.html:159
+msgid "Por favor introduzca una dirección de correo electrónico válida "
+msgstr "Please enter a valid email"
+
+msgid "Gracias por su consulta, nos comunicaremos con usted a la brevedad"
+msgstr "Thank you for your inquiry, we will get back to you promptly"
+
+#: .\templates\base.html:164
+msgid "Acepto la política de privacidad"
+msgstr "I agree to the privacy policy"
+
+#: .\templates\base.html:167
+msgid "Suscribir"
+msgstr "Subscribe"
+
+
+msgid "Aviso de privacidad"
+msgstr "Notice of Privacy"
+
+#: .\templates\confirmation.html:4
+msgid "Confirmación por correo electrónico - Kiwapower"
+msgstr "Email confirmation - Kiwapower"
+
+#: .\templates\confirmation.html:16
+msgid "EN"
+msgstr "ES"
+
+msgid "Bienvenidos a su propuesta de Kiwapower."
+msgstr "Welcome to your Kiwapower proposal."
+
+msgid "Ingrese su correo electrónico para acceder directamente."
+msgstr "Please enter your email for direct access."
+
+#: .\templates\confirmation.html:56
+msgid "Correo electrónico..."
+msgstr "Email..."
+
+#: .\templates\pdf.html:4
+msgid "Propuesta en PDF para usted - Kiwapower"
+msgstr "PDF proposal for you - Kiwapower"
+
+#: .\templates\proposal.html:4
+msgid "Propuesta para"
+msgstr "Proposal for"
+
+msgid "Email inválido."
+msgstr "Invalid email."
+
+msgid "Documentación de la propuesta web de Kiwapower"
+msgstr "Kiwapower web proposal documentation"
+
+#: .\templates\proposal.html:14 .\templates\proposal.html:38
+msgid "Quienes somos"
+msgstr "Who we are"
+
+msgid "Error del Servidor"
+msgstr "Server error"
+
+msgid "Falta de coincidencia del token CSRF"
+msgstr "CSRF token mismatch"
+
+msgid "Método de solicitud no admitido"
+msgstr "Unsupported request method"
+
+#: .\templates\proposal.html:15 .\templates\proposal.html:41
+#: .\templates\proposal.html:234
+msgid "PMF"
+msgstr "FAQ"
+
+msgid "Propuesta"
+msgstr "Proposal"
+
+msgid "Lo sentimos, esta página no existe"
+msgstr "We’re sorry, this page that does not exist"
+
+msgid "Energice su negocio con energía solar. Ponga las área de techo no usadas a trabajar para usted, y asegure tarifas de electricidad bajas y en pesos. Facilitaremos la transición de su negocio a una electricidad solar limpia y moderna."
+msgstr "Energize your business with solar power. Put your unused rooftop area to work for you, and lock-in low electricity rates in pesos. We will facilitate your business transition to modern and clean solar electricity."
+
+#: .\templates\proposal.html:79
+msgid "Esta propuesta fue preparada para "
+msgstr "This proposal was prepared for "
+
+msgid "https://www.kiwapower.com/aviso-de-privacidad/"
+msgstr "https://www.kiwapower.com/en/privacy-policy/"
+
+#: .\templates\proposal.html:114
+msgid "Ver propuesta"
+msgstr "View proposal"
+
+#: .\templates\proposal.html:188
+msgid "Contacto"
+msgstr "Contacts"
+
+#: .\templates\proposal.html:189
+msgid "¿Tiene alguna pregunta o desea darnos su opinión?"
+msgstr "Have a question or want to give us feedback?"
+
+#: .\templates\proposal.html:198 .\templates\proposal.html:219
+msgid "Por favor escribe algo para nosotros"
+msgstr "Please write something for us"
+
+#: .\templates\proposal.html:198
+msgid "Ingrese su pregunta"
+msgstr "Enter your question"
+
+#: .\templates\proposal.html:200 .\templates\proposal.html:221
+msgid "Enviar"
+msgstr "Submit"
+
+#: .\templates\proposal.html:210
+msgid "Solicite una reunión con Kiwapower"
+msgstr "Request a meeting with Kiwapower"
+
+#: .\templates\proposal.html:219
+msgid ""
+"Indique el mejor momento y la mejor forma para que Kiwapower se comunique "
+"con usted"
+msgstr ""
+"Please indicate the best time and way for Kiwapower to get in touch with you"
+
+msgid "Descargar"
+msgstr "Download"
+
+msgid "Confirmar"
+msgstr "Confirm"

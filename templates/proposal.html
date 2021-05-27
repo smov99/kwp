@@ -1,0 +1,180 @@
+{% extends 'base.html' %}
+{% load static i18n %}
+
+{% block title %}{% trans 'Propuesta para' %} {{ client_name }} - Kiwapower{% endblock title %}
+
+{% block description %}{% endblock description %}
+
+{% block keywords %}{% endblock keywords %}
+
+{% block header %}
+{% include 'proposal_header.html' %}
+{% endblock header %}
+
+{% block mobile_nav %}
+{% get_current_language as LANGUAGE_CODE %}
+{% get_available_languages as LANGUAGES %}
+{% get_language_info_list for LANGUAGES as languages %}
+<div class="navbar-collapse collapse proposal-mobile-nav" id="mobile-nav">
+  <ul class="navbar-nav">
+    <li class="nav-item d-block ml-4 mb-1 mt-1">
+      <a class="nav-link" href="https://www.kiwapower.com/">{% trans 'Casa' %}</a>
+    </li>
+    <li class="nav-item d-block ml-4 mb-1">
+      <a class="nav-link" href="https://www.kiwapower.com/#acerca">{% trans 'Quienes somos' %}</a>
+    </li>
+    <li class="nav-item d-block ml-4 mb-1">
+      <a class="nav-link scrollto" href="#whykiwapower">{% trans 'PMF' %}</a>
+    </li>
+    {% for lang in languages %}
+    {% if lang.code != LANGUAGE_CODE %}
+    <li class="nav-item d-block ml-4 mb-1">
+      <a class="nav-link" href="{% if lang.code != 'es' %}/{{ lang.code }}{% endif %}/{{ proposal_id }}/proposal">{% trans 'EN' %}</a>
+    </li>
+    {% endif %}
+    {% endfor %}
+  </ul>
+</div>
+{% endblock mobile_nav %}
+
+{% block introduction %}
+<section id="introduction-proposal" class="d-flex align-items-center">
+
+  <div class="container-fluid">
+    <div class="row justify-content-center">
+      <div class="col-xl-10">
+          <h1>{% trans 'Esta propuesta fue preparada para ' %}{{ client_name }}</h1>
+      </div>
+    </div>
+  </div>
+
+</section><!-- End introduction -->
+{% endblock introduction %}
+
+{% block content %}
+  <main id="main">
+
+    <!-- ======= Prepared Section ======= -->
+    <section id="prepared" class="prepared">
+      <div class="container">
+
+        <div class="row">
+            <div class="col-lg-9">
+              <div class="section-title">
+                {% if message %}
+                <p>{{ message }}</p>
+                {% else %}
+                <h2>{% trans 'Energice su negocio con energía solar. Ponga las área de techo no usadas a trabajar para usted, y asegure tarifas de electricidad bajas y en pesos. Facilitaremos la transición de su negocio a una electricidad solar limpia y moderna.' %}</h2>
+                {% endif %}
+              </div>
+            </div>
+            <div class="col-lg-3 col-centered">
+              <div class="row member">
+                <div class="col-5 member-img">
+                {% if img %}
+                  <img src="data:image/png;base64,{{ img }}" alt="">
+                {% else %}
+                  <img src="{% static 'assets/img/user-icon-placeholder.png' %}" alt="">
+                {% endif %}
+                </div>
+                <div class="col-3 member-info">
+                  <h4>{{ creator_name }}</h4>
+                </div>
+              </div>
+            </div>
+
+        </div>
+
+      </div>
+    </section><!-- End Prepared Section -->
+
+    <!-- ======= Proposal Link Section ======= -->
+  {% if document %}
+    <section id="proposal-link" class="proposal-link">
+      <div class="container">
+        <div class="row">
+          <div class="col-xl-10">
+            <div class="section-title">
+              <input type="button" id="proposal-pdf-link" class="btn-confirmation" value="{% trans 'Ver propuesta' %}" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section><!-- End Proposal Link Section -->
+  {% endif %}
+
+    <!-- ======= Why Kiwapower Section ======= -->
+    <section id="whykiwapower" class="faq">
+      <div class="container" data-aos="fade-up">
+      {% with sections=sections.all %}
+        {% for section in sections %}
+        {% if section.article_set.all.exists %}
+        <div class="section-title">
+          <a data-toggle="collapse" class="collapsed" href="#section{{ section.id }}"><h2>{{ section.label }}<i class="bx bx-chevron-down icon-show"></i><i class="bx bx-x icon-close"></i></h2></a>
+        </div>
+        {% endif %}
+
+        <div id="section{{ section.id }}" class="collapse" data-parent=".section-title">
+          <ul class="faq-list" data-aos="fade-up">
+          {% for article in section.article_set.all %}
+            <li>
+              <a data-toggle="collapse" class="collapsed" href="#article{{ section.id }}-{{ article.order }}">{{ article.question }}<i class="bx bx-chevron-down icon-show"></i><i class="bx bx-x icon-close"></i></a>
+              <div id="article{{ section.id }}-{{ article.order }}" class="collapse" data-parent=".faq-list">
+                <p>
+                  {{ article.answer }}
+                </p>
+              </div>
+            </li>
+          {% endfor %}
+          </ul>
+        </div>
+        {% endfor %}
+      {% endwith %}
+      </div>
+    </section><!-- End Why Kiwapower Section -->
+
+    <!-- ======= Contact Section ======= -->
+    <section id="contact" class="contact">
+      <div class="container" data-aos="fade-up">
+
+        <div class="row" data-aos="fade-up" data-aos-delay="100">
+
+          <div class="col-xl-6">
+            <div class="contact-form-title">
+              <p>{% trans '¿Tiene alguna pregunta o desea darnos su opinión?' %}</p>
+            </div>
+            <form action="" method="post" role="form" id="Feedback-Form" class="contact-form">
+              {% csrf_token %}
+              <div class="form-group">
+                <textarea class="form-control" name="message" rows="5" data-rule="required" data-msg="{% trans 'Por favor escribe algo para nosotros' %}" placeholder="{% trans 'Ingrese su pregunta' %}"></textarea>
+              </div>
+              <div class="mb-3">
+                <div class="sent-message">{% trans 'Gracias por su consulta, nos comunicaremos con usted a la brevedad' %}</div>
+              </div>
+              <div class="text-center"><button type="submit">{% trans 'Enviar' %}</button></div>
+            </form>
+          </div>
+
+          <div class="col-xl-6">
+            <div class="contact-form-title">
+              <p>{% trans 'Solicite una reunión con Kiwapower' %}</p>
+            </div>
+            <form action="" method="post" role="form" id="Meeting-Form" class="contact-form">
+              {% csrf_token %}
+              <div class="form-group">
+                <textarea class="form-control" name="message" rows="5" data-rule="required" data-msg="{% trans 'Por favor escribe algo para nosotros' %}" placeholder="{% trans 'Indique el mejor momento y la mejor forma para que Kiwapower se comunique con usted' %}"></textarea>
+              </div>
+              <div class="mb-3">
+                <div class="sent-message">{% trans 'Gracias por su consulta, nos comunicaremos con usted a la brevedad' %}</div>
+              </div>
+              <div class="text-center"><button type="submit">{% trans 'Enviar' %}</button></div>
+            </form>
+          </div>
+
+        </div>
+
+      </div>
+    </section><!-- End Contact Section -->
+
+  </main><!-- End #main -->
+{% endblock content %}

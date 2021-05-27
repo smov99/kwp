@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% load static i18n %}
+
+{% block title %}
+{% trans 'Método de solicitud no admitido' %} - Kiwapower
+{% endblock title %}
+
+{% block header %}
+  {% include 'error_header.html' %}
+{% endblock header %}
+
+{% block introduction %}
+<section id="introduction-error" class="d-flex align-items-center">
+
+  <div class="container-fluid">
+    <div class="row justify-content-center">
+      <div class="col-xl-10">
+          <h1>400</h1>
+          <h3>{% trans 'Método de solicitud no admitido' %}</h3>
+      </div>
+    </div>
+  </div>
+
+</section><!-- End introduction -->
+{% endblock introduction %}

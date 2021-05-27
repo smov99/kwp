@@ -1,0 +1,38 @@
+{% extends 'admin/base.html' %}
+{% load static i18n %}
+
+{% block title %}{{ title }} - {{ site_title|default:_('Django site admin')}} {% endblock %}
+
+{% block extrastyle %}
+  <link rel="stylesheet" href="{% static 'assets/css/admin.css' %}">
+{% endblock %}
+
+{% block branding %}
+<h1 id="site-name"><a href="{% url 'admin:index' %}">{{ site_header|default:_('Django administation')}}</a></h1>
+{% endblock %}
+
+{% block userlinks %}
+    {% if site_url %}
+        <a href="{{ site_url }}">{% translate 'View site' %}</a> /
+    {% endif %}
+    {% if user.is_active and user.is_staff %}
+        {% url 'django-admindocs-docroot' as docsroot %}
+        {% if docsroot %}
+            <a href="{{ docsroot }}">{% translate 'Documentation' %}</a> /
+        {% endif %}
+    {% endif %}
+    {% if user.has_usable_password %}
+    <a href="{% url 'admin:password_change' %}">{% translate 'Change password' %}</a> /
+    {% endif %}
+    <a href="{% url 'admin:logout' %}">{% translate 'Log out' %}</a> /
+    {% get_current_language as LANGUAGE_CODE %}
+    {% get_available_languages as LANGUAGES %}
+    {% get_language_info_list for LANGUAGES as languages %}
+    {% for lang in languages %}
+    {% if lang.code != LANGUAGE_CODE %}
+    <a href="{% if lang.code != 'es' %}/{{ lang.code }}{% endif %}/kwp/">{% trans 'EN' %}</a>
+    {% endif %}
+    {% endfor %}
+{% endblock %}
+
+{% block nav-global %}{% endblock %}

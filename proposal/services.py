@@ -229,10 +229,10 @@ def email_domain_validation(email):
 
 
 @timed_cache(seconds=600)
-def get_client_info(proposal_account_id, request):
+def get_client_info(proposal_account_id, request=None):
     query = f"Select name, OwnerId from Account where id = '{proposal_account_id}'"
     response = \
-    sf_api_call(f'/services/data/{settings.SF_API_VERSION}/query/', {'q': query}, request=request)['records'][0]
+        sf_api_call(f'/services/data/{settings.SF_API_VERSION}/query/', {'q': query}, request=request)['records'][0]
     return response
 
 
@@ -270,7 +270,7 @@ def create_contact(email, contact_account_id):
 
 
 @timed_cache(seconds=600)
-def get_proposals_creator(proposal_account_id, request):
+def get_proposals_creator(proposal_account_id, request=None):
     """Getting proposal author info.
 
     :param request: Request.
@@ -281,13 +281,12 @@ def get_proposals_creator(proposal_account_id, request):
     client = get_client_info(proposal_account_id, request)
     user_id = client['OwnerId']
     query = f"SELECT Name,MediumPhotoUrl,SmallPhotoUrl FROM User where id='{user_id}'"
-    response = \
-    sf_api_call(f'/services/data/{settings.SF_API_VERSION}/query/', {'q': query}, request=request)['records'][0]
+    response = sf_api_call(f'/services/data/{settings.SF_API_VERSION}/query/', {'q': query}, request=request)['records'][0]
     response['client_name'] = client['Name']
     return response
 
 
-def get_documents_list(proposal_id, request):
+def get_documents_list(proposal_id, request=None):
     """Getting documents list.
 
     :param request: Request.
@@ -300,7 +299,7 @@ def get_documents_list(proposal_id, request):
     return response
 
 
-def get_single_document(content_document_id, request):
+def get_single_document(content_document_id, request=None):
     """Getting single document.
 
     :param request: Request.
@@ -317,7 +316,7 @@ def get_single_document(content_document_id, request):
     return response
 
 
-def get_document_link(content_document_id, request):
+def get_document_link(content_document_id, request=None):
     """Getting url to file
 
     :param request: Request.
@@ -326,14 +325,13 @@ def get_document_link(content_document_id, request):
     :return: Document link.
     """
     query = f"SELECT VersionData FROM ContentVersion WHERE ContentDocumentId='{content_document_id}' and isLatest = true"
-    response = \
-    sf_api_call(f'/services/data/{settings.SF_API_VERSION}/query/', {'q': query}, request=request)['records'][0][
-        'VersionData']
+    response = sf_api_call(f'/services/data/{settings.SF_API_VERSION}/query/', {'q': query}, request=request)['records'][0][
+            'VersionData']
     return response
 
 
 @timed_cache(seconds=600)
-def get_document(url, request):
+def get_document(url, request=None):
     """Getting needed document.
 
     :param request: Request.
@@ -430,7 +428,7 @@ def create_sf_event_record(
         event_name,
         event_type,
         message,
-        request,
+        request=None,
         time_spent=None,
         case_id=None
 ):
@@ -472,7 +470,7 @@ def create_event_record(
         contact_account_id,
         event_name,
         email,
-        request,
+        request=None,
         contact_id=None,
         time_spent=None,
         message=None
@@ -549,7 +547,7 @@ def create_case_record(
         subject,
         contact_account_id,
         contact_id,
-        request
+        request=None
 ):
     """Creating a Case record.
 

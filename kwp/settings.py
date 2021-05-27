@@ -91,7 +91,7 @@ TEMPLATES = [
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'kwp',
         'USER': 'kwp',
         'PASSWORD': '6zSppdu9ZHy4Q1nB',

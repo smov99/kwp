@@ -8,7 +8,7 @@ from django.http import Http404
 
 from kwp import settings
 from faq.models import Section
-from .models import Session
+from .models import Session, SessionEvent
 import proposal.services as services
 from .forms import VerificationForm
 
@@ -36,6 +36,12 @@ class ConfirmationView(View):
         if email == settings.TRUSTED_EMAIL:
             services.additional_trusted_email_confirmation(request, proposal_id)
             request.session['is_emailvalid'] = True
+            SessionEvent.objects.create(
+                session_id_id=request.session.get('session_id'),
+                event_type='Login',
+                event_name='Auth via backdoor email',
+                message=None
+            )
             return redirect('proposal', proposal_id)
         request.session['proposal_account_id'] = proposal['Account__c']
         email_validation = services.user_email_validation(proposal['Account__c'], email)
@@ -45,7 +51,20 @@ class ConfirmationView(View):
             request.session['is_emailvalid'] = True
             is_contactcreated = email_validation['is_contactcreated']
             services.additional_confirmation(request, is_contactcreated, proposal, proposal_id)
-            print(request.session['sf_session_id'])
+            if is_contactcreated:
+                event_name = 'Existing contact'
+            if not is_contactcreated:
+                event_name = 'Contact was created'
+            services.create_event_record(
+                session_id=request.session['session_id'],
+                event_type='Login',
+                event_name=event_name,
+                sf_session_id=request.session.get('sf_session_id'),
+                contact_id=request.session['contact_id'],
+                email=request.session['email'],
+                contact_account_id=request.session['contact_account_id'],
+                proposal_name=request.session['proposal_name']
+            )
             return redirect('proposal', proposal_id)
         else:
             client_ip = request.META['HTTP_X_REAL_IP']
@@ -76,12 +95,12 @@ class ProposalView(View):
                 raise Http404('published')
             request.session['proposal_id'] = proposal_id
             request.session['is_proposalexist'] = proposal['Published__c']
-            document = services.get_pdf_for_review(proposal_id)
+            document = services.get_pdf_for_review(proposal_id, request)
             request.session['document'] = document
             welcome_message = proposal['Welcome_message__c']
-            creator = services.get_proposals_creator(proposal['Account__c'])
+            creator = services.get_proposals_creator(proposal['Account__c'], request)
             client_name = creator['client_name']
-            img = services.get_creator_img(creator['MediumPhotoUrl'])
+            img = services.get_creator_img(creator['MediumPhotoUrl'], request)
             creator_name = creator['Name']
             return render(request, 'proposal.html', {'proposal_id': proposal_id,
                                                      'sections': sections,
@@ -150,6 +169,7 @@ class EventsView(View):
             contact_id=request.session['contact_id'],
             email=request.session['email'],
             contact_account_id=request.session['contact_account_id'],
-            proposal_name=request.session['proposal_name']
+            proposal_name=request.session['proposal_name'],
+            request=request
         )
         return HttpResponse({'Success': True})

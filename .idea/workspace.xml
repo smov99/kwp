@@ -3,13 +3,17 @@
   <component name="ChangeListManager">
     <list default="true" id="09261db6-e477-4638-a4b0-2d0875373965" name="Default Changelist" comment="fixes">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/kwp/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/kwp/settings.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/kwp/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/kwp/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/proposal/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/proposal/admin.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/proposal/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/proposal/models.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/proposal/services.py" beforeDir="false" afterPath="$PROJECT_DIR$/proposal/services.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/proposal/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/proposal/views.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/log.log" beforeDir="false" afterPath="$PROJECT_DIR$/src/log.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/assets/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/assets/css/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/css/admin.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/assets/css/admin.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/static/assets/js/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/assets/js/main.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp/static/assets/js/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/tmp/static/assets/js/main.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/vendor/pdfjs/web/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/assets/vendor/pdfjs/web/main.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/admin/base_site.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/base_site.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -69,18 +73,18 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="ToolWindowDuplicates.ShowToolbar" value="false" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/static" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/static/admin/css" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="F:\workspace\django\kiwapower_web_proposal\static\admin\css" />
+      <recent name="F:\workspace\django\kiwapower_web_proposal\templates\admin" />
       <recent name="F:\workspace\django\kiwapower_web_proposal\static" />
       <recent name="F:\workspace\django\kiwapower_web_proposal\static\admin\img" />
       <recent name="F:\workspace\django\kiwapower_web_proposal\static\assets\img" />
-      <recent name="F:\workspace\django\kiwapower_web_proposal\static\assets\vendor" />
-      <recent name="F:\workspace\django\kiwapower_web_proposal\templates" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="F:\workspace\django\kiwapower_web_proposal\static\assets\vendor\pdfjs" />
@@ -191,21 +195,7 @@
       <workItem from="1619884224804" duration="42213000" />
       <workItem from="1620214379349" duration="91007000" />
       <workItem from="1620833492790" duration="82710000" />
-      <workItem from="1621529179795" duration="100203000" />
-    </task>
-    <task id="LOCAL-00042" summary="templates correction">
-      <created>1619389645995</created>
-      <option name="number" value="00042" />
-      <option name="presentableId" value="LOCAL-00042" />
-      <option name="project" value="LOCAL" />
-      <updated>1619389645995</updated>
-    </task>
-    <task id="LOCAL-00043" summary="admin view &amp; project refactoring">
-      <created>1619450365272</created>
-      <option name="number" value="00043" />
-      <option name="presentableId" value="LOCAL-00043" />
-      <option name="project" value="LOCAL" />
-      <updated>1619450365272</updated>
+      <workItem from="1621529179795" duration="118903000" />
     </task>
     <task id="LOCAL-00044" summary="admin view &amp; project refactoring">
       <created>1619452820622</created>
@@ -536,7 +526,21 @@
       <option name="project" value="LOCAL" />
       <updated>1621958271061</updated>
     </task>
-    <option name="localTasksCounter" value="91" />
+    <task id="LOCAL-00091" summary="fixes">
+      <created>1621960522415</created>
+      <option name="number" value="00091" />
+      <option name="presentableId" value="LOCAL-00091" />
+      <option name="project" value="LOCAL" />
+      <updated>1621960522415</updated>
+    </task>
+    <task id="LOCAL-00092" summary="fixes">
+      <created>1621960551460</created>
+      <option name="number" value="00092" />
+      <option name="presentableId" value="LOCAL-00092" />
+      <option name="project" value="LOCAL" />
+      <updated>1621960551461</updated>
+    </task>
+    <option name="localTasksCounter" value="93" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

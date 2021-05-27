@@ -4,9 +4,8 @@ from django.contrib import admin
 from django.urls import reverse
 from django.utils.safestring import mark_safe
 from rangefilter.filters import DateTimeRangeFilter
-from django.contrib.admin import DateFieldListFilter
 
-from .models import Session, SessionEvent
+from .models import Session, SessionEvent, ErrorLog
 
 
 def false(*args, **kwargs):
@@ -86,6 +85,22 @@ class SessionEventAdmin(admin.ModelAdmin):
     model = SessionEvent
     list_display = ('session_id', 'id', 'created', 'event_type', 'event_name', 'message')
     ordering = ('-created',)
+    search_fields = ('event_type',)
+    list_per_page = 10
+    list_display_links = None
+    actions = None
+    has_add_permission = false
+    has_delete_permission = false
+    log_change = false
+
+
+@admin.register(ErrorLog)
+class ErrorLogAdmin(admin.ModelAdmin):
+    model = ErrorLog
+    list_display = ('session_id', 'id', 'created', 'api_call_type', 'sf_object', 'sf_error')
+    ordering = ('-created',)
+    search_fields = ('sf_object', 'sf_error')
+    list_filter = ('sf_object', 'api_call_type')
     list_per_page = 10
     list_display_links = None
     actions = None

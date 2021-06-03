@@ -100,6 +100,21 @@ DATABASES = {
     }
 }
 
+# Cache settings
+REDIS_HOST = '127.0.0.1'
+REDIS_PORT = '6379'
+REDIS_DB_ID = '4'
+
+CACHES = {
+    'default': {
+        'BACKEND': 'django_redis.cache.RedisCache',
+        'LOCATION': f'redis://{REDIS_HOST}:{REDIS_PORT}/{REDIS_DB_ID}',
+        'OPTIONS': {
+            'CLIENT_CLASS': 'django_redis.client.DefaultClient',
+        }
+    }
+}
+
 # Rest settings
 REST_FRAMEWORK = {
     # 'DEFAULT_PAGINATION_CLASS':
@@ -124,7 +139,7 @@ SF_CONSUMER_KEY = '3MVG9M43irr9JAuyX9k4MSEg2sKpL9Eswc9hslkN7vnqYMZxFkIUreh4BiO3H
 SF_INITIAL_ACCESS_TOKEN = 'Geosoft999Cel800D040000008gMG88804000000GndYOHyk2gVh5wcpKjg0OKD7ZhkgtKCImZvHknjlwpDw5RxgucxygvBFwAVS0qlk6taEnGWSQTDx'
 SF_USER_NAME = 'smorozov@gmail.com'
 SF_API_VERSION = 'v51.0'
-SF_PASSWORD = 'ge0s0ft99'
+SF_PASSWORD = '_geosoft99'
 SF_LOGIN_URL = 'https://test.salesforce.com/services/oauth2/token'
 SF_USER_ID = '0056g0000036ZdTAAU'
 

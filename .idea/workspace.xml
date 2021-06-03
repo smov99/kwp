@@ -1,7 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="09261db6-e477-4638-a4b0-2d0875373965" name="Default Changelist" comment="fixes" />
+    <list default="true" id="09261db6-e477-4638-a4b0-2d0875373965" name="Default Changelist" comment="fixes">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/serializers.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/serializers.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/faq/services.py" beforeDir="false" afterPath="$PROJECT_DIR$/faq/services.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/kwp/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/kwp/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/proposal/services.py" beforeDir="false" afterPath="$PROJECT_DIR$/proposal/services.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/proposal/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/proposal/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/log.log" beforeDir="false" afterPath="$PROJECT_DIR$/src/log.log" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -60,7 +69,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="ToolWindowDuplicates.ShowToolbar" value="false" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/static/admin/css" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../backup/kiwapower_web_proposal" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
     <property name="vue.rearranger.settings.migration" value="true" />
@@ -182,14 +191,9 @@
       <workItem from="1619884224804" duration="42213000" />
       <workItem from="1620214379349" duration="91007000" />
       <workItem from="1620833492790" duration="82710000" />
-      <workItem from="1621529179795" duration="119372000" />
-    </task>
-    <task id="LOCAL-00046" summary="admin view &amp; project refactoring">
-      <created>1619469209825</created>
-      <option name="number" value="00046" />
-      <option name="presentableId" value="LOCAL-00046" />
-      <option name="project" value="LOCAL" />
-      <updated>1619469209825</updated>
+      <workItem from="1621529179795" duration="128681000" />
+      <workItem from="1622570428004" duration="6708000" />
+      <workItem from="1622757228043" duration="3727000" />
     </task>
     <task id="LOCAL-00047" summary="admin view &amp; project refactoring">
       <created>1619481433696</created>
@@ -527,7 +531,14 @@
       <option name="project" value="LOCAL" />
       <updated>1622152686921</updated>
     </task>
-    <option name="localTasksCounter" value="95" />
+    <task id="LOCAL-00095" summary="fixes">
+      <created>1622153151693</created>
+      <option name="number" value="00095" />
+      <option name="presentableId" value="LOCAL-00095" />
+      <option name="project" value="LOCAL" />
+      <updated>1622153151693</updated>
+    </task>
+    <option name="localTasksCounter" value="96" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

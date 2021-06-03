@@ -2051,3 +2051,67 @@ WARNING 2021-05-27 21:19:17,080 log 18624 24428 Not Found: /favicon.ico
 WARNING 2021-05-27 21:19:17,081 basehttp 18624 24428 "GET /favicon.ico HTTP/1.1" 404 3512
 WARNING 2021-05-27 21:19:41,507 log 18624 24428 Not Found: /favicon.ico
 WARNING 2021-05-27 21:19:41,507 basehttp 18624 24428 "GET /favicon.ico HTTP/1.1" 404 3512
+WARNING 2021-05-28 21:51:16,511 log 3220 22308 Not Found: /static/assets/css/style.css
+WARNING 2021-05-28 21:51:16,519 log 3220 17620 Not Found: /static/assets/js/main.js
+WARNING 2021-05-28 21:51:16,537 basehttp 3220 22308 "GET /static/assets/css/style.css HTTP/1.1" 404 3309
+WARNING 2021-05-28 21:51:16,538 basehttp 3220 17620 "GET /static/assets/js/main.js HTTP/1.1" 404 3309
+WARNING 2021-05-28 21:52:57,951 basehttp 24824 13964 "GET /static/assets/vendor/pdfjs/web/static/assets/vendor/pdfjs/images/toolbarButton-menuArrow.svg HTTP/1.1" 404 1883
+WARNING 2021-05-28 21:53:23,890 basehttp 24824 19188 "GET /static/assets/vendor/pdfjs/web/static/assets/vendor/pdfjs/images/toolbarButton-menuArrow.svg HTTP/1.1" 404 1883
+ERROR 2021-06-04 01:27:25,978 log 21068 15268 Internal Server Error: /update_sections/
+Traceback (most recent call last):
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\views\generic\base.py", line 70, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\views\generic\base.py", line 98, in dispatch
+    return handler(request, *args, **kwargs)
+  File "F:\workspace\django\kiwapower_web_proposal\faq\views.py", line 11, in post
+    services.create_sections_and_articles(sections, articles)
+  File "F:\workspace\django\kiwapower_web_proposal\faq\services.py", line 127, in create_sections_and_articles
+    section_ = Section.objects.filter(is_active=True).get(label_en=label)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\db\models\query.py", line 435, in get
+    raise self.model.DoesNotExist(
+faq.models.Section.DoesNotExist: Section matching query does not exist.
+ERROR 2021-06-04 01:27:25,988 basehttp 21068 15268 "POST /update_sections/ HTTP/1.1" 500 110310
+ERROR 2021-06-04 01:37:06,518 log 1548 8964 Internal Server Error: /update_sections/
+Traceback (most recent call last):
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\views\generic\base.py", line 70, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\views\generic\base.py", line 98, in dispatch
+    return handler(request, *args, **kwargs)
+  File "F:\workspace\django\kiwapower_web_proposal\faq\views.py", line 11, in post
+    services.create_sections_and_articles(sections, articles)
+  File "F:\workspace\django\kiwapower_web_proposal\faq\services.py", line 109, in create_sections_and_articles
+    if Section.objects.get(guid=guid).exists():
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\db\models\manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\db\models\query.py", line 439, in get
+    raise self.model.MultipleObjectsReturned(
+faq.models.Section.MultipleObjectsReturned: get() returned more than one Section -- it returned 2!
+ERROR 2021-06-04 01:37:06,521 basehttp 1548 8964 "POST /update_sections/ HTTP/1.1" 500 109826
+ERROR 2021-06-04 01:37:31,648 log 1548 8964 Internal Server Error: /update_sections/
+Traceback (most recent call last):
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\views\generic\base.py", line 70, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\views\generic\base.py", line 98, in dispatch
+    return handler(request, *args, **kwargs)
+  File "F:\workspace\django\kiwapower_web_proposal\faq\views.py", line 11, in post
+    services.create_sections_and_articles(sections, articles)
+  File "F:\workspace\django\kiwapower_web_proposal\faq\services.py", line 109, in create_sections_and_articles
+    if Section.objects.get(guid=guid).exists():
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\db\models\manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\db\models\query.py", line 435, in get
+    raise self.model.DoesNotExist(
+faq.models.Section.DoesNotExist: Section matching query does not exist.
+ERROR 2021-06-04 01:37:31,649 basehttp 1548 8964 "POST /update_sections/ HTTP/1.1" 500 109648

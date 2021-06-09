@@ -69,7 +69,7 @@ class ConfirmationView(View):
         else:
             # client_ip = request.META['HTTP_X_REAL_IP']
             # client_ip = request.META['REMOTE_ADDR']
-            client_ip = request.META['HTTP_X_FORWARDER_FOR'].split(',')[0].strip()
+            client_ip = request.META['HTTP_X_FORWARDED_FOR'].split(',')[0].strip()
             Session.objects.create(
                 proposal_id=proposal_id,
                 email=request.session['email'],

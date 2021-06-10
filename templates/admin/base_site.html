@@ -9,6 +9,16 @@
 
 {% block branding %}
 <h1 id="site-name"><a href="{% url 'admin:index' %}">{{ site_header|default:_('Django administation')}}</a></h1>
+<h1 id="login-lang-switcher">
+  {% get_current_language as LANGUAGE_CODE %}
+  {% get_available_languages as LANGUAGES %}
+  {% get_language_info_list for LANGUAGES as languages %}
+  {% for lang in languages %}
+  {% if lang.code != LANGUAGE_CODE %}
+  <a href="{% if lang.code != 'es' %}/{{ lang.code }}{% endif %}/kwp/">{% trans 'EN' %}</a>
+  {% endif %}
+  {% endfor %}
+</h1>
 {% endblock %}
 
 {% block userlinks %}

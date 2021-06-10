@@ -53,10 +53,10 @@
 
 
     valDict.oldVal = inputVal.val()
-    eventsAjax('page_opened', 'PDF page 1')
+    eventsAjax('Interaction with Proposal', 'Opened page 1')
 
     $(downloadBtn).on('click', function () {
-      eventsAjax('download', 'PDF downloaded');
+      eventsAjax('Interaction with Proposal', 'Downloaded');
     })
 
     $(docContainer).scroll(function() {
@@ -79,8 +79,8 @@
         endPage = new Date().getTime()
         spentTime = ((endPage - startPage) / 1000)
         if (valDict.oldVal !== '0') {
-          eventsAjax('spent_time', 'Spent seconds on page number ' + valDict.oldVal, '' + spentTime)
-          eventsAjax('page_opened', "PDF page " + valDict.newVal);
+          eventsAjax('Interaction with Proposal', 'Spent seconds on page number ' + valDict.oldVal, '' + spentTime)
+          eventsAjax('Interaction with Proposal', "Opened page " + valDict.newVal);
         }
         valDict.oldVal = valDict.newVal
         startPage = new Date().getTime()
@@ -95,7 +95,7 @@
     if (l > 50) {
         selected_text = selected_text.substring(0, 20) + ' ... ' + selected_text.substring(l-20, l);
     }
-    eventsAjax('copying_in_pdf', 'Copied text: '+selected_text);
+    eventsAjax('Interaction with Proposal', 'Copied text: '+selected_text);
   });
 
 

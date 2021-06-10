@@ -3,13 +3,11 @@
   <component name="ChangeListManager">
     <list default="true" id="09261db6-e477-4638-a4b0-2d0875373965" name="Default Changelist" comment="fixes">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/kwp/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/kwp/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/kwp/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/kwp/settings.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/proposal/services.py" beforeDir="false" afterPath="$PROJECT_DIR$/proposal/services.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/proposal/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/proposal/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/log.log" beforeDir="false" afterPath="$PROJECT_DIR$/src/log.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/assets/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/assets/css/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/assets/js/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/assets/js/main.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp/static/assets/js/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/tmp/static/assets/js/main.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -69,18 +67,18 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="ToolWindowDuplicates.ShowToolbar" value="false" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/static" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../tt_delivery" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="F:\workspace\django\kiwapower_web_proposal\static\admin\css" />
+      <recent name="F:\workspace\django\kiwapower_web_proposal\templates\admin" />
       <recent name="F:\workspace\django\kiwapower_web_proposal\static" />
       <recent name="F:\workspace\django\kiwapower_web_proposal\static\admin\img" />
       <recent name="F:\workspace\django\kiwapower_web_proposal\static\assets\img" />
-      <recent name="F:\workspace\django\kiwapower_web_proposal\static\assets\vendor" />
-      <recent name="F:\workspace\django\kiwapower_web_proposal\templates" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="F:\workspace\django\kiwapower_web_proposal\static\assets\vendor\pdfjs" />
@@ -191,56 +189,11 @@
       <workItem from="1619884224804" duration="42213000" />
       <workItem from="1620214379349" duration="91007000" />
       <workItem from="1620833492790" duration="82710000" />
-      <workItem from="1621529179795" duration="100203000" />
-    </task>
-    <task id="LOCAL-00042" summary="templates correction">
-      <created>1619389645995</created>
-      <option name="number" value="00042" />
-      <option name="presentableId" value="LOCAL-00042" />
-      <option name="project" value="LOCAL" />
-      <updated>1619389645995</updated>
-    </task>
-    <task id="LOCAL-00043" summary="admin view &amp; project refactoring">
-      <created>1619450365272</created>
-      <option name="number" value="00043" />
-      <option name="presentableId" value="LOCAL-00043" />
-      <option name="project" value="LOCAL" />
-      <updated>1619450365272</updated>
-    </task>
-    <task id="LOCAL-00044" summary="admin view &amp; project refactoring">
-      <created>1619452820622</created>
-      <option name="number" value="00044" />
-      <option name="presentableId" value="LOCAL-00044" />
-      <option name="project" value="LOCAL" />
-      <updated>1619452820622</updated>
-    </task>
-    <task id="LOCAL-00045" summary="admin view &amp; project refactoring">
-      <created>1619454619144</created>
-      <option name="number" value="00045" />
-      <option name="presentableId" value="LOCAL-00045" />
-      <option name="project" value="LOCAL" />
-      <updated>1619454619144</updated>
-    </task>
-    <task id="LOCAL-00046" summary="admin view &amp; project refactoring">
-      <created>1619469209825</created>
-      <option name="number" value="00046" />
-      <option name="presentableId" value="LOCAL-00046" />
-      <option name="project" value="LOCAL" />
-      <updated>1619469209825</updated>
-    </task>
-    <task id="LOCAL-00047" summary="admin view &amp; project refactoring">
-      <created>1619481433696</created>
-      <option name="number" value="00047" />
-      <option name="presentableId" value="LOCAL-00047" />
-      <option name="project" value="LOCAL" />
-      <updated>1619481433696</updated>
-    </task>
-    <task id="LOCAL-00048" summary="admin view &amp; project refactoring">
-      <created>1619481533075</created>
-      <option name="number" value="00048" />
-      <option name="presentableId" value="LOCAL-00048" />
-      <option name="project" value="LOCAL" />
-      <updated>1619481533075</updated>
+      <workItem from="1621529179795" duration="128681000" />
+      <workItem from="1622570428004" duration="6708000" />
+      <workItem from="1622757228043" duration="5739000" />
+      <workItem from="1623085046735" duration="8736000" />
+      <workItem from="1623183603844" duration="327000" />
     </task>
     <task id="LOCAL-00049" summary="admin view &amp; project refactoring">
       <created>1619482292787</created>
@@ -536,7 +489,56 @@
       <option name="project" value="LOCAL" />
       <updated>1621958271061</updated>
     </task>
-    <option name="localTasksCounter" value="91" />
+    <task id="LOCAL-00091" summary="fixes">
+      <created>1621960522415</created>
+      <option name="number" value="00091" />
+      <option name="presentableId" value="LOCAL-00091" />
+      <option name="project" value="LOCAL" />
+      <updated>1621960522415</updated>
+    </task>
+    <task id="LOCAL-00092" summary="fixes">
+      <created>1621960551460</created>
+      <option name="number" value="00092" />
+      <option name="presentableId" value="LOCAL-00092" />
+      <option name="project" value="LOCAL" />
+      <updated>1621960551461</updated>
+    </task>
+    <task id="LOCAL-00093" summary="fixes">
+      <created>1622152516269</created>
+      <option name="number" value="00093" />
+      <option name="presentableId" value="LOCAL-00093" />
+      <option name="project" value="LOCAL" />
+      <updated>1622152516375</updated>
+    </task>
+    <task id="LOCAL-00094" summary="fixes">
+      <created>1622152686921</created>
+      <option name="number" value="00094" />
+      <option name="presentableId" value="LOCAL-00094" />
+      <option name="project" value="LOCAL" />
+      <updated>1622152686921</updated>
+    </task>
+    <task id="LOCAL-00095" summary="fixes">
+      <created>1622153151693</created>
+      <option name="number" value="00095" />
+      <option name="presentableId" value="LOCAL-00095" />
+      <option name="project" value="LOCAL" />
+      <updated>1622153151693</updated>
+    </task>
+    <task id="LOCAL-00096" summary="fixes">
+      <created>1622761294005</created>
+      <option name="number" value="00096" />
+      <option name="presentableId" value="LOCAL-00096" />
+      <option name="project" value="LOCAL" />
+      <updated>1622761294005</updated>
+    </task>
+    <task id="LOCAL-00097" summary="fixes">
+      <created>1622761701696</created>
+      <option name="number" value="00097" />
+      <option name="presentableId" value="LOCAL-00097" />
+      <option name="project" value="LOCAL" />
+      <updated>1622761701696</updated>
+    </task>
+    <option name="localTasksCounter" value="98" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

@@ -72,6 +72,10 @@ input[type=submit],
     border: 1px solid #71564e !important;
 }
 
+#header #login-lang-switcher {
+    display: none;
+}
+
 .results tbody a:link , .results tbody a:visited {
     color: #71564e;
     font-size: 14px;

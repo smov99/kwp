@@ -19,8 +19,10 @@ django-grappelli==2.15.1
 django-js-asset==1.2.2
 django-modeltranslation==0.17.1
 django-ordered-model==3.4.3
+django-redis==5.0.0
 django-rest-swagger==2.2.0
 django-user-agents==0.4.0
+django-xforwardedfor-middleware==2.0
 djangorestframework==3.12.4
 drf-yasg==1.20.0
 geoip2==4.1.0
@@ -45,6 +47,7 @@ pycparser==2.20
 pyparsing==2.4.7
 pytz==2021.1
 PyYAML==5.4.1
+redis==3.5.3
 requests==2.25.1
 ruamel.yaml==0.17.4
 ruamel.yaml.clib==0.2.2

@@ -106,9 +106,12 @@ def create_sections_and_articles(section_return, article_return):
         guid = section_return[section]['guid']
         label_es = section_return[section]['spanish_label']
         label_en = section_return[section]['english_label']
+        if Section.objects.filter(guid=guid, is_active=False).exists():
+            Section.objects.filter(is_active=False).get(guid=guid).delete()
         Section.objects.get_or_create(
             order=order,
             guid=guid,
+            is_active=True,
             label=label,
             label_en=label_en,
             label_es=label_es
@@ -125,9 +128,12 @@ def create_sections_and_articles(section_return, article_return):
                 answer_es = this_article['es']['answer']
                 answer_en = this_article['en_US']['answer']
                 section_ = Section.objects.filter(is_active=True).get(label_en=label)
+                if Article.objects.filter(guid=guid, is_active=False).exists():
+                    Article.objects.filter(is_active=False).get(guid=guid).delete()
                 Article.objects.get_or_create(
                     order=order,
                     guid=guid,
+                    is_active=True,
                     section=section_,
                     question=question,
                     answer=answer,

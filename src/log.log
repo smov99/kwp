@@ -1989,3 +1989,129 @@ WARNING 2021-05-25 19:33:04,929 log 24668 14556 Not Found: /static/assets/vendor
 WARNING 2021-05-25 19:33:04,930 basehttp 24668 14556 "GET /static/assets/vendor/aos/aos.js HTTP/1.1" 404 3309
 WARNING 2021-05-25 19:33:09,619 basehttp 14732 7412 "GET /static/assets/vendor/pdfjs/web/static/assets/vendor/pdfjs/images/toolbarButton-menuArrow.svg HTTP/1.1" 404 1883
 WARNING 2021-05-25 19:33:31,908 basehttp 14732 13624 "GET /static/assets/vendor/pdfjs/web/static/assets/vendor/pdfjs/images/toolbarButton-menuArrow.svg HTTP/1.1" 404 1883
+WARNING 2021-05-26 12:53:02,198 log 2192 6672 Not Found: /static/assets/css/style.css
+WARNING 2021-05-26 12:53:02,200 log 2192 22628 Not Found: /static/assets/img/group.png
+WARNING 2021-05-26 12:53:02,209 log 2192 25492 Not Found: /static/assets/img/kwlogo.png
+WARNING 2021-05-26 12:53:02,210 basehttp 2192 22628 "GET /static/assets/img/group.png HTTP/1.1" 404 3309
+WARNING 2021-05-26 12:53:02,211 basehttp 2192 6672 "GET /static/assets/css/style.css HTTP/1.1" 404 3309
+WARNING 2021-05-26 12:53:02,212 log 2192 7344 Not Found: /static/assets/img/footerkwlogo.png
+WARNING 2021-05-26 12:53:02,212 basehttp 2192 25492 "GET /static/assets/img/kwlogo.png HTTP/1.1" 404 3309
+WARNING 2021-05-26 12:53:02,214 basehttp 2192 7344 "GET /static/assets/img/footerkwlogo.png HTTP/1.1" 404 3309
+WARNING 2021-05-26 12:53:02,214 log 2192 24428 Not Found: /static/assets/js/main.js
+WARNING 2021-05-26 12:53:02,215 basehttp 2192 24428 "GET /static/assets/js/main.js HTTP/1.1" 404 3309
+WARNING 2021-05-26 12:53:02,265 log 2192 1160 Not Found: /static/assets/img/footergroup.png
+WARNING 2021-05-26 12:53:02,266 basehttp 2192 1160 "GET /static/assets/img/footergroup.png HTTP/1.1" 404 3309
+WARNING 2021-05-26 12:53:02,379 log 2192 22628 Not Found: /static/assets/img/asolmex.png
+WARNING 2021-05-26 12:53:02,379 basehttp 2192 22628 "GET /static/assets/img/asolmex.png HTTP/1.1" 404 3309
+WARNING 2021-05-26 12:53:02,388 log 2192 24428 Not Found: /static/assets/img/solar_panels.mp4
+WARNING 2021-05-26 12:53:02,389 basehttp 2192 24428 "GET /static/assets/img/solar_panels.mp4 HTTP/1.1" 404 3309
+WARNING 2021-05-26 12:53:02,391 log 2192 6672 Not Found: /static/assets/img/bequerel_2.png
+WARNING 2021-05-26 12:53:02,391 basehttp 2192 6672 "GET /static/assets/img/bequerel_2.png HTTP/1.1" 404 3309
+WARNING 2021-05-26 12:53:02,506 log 2192 6672 Not Found: /static/assets/vendor/font-awesome-pro/webfonts/pro-fa-solid-900-5.0.0.woff2
+WARNING 2021-05-26 12:53:02,507 basehttp 2192 6672 "GET /static/assets/vendor/font-awesome-pro/webfonts/pro-fa-solid-900-5.0.0.woff2 HTTP/1.1" 404 3309
+WARNING 2021-05-26 12:53:02,509 log 2192 24428 Not Found: /static/assets/vendor/font-awesome-pro/webfonts/pro-fa-solid-900-5.10.2.woff2
+WARNING 2021-05-26 12:53:02,509 basehttp 2192 24428 "GET /static/assets/vendor/font-awesome-pro/webfonts/pro-fa-solid-900-5.10.2.woff2 HTTP/1.1" 404 3309
+WARNING 2021-05-26 12:53:02,582 log 2192 24428 Not Found: /static/assets/vendor/font-awesome-pro/webfonts/pro-fa-solid-900-5.0.0.woff
+WARNING 2021-05-26 12:53:02,582 basehttp 2192 24428 "GET /static/assets/vendor/font-awesome-pro/webfonts/pro-fa-solid-900-5.0.0.woff HTTP/1.1" 404 3309
+WARNING 2021-05-26 12:53:02,583 log 2192 6672 Not Found: /static/assets/vendor/font-awesome-pro/webfonts/pro-fa-solid-900-5.10.2.woff
+WARNING 2021-05-26 12:53:02,583 basehttp 2192 6672 "GET /static/assets/vendor/font-awesome-pro/webfonts/pro-fa-solid-900-5.10.2.woff HTTP/1.1" 404 3309
+WARNING 2021-05-26 12:53:02,655 log 2192 6672 Not Found: /static/assets/vendor/font-awesome-pro/webfonts/pro-fa-solid-900-5.0.0.ttf
+WARNING 2021-05-26 12:53:02,655 basehttp 2192 6672 "GET /static/assets/vendor/font-awesome-pro/webfonts/pro-fa-solid-900-5.0.0.ttf HTTP/1.1" 404 3309
+WARNING 2021-05-26 12:53:02,657 log 2192 24428 Not Found: /static/assets/vendor/font-awesome-pro/webfonts/pro-fa-solid-900-5.10.2.ttf
+WARNING 2021-05-26 12:53:02,657 basehttp 2192 24428 "GET /static/assets/vendor/font-awesome-pro/webfonts/pro-fa-solid-900-5.10.2.ttf HTTP/1.1" 404 3309
+WARNING 2021-05-26 12:53:02,744 log 2192 24428 Not Found: /static/assets/img/favicon.ico
+WARNING 2021-05-26 12:53:02,745 basehttp 2192 24428 "GET /static/assets/img/favicon.ico HTTP/1.1" 404 3309
+WARNING 2021-05-26 22:37:34,989 basehttp 22388 11964 "GET /static/assets/vendor/pdfjs/web/static/assets/vendor/pdfjs/images/toolbarButton-menuArrow.svg HTTP/1.1" 404 1883
+WARNING 2021-05-26 22:37:35,316 log 22388 18132 Not Found: /tmp/kwp/Solar Power Finance and Investment Summit 2018 - Agenda.pdf
+WARNING 2021-05-26 22:37:35,317 basehttp 22388 18132 "GET /tmp/kwp/Solar%20Power%20Finance%20and%20Investment%20Summit%202018%20-%20Agenda.pdf HTTP/1.1" 404 3568
+WARNING 2021-05-26 22:38:01,816 basehttp 21204 19488 "GET /static/assets/vendor/pdfjs/web/static/assets/vendor/pdfjs/images/toolbarButton-menuArrow.svg HTTP/1.1" 404 1883
+WARNING 2021-05-26 22:38:59,085 basehttp 21204 11720 "GET /static/assets/vendor/pdfjs/web/static/assets/vendor/pdfjs/images/toolbarButton-menuArrow.svg HTTP/1.1" 404 1883
+WARNING 2021-05-26 22:39:17,167 basehttp 21204 21280 "GET /static/assets/vendor/pdfjs/web/static/assets/vendor/pdfjs/images/toolbarButton-menuArrow.svg HTTP/1.1" 404 1883
+WARNING 2021-05-27 17:10:47,386 log 17780 17936 Not Found: /favicon.ico
+WARNING 2021-05-27 17:10:47,386 basehttp 17780 17936 "GET /favicon.ico HTTP/1.1" 404 3512
+WARNING 2021-05-27 17:11:24,839 log 17780 12864 Not Found: /favicon.ico
+WARNING 2021-05-27 17:11:24,839 basehttp 17780 12864 "GET /favicon.ico HTTP/1.1" 404 3512
+WARNING 2021-05-27 17:13:37,009 log 16048 15296 Not Found: /favicon.ico
+WARNING 2021-05-27 17:13:37,010 basehttp 16048 15296 "GET /favicon.ico HTTP/1.1" 404 3512
+WARNING 2021-05-27 17:14:09,256 log 16048 2028 Not Found: /favicon.ico
+WARNING 2021-05-27 17:14:09,257 basehttp 16048 2028 "GET /favicon.ico HTTP/1.1" 404 3512
+WARNING 2021-05-27 17:14:17,983 log 16048 24336 Not Found: /favicon.ico
+WARNING 2021-05-27 17:14:17,984 basehttp 16048 24336 "GET /favicon.ico HTTP/1.1" 404 3512
+WARNING 2021-05-27 17:14:56,666 log 24200 2536 Not Found: /favicon.ico
+WARNING 2021-05-27 17:14:56,667 basehttp 24200 2536 "GET /favicon.ico HTTP/1.1" 404 3512
+WARNING 2021-05-27 17:15:36,257 log 24200 17696 Not Found: /favicon.ico
+WARNING 2021-05-27 17:15:36,258 basehttp 24200 17696 "GET /favicon.ico HTTP/1.1" 404 3512
+WARNING 2021-05-27 17:15:59,853 log 8336 10456 Not Found: /favicon.ico
+WARNING 2021-05-27 17:15:59,853 basehttp 8336 10456 "GET /favicon.ico HTTP/1.1" 404 3512
+WARNING 2021-05-27 21:11:14,339 log 18624 2008 Not Found: /favicon.ico
+WARNING 2021-05-27 21:11:14,340 basehttp 18624 2008 "GET /favicon.ico HTTP/1.1" 404 3512
+WARNING 2021-05-27 21:11:42,717 log 18624 23604 Not Found: /favicon.ico
+WARNING 2021-05-27 21:11:42,717 basehttp 18624 23604 "GET /favicon.ico HTTP/1.1" 404 3512
+WARNING 2021-05-27 21:19:17,080 log 18624 24428 Not Found: /favicon.ico
+WARNING 2021-05-27 21:19:17,081 basehttp 18624 24428 "GET /favicon.ico HTTP/1.1" 404 3512
+WARNING 2021-05-27 21:19:41,507 log 18624 24428 Not Found: /favicon.ico
+WARNING 2021-05-27 21:19:41,507 basehttp 18624 24428 "GET /favicon.ico HTTP/1.1" 404 3512
+WARNING 2021-05-28 21:51:16,511 log 3220 22308 Not Found: /static/assets/css/style.css
+WARNING 2021-05-28 21:51:16,519 log 3220 17620 Not Found: /static/assets/js/main.js
+WARNING 2021-05-28 21:51:16,537 basehttp 3220 22308 "GET /static/assets/css/style.css HTTP/1.1" 404 3309
+WARNING 2021-05-28 21:51:16,538 basehttp 3220 17620 "GET /static/assets/js/main.js HTTP/1.1" 404 3309
+WARNING 2021-05-28 21:52:57,951 basehttp 24824 13964 "GET /static/assets/vendor/pdfjs/web/static/assets/vendor/pdfjs/images/toolbarButton-menuArrow.svg HTTP/1.1" 404 1883
+WARNING 2021-05-28 21:53:23,890 basehttp 24824 19188 "GET /static/assets/vendor/pdfjs/web/static/assets/vendor/pdfjs/images/toolbarButton-menuArrow.svg HTTP/1.1" 404 1883
+ERROR 2021-06-04 01:27:25,978 log 21068 15268 Internal Server Error: /update_sections/
+Traceback (most recent call last):
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\views\generic\base.py", line 70, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\views\generic\base.py", line 98, in dispatch
+    return handler(request, *args, **kwargs)
+  File "F:\workspace\django\kiwapower_web_proposal\faq\views.py", line 11, in post
+    services.create_sections_and_articles(sections, articles)
+  File "F:\workspace\django\kiwapower_web_proposal\faq\services.py", line 127, in create_sections_and_articles
+    section_ = Section.objects.filter(is_active=True).get(label_en=label)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\db\models\query.py", line 435, in get
+    raise self.model.DoesNotExist(
+faq.models.Section.DoesNotExist: Section matching query does not exist.
+ERROR 2021-06-04 01:27:25,988 basehttp 21068 15268 "POST /update_sections/ HTTP/1.1" 500 110310
+ERROR 2021-06-04 01:37:06,518 log 1548 8964 Internal Server Error: /update_sections/
+Traceback (most recent call last):
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\views\generic\base.py", line 70, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\views\generic\base.py", line 98, in dispatch
+    return handler(request, *args, **kwargs)
+  File "F:\workspace\django\kiwapower_web_proposal\faq\views.py", line 11, in post
+    services.create_sections_and_articles(sections, articles)
+  File "F:\workspace\django\kiwapower_web_proposal\faq\services.py", line 109, in create_sections_and_articles
+    if Section.objects.get(guid=guid).exists():
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\db\models\manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\db\models\query.py", line 439, in get
+    raise self.model.MultipleObjectsReturned(
+faq.models.Section.MultipleObjectsReturned: get() returned more than one Section -- it returned 2!
+ERROR 2021-06-04 01:37:06,521 basehttp 1548 8964 "POST /update_sections/ HTTP/1.1" 500 109826
+ERROR 2021-06-04 01:37:31,648 log 1548 8964 Internal Server Error: /update_sections/
+Traceback (most recent call last):
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\views\generic\base.py", line 70, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\views\generic\base.py", line 98, in dispatch
+    return handler(request, *args, **kwargs)
+  File "F:\workspace\django\kiwapower_web_proposal\faq\views.py", line 11, in post
+    services.create_sections_and_articles(sections, articles)
+  File "F:\workspace\django\kiwapower_web_proposal\faq\services.py", line 109, in create_sections_and_articles
+    if Section.objects.get(guid=guid).exists():
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\db\models\manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\db\models\query.py", line 435, in get
+    raise self.model.DoesNotExist(
+faq.models.Section.DoesNotExist: Section matching query does not exist.
+ERROR 2021-06-04 01:37:31,649 basehttp 1548 8964 "POST /update_sections/ HTTP/1.1" 500 109648

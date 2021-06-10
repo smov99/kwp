@@ -203,7 +203,7 @@
       modal_height = screen.height;
     e.preventDefault();
 
-    eventsAjax('open_pdf', 'PDF open');
+    eventsAjax('Interaction with Proposal', 'Open');
 
     if ($(window).width()) {
       window.open(pdf_url,"", 'width='+modal_width+',height='+modal_height);
@@ -214,7 +214,7 @@
     if (window.location.href.includes('pdf')) {
       $(window).on('load', function () {
         $(window).on('unload', function () {
-          eventsAjax('closing_preview', 'PDF close');
+          eventsAjax('Interaction with Proposal', 'Close');
         });
       });
     } else {
@@ -243,11 +243,11 @@
       if ($(this).hasClass('opened')) {
         endSection = new Date().getTime();
         spentTime = (endSection - valDict[sectionName]) / 1000;
-        eventsAjax('closing_of_section', 'Section ' + sectionName + ' close', '' + spentTime);
+        eventsAjax('Interaction with FAQ', 'Section ' + sectionName + ' close', '' + spentTime);
         $(this).removeClass('opened');
       } else {
         valDict[sectionName] = new Date().getTime();
-        eventsAjax('opening_of_section', 'Section ' + sectionName + ' open');
+        eventsAjax('Interaction with FAQ', 'Section ' + sectionName + ' open');
         $(this).addClass('opened');
       }
     });
@@ -264,11 +264,11 @@
       if ($(this).hasClass('opened')) {
         endQuestion = new Date().getTime();
         spentTime = (endQuestion - valDict[questionText]) / 1000;
-        eventsAjax('closing_of_sections_line', questionText + ' close', '' + spentTime);
+        eventsAjax('Interaction with FAQ', questionText + ' close', '' + spentTime);
         $(this).removeClass('opened');
       } else {
         valDict[questionText] = new Date().getTime();
-        eventsAjax('opening_of_sections_line', questionText + ' open');
+        eventsAjax('Interaction with FAQ', questionText + ' open');
         $(this).addClass('opened');
       }
     });
@@ -280,7 +280,7 @@
       _value = message,
       sentMessage = $(this).closest('form').find('.sent-message');
     if (_value.val().replace(/ /g,'').length) {
-      eventsAjax('click_on_submit_button', 'Question submitted ' + $(this).closest("form").attr('id'), '', '' + message.val());
+      eventsAjax('Interaction with Message Box', 'Question submitted ' + $(this).closest("form").attr('id'), '', '' + message.val());
       message.val('');
       $(sentMessage).slideDown(250).fadeIn(100, function () {
         $(sentMessage).css({'display': 'flex'});

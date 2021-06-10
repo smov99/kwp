@@ -45,3 +45,17 @@ class SessionEvent(BaseModel):
 
     def __str__(self):
         return self.event_name
+
+
+class ErrorLog(BaseModel):
+    session_id = models.ForeignKey(
+        Session,
+        to_field='id',
+        on_delete=models.CASCADE,
+        related_name='errors',
+        blank=True,
+        null=True
+    )
+    api_call_type = models.CharField(max_length=255, blank=True, null=True)
+    sf_object = models.CharField(max_length=255, blank=True, null=True)
+    sf_error = models.CharField(max_length=255, blank=True, null=True)

@@ -15,7 +15,6 @@ class SessionEventSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = models.SessionEvent
         fields = (
-            'url',
             'session_id',
             'id',
             'created',
@@ -34,7 +33,6 @@ class SessionSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = models.Session
         fields = (
-            'url',
             'id',
             'created',
             'proposal_id',

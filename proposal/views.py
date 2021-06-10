@@ -43,6 +43,7 @@ class ConfirmationView(View):
                 message=None
             )
             return redirect('proposal', proposal_id)
+        request.session['proposal_name'] = proposal['Name']
         request.session['proposal_account_id'] = proposal['Account__c']
         email_validation = services.user_email_validation(proposal['Account__c'], email)
         if email_validation:

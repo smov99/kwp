@@ -42,18 +42,8 @@
       preloader.classList.add('loaded')
     }, 1000);
 
-    var iframeInput = document.getElementById('pageNumber'),
-      docContainer = document.getElementById('viewerContainer'),
-      downloadBtn = document.getElementById('proposal-download-btn'),
-      inputVal = $(iframeInput),
-      valDict = {},
-      startPage = new Date().getTime(),
-      endPage,
-      spentTime;
-
-
-    valDict.oldVal = inputVal.val()
-    eventsAjax('Interaction with Proposal', 'Opened page 1')
+    var docContainer = document.getElementById('viewerContainer'),
+      downloadBtn = document.getElementById('proposal-download-btn');
 
     $(downloadBtn).on('click', function () {
       eventsAjax('Interaction with Proposal', 'Downloaded');
@@ -63,28 +53,9 @@
       let docElem = docContainer,
         scrollTop = docElem['scrollTop'],
         scrollBottom = (docElem['scrollHeight']) - window.innerHeight,
-        scrollPercent = scrollTop / scrollBottom * 100 + '%',
-        downloadContainer = document.getElementById('download');
+        scrollPercent = scrollTop / scrollBottom * 100 + '%';
 
       document.getElementById('progress-bar').style.setProperty('--scrollAmount', scrollPercent);
-
-      if ((scrollTop / scrollBottom) * 100 >= 50) {
-        $(downloadContainer).removeClass('hide')
-      } else {
-        $(downloadContainer).addClass('hide')
-      }
-      valDict.newVal = inputVal.val()
-
-      if (valDict.newVal !== valDict.oldVal) {
-        endPage = new Date().getTime()
-        spentTime = ((endPage - startPage) / 1000)
-        if (valDict.oldVal !== '0') {
-          eventsAjax('Interaction with Proposal', 'Spent seconds on page number ' + valDict.oldVal, '' + spentTime)
-          eventsAjax('Interaction with Proposal', "Opened page " + valDict.newVal);
-        }
-        valDict.oldVal = valDict.newVal
-        startPage = new Date().getTime()
-      }
 
     });
   });

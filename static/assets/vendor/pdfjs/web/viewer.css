@@ -893,14 +893,6 @@ html[dir="rtl"] #outerContainer.sidebarOpen #sidebarContainer {
   z-index: 99;
 }
 
-#download.hide {
-    visibility: hidden;
-    opacity: 0;
-    filter: alpha(opacity=0);
-    -webkit-transform: translateY(-100%);
-    transform: translateY(-100%);
-}
-
 #sidebarContent {
   top: 32px;
   bottom: 0;

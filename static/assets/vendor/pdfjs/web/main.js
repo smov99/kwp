@@ -42,8 +42,18 @@
       preloader.classList.add('loaded')
     }, 1000);
 
-    var docContainer = document.getElementById('viewerContainer'),
-      downloadBtn = document.getElementById('proposal-download-btn');
+    var iframeInput = document.getElementById('pageNumber'),
+      docContainer = document.getElementById('viewerContainer'),
+      downloadBtn = document.getElementById('proposal-download-btn'),
+      inputVal = $(iframeInput),
+      valDict = {},
+      startPage = new Date().getTime(),
+      endPage,
+      spentTime;
+
+
+    valDict.oldVal = inputVal.val()
+    eventsAjax('Interaction with Proposal', 'Opened page 1')
 
     $(downloadBtn).on('click', function () {
       eventsAjax('Interaction with Proposal', 'Downloaded');
@@ -56,6 +66,17 @@
         scrollPercent = scrollTop / scrollBottom * 100 + '%';
 
       document.getElementById('progress-bar').style.setProperty('--scrollAmount', scrollPercent);
+
+      if (valDict.newVal !== valDict.oldVal) {
+        endPage = new Date().getTime()
+        spentTime = ((endPage - startPage) / 1000)
+        if (valDict.oldVal !== '0') {
+          eventsAjax('Interaction with Proposal', 'Spent seconds on page number ' + valDict.oldVal, '' + spentTime)
+          eventsAjax('Interaction with Proposal', "Opened page " + valDict.newVal);
+        }
+        valDict.oldVal = valDict.newVal
+        startPage = new Date().getTime()
+      }
 
     });
   });

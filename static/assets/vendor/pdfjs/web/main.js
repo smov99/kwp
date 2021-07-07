@@ -68,11 +68,14 @@
 
       document.getElementById('progress-bar').style.setProperty('--scrollAmount', scrollPercent);
 
+/*
       if ((scrollTop / scrollBottom) * 100 >= 50) {
         $(downloadContainer).removeClass('hide')
       } else {
         $(downloadContainer).addClass('hide')
       }
+*/
+      $(downloadContainer).removeClass('hide')
       valDict.newVal = inputVal.val()
 
       if (valDict.newVal !== valDict.oldVal) {

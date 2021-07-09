@@ -8,7 +8,6 @@
         const cookies = document.cookie.split(';');
         for (let i = 0; i < cookies.length; i++) {
             const cookie = cookies[i].trim();
-            // Does this cookie string begin with the name we want?
             if (cookie.substring(0, name.length + 1) === (name + '=')) {
                 cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
                 break;
@@ -71,7 +70,10 @@
   $(window).on('load', function () {
     let preloader = document.getElementById('preloader');
     setTimeout(function () {
-      preloader.classList.add('loaded')
+      preloader.classList.add('loaded');
+      if (!window.location.href.includes('pdf')) {
+        $(document.body).addClass('loaded');
+      }
     }, 1000)
   });
 

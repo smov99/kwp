@@ -44,12 +44,9 @@
 
     var iframeInput = document.getElementById('pageNumber'),
       docContainer = document.getElementById('viewerContainer'),
-      downloadBtn = document.getElementById('proposal-download-btn'),
+      downloadBtn = document.getElementById('download'),
       inputVal = $(iframeInput),
-      valDict = {},
-      startPage = new Date().getTime(),
-      endPage,
-      spentTime;
+      valDict = {};
 
 
     valDict.oldVal = inputVal.val()
@@ -68,22 +65,13 @@
 
       document.getElementById('progress-bar').style.setProperty('--scrollAmount', scrollPercent);
 
-      if ((scrollTop / scrollBottom) * 100 >= 50) {
-        $(downloadContainer).removeClass('hide')
-      } else {
-        $(downloadContainer).addClass('hide')
-      }
       valDict.newVal = inputVal.val()
 
       if (valDict.newVal !== valDict.oldVal) {
-        endPage = new Date().getTime()
-        spentTime = ((endPage - startPage) / 1000)
         if (valDict.oldVal !== '0') {
-          eventsAjax('Interaction with Proposal', 'Spent seconds on page number ' + valDict.oldVal, '' + spentTime)
           eventsAjax('Interaction with Proposal', "Opened page " + valDict.newVal);
         }
         valDict.oldVal = valDict.newVal
-        startPage = new Date().getTime()
       }
 
     });

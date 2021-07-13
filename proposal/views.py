@@ -154,6 +154,7 @@ class EventsView(View):
             time_spent = float(request.POST['time_spent'])
         except:
             time_spent = None
+        print(request.POST)
         message = request.POST.get('message')
         if request.session['email'] == settings.TRUSTED_EMAIL:
             request.session['contact_id'] = None

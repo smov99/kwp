@@ -8,7 +8,6 @@
         const cookies = document.cookie.split(';');
         for (let i = 0; i < cookies.length; i++) {
             const cookie = cookies[i].trim();
-            // Does this cookie string begin with the name we want?
             if (cookie.substring(0, name.length + 1) === (name + '=')) {
                 cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
                 break;
@@ -46,7 +45,10 @@
       docContainer = document.getElementById('viewerContainer'),
       downloadBtn = document.getElementById('download'),
       inputVal = $(iframeInput),
-      valDict = {};
+      valDict = {},
+      startPage = new Date().getTime(),
+      endPage,
+      spentTime;
 
 
     valDict.oldVal = inputVal.val()
@@ -60,18 +62,20 @@
       let docElem = docContainer,
         scrollTop = docElem['scrollTop'],
         scrollBottom = (docElem['scrollHeight']) - window.innerHeight,
-        scrollPercent = scrollTop / scrollBottom * 100 + '%',
-        downloadContainer = document.getElementById('download');
+        scrollPercent = scrollTop / scrollBottom * 100 + '%';
 
       document.getElementById('progress-bar').style.setProperty('--scrollAmount', scrollPercent);
-
       valDict.newVal = inputVal.val()
 
       if (valDict.newVal !== valDict.oldVal) {
+        endPage = new Date().getTime()
+        spentTime = ((endPage - startPage) / 1000)
         if (valDict.oldVal !== '0') {
+          eventsAjax('Interaction with Proposal', 'Spent seconds on page number ' + valDict.oldVal, '' + spentTime)
           eventsAjax('Interaction with Proposal', "Opened page " + valDict.newVal);
         }
         valDict.oldVal = valDict.newVal
+        startPage = new Date().getTime()
       }
 
     });

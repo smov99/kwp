@@ -45,7 +45,7 @@
             <div class="introduction-form">
               <form class="validForm" action="" method="post">
                 {% csrf_token %}
-                <input type="email" name="email" placeholder="{% trans 'Correo electrónico...' %}"><input type="submit" value="{% trans 'Confirmar' %}">
+                <input type="email" name="email" placeholder="{% trans 'Correo electrónico...' %}"><input type="submit" id="confirmationButton" value="{% trans 'Confirmar' %}">
               </form>
             </div>
             <div class="form-error d-none" id="form-error" data-aos="fade-up" data-aos-delay="100">{% trans 'Email inválido.' %}</div>

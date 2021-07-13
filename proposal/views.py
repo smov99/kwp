@@ -52,9 +52,9 @@ class ConfirmationView(View):
             request.session['is_emailvalid'] = True
             is_contactcreated = email_validation['is_contactcreated']
             services.additional_confirmation(request, is_contactcreated, proposal, proposal_id)
-            if not is_contactcreated:
-                event_name = 'Existing contact'
             if is_contactcreated:
+                event_name = 'Existing contact'
+            if not is_contactcreated:
                 event_name = 'Contact was created'
             services.create_event_record(
                 session_id=request.session['session_id'],

@@ -2,12 +2,38 @@
 # General
 --------------------------------------------------------------*/
 body {
+  overflow: overlay;
   font-family: "Lato", sans-serif;
   color: #444444;
 }
 
-body::-webkit-scrollbar {
+::-webkit-scrollbar {
+  background-color: #26262680;
   width: 0;
+  height: 0;
+}
+
+.loaded::-webkit-scrollbar {
+  width: 8px !important;
+}
+
+::-webkit-scrollbar-track {
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #FFFFFF80;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #FFFFFFB2;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:active {
+  background: #FFFFFFB2;
+  border-radius: 10px;
 }
 
 a {

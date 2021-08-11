@@ -10,6 +10,9 @@
   --body-bg: #f4f2f2;
   --body-quiet-color: #424242;
   --body-loud-color: #262626;
+  --scrollbar-bg-color: #c7bdbdb2;
+  --scrollbar-color: #71564ecb;
+  --scrollbar-hover-color: #71564e;
 
   --header-color-fg: #cfd8dc;
   --header-color: #263238;
@@ -54,7 +57,33 @@
 }
 
 html, body {
+    overflow: overlay;
     height: 100%;
+}
+
+::-webkit-scrollbar {
+  background-color: var(--scrollbar-bg-color);
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--scrollbar-color);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--scrollbar-hover-color);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:active {
+  background: var(--scrollbar-hover-color);
+  border-radius: 10px;
 }
 
 input[type=submit],

@@ -8,7 +8,6 @@
         const cookies = document.cookie.split(';');
         for (let i = 0; i < cookies.length; i++) {
             const cookie = cookies[i].trim();
-            // Does this cookie string begin with the name we want?
             if (cookie.substring(0, name.length + 1) === (name + '=')) {
                 cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
                 break;
@@ -44,7 +43,7 @@
 
     var iframeInput = document.getElementById('pageNumber'),
       docContainer = document.getElementById('viewerContainer'),
-      downloadBtn = document.getElementById('proposal-download-btn'),
+      downloadBtn = document.getElementById('download'),
       inputVal = $(iframeInput),
       valDict = {},
       startPage = new Date().getTime(),
@@ -63,16 +62,9 @@
       let docElem = docContainer,
         scrollTop = docElem['scrollTop'],
         scrollBottom = (docElem['scrollHeight']) - window.innerHeight,
-        scrollPercent = scrollTop / scrollBottom * 100 + '%',
-        downloadContainer = document.getElementById('download');
+        scrollPercent = scrollTop / scrollBottom * 100 + '%';
 
       document.getElementById('progress-bar').style.setProperty('--scrollAmount', scrollPercent);
-
-      if ((scrollTop / scrollBottom) * 100 >= 50) {
-        $(downloadContainer).removeClass('hide')
-      } else {
-        $(downloadContainer).addClass('hide')
-      }
       valDict.newVal = inputVal.val()
 
       if (valDict.newVal !== valDict.oldVal) {

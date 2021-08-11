@@ -126,10 +126,7 @@ def get_geolocation(client_ip):
     except:
         response = None
     else:
-        response = geolocation['continent_name'] + ', ' + \
-                   geolocation['country_name'] + ', ' + \
-                   geolocation['city'] + ', ' + \
-                   geolocation['region']
+        response = ', '.join([v for k, v in geolocation.items() if type(v) == str])
     return response
 
 

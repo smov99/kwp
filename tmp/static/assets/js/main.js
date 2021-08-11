@@ -8,7 +8,6 @@
         const cookies = document.cookie.split(';');
         for (let i = 0; i < cookies.length; i++) {
             const cookie = cookies[i].trim();
-            // Does this cookie string begin with the name we want?
             if (cookie.substring(0, name.length + 1) === (name + '=')) {
                 cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
                 break;
@@ -32,7 +31,7 @@
   }
 
   function formAjax (email) {
-    var _path = window.location.href
+    var _path = window.location.href;
     $.ajax({
       headers: {"X-CSRFToken": csrftoken},
       url: _path,
@@ -71,7 +70,10 @@
   $(window).on('load', function () {
     let preloader = document.getElementById('preloader');
     setTimeout(function () {
-      preloader.classList.add('loaded')
+      preloader.classList.add('loaded');
+      if (!window.location.href.includes('pdf')) {
+        $(document.body).addClass('loaded');
+      }
     }, 1000)
   });
 
@@ -294,13 +296,16 @@
   });
 
   // Email validation
-  $('#introduction form input[type="submit"]').on('click', function (e) {
+  $('.introduction-form form').on('submit', function (e) {
     if (checkCheckbox()) {
-      let email = $(this).closest("form").find('input[type="email"]').val(),
+      let email = $(this).find('input[type="email"]').val(),
         re = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/;
       if (!re.test(String(email).toLowerCase())) {
         e.preventDefault();
         formAjax(email);
+      } else {
+        $(this).find('input[type="submit"]').attr("disabled", true);
+        return true;
       }
     } else {
       e.preventDefault();

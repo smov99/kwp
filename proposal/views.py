@@ -30,7 +30,7 @@ class ConfirmationView(View):
         if not form.is_valid():
             request.method = 'GET'
             return HttpResponse({'error': True})
-        email = request.POST['email']
+        email = request.POST['email'].lower()
         request.session['email'] = email
         proposal = request.session['proposal']
         if email == settings.TRUSTED_EMAIL:
@@ -52,9 +52,9 @@ class ConfirmationView(View):
             request.session['is_emailvalid'] = True
             is_contactcreated = email_validation['is_contactcreated']
             services.additional_confirmation(request, is_contactcreated, proposal, proposal_id)
-            if is_contactcreated:
-                event_name = 'Existing contact'
             if not is_contactcreated:
+                event_name = 'Existing contact'
+            if is_contactcreated:
                 event_name = 'Contact was created'
             services.create_event_record(
                 session_id=request.session['session_id'],
@@ -154,6 +154,7 @@ class EventsView(View):
             time_spent = float(request.POST['time_spent'])
         except:
             time_spent = None
+        print(request.POST)
         message = request.POST.get('message')
         if request.session['email'] == settings.TRUSTED_EMAIL:
             request.session['contact_id'] = None

@@ -30,7 +30,7 @@ class ConfirmationView(View):
         if not form.is_valid():
             request.method = 'GET'
             return HttpResponse({'error': True})
-        email = request.POST['email']
+        email = request.POST['email'].lower()
         request.session['email'] = email
         proposal = request.session['proposal']
         if email == settings.TRUSTED_EMAIL:

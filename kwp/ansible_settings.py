@@ -54,3 +54,21 @@ TRUSTED_EMAIL = 'backdoor@email.com'
 
 # IP geolocation
 IPDATA_TOKEN = '5d721175bef6ff7756ec1ef843876cbf5e3559fb2f1c051f46ff9dec'
+
+# stage 2
+env = dev
+
+# S3
+kwp_s3: kwp-001
+kwp_aws_key: AKIAZXQ6BWHIYPRDXQE7
+kwp_aws_secret: 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
+kwp_s3_resources: /dev/resources/
+kwp_s3_proposal-docs: /dev/proposal-docs/
+
+# list of resources, non case sensitive
+static_resources:
+  - show_case_study__c
+  - show_quick_start_guide__c
+  - show_brochure__c
+#  - show_kiwapower_at_a_glance_video__c    # commented for the following testing
+

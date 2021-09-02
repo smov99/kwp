@@ -260,8 +260,8 @@
       let questionText = $(e.target).closest('a').text(),
         l = questionText.length;
       questionText = 'Question ' + questionText;
-      if (l > 50) {
-        questionText = questionText.substring(0, 20) + ' ... ' + questionText.substring(l - 19, l);
+      if (l > 150) {
+        questionText = questionText.substring(0, 70) + ' ... ' + questionText.substring(l - 69, l);
       }
       if ($(this).hasClass('opened')) {
         endQuestion = new Date().getTime();

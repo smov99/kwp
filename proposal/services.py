@@ -5,7 +5,6 @@ from datetime import datetime, timedelta
 import functools
 import time
 
-from asgiref.sync import sync_to_async
 from user_agents import parse
 from ipdata import ipdata
 
@@ -145,7 +144,7 @@ def get_proposal(proposal_id):
 
     :return: Proposal info
     """
-    query = f"SELECT Id,Account__c,Welcome_message__c,Description__c,Published__c,Name FROM Web_Proposals__c where IsDeleted = false and Id = '{proposal_id}'"
+    query = f"SELECT Id,Account__c,Welcome_message__c,Description__c,Published__c,Expired_proposal__c,Name FROM Web_Proposals__c where IsDeleted = false and Id = '{proposal_id}'"
     response = sf_api_call(f'/services/data/{settings.SF_API_VERSION}/query/', {'q': query})
     try:
         error = response[0]['errorCode']
@@ -191,7 +190,8 @@ def user_email_validation(proposal_account_id, email, request=None):
             validated_info['contact_account_id'] = proposal_account_id
             validated_info['is_contactcreated'] = False
             return validated_info
-        elif email_domain == email_response['Authorized_domain__c']:
+        if email_domain in email_response['Authorized_domain__c'] or \
+                email_responses['Authorized_domain__c'] in email_domain:
             domain_response = email_domain_validation(email)
             try:
                 valid_email = domain_response[0]['Email']

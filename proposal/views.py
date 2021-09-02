@@ -100,6 +100,7 @@ class ProposalView(View):
             document = services.get_pdf_for_review(proposal_id, request)
             request.session['document'] = document
             welcome_message = proposal['Welcome_message__c']
+            proposal_is_expired = proposal['Expired_proposal__c']
             creator = services.get_proposals_creator(proposal['Account__c'], request)
             client_name = creator['client_name']
             img = services.get_creator_img(creator['MediumPhotoUrl'], request)
@@ -107,6 +108,7 @@ class ProposalView(View):
             return render(request, 'proposal.html', {'proposal_id': proposal_id,
                                                      'sections': sections,
                                                      'message': welcome_message,
+                                                     'is_expired': proposal_is_expired,
                                                      'creator_name': creator_name,
                                                      'img': img,
                                                      'client_name': client_name,

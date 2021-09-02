@@ -59,8 +59,6 @@ ENV = 'dev'
 
 # S3
 KWP_S3 = 'kwp-001'
-KWP_AWS_KEY = 'AKIAZXQ6BWHIYPRDXQE7'
-KWP_AWS_SECRET = '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'
 KWP_S3_RESOURCES = '/dev/resources/'
 KWP_S3_PROPOSAL_DOCS = '/dev/proposal-docs/'
 

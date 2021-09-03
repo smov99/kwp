@@ -39,7 +39,15 @@
       data: {'email': email},
       dataType: "json",
       error: function () {
-        $('#form-error').removeClass('d-none')
+        let emailError = $('#form-email-error');
+        $(emailError).slideDown(350).fadeIn(200, function () {
+          $(emailError).removeClass('d-none');
+        });
+        setTimeout(function () {
+          $(emailError).slideUp(350, 'linear').fadeOut(200, function () {
+            $(emailError).addClass('d-none');
+          })
+        }, 4000);
       }
     });
   }
@@ -308,6 +316,15 @@
         return true;
       }
     } else {
+      let checkboxError = $('#form-checkbox-error');
+      $(checkboxError).slideDown(350).fadeIn(200, function () {
+        $(checkboxError).removeClass('d-none');
+      });
+      setTimeout(function () {
+        $(checkboxError).slideUp(350, 'linear').fadeOut(200, function () {
+          $(checkboxError).addClass('d-none');
+        })
+      }, 4000);
       e.preventDefault();
     }
   });

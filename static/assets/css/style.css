@@ -552,7 +552,7 @@ main:before {
 @media (max-width: 500px) {
   #introduction-proposal {
     background-size: 140vw;
-    height: 10vh;
+    height: 12vh;
   }
 }
 

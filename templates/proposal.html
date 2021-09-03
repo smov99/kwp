@@ -43,7 +43,11 @@
   <div class="container-fluid">
     <div class="row justify-content-center">
       <div class="col-xl-10">
-          <h1>{% trans 'Esta propuesta fue preparada para ' %}{{ client_name }}</h1>
+        {% if not is_expired %}
+        <h1>{% trans 'Esta propuesta fue preparada para ' %}{{ client_name }}</h1>
+        {% else %}
+        <h1>{% trans 'Esta propuesta ha caducado, consulte con su representante de Kawapower' %}</h1>
+        {% endif %}
       </div>
     </div>
   </div>
@@ -57,7 +61,6 @@
     <!-- ======= Prepared Section ======= -->
     <section id="prepared" class="prepared">
       <div class="container">
-
         <div class="row">
             <div class="col-lg-9">
               <div class="section-title">
@@ -82,9 +85,7 @@
                 </div>
               </div>
             </div>
-
         </div>
-
       </div>
     </section><!-- End Prepared Section -->
 

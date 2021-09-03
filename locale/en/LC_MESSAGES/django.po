@@ -174,3 +174,9 @@ msgstr "Download"
 
 msgid "Confirmar"
 msgstr "Confirm"
+
+msgid "Esta propuesta ha caducado, consulte con su representante de Kawapower"
+msgstr "This proposal has expired, please check with your Kiwapower representative"
+
+msgid "Las casillas de verificación no están marcadas"
+msgstr "Checkbox are not ticked"

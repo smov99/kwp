@@ -207,7 +207,7 @@
     document.documentElement.style.setProperty('--vw', `${vw}px`)
   });
 
-  $("#proposal-pdf-link").click(function (e) {
+  $(".proposal-pdf-link").click(function (e) {
     var pdf_url = window.location.href + 'pdf',
       modal_width = screen.width,
       modal_height = screen.height;
@@ -244,40 +244,65 @@
     var spentTime,
       valDict = {},
       endSection,
-      endQuestion;
+      endQuestion,
+      section = '.section-title .collapsed',
+      question = '.faq-list .collapsed';
 
-    $('.section-title .collapsed').on('click', function (e) {
-      e = e || window.event;
+    function closeLastSection() {
+      if (valDict['lastOpenedSection']) {
+        let $lstOpenedSection = $(valDict['lastOpenedSection'].replace('#', '#link-'));
+        if ($lstOpenedSection.hasClass('opened')) {
+          $lstOpenedSection.click();
+        }
+      }
+    }
+
+    function closeLastQuestion() {
+      if (valDict['lastOpenedQuestion']) {
+        let $lstOpenedQuestion = $(valDict['lastOpenedQuestion'].replace('#', '#link-'));
+        if ($lstOpenedQuestion.hasClass('opened')) {
+          $lstOpenedQuestion.click();
+        }
+      }
+    }
+
+    $(section).on('click', function (e) {
       e.preventDefault();
-      var sectionName = $(e.target).closest('h2').text();
+      let sectionName = $(e.target).closest('h2').text(),
+        sectionId = $(this).attr('href');
       if ($(this).hasClass('opened')) {
         endSection = new Date().getTime();
-        spentTime = (endSection - valDict[sectionName]) / 1000;
+        spentTime = (endSection - valDict[sectionId]) / 1000;
         eventsAjax('Interaction with FAQ', 'Section ' + sectionName + ' close', '' + spentTime);
         $(this).removeClass('opened');
       } else {
-        valDict[sectionName] = new Date().getTime();
+        closeLastQuestion();
+        closeLastSection();
+        valDict[sectionId] = new Date().getTime();
+        valDict['lastOpenedSection'] = sectionId;
         eventsAjax('Interaction with FAQ', 'Section ' + sectionName + ' open');
         $(this).addClass('opened');
       }
     });
 
-    $('.faq-list .collapsed').on('click', function (e) {
-      e = e || window.event;
+    $(question).on('click', function (e) {
       e.preventDefault();
       let questionText = $(e.target).closest('a').text(),
-        l = questionText.length;
+        l = questionText.length,
+        questionId = $(this).attr('href');
       questionText = 'Question ' + questionText;
       if (l > 150) {
         questionText = questionText.substring(0, 70) + ' ... ' + questionText.substring(l - 69, l);
       }
       if ($(this).hasClass('opened')) {
         endQuestion = new Date().getTime();
-        spentTime = (endQuestion - valDict[questionText]) / 1000;
+        spentTime = (endQuestion - valDict[questionId]) / 1000;
         eventsAjax('Interaction with FAQ', questionText + ' close', '' + spentTime);
         $(this).removeClass('opened');
       } else {
-        valDict[questionText] = new Date().getTime();
+        closeLastQuestion();
+        valDict[questionId] = new Date().getTime();
+        valDict['lastOpenedQuestion'] = questionId;
         eventsAjax('Interaction with FAQ', questionText + ' open');
         $(this).addClass('opened');
       }
@@ -327,6 +352,94 @@
       }, 4000);
       e.preventDefault();
     }
+  });
+
+  // Carousel
+  $(document).ready(function(){
+  var itemsMainDiv = ('.rescarousel');
+  var itemsDiv = ('.rescarousel-inner');
+  var itemWidth = "";
+    $('.leftLst, .rightLst').click(function () {
+      var condition = $(this).hasClass("leftLst");
+      if(condition)
+        click(0,this);
+      else
+        click(1,this)
+    });
+    rescarouselSize();
+  $(window).resize(function() {
+    rescarouselSize();
+  });
+  function rescarouselSize()
+  {
+    var incno = 0;
+    var dataItems = ("data-items");
+    var itemClass = ('.item');
+    var id = 0;
+    var btnParentSb = '';
+    var itemsSplit = '';
+    var sampwidth = $(itemsMainDiv).width();
+    var bodyWidth = $('.documents-main').width();
+    $(itemsDiv).each(function() {
+      id=id+1;
+      var itemNumbers = $(this).find(itemClass).length;
+        btnParentSb = $(this).parent().attr(dataItems);
+        itemsSplit = btnParentSb.split(',');
+        $(this).parent().attr("id","ResSlid"+id);
+      if(bodyWidth>=375)
+      {
+        incno=itemsSplit[1];
+        itemWidth = sampwidth/incno;
+      }
+      else
+      {
+        incno=itemsSplit[0];
+        itemWidth = sampwidth/incno;
+      }
+      $(this).css({'transform':'translateX(0px)','width':itemWidth*itemNumbers});
+      $(this).find(itemClass).each(function(){
+        $(this).outerWidth(itemWidth);
+      });
+
+      $(".leftLst").addClass("d-none");
+      $(".rightLst").removeClass("d-none");
+
+    });
+  }
+  function rescarousel(e, el, s){
+    var leftBtn = ('.leftLst');
+    var rightBtn = ('.rightLst');
+    var translateXval = '';
+    var divStyle = $(el+' '+itemsDiv).css('transform');
+    var values = divStyle.match(/-?[\d\.]+/g);
+    var xds = Math.abs(values[4]);
+      if(e==0){
+        translateXval = parseInt(xds)-parseInt(itemWidth*s);
+        $(el+' '+rightBtn).removeClass("d-none");
+
+        if(translateXval<= itemWidth/2){
+          translateXval = 0;
+          $(el+' '+leftBtn).addClass("d-none");
+        }
+      }
+      else if(e==1){
+        var itemsCondition = $(el).find(itemsDiv).width()-$(el).width();
+        translateXval = parseInt(xds)+parseInt(itemWidth*s);
+        $(el+' '+leftBtn).removeClass("d-none");
+
+        if(translateXval>= itemsCondition-itemWidth/2){
+          translateXval = itemsCondition;
+          $(el+' '+rightBtn).addClass("d-none");
+        }
+      }
+      $(el+' '+itemsDiv).css('transform','translateX('+-translateXval+'px)');
+  }
+  function click(ell,ee){
+    var Parent ="#"+$(ee).parent().attr("id");
+    var slide = $(Parent).attr("data-slide");
+    rescarousel(ell, Parent, slide);
+  }
+
   });
 
 

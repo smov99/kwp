@@ -135,8 +135,8 @@ msgid "https://www.kiwapower.com/aviso-de-privacidad/"
 msgstr "https://www.kiwapower.com/en/privacy-policy/"
 
 #: .\templates\proposal.html:114
-msgid "Ver propuesta"
-msgstr "View proposal"
+msgid "Ver"
+msgstr "View"
 
 #: .\templates\proposal.html:188
 msgid "Contacto"
@@ -180,3 +180,9 @@ msgstr "This proposal has expired, please check with your Kiwapower representati
 
 msgid "Las casillas de verificación no están marcadas"
 msgstr "Checkbox are not ticked"
+
+msgid "Sus documentos"
+msgstr "Your documents"
+
+msgid "Kiwapower recusos"
+msgstr "Kiwapower resources"

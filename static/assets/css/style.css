@@ -745,7 +745,7 @@ section {
 # Frequently Asked Questions
 --------------------------------------------------------------*/
 .faq .section-title {
-  text-align: unset;
+  text-align: left;
 }
 
 .faq .section-title a {
@@ -911,10 +911,10 @@ section {
 #proposal-link .btn-confirmation {
   font-family: "Lato", sans-serif;
   font-weight: 500;
-  font-size: 16px;
+  font-size: 12px;
   letter-spacing: 1px;
   display: inline-block;
-  padding: 10px 30px;
+  padding: 5px 15px;
   transition: 0.5s;
   color: #fff;
   background: #e60012;
@@ -926,10 +926,89 @@ section {
   background: #e35052;
 }
 
-@media (min-width: 992px) {
-  #proposal-link .section-title {
-    text-align: left;
-  }
+#proposal-link .section-title {
+  text-align: left;
+  margin-bottom: 0;
+}
+
+#proposal-link .section-title p {
+  font-size: 24px;
+}
+
+/*--------------------------------------------------------------
+# Carousel
+--------------------------------------------------------------*/
+.documents-main {
+  width: 100%;
+}
+
+.leftLst {
+  position: absolute;
+  margin: auto;
+  top: 55px;
+  left: 12px;
+  bottom: 0;
+  background: linear-gradient(to left, transparent, #2626263B);
+  width: 30px;
+  border: none;
+  z-index: 100;
+  height: auto;
+  outline: none;
+}
+
+.rightLst {
+  position: absolute;
+  margin: auto;
+  top: 55px;
+  right: 12px;
+  bottom: 0;
+  background: linear-gradient(to right, transparent, #2626263B);
+  width: 30px;
+  border: none;
+  z-index: 100;
+  height: content-box;
+  outline: none;
+}
+
+.rightLst i, .leftLst i {
+  color: #fff;
+}
+
+.rescarousel {
+  float: left;
+  overflow: hidden;
+  width: 100%;
+}
+.rescarousel-inner {
+  transition: 1s ease all;
+  float: left;
+  justify-content: center;
+  height: content-box;
+  vertical-align: middle;
+}
+.rescarousel-inner .item {
+  float: left;
+}
+.document {
+  width: content-box;
+  height: auto;
+  position: relative;
+  display: inline-block;
+  vertical-align: middle;
+  left: 0;
+  margin: 10px;
+  text-align: center;
+  overflow: hidden;
+  padding: 5px;
+  background: transparent;
+  border: solid 0.9px transparent;
+  border-radius: 8px;
+  box-shadow: 0 0 15px rgba(214, 215, 216, 0.6);
+}
+
+.document p {
+  font-size: 12px;
+  text-align: left;
 }
 
 /*--------------------------------------------------------------

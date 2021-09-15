@@ -94,12 +94,13 @@
     <section id="proposal-link" class="proposal-link">
       <div class="container">
         <div class="row">
+          {% if not is_expired %}
           <div class="col-md-6">
             <div class="section-title">
               <p>{% trans "Sus documentos" %}</p>
             </div>
             <div class="documents-main">
-              <div class="rescarousel" data-items="2,3" data-slide="1">
+              <div class="rescarousel" data-items="2,3,6" data-slide="1">
                 <div class="rescarousel-inner">
                   {% for i in '123456789' %}
                   <div class="item">
@@ -118,6 +119,9 @@
             </div>
           </div>
           <div class="col-md-6">
+          {% else %}
+          <div class="col-xs-12">
+          {% endif %}
             <div class="section-title">
               <p>{% trans "Kiwapower recusos" %}</p>
             </div>

@@ -34,6 +34,7 @@ THIRD_PARTY_APPS = [
     'rangefilter',
     'user_agents',
     'drf_yasg',
+    'rest_framework_simplejwt',
 ]
 
 LOCAL_APPS = [
@@ -79,21 +80,22 @@ TEMPLATES = [
 
 # Rest settings
 REST_FRAMEWORK = {
-    # 'DEFAULT_PAGINATION_CLASS':
-    #     'api.custompagination.LimitOffsetPaginationWithUpperBound',
-    #     'PAGE_SIZE': 4,
+    'DEFAULT_PAGINATION_CLASS':
+        'api.custompagination.LimitOffsetPaginationWithUpperBound',
+        'PAGE_SIZE': 8,
     'DEFAULT_FILTER_BACKENDS': (
         'django_filters.rest_framework.DjangoFilterBackend',
         'rest_framework.filters.OrderingFilter',
         'rest_framework.filters.SearchFilter',
     ),
-    # 'DEFAULT_AUTHENTICATION_CLASSES': (
-    #     'rest_framework.authentication.BasicAuthentication',
-    #     'rest_framework.authentication.SessionAuthentication',
-    # ),
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    ),
     'DEFAULT_VERSIONING_CLASS':
         'rest_framework.versioning.NamespaceVersioning',
 }
+
+# Session settings
 
 SESSION_COOKIE_AGE = 600
 SESSION_COOKIE_SAMESITE = 'Strict'

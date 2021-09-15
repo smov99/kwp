@@ -144,7 +144,7 @@ def get_proposal(proposal_id):
 
     :return: Proposal info
     """
-    query = f"SELECT Id,Account__c,Welcome_message__c,Description__c,Published__c,Expired_proposal__c,Name FROM Web_Proposals__c where IsDeleted = false and Id = '{proposal_id}'"
+    query = f"SELECT Id,Account__c,Welcome_message__c,Description__c,Published__c,Expired_proposal__c,Show_Case_Study__c,Show_Quick_Start_Guide__c,Show_Brochure__c,Show_Kiwapower_at_a_Glance_video__c,Name FROM Web_Proposals__c where IsDeleted = false and Id = '{proposal_id}'"
     response = sf_api_call(f'/services/data/{settings.SF_API_VERSION}/query/', {'q': query})
     try:
         error = response[0]['errorCode']

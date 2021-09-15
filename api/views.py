@@ -1,4 +1,4 @@
-from rest_framework import generics
+from rest_framework import generics, permissions
 from rest_framework.response import Response
 from rest_framework.reverse import reverse
 
@@ -10,6 +10,7 @@ class SessionList(generics.ListAPIView):
     serializer_class = SessionSerializer
     name = 'session-list'
     ordering_fields = ('created',)
+    permission_classes = (permissions.IsAuthenticated,)
 
     def get_queryset(self):
         queryset = Session.objects.all()
@@ -23,12 +24,14 @@ class SessionDetail(generics.RetrieveAPIView):
     queryset = Session.objects.all()
     serializer_class = SessionSerializer
     name = 'session-detail'
+    permission_classes = (permissions.IsAuthenticated,)
 
 
 class SessionEventList(generics.ListAPIView):
     serializer_class = SessionEventSerializer
     name = 'sessionevent-list'
     ordering_fields = ('created',)
+    permission_classes = (permissions.IsAuthenticated,)
 
     def get_queryset(self):
         queryset = SessionEvent.objects.all()
@@ -42,10 +45,12 @@ class SessionEventDetail(generics.RetrieveAPIView):
     queryset = SessionEvent.objects.all()
     serializer_class = SessionEventSerializer
     name = 'sessionevent-detail'
+    permission_classes = (permissions.IsAuthenticated,)
 
 
 class ApiRoot(generics.GenericAPIView):
     name = 'api-root'
+    permission_classes = (permissions.IsAuthenticated,)
 
     def get(self, request, *args, **kwargs):
         return Response({

@@ -35,6 +35,10 @@ THIRD_PARTY_APPS = [
     'user_agents',
     'drf_yasg',
     'rest_framework_simplejwt',
+    'health_check',
+    'health_check.db',
+    'health_check.cache',
+    'health_check.storage',
 ]
 
 LOCAL_APPS = [

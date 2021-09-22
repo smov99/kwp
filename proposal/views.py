@@ -23,6 +23,7 @@ class ConfirmationView(View):
         else:
             email = request.session.get('email')
             services.create_failed_session_record(request, proposal_id, email)
+            raise Http404()
 
     @services.clock
     def post(self, request, proposal_id) -> HttpResponse:

@@ -61,7 +61,7 @@ def salesforce_login():
     return response
 
 
-def sf_api_call(action, parameters={}, method='get', data={}, request=None):
+def sf_api_call(action, parameters={}, method='get', data={}, request=None, sf_object=None):
     """
     Helper function to make calls to Salesforce REST API.
     Parameters: action (the URL), URL params, method (get, post or patch), data for POST/PATCH, client.
@@ -77,40 +77,55 @@ def sf_api_call(action, parameters={}, method='get', data={}, request=None):
     doc_headers = {
         'Authorization': 'Bearer %s' % access_token
     }
-    if method == 'get':
-        if 'profilephoto' in action:
-            r = requests.request(method, action, headers=doc_headers, timeout=30)
-            if r.status_code < 300:
-                return r.content
-        elif 'VersionData' in action:
-            r = requests.request(method, instance_url + action, headers=doc_headers, timeout=30)
-            if r.status_code < 300:
-                return r.content
+    if instance_url is not None:
+        if method == 'get':
+            if 'profilephoto' in action:
+                r = requests.request(method, action, headers=doc_headers, timeout=30)
+                if r.status_code < 300:
+                    return r.content
+            elif 'VersionData' in action:
+                r = requests.request(method, instance_url + action, headers=doc_headers, timeout=30)
+                if r.status_code < 300:
+                    return r.content
+            else:
+                r = requests.request(method, instance_url + action, headers=headers, params=parameters, timeout=30)
+                if r.status_code < 300:
+                    return r.json()
+        elif method in ['post', 'patch']:
+            r = requests.request(method, instance_url + action, headers=headers, json=data, params=parameters,
+                                 timeout=10)
         else:
-            r = requests.request(method, instance_url + action, headers=headers, params=parameters, timeout=30)
-            return r.json()
-    elif method in ['post', 'patch']:
-        r = requests.request(method, instance_url + action, headers=headers, json=data, params=parameters, timeout=10)
+            raise ValueError('Method should be get or post or patch.')
+        if r.status_code < 300:
+            if method == 'patch':
+                return None
+            else:
+                return r.json()
+        else:
+            create_error_message(r, method, request, sf_object)
     else:
-        raise ValueError('Method should be get or post or patch.')
-    if r.status_code < 300:
-        if method == 'patch':
-            return None
-        else:
-            return r.json()
+        create_error_message(None, method, request, sf_object)
 
-    else:
-        error_message = 'API error when calling %s : %s' % (r.url, r.content)
-        session_id = None
-        if request is not None:
-            session_id = request.session.get('session_id')
-        ErrorLog.objects.create(
-            session_id_id=session_id,
-            api_call_type=method,
-            sf_object=r.url.split('/')[-1],
-            sf_error=error_message
-        )
-        raise Exception(error_message)
+
+def create_error_message(sf_response, method, request=None, sf_object=None, error_message=None):
+    try:
+        if error_message is None:
+            error_message = ' '.join(tuple(string.strip() for string in sf_response.json()[0].get('message').split()))
+            error_code = sf_response.json()[0].get('errorCode')
+            error_message = f'API error: \
+            "{error_message[:-((18 + len(error_code)) if len(error_message + error_code) > 236 else 1)]}: {error_code}"'
+    except AttributeError:
+        if error_message is None:
+            error_message = 'Salesforce authorization error'
+    session_id = None
+    if request is not None:
+        session_id = request.session.get('session_id')
+    ErrorLog.objects.create(
+        session_id_id=session_id,
+        api_call_type=method,
+        sf_object=sf_object,
+        sf_error=error_message
+    )
 
 
 def get_geolocation(client_ip):
@@ -145,13 +160,17 @@ def get_proposal(proposal_id):
     :return: Proposal info
     """
     query = f"SELECT Id,Account__c,Welcome_message__c,Description__c,Published__c,Expired_proposal__c,Show_Case_Study__c,Show_Quick_Start_Guide__c,Show_Brochure__c,Show_Kiwapower_at_a_Glance_video__c,Name FROM Web_Proposals__c where IsDeleted = false and Id = '{proposal_id}'"
-    response = sf_api_call(f'/services/data/{settings.SF_API_VERSION}/query/', {'q': query})
+    response = sf_api_call(
+        f'/services/data/{settings.SF_API_VERSION}/query/',
+        {'q': query},
+        sf_object='Web_Proposals__c'
+    )
     try:
         error = response[0]['errorCode']
-    except KeyError:
+    except:
         try:
             response = response['records'][0]
-        except IndexError:
+        except:
             response = False
     else:
         response = False
@@ -168,7 +187,12 @@ def get_user_email_information(proposal_account_id, request=None):
     :return: Info relevant to email address.
     """
     query = f"SELECT Authorized_contact__c, Authorized_domain__c, Authorized_email__c FROM Authorized_emails__c where Account__c='{proposal_account_id}' and  isDeleted=false"
-    response = sf_api_call(f'/services/data/{settings.SF_API_VERSION}/query/', {'q': query}, request=request)['records']
+    response = sf_api_call(
+        f'/services/data/{settings.SF_API_VERSION}/query/',
+        {'q': query},
+        request=request,
+        sf_object='Authorized_emails__c'
+    )['records']
     return response
 
 
@@ -220,7 +244,11 @@ def email_domain_validation(email):
     :return: Response containing info of verified email addresses.
     """
     query = f"SELECT Id,AccountId,Email FROM Contact where Email='{email}' and isDeleted=false"
-    response = sf_api_call(f'/services/data/{settings.SF_API_VERSION}/query/', {'q': query})['records']
+    response = sf_api_call(
+        f'/services/data/{settings.SF_API_VERSION}/query/',
+        {'q': query},
+        sf_object='Contact'
+    )['records']
     return response
 
 
@@ -228,7 +256,12 @@ def email_domain_validation(email):
 def get_client_info(proposal_account_id, request=None):
     query = f"Select name, OwnerId from Account where id = '{proposal_account_id}'"
     response = \
-        sf_api_call(f'/services/data/{settings.SF_API_VERSION}/query/', {'q': query}, request=request)['records'][0]
+        sf_api_call(
+            f'/services/data/{settings.SF_API_VERSION}/query/',
+            {'q': query},
+            request=request,
+            sf_object='Account'
+        )['records'][0]
     return response
 
 
@@ -241,7 +274,11 @@ def get_owner_id(contact_account_id):
     :return: Response containing owner info.
     """
     query = f"SELECT OwnerID from Account where Id = '{contact_account_id}'"
-    response = sf_api_call(f'/services/data/{settings.SF_API_VERSION}/query/', {'q': query})['records'][0]['OwnerId']
+    response = sf_api_call(
+        f'/services/data/{settings.SF_API_VERSION}/query/',
+        {'q': query},
+        sf_object='Account'
+    )['records'][0]['OwnerId']
     return response
 
 
@@ -261,7 +298,12 @@ def create_contact(email, contact_account_id):
         'From_django__c': True,
         'OwnerId': owner_id
     }
-    response = sf_api_call(f"/services/data/{settings.SF_API_VERSION}/sobjects/Contact", method='post', data=data)
+    response = sf_api_call(
+        f"/services/data/{settings.SF_API_VERSION}/sobjects/Contact",
+        method='post',
+        data=data,
+        sf_object='Contact'
+    )
     return response
 
 
@@ -277,7 +319,12 @@ def get_proposals_creator(proposal_account_id, request=None):
     client = get_client_info(proposal_account_id, request)
     user_id = client['OwnerId']
     query = f"SELECT Name,MediumPhotoUrl,SmallPhotoUrl FROM User where id='{user_id}'"
-    response = sf_api_call(f'/services/data/{settings.SF_API_VERSION}/query/', {'q': query}, request=request)['records'][0]
+    response = sf_api_call(
+        f'/services/data/{settings.SF_API_VERSION}/query/',
+        {'q': query},
+        request=request,
+        sf_object='User'
+    )['records'][0]
     response['client_name'] = client['Name']
     return response
 
@@ -291,7 +338,12 @@ def get_documents_list(proposal_id, request=None):
     :return: List of documents
     """
     query = f"SELECT ContentDocumentId FROM ContentDocumentLink where IsDeleted = false and LinkedEntityId = '{proposal_id}'"
-    response = sf_api_call(f'/services/data/{settings.SF_API_VERSION}/query/', {'q': query}, request=request)['records']
+    response = sf_api_call(
+        f'/services/data/{settings.SF_API_VERSION}/query/',
+        {'q': query},
+        request=request,
+        sf_object='ContentDocumentLink'
+    )['records']
     return response
 
 
@@ -304,7 +356,12 @@ def get_single_document(content_document_id, request=None):
     :return: Document.
     """
     query = f"SELECT Id, ContentSize, CreatedDate, Description, FileExtension, FileType, OwnerId, ParentId, PublishStatus, SharingOption, SharingPrivacy, Title FROM ContentDocument where Id='{content_document_id}' and FileType='PDF' order by CreatedDate DESC"
-    response = sf_api_call(f'/services/data/{settings.SF_API_VERSION}/query/', {'q': query}, request=request)
+    response = sf_api_call(
+        f'/services/data/{settings.SF_API_VERSION}/query/',
+        {'q': query},
+        request=request,
+        sf_object='ContentDocument'
+    )
     try:
         response = response['records'][0]
     except:
@@ -321,8 +378,12 @@ def get_document_link(content_document_id, request=None):
     :return: Document link.
     """
     query = f"SELECT VersionData FROM ContentVersion WHERE ContentDocumentId='{content_document_id}' and isLatest = true"
-    response = sf_api_call(f'/services/data/{settings.SF_API_VERSION}/query/', {'q': query}, request=request)['records'][0][
-            'VersionData']
+    response = sf_api_call(
+        f'/services/data/{settings.SF_API_VERSION}/query/',
+        {'q': query},
+        request=request,
+        sf_object='ContentVersion'
+    )['records'][0]['VersionData']
     return response
 
 
@@ -335,7 +396,11 @@ def get_document(url, request=None):
 
     :return: Binary document.
     """
-    response = sf_api_call(url, request=request)
+    response = sf_api_call(
+        url,
+        request=request,
+        sf_object='Document'
+    )
     return response
 
 
@@ -413,9 +478,12 @@ def create_sf_session_record(
         'Login_date__c': datetime.utcnow().__format__('%Y-%m-%dT%H:%M:%S.%UZ'),
         'OwnerId': settings.SF_USER_ID
     }
-    response = sf_api_call(f"/services/data/{settings.SF_API_VERSION}/sobjects/Proposal_engagement_header__c",
-                           method='post',
-                           data=data)
+    response = sf_api_call(
+        f"/services/data/{settings.SF_API_VERSION}/sobjects/Proposal_engagement_header__c",
+        method='post',
+        data=data,
+        sf_object='Proposal_engagement_header__c'
+    )
     return response['id']
 
 
@@ -451,11 +519,13 @@ def create_sf_event_record(
         'Case__c': case_id,
         'Event_description__c': event_name,
     }
-    sf_api_call(f"/services/data/{settings.SF_API_VERSION}/sobjects/Proposal_engagement__c",
-                method='post',
-                data=data,
-                request=request
-                )
+    sf_api_call(
+        f"/services/data/{settings.SF_API_VERSION}/sobjects/Proposal_engagement__c",
+        method='post',
+        data=data,
+        request=request,
+        sf_object='Proposal_engagement__c'
+    )
 
 
 def create_event_record(
@@ -561,10 +631,13 @@ def create_case_record(
         'ContactId': contact_id,
         'Subject': subject
     }
-    response = sf_api_call(f"/services/data/{settings.SF_API_VERSION}/sobjects/Case",
-                           method='post',
-                           data=data,
-                           request=request)
+    response = sf_api_call(
+        f"/services/data/{settings.SF_API_VERSION}/sobjects/Case",
+        method='post',
+        data=data,
+        request=request,
+        sf_object='Case'
+    )
     return response
 
 
@@ -689,4 +762,3 @@ def create_failed_session_record(request, proposal_id, email):
                 client_geolocation=get_geolocation(client_ip),
                 device=get_user_device(request)
             )
-        raise Http404()

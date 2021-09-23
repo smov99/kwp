@@ -112,8 +112,7 @@ def create_error_message(sf_response, method, request=None, sf_object=None, erro
         if error_message is None:
             error_message = ' '.join(tuple(string.strip() for string in sf_response.json()[0].get('message').split()))
             error_code = sf_response.json()[0].get('errorCode')
-            error_message = f'API error: \
-            "{error_message[:-((18 + len(error_code)) if len(error_message + error_code) > 236 else 1)]}: {error_code}"'
+            error_message = f'API error: "{error_message[:((240 - len(error_code)) if len(error_message + error_code) > 236 else 1)]}: {error_code}"'
     except AttributeError:
         if error_message is None:
             error_message = 'Salesforce authorization error'

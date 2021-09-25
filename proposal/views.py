@@ -146,9 +146,14 @@ class Viewer(View):
     def get(self, request):
         try:
             proposal_id = request.session['proposal_id']
+            document_link = request.session['document']['document_link']
+            document_name = request.session['document']['file_name']
         except KeyError:
             raise Http404()
-        return render(request, 'viewer.html')
+        return render(request, 'viewer.html', {
+            'document_link': document_link,
+            'document_name': document_name
+        })
 
 
 class EventsView(View):

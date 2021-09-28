@@ -58,4 +58,18 @@ class ErrorLog(BaseModel):
     )
     api_call_type = models.CharField(max_length=255, blank=True, null=True)
     sf_object = models.CharField(max_length=255, blank=True, null=True)
-    sf_error = models.CharField(max_length=255, blank=True, null=True)
+    sf_error = models.TextField(blank=True, null=True)
+
+
+class StaticResources(BaseModel):
+    file_description = models.CharField(max_length=255, blank=True, null=True, unique=True)
+    s3_file_location = models.TextField(unique=True)
+    salesforce_file_id = models.CharField(max_length=255, unique=True)
+    salesforce_category = models.CharField(max_length=50)
+
+    def __str__(self):
+        return self.file_description
+
+    def save(self, *args, **kwargs):
+
+        super(StaticResources, self).save(*args, **kwargs)

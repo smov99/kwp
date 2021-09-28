@@ -3,9 +3,10 @@ import datetime
 from django.contrib import admin
 from django.urls import reverse
 from django.utils.safestring import mark_safe
+from modeltranslation.admin import TranslationAdmin
 from rangefilter.filters import DateTimeRangeFilter
 
-from .models import Session, SessionEvent, ErrorLog
+from .models import Session, SessionEvent, ErrorLog, StaticResources
 
 
 def false(*args, **kwargs):
@@ -110,3 +111,11 @@ class ErrorLogAdmin(admin.ModelAdmin):
 
     class Media:
         js = ['assets/js/menu_filter_collapse.js']
+
+
+@admin.register(StaticResources)
+class StaticResourcesAdmin(TranslationAdmin):
+    list_display = ('id', 'file_description', 's3_file_location', 'salesforce_file_id')
+    search_fields = ('file_description', 's3_file_location', 'salesforce_file_id')
+    list_display_links = ('file_description',)
+    ordering = ('salesforce_file_id',)

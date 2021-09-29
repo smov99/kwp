@@ -12,7 +12,7 @@ from django.http import Http404
 from django.shortcuts import redirect
 
 from kwp import settings
-from .models import SessionEvent, Session, ErrorLog
+import proposal.models as models
 
 
 def clock(func):
@@ -112,14 +112,14 @@ def create_error_message(sf_response, method, request=None, sf_object=None, erro
         if error_message is None:
             error_message = ' '.join(tuple(string.strip() for string in sf_response.json()[0].get('message').split()))
             error_code = sf_response.json()[0].get('errorCode')
-            error_message = f'API error: "{error_message[:((240 - len(error_code)) if len(error_message + error_code) > 236 else 1)]}: {error_code}"'
+            error_message = f'API error: "{error_message}: {error_code}"'
     except AttributeError:
         if error_message is None:
             error_message = 'Salesforce authorization error'
     session_id = None
     if request is not None:
         session_id = request.session.get('session_id')
-    ErrorLog.objects.create(
+    models.ErrorLog.objects.create(
         session_id_id=session_id,
         api_call_type=method,
         sf_object=sf_object,
@@ -158,7 +158,7 @@ def get_proposal(proposal_id):
 
     :return: Proposal info
     """
-    query = f"SELECT Id,Account__c,Welcome_message__c,Description__c,Published__c,Expired_proposal__c,Show_Case_Study__c,Show_Quick_Start_Guide__c,Show_Brochure__c,Show_Kiwapower_at_a_Glance_video__c,Name FROM Web_Proposals__c where IsDeleted = false and Id = '{proposal_id}'"
+    query = f"SELECT Id,Account__c,Welcome_message__c,Description__c,Published__c,Expired_proposal__c,{''.join(tuple(category + ',' for category in settings.STATIC_RESOURCES))}Name FROM Web_Proposals__c where IsDeleted = false and Id = '{proposal_id}'"
     response = sf_api_call(
         f'/services/data/{settings.SF_API_VERSION}/query/',
         {'q': query},
@@ -417,6 +417,11 @@ def get_creator_img(url, request):
     return img64
 
 
+def write_file(file_path, bytes_document):
+    with open(file_path, 'wb') as doc:
+        doc.write(bytes_document)
+
+
 def get_pdf_for_review(proposal_id, request):
     """Getting PDF for review.
 
@@ -426,8 +431,11 @@ def get_pdf_for_review(proposal_id, request):
     :return: Document body and title.
     """
     response = {}
-    document_list = get_documents_list(proposal_id, request)[0]
-    document_id = document_list['ContentDocumentId']
+    document_list = get_documents_list(proposal_id, request)
+    try:
+        document_id = document_list[0]['ContentDocumentId']
+    except IndexError:
+        return None
     single_document = get_single_document(document_id, request)
     if single_document:
         response['title'] = ' '.join(single_document['Title'].split('_'))
@@ -436,8 +444,7 @@ def get_pdf_for_review(proposal_id, request):
         file_name = single_document['Title'] + '.pdf'
         document_path = os.path.join(settings.MEDIA_ROOT, file_name)
         try:
-            with open(document_path, 'wb') as doc:
-                doc.write(bytes_document)
+            write_file(document_path, bytes_document)
         except FileExistsError:
             pass
         response['document_base64'] = base64.b64encode(bytes_document).decode()
@@ -445,6 +452,42 @@ def get_pdf_for_review(proposal_id, request):
         response['document_link'] = os.path.join(settings.MEDIA_URL, single_document['Title'] + '.pdf')
     else:
         response = None
+    return response
+
+
+def get_static_resources_file(content_document_id):
+    """Getting static resources file.
+
+    :param content_document_id: Salesforce document ID.
+
+    :return: Document body and title.
+    """
+    single_document = get_single_document(content_document_id)
+    if single_document:
+        document_link = get_document_link(content_document_id)
+        bytes_document = get_document(document_link)
+        try:
+            file_extension = single_document['FileExtension']
+        except:
+            return None
+        else:
+            file_name = f"{content_document_id}.{file_extension}"
+            document_path = os.path.join(settings.MEDIA_ROOT, file_name)
+            try:
+                write_file(document_path, bytes_document)
+            except FileExistsError:
+                os.popen(f'rm {document_path}')
+                write_file(document_path, bytes_document)
+            return file_extension
+
+
+def get_static_resources_to_review(proposal):
+    response = []
+    for category in settings.STATIC_RESOURCES:
+        if proposal[category]:
+            response.append(models.StaticResources.objects.get(salesforce_category=category))
+    if response.__len__() == 0:
+        response = False
     return response
 
 
@@ -570,7 +613,7 @@ def create_event_record(
             )
     else:
         event_name_ = event_name
-    SessionEvent.objects.create(
+    models.SessionEvent.objects.create(
         session_id_id=session_id,
         event_type=event_type,
         event_name=event_name_,
@@ -654,7 +697,7 @@ def additional_email_verification(request, proposal_id):
         email_validation = False
     if not email_validation:
         if request.session['email']:
-            Session.objects.create(
+            models.Session.objects.create(
                 proposal_id=proposal_id,
                 email=request.session['email'],
                 email_valid=request.session['is_emailvalid'],
@@ -664,7 +707,7 @@ def additional_email_verification(request, proposal_id):
                 device=get_user_device(request)
             )
         else:
-            Session.objects.create(
+            models.Session.objects.create(
                 proposal_id=proposal_id,
                 message='Trying to access a Proposal without authorization.',
                 client_ip=client_ip,
@@ -688,7 +731,7 @@ def additional_confirmation(request, is_contactcreated, proposal, proposal_id):
             get_geolocation(client_ip),
         )
         if not proposal['Published__c']:
-            Session.objects.create(
+            models.Session.objects.create(
                 proposal_id=proposal_id,
                 email=request.session['email'],
                 email_valid=True,
@@ -702,7 +745,7 @@ def additional_confirmation(request, is_contactcreated, proposal, proposal_id):
                 device=get_user_device(request)
             )
             raise Http404('published')
-        session = Session.objects.create(
+        session = models.Session.objects.create(
             proposal_id=proposal_id,
             email=request.session['email'],
             email_valid=True,
@@ -721,7 +764,7 @@ def additional_trusted_email_confirmation(request, proposal_id):
     # client_ip = request.META['HTTP_X_REAL_IP']
     # client_ip = request.META['REMOTE_ADDR']
     client_ip = request.META['HTTP_X_FORWARDED_FOR'].split(',')[0].strip()
-    session = Session.objects.create(
+    session = models.Session.objects.create(
         proposal_id=proposal_id,
         email=request.session['email'],
         client_ip=client_ip,
@@ -744,7 +787,7 @@ def create_failed_session_record(request, proposal_id, email):
         except KeyError:
             is_email_valid = False
         if email:
-            Session.objects.create(
+            models.Session.objects.create(
                 proposal_id=proposal_id,
                 email=email,
                 email_valid=is_email_valid,
@@ -754,7 +797,7 @@ def create_failed_session_record(request, proposal_id, email):
                 device=get_user_device(request)
             )
         else:
-            Session.objects.create(
+            models.Session.objects.create(
                 proposal_id=proposal_id,
                 message='Trying to access a non-existent Proposal.',
                 client_ip=client_ip,

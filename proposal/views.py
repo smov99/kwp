@@ -106,6 +106,7 @@ class ProposalView(View):
             client_name = creator['client_name']
             img = services.get_creator_img(creator['MediumPhotoUrl'], request)
             creator_name = creator['Name']
+            proposal_static_resources = services.get_static_resources_to_review(proposal)
             return render(request, 'proposal.html', {'proposal_id': proposal_id,
                                                      'sections': sections,
                                                      'message': welcome_message,
@@ -113,7 +114,9 @@ class ProposalView(View):
                                                      'creator_name': creator_name,
                                                      'img': img,
                                                      'client_name': client_name,
-                                                     'document': document
+                                                     'document': document,
+                                                     'static_resources': proposal_static_resources,
+                                                     'media_url': settings.MEDIA_URL
                                                      })
         else:
             raise Http404()

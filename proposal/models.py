@@ -1,5 +1,8 @@
 from django.db import models
 
+import proposal.services as services
+import kwp.settings as settings
+
 
 class BaseModel(models.Model):
     created = models.DateTimeField(auto_now_add=True)
@@ -63,13 +66,26 @@ class ErrorLog(BaseModel):
 
 class StaticResources(BaseModel):
     file_description = models.CharField(max_length=255, blank=True, null=True, unique=True)
-    s3_file_location = models.TextField(unique=True)
+    s3_file_location = models.TextField(unique=True, blank=True, null=True)
     salesforce_file_id = models.CharField(max_length=255, unique=True)
-    salesforce_category = models.CharField(max_length=50)
+    salesforce_category = models.CharField(
+        max_length=50,
+        unique=True,
+        choices=tuple(
+            (
+                category,
+                ' '.join(
+                    category.split('__')[0].split('_'))
+            ) for category in settings.STATIC_RESOURCES
+        )
+    )
+    file_extension = models.CharField(max_length=50, blank=True, null=True)
 
     def __str__(self):
         return self.file_description
 
     def save(self, *args, **kwargs):
-
-        super(StaticResources, self).save(*args, **kwargs)
+        try:
+            self.file_extension = services.get_static_resources_file(self.salesforce_file_id)
+        finally:
+            super(StaticResources, self).save(*args, **kwargs)

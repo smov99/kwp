@@ -95,7 +95,11 @@
       <div class="container">
         <div class="row">
           {% if not is_expired %}
+          {% if static_resources %}
           <div class="col-md-6">
+          {% else %}
+          <div class="col-xs-12">
+          {% endif %}
             <div class="section-title">
               <p>{% trans "Sus documentos" %}</p>
             </div>
@@ -118,22 +122,31 @@
               </div>
             </div>
           </div>
+          {% if static_resources %}
           <div class="col-md-6">
+          {% endif %}
           {% else %}
+          {% if static_resources %}
           <div class="col-xs-12">
           {% endif %}
+          {% endif %}
+          {% if static_resources %}
             <div class="section-title">
               <p>{% trans "Kiwapower recusos" %}</p>
             </div>
             <div class="documents-main">
               <div class="rescarousel" data-items="2,3" data-slide="1">
                 <div class="rescarousel-inner">
-                  {% for i in '123456789' %}
+                  {% for file in static_resources %}
                   <div class="item">
                     <div class="document">
                       <div>
-                        <p>210701 KiwaProposal Somar JSE PPA 01NB 649kW {{ i }}</p>
+                        <p>{{ file.file_description }}</p>
+                        {% if file.file_extension == 'pdf' %}
                         <input type="button" class="btn-confirmation proposal-pdf-link" value="{% trans 'Ver' %}" />
+                        {% else %}
+                        <a href="{{ media_url }}{{ file.salesforce_file_id }}.{{ file.file_extension }}" class="btn-confirmation proposal-pdf-link" download="{{ file.file_description }}">{% trans 'Descargar' %}</a>
+                        {% endif %}
                       </div>
                     </div>
                   </div>
@@ -144,6 +157,7 @@
               </div>
             </div>
           </div>
+          {% endif %}
         </div>
       </div>
     </section><!-- End Proposal Link Section -->

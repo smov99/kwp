@@ -98,6 +98,10 @@ KWP_S3_RESOURCES = '/dev/resources/'
 KWP_S3_PROPOSAL_DOCS = '/dev/proposal-docs/'
 
 # list of resources, non case sensitive
-STATIC_RESOURCES = ['show_case_study__c', 'show_quick_start_guide__c', 'show_brochure__c']
-#  - show_kiwapower_at_a_glance_video__c    # commented for the following testing
+STATIC_RESOURCES = [
+    'Show_Case_Study__c',
+    'Show_Quick_Start_Guide__c',
+    'Show_Brochure__c',
+    'Show_Kiwapower_at_a_Glance_video__c'
+]
 

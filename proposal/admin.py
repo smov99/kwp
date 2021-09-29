@@ -115,7 +115,16 @@ class ErrorLogAdmin(admin.ModelAdmin):
 
 @admin.register(StaticResources)
 class StaticResourcesAdmin(TranslationAdmin):
-    list_display = ('id', 'file_description', 's3_file_location', 'salesforce_file_id')
-    search_fields = ('file_description', 's3_file_location', 'salesforce_file_id')
+    list_display = (
+        'id',
+        'created',
+        'file_description',
+        's3_file_location',
+        'salesforce_file_id',
+        'salesforce_category'
+    )
+    search_fields = ('file_description', 's3_file_location', 'salesforce_file_id', 'salesforce_category')
     list_display_links = ('file_description',)
-    ordering = ('salesforce_file_id',)
+    ordering = ('-created',)
+    list_filter = ('salesforce_category',)
+    exclude = ('file_extension',)

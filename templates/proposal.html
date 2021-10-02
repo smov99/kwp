@@ -142,11 +142,11 @@
                     <div class="document">
                       <div>
                         <p>{{ file.file_description }}</p>
-                        {% if file.file_extension=='pdf' %}
+                        {% if file.file_extension == 'pdf' %}
                         <input type="button" class="btn-confirmation proposal-pdf-link" value="{% trans 'Ver' %}" />
                         {% else %}
-                        <a href="{{ media_url }}{{ file.salesforce_file_id }}.{{ file.file_extension }}" class="btn-confirmation proposal-pdf-link" download="{{ file.file_description }}"></a>
-                        {% endif %}}
+                        <a href="{{ media_url }}{{ file.salesforce_file_id }}.{{ file.file_extension }}" class="btn-confirmation proposal-pdf-link" download="{{ file.file_description }}">{% trans 'Descargar' %}</a>
+                        {% endif %}
                       </div>
                     </div>
                   </div>

@@ -84,9 +84,9 @@ class SessionAdmin(admin.ModelAdmin):
 @admin.register(SessionEvent)
 class SessionEventAdmin(admin.ModelAdmin):
     model = SessionEvent
-    list_display = ('session_id', 'id', 'created', 'event_type', 'event_name', 'message')
+    list_display = ('session_id', 'id', 'created', 'document_name', 'event_type', 'event_name', 'message')
     ordering = ('-created',)
-    search_fields = ('event_type',)
+    search_fields = ('event_type', 'document_name')
     list_per_page = 10
     list_display_links = None
     actions = None

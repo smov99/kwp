@@ -23,7 +23,7 @@ from proposal import views
 
 urlpatterns = [
     path('i18n/', include('django.conf.urls.i18n')),
-    path('viewer', views.Viewer.as_view(), name='viewer'),
+    path('viewer<slug:document_id>', views.Viewer.as_view(), name='viewer'),
     path('update_sections/', include('faq.urls')),
     path('events/', views.EventsView.as_view(), name='events'),
     path('kwp/health/', include('health_check.urls')),

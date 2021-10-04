@@ -19,13 +19,25 @@
   const csrftoken = getCookie('csrftoken')
 
   // Ajax requests
-  function eventsAjax(event_type, event_name, time_spent, message) {
+  function eventsAjax(
+    event_type='',
+    event_name='',
+    time_spent='',
+    message='',
+    doc_name=''
+  ) {
     var _path = window.location.origin + '/events/';
     $.ajax({
       headers: {"X-CSRFToken": csrftoken},
       url: _path,
       method: "POST",
-      data: {"event_type":event_type, "event_name":event_name, "time_spent": time_spent, "message":message},
+      data: {
+        "event_type":event_type,
+        "event_name":event_name,
+        "time_spent": time_spent,
+        "message":message,
+        "document_name":doc_name
+      },
       dataType: "json"
     });
   }
@@ -208,17 +220,38 @@
   });
 
   $(".proposal-pdf-link").click(function (e) {
-    var pdf_url = window.location.href + 'pdf',
+    var document_id = $(this).attr('data-document-id'),
+      pdf_url = window.location.href + 'pdf/' + document_id,
       modal_width = screen.width,
-      modal_height = screen.height;
+      modal_height = screen.height,
+      document_name = $(this).attr('data-document-name');
     e.preventDefault();
 
-    eventsAjax('Interaction with Proposal', 'Open');
+    eventsAjax(
+      'Interaction with Proposal',
+      'Open',
+      '',
+      '',
+      ''+document_name
+    );
 
     if ($(window).width()) {
       window.open(pdf_url,"", 'width='+modal_width+',height='+modal_height);
     }
   });
+
+  $('.download.btn-confirmation').click(function (e) {
+    var document_name = $(this).attr('data-document-name');
+    e.preventDefault();
+
+    eventsAjax(
+      'Interaction with Proposal',
+      'Download',
+      '',
+      '',
+      ''+document_name
+    );
+  })
 
   if (window.location.href.includes('proposal')) {
     if (window.location.href.includes('pdf')) {
@@ -370,6 +403,7 @@
   $(window).resize(function() {
     rescarouselSize();
   });
+
   function rescarouselSize()
   {
     var incno = 0;
@@ -386,14 +420,18 @@
         btnParentSb = $(this).parent().attr(dataItems);
         itemsSplit = btnParentSb.split(',');
         $(this).parent().attr("id","ResSlid"+id);
-      if(bodyWidth>=375)
+      if(600>bodyWidth>=375)
       {
         incno=itemsSplit[1];
         itemWidth = sampwidth/incno;
       }
-      else
+      else if(bodyWidth<375)
       {
         incno=itemsSplit[0];
+        itemWidth = sampwidth/incno;
+      }
+      else {
+        incno=itemsSplit[2];
         itemWidth = sampwidth/incno;
       }
       $(this).css({'transform':'translateX(0px)','width':itemWidth*itemNumbers});
@@ -406,6 +444,7 @@
 
     });
   }
+
   function rescarousel(e, el, s){
     var leftBtn = ('.leftLst');
     var rightBtn = ('.rightLst');

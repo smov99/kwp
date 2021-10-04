@@ -354,7 +354,7 @@ def get_single_document(content_document_id, request=None):
 
     :return: Document.
     """
-    query = f"SELECT Id, ContentSize, CreatedDate, Description, FileExtension, FileType, OwnerId, ParentId, PublishStatus, SharingOption, SharingPrivacy, Title FROM ContentDocument where Id='{content_document_id}' and FileType='PDF' order by CreatedDate DESC"
+    query = f"SELECT Id, ContentSize, CreatedDate, Description, FileExtension, FileType, OwnerId, ParentId, PublishStatus, SharingOption, SharingPrivacy, Title FROM ContentDocument where Id='{content_document_id}' order by CreatedDate DESC"
     response = sf_api_call(
         f'/services/data/{settings.SF_API_VERSION}/query/',
         {'q': query},
@@ -422,7 +422,7 @@ def write_file(file_path, bytes_document):
         doc.write(bytes_document)
 
 
-def get_pdf_for_review(proposal_id, request):
+def get_dynamic_files_for_review(proposal_id, request):
     """Getting PDF for review.
 
     :param request: Request.
@@ -430,29 +430,29 @@ def get_pdf_for_review(proposal_id, request):
 
     :return: Document body and title.
     """
-    response = {}
+    response = dict()
     document_list = get_documents_list(proposal_id, request)
-    try:
-        document_id = document_list[0]['ContentDocumentId']
-    except IndexError:
-        return None
-    single_document = get_single_document(document_id, request)
-    if single_document:
-        response['title'] = ' '.join(single_document['Title'].split('_'))
-        document_link = get_document_link(document_id, request)
-        bytes_document = get_document(document_link, request)
-        file_name = single_document['Title'] + '.pdf'
-        document_path = os.path.join(settings.MEDIA_ROOT, file_name)
-        try:
-            write_file(document_path, bytes_document)
-        except FileExistsError:
-            pass
-        response['document_base64'] = base64.b64encode(bytes_document).decode()
-        response['file_name'] = file_name
-        response['document_link'] = os.path.join(settings.MEDIA_URL, single_document['Title'] + '.pdf')
+    if len(document_list):
+        documents = [get_single_document(document.get('ContentDocumentId'), request) for document in document_list]
+        for document_information in documents:
+            single_response = dict()
+            single_response['title'] = ' '.join(str(document_information.get('Title')).split('_'))
+            document_id = document_information.get('Id')
+            document_link = get_document_link(document_id, request)
+            bytes_document = get_document(document_link, request)
+            file_name = f"{document_information.get('Title')}.{document_information.get('FileExtension')}"
+            document_path = os.path.join(settings.MEDIA_ROOT, file_name)
+            single_response['file_name'] = file_name
+            single_response['document_link'] = os.path.join(settings.MEDIA_URL, file_name)
+            single_response['document_id'] = document_id
+            response[document_id] = single_response
+            try:
+                write_file(document_path, bytes_document)
+            except FileExistsError:
+                pass
+        return response
     else:
-        response = None
-    return response
+        return False
 
 
 def get_static_resources_file(content_document_id):
@@ -476,19 +476,41 @@ def get_static_resources_file(content_document_id):
             try:
                 write_file(document_path, bytes_document)
             except FileExistsError:
-                os.popen(f'rm {document_path}')
+                os.remove(document_path)
                 write_file(document_path, bytes_document)
             return file_extension
 
 
 def get_static_resources_to_review(proposal):
-    response = []
+    response = list()
+    documents_id = list()
     for category in settings.STATIC_RESOURCES:
         if proposal[category]:
-            response.append(models.StaticResources.objects.get(salesforce_category=category))
-    if response.__len__() == 0:
+            category_record = models.StaticResources.objects.get(salesforce_category=category)
+            if not os.path.isfile(
+                    os.path.join(
+                        settings.MEDIA_ROOT,
+                        f"{category_record.salesforce_file_id}.{category_record.file_extension}"
+                    )
+            ):
+                get_static_resources_file(category_record.salesforce_file_id)
+            response.append(category_record)
+            documents_id.append(category_record.salesforce_file_id)
+    if not len(response) and not len(documents_id):
         response = False
-    return response
+    return response, documents_id
+
+
+def get_single_static_document(document_id):
+    category_record = models.StaticResources.objects.get(salesforce_file_id=document_id)
+    if not os.path.isfile(
+            os.path.join(
+                settings.MEDIA_ROOT,
+                f"{category_record.salesforce_file_id}.{category_record.file_extension}"
+            )
+    ):
+        get_static_resources_file(category_record.salesforce_file_id)
+    return category_record
 
 
 def create_sf_session_record(
@@ -497,7 +519,7 @@ def create_sf_session_record(
         contact_id,
         device,
         ip_address,
-        ip_geolocation
+        ip_geolocation,
 ):
     """Creating an session record in Salesforce.
 
@@ -536,10 +558,12 @@ def create_sf_event_record(
         message,
         request=None,
         time_spent=None,
-        case_id=None
+        case_id=None,
+        document_name=None
 ):
     """Creating an session record in Salesforce.
 
+    :param document_name: Document name.
     :param request: Request.
     :param message: Message.
     :param event_type: Event type.
@@ -556,6 +580,7 @@ def create_sf_event_record(
     data = {
         'Proposal_engagement_header__c': sf_session_id,
         'Event_date__c': datetime.utcnow().__format__('%Y-%m-%dT%H:%M:%S.%UZ'),
+        'Document_name__c': document_name,
         'Event_type__c': event_type,
         'Time_spent__c': time_spent,
         'Case__c': case_id,
@@ -581,10 +606,12 @@ def create_event_record(
         request=None,
         contact_id=None,
         time_spent=None,
-        message=None
+        message=None,
+        document_name=None
 ):
     """Creating an event record in both systems, Salesforce and Django.
 
+    :param document_name: Document name
     :param request: Request.
     :param sf_session_id: Session id of Salesforce record.
     :param contact_account_id: AccountId from 'email_domain_validation' response.
@@ -615,6 +642,7 @@ def create_event_record(
         event_name_ = event_name
     models.SessionEvent.objects.create(
         session_id_id=session_id,
+        document_name=document_name,
         event_type=event_type,
         event_name=event_name_,
         message=message
@@ -642,6 +670,7 @@ def create_event_record(
         create_sf_event_record(
             sf_session_id=sf_session_id,
             event_name=event_name,
+            document_name=document_name,
             event_type=event_type,
             time_spent=time_spent,
             case_id=case_id,
@@ -685,7 +714,6 @@ def create_case_record(
 
 def additional_email_verification(request, proposal_id):
     client_ip = request.META['HTTP_X_FORWARDED_FOR'].split(',')[0].strip()
-    # client_ip = request.META['HTTP_X_REAL_IP']
     # client_ip = request.META['REMOTE_ADDR']
     try:
         email = request.session['email']
@@ -718,7 +746,6 @@ def additional_email_verification(request, proposal_id):
 
 
 def additional_confirmation(request, is_contactcreated, proposal, proposal_id):
-    # client_ip = request.META['HTTP_X_REAL_IP']
     # client_ip = request.META['REMOTE_ADDR']
     client_ip = request.META['HTTP_X_FORWARDED_FOR'].split(',')[0].strip()
     if client_ip != '127.0.0.1':
@@ -761,7 +788,6 @@ def additional_confirmation(request, is_contactcreated, proposal, proposal_id):
 
 
 def additional_trusted_email_confirmation(request, proposal_id):
-    # client_ip = request.META['HTTP_X_REAL_IP']
     # client_ip = request.META['REMOTE_ADDR']
     client_ip = request.META['HTTP_X_FORWARDED_FOR'].split(',')[0].strip()
     session = models.Session.objects.create(
@@ -778,7 +804,6 @@ def additional_trusted_email_confirmation(request, proposal_id):
 
 
 def create_failed_session_record(request, proposal_id, email):
-    # client_ip = request.META['HTTP_X_REAL_IP']
     # client_ip = request.META['REMOTE_ADDR']
     client_ip = request.META['HTTP_X_FORWARDED_FOR'].split(',')[0].strip()
     if client_ip != '127.0.0.1':

@@ -69,7 +69,6 @@ class ConfirmationView(View):
             )
             return redirect('proposal', proposal_id)
         else:
-            # client_ip = request.META['HTTP_X_REAL_IP']
             # client_ip = request.META['REMOTE_ADDR']
             client_ip = request.META['HTTP_X_FORWARDED_FOR'].split(',')[0].strip()
             Session.objects.create(
@@ -84,6 +83,7 @@ class ConfirmationView(View):
 
 
 class ProposalView(View):
+    @services.clock
     def get(self, request, proposal_id) -> HttpResponse:
         try:
             services.additional_email_verification(request, proposal_id)
@@ -98,15 +98,16 @@ class ProposalView(View):
                 raise Http404('published')
             request.session['proposal_id'] = proposal_id
             request.session['is_proposalexist'] = proposal['Published__c']
-            document = services.get_pdf_for_review(proposal_id, request)
-            request.session['document'] = document
+            dynamic_documents = services.get_dynamic_files_for_review(proposal_id, request)
+            request.session['documents'] = dynamic_documents
             welcome_message = proposal['Welcome_message__c']
             proposal_is_expired = proposal['Expired_proposal__c']
             creator = services.get_proposals_creator(proposal['Account__c'], request)
             client_name = creator['client_name']
             img = services.get_creator_img(creator['MediumPhotoUrl'], request)
             creator_name = creator['Name']
-            proposal_static_resources = services.get_static_resources_to_review(proposal)
+            proposal_static_resources, documents_id = services.get_static_resources_to_review(proposal)
+            request.session['documents_id'] = documents_id
             return render(request, 'proposal.html', {'proposal_id': proposal_id,
                                                      'sections': sections,
                                                      'message': welcome_message,
@@ -114,7 +115,7 @@ class ProposalView(View):
                                                      'creator_name': creator_name,
                                                      'img': img,
                                                      'client_name': client_name,
-                                                     'document': document,
+                                                     'documents': dynamic_documents,
                                                      'static_resources': proposal_static_resources,
                                                      'media_url': settings.MEDIA_URL
                                                      })
@@ -123,34 +124,52 @@ class ProposalView(View):
 
     def post(self, request, proposal_id):
         if request.POST['url'] == request.META['HTTP_REFERER']:
-            document = request.session['document']
+            document = request.session['documents']
             file_name = document['file_name']
             os.remove(os.path.join(settings.MEDIA_ROOT, file_name))
         return HttpResponse({'ok': True})
 
 
 class ProposalPDFView(View):
-    def get(self, request, proposal_id) -> HttpResponse:
+    def get(self, request, proposal_id, document_id) -> HttpResponse:
         try:
             services.additional_email_verification(request, proposal_id)
         except KeyError:
             raise Http404('email')
-        document = request.session['document']
-        document_link = document['document_link']
-        document_title = document['title']
+        if document_id in request.session['documents_id']:
+            document = services.get_single_static_document(document_id)
+            document_link = os.path.join(
+                settings.MEDIA_URL,
+                f'{document.salesforce_file_id}.{document.file_extension}'
+            )
+            document_title = document.file_description
+        else:
+            document = request.session['documents'][document_id]
+            document_link = document['document_link']
+            document_title = document['title']
         return render(request, 'pdf.html', {'proposal_id': proposal_id,
                                             'document': document_link,
-                                            'document_title': document_title
+                                            'document_title': document_title,
+                                            'document_id': document_id
                                             })
 
 
 class Viewer(View):
     @xframe_options_exempt
-    def get(self, request):
+    def get(self, request, document_id):
         try:
             proposal_id = request.session['proposal_id']
-            document_link = request.session['document']['document_link']
-            document_name = request.session['document']['file_name']
+            if document_id in request.session['documents_id']:
+                document = services.get_single_static_document(document_id)
+                document_link = os.path.join(
+                    settings.MEDIA_URL,
+                    f'{document.salesforce_file_id}.{document.file_extension}'
+                )
+                document_name = document.file_description
+            else:
+                document = request.session['documents'][document_id]
+                document_link = document['document_link']
+                document_name = document['file_name']
         except KeyError:
             raise Http404()
         return render(request, 'viewer.html', {
@@ -161,17 +180,21 @@ class Viewer(View):
 
 class EventsView(View):
     def post(self, request):
-        try:
-            time_spent = float(request.POST['time_spent'])
-        except:
-            time_spent = None
+        time_spent = request.POST.get('time_spent')
         message = request.POST.get('message')
+        document_name = request.POST.get('document_name')
         if request.session['email'] == settings.TRUSTED_EMAIL:
             request.session['contact_id'] = None
             request.session['contact_account_id'] = None
         request.session['event_type'] = request.POST['event_type']
         request.session['event_name'] = request.POST['event_name']
         sf_session = request.session.get('sf_session_id')
+        if not len(time_spent):
+            time_spent = None
+        if not len(message):
+            message = None
+        if not len(document_name):
+            document_name = None
         services.create_event_record(
             session_id=request.session['session_id'],
             event_type=request.POST['event_type'],
@@ -183,6 +206,7 @@ class EventsView(View):
             email=request.session['email'],
             contact_account_id=request.session['contact_account_id'],
             proposal_name=request.session['proposal_name'],
-            request=request
+            request=request,
+            document_name=document_name
         )
         return HttpResponse({'Success': True})

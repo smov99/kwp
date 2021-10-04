@@ -19,13 +19,26 @@
   const csrftoken = getCookie('csrftoken')
 
   // Ajax requests
-  function eventsAjax(event_type, event_name, time_spent, message) {
+  function eventsAjax(
+    event_type='',
+    event_name='',
+    time_spent='',
+    message='',
+  ) {
     var _path = window.location.origin + '/events/';
+    var re = /.*kwp\/([\s\S]+?)\.pdf/;
+    var document_name = window.location.href.match(re)[1].replaceAll("%20", " ");
     $.ajax({
       headers: {"X-CSRFToken": csrftoken},
       url: _path,
       method: "POST",
-      data: {"event_type":event_type, "event_name":event_name, "time_spent": time_spent, "message":message},
+      data: {
+        "event_type":event_type,
+        "event_name":event_name,
+        "time_spent": time_spent,
+        "message":message,
+        "document_name":document_name
+      },
       dataType: "json"
     });
   }

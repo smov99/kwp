@@ -128,6 +128,10 @@ AUTH_PASSWORD_VALIDATORS = [
 
 AUTH_USER_MODEL = 'users.User'
 
+# X-Frame
+
+X_FRAME_OPTIONS = 'SAMEORIGIN'
+
 # Logging
 
 LOGGING = {

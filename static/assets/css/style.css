@@ -909,6 +909,7 @@ section {
 # Proposal Link
 --------------------------------------------------------------*/
 #proposal-link .btn-confirmation {
+  position: absolute;
   font-family: "Lato", sans-serif;
   font-weight: 500;
   font-size: 12px;
@@ -920,6 +921,9 @@ section {
   background: #e60012;
   border: 0;
   border-radius: 6px;
+  width: 95%;
+  bottom: 2.5%;
+  left: 2.5%;
 }
 
 #proposal-link .btn-confirmation:hover {
@@ -929,6 +933,7 @@ section {
 #proposal-link .section-title {
   text-align: left;
   margin-bottom: 0;
+  padding-bottom: 10px;
 }
 
 #proposal-link .section-title p {
@@ -942,10 +947,26 @@ section {
   width: 100%;
 }
 
+.document-wrapper {
+  width: 140px;
+  height: 80px;
+}
+
+@media (max-width: 1200px) and (min-width: 992px) {
+  .document-wrapper {
+    width: 120px;
+    height: 85px;
+  }
+}
+
+p.document-name {
+  margin-bottom: 5px;
+}
+
 .leftLst {
   position: absolute;
   margin: auto;
-  top: 55px;
+  top: 47px;
   left: 12px;
   bottom: 0;
   background: linear-gradient(to left, transparent, #2626263B);
@@ -959,7 +980,7 @@ section {
 .rightLst {
   position: absolute;
   margin: auto;
-  top: 55px;
+  top: 47px;
   right: 12px;
   bottom: 0;
   background: linear-gradient(to right, transparent, #2626263B);
@@ -996,7 +1017,7 @@ section {
   display: inline-block;
   vertical-align: middle;
   left: 0;
-  margin: 10px;
+  margin: 6px 10px;
   text-align: center;
   overflow: hidden;
   padding: 5px;

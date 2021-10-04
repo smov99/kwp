@@ -39,6 +39,7 @@ class SessionEvent(BaseModel):
         on_delete=models.CASCADE,
         related_name='events'
     )
+    document_name = models.CharField(max_length=255, blank=True, null=True)
     event_type = models.CharField(max_length=255)
     event_name = models.CharField(max_length=255)
     message = models.TextField(blank=True, null=True)

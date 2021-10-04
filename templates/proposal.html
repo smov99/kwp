@@ -102,7 +102,7 @@
             <div class="section-title">
               <p>{% trans "Sus documentos" %}</p>
             </div>
-            <div class="documents-main">
+            <div class="documents-main dynamic">
               <div class="rescarousel" data-items="2,3,4" data-slide="1">
                 <div class="rescarousel-inner">
                   {% for _ ,document in documents.items %}
@@ -137,7 +137,7 @@
             <div class="section-title">
               <p>{% trans "Kiwapower recusos" %}</p>
             </div>
-            <div class="documents-main">
+            <div class="documents-main resources">
               <div class="rescarousel" data-items="2,3,4" data-slide="1">
                 <div class="rescarousel-inner">
                   {% for file in static_resources %}

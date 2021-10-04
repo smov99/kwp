@@ -257,7 +257,9 @@
     if (window.location.href.includes('pdf')) {
       $(window).on('load', function () {
         $(window).on('unload', function () {
-          eventsAjax('Interaction with Proposal', 'Close');
+          var re = /.*kwp\/([\s\S]+?)\.pdf/;
+          var doc_name = $('iframe.embed-responsive-item').attr('src').match(re)[1].replaceAll("%20", " ");
+          eventsAjax('Interaction with Proposal', 'Close', '', '', ''+doc_name);
         });
       });
     } else {
@@ -392,6 +394,7 @@
   var itemsMainDiv = ('.rescarousel');
   var itemsDiv = ('.rescarousel-inner');
   var itemWidth = "";
+  var cssItemWidth = $('.document-wrapper').width();
     $('.leftLst, .rightLst').click(function () {
       var condition = $(this).hasClass("leftLst");
       if(condition)
@@ -414,13 +417,15 @@
     var itemsSplit = '';
     var sampwidth = $(itemsMainDiv).width();
     var bodyWidth = $('.documents-main').width();
+    var bodyDynamic = '.documents-main.dynamic';
+    var bodyStatic = '.documents-main.resources';
     $(itemsDiv).each(function() {
       id=id+1;
       var itemNumbers = $(this).find(itemClass).length;
         btnParentSb = $(this).parent().attr(dataItems);
         itemsSplit = btnParentSb.split(',');
         $(this).parent().attr("id","ResSlid"+id);
-      if(600>bodyWidth>=375)
+      if(bodyWidth>=375 && bodyWidth<900)
       {
         incno=itemsSplit[1];
         itemWidth = sampwidth/incno;
@@ -430,7 +435,7 @@
         incno=itemsSplit[0];
         itemWidth = sampwidth/incno;
       }
-      else {
+      else if (bodyWidth>=900) {
         incno=itemsSplit[2];
         itemWidth = sampwidth/incno;
       }
@@ -442,7 +447,18 @@
       $(".leftLst").addClass("d-none");
       $(".rightLst").removeClass("d-none");
 
+      if ($(bodyDynamic).width()>=(
+          cssItemWidth*document.querySelector(bodyDynamic).getElementsByClassName('item').length)) {
+        $(bodyDynamic).find('.rightLst').addClass("d-none");
+      }
+
+      if ($(bodyStatic).width()>=(
+          cssItemWidth*document.querySelector(bodyStatic).getElementsByClassName('item').length)) {
+        $(bodyStatic).find('.rightLst').addClass("d-none");
+      }
+
     });
+    console.log(id)
   }
 
   function rescarousel(e, el, s){
@@ -473,6 +489,7 @@
       }
       $(el+' '+itemsDiv).css('transform','translateX('+-translateXval+'px)');
   }
+
   function click(ell,ee){
     var Parent ="#"+$(ee).parent().attr("id");
     var slide = $(Parent).attr("data-slide");

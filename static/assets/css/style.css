@@ -952,6 +952,13 @@ section {
   height: 80px;
 }
 
+@media (max-width: 1200px) and (min-width: 992px) {
+  .document-wrapper {
+    width: 120px;
+    height: 85px;
+  }
+}
+
 p.document-name {
   margin-bottom: 5px;
 }

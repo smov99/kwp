@@ -1,5 +1,7 @@
 import base64
 import os
+import boto3
+from botocore.exceptions import ClientError
 import requests
 from datetime import datetime, timedelta
 import functools
@@ -13,6 +15,10 @@ from django.shortcuts import redirect
 
 from kwp import settings
 import proposal.models as models
+
+s3 = boto3.session.Session(aws_access_key_id=settings.KWP_AWS_KEY, aws_secret_access_key=settings.KWP_AWS_SECRET)
+s3_client = s3.client('s3')
+s3_resource = s3.resource('s3').Bucket(settings.KWP_S3)
 
 
 def clock(func):
@@ -417,9 +423,63 @@ def get_creator_img(url, request):
     return img64
 
 
+def s3_file_exists(file_name, file_belonging):
+    if file_belonging == 'dynamic':
+        file_prefix = settings.KWP_S3_PROPOSAL_DOCS
+    elif file_belonging == 'static':
+        file_prefix = settings.KWP_S3_RESOURCES
+    try:
+        s3_client.head_object(
+            Bucket=settings.KWP_S3,
+            Key=f'{file_prefix}{file_name}.'
+        )
+    except ClientError:
+        return False
+    return True
+
+
+def s3_upload_file(file_name, file_belonging):
+    if file_belonging == 'dynamic':
+        file_prefix = settings.KWP_S3_PROPOSAL_DOCS
+    elif file_belonging == 'static':
+        file_prefix = settings.KWP_S3_RESOURCES
+    s3_client.upload_file(
+        file_name,
+        settings.KWP_S3,
+        f'{file_prefix}{file_name}'
+    )
+
+
+def s3_download_file(file_name, file_belonging):
+    if file_belonging == 'dynamic':
+        file_prefix = settings.KWP_S3_PROPOSAL_DOCS
+    elif file_belonging == 'static':
+        file_prefix = settings.KWP_S3_RESOURCES
+    s3_resource.download_file(
+        f'{file_prefix}{file_name}',
+        os.path.join(settings.MEDIA_ROOT, file_name)
+    )
+
+
 def write_file(file_path, bytes_document):
     with open(file_path, 'wb') as doc:
         doc.write(bytes_document)
+
+
+def get_single_dynamic_file(document_id, file_name, document_path, request=None):
+    if not os.path.isfile(document_path):
+        if s3_file_exists(file_name, 'dynamic'):
+            s3_download_file(file_name, 'dynamic')
+        else:
+            document_link = get_document_link(document_id, request)
+            bytes_document = get_document(document_link, request)
+            s3_upload_file(file_name, 'dynamic')
+            try:
+                write_file(document_path, bytes_document)
+            except FileExistsError:
+                pass
+        return True
+    return False
 
 
 def get_dynamic_files_for_review(proposal_id, request):
@@ -438,18 +498,15 @@ def get_dynamic_files_for_review(proposal_id, request):
             single_response = dict()
             single_response['title'] = ' '.join(str(document_information.get('Title')).split('_'))
             document_id = document_information.get('Id')
-            document_link = get_document_link(document_id, request)
-            bytes_document = get_document(document_link, request)
             file_name = f"{document_information.get('Title')}.{document_information.get('FileExtension')}"
             document_path = os.path.join(settings.MEDIA_ROOT, file_name)
             single_response['file_name'] = file_name
             single_response['document_link'] = os.path.join(settings.MEDIA_URL, file_name)
             single_response['document_id'] = document_id
+            single_response['document_path'] = document_path
             response[document_id] = single_response
-            try:
-                write_file(document_path, bytes_document)
-            except FileExistsError:
-                pass
+            if 'pdf' not in file_name:
+                get_single_dynamic_file(document_id, file_name, document_path, request)
         return response
     else:
         return False
@@ -463,9 +520,7 @@ def get_static_resources_file(content_document_id):
     :return: Document body and title.
     """
     single_document = get_single_document(content_document_id)
-    if single_document:
-        document_link = get_document_link(content_document_id)
-        bytes_document = get_document(document_link)
+    if single_document is not None:
         try:
             file_extension = single_document['FileExtension']
         except:
@@ -473,11 +528,17 @@ def get_static_resources_file(content_document_id):
         else:
             file_name = f"{content_document_id}.{file_extension}"
             document_path = os.path.join(settings.MEDIA_ROOT, file_name)
-            try:
-                write_file(document_path, bytes_document)
-            except FileExistsError:
-                os.remove(document_path)
-                write_file(document_path, bytes_document)
+            if s3_file_exists(file_name, 'static'):
+                s3_download_file(file_name, 'static')
+            else:
+                document_link = get_document_link(content_document_id)
+                bytes_document = get_document(document_link)
+                try:
+                    write_file(document_path, bytes_document)
+                except FileExistsError:
+                    os.remove(document_path)
+                    write_file(document_path, bytes_document)
+                s3_upload_file(file_name, 'static')
             return file_extension
 
 

@@ -127,4 +127,4 @@ class StaticResourcesAdmin(TranslationAdmin):
     list_display_links = ('file_description',)
     ordering = ('-created',)
     list_filter = ('salesforce_category',)
-    exclude = ('file_extension',)
+    exclude = ('file_extension', 's3_file_location')

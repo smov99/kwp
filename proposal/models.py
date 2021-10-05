@@ -88,5 +88,6 @@ class StaticResources(BaseModel):
     def save(self, *args, **kwargs):
         try:
             self.file_extension = services.get_static_resources_file(self.salesforce_file_id)
+            self.s3_file_location = f'{settings.KWP_S3_RESOURCES}{self.salesforce_file_id}.{self.file_extension}'
         finally:
             super(StaticResources, self).save(*args, **kwargs)

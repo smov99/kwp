@@ -124,9 +124,10 @@ class ProposalView(View):
 
     def post(self, request, proposal_id):
         if request.POST['url'] == request.META['HTTP_REFERER']:
-            document = request.session['documents']
-            file_name = document['file_name']
-            os.remove(os.path.join(settings.MEDIA_ROOT, file_name))
+            documents = request.session['documents'].items()
+            for _, document in documents:
+                file_name = document['file_name']
+                os.remove(os.path.join(settings.MEDIA_ROOT, file_name))
         return HttpResponse({'ok': True})
 
 
@@ -145,6 +146,11 @@ class ProposalPDFView(View):
             document_title = document.file_description
         else:
             document = request.session['documents'][document_id]
+            services.get_single_dynamic_file(
+                document_id,
+                document.get('file_name'),
+                document.get('document_path'),
+                request)
             document_link = document['document_link']
             document_title = document['title']
         return render(request, 'pdf.html', {'proposal_id': proposal_id,
@@ -168,6 +174,12 @@ class Viewer(View):
                 document_name = document.file_description
             else:
                 document = request.session['documents'][document_id]
+                services.get_single_dynamic_file(
+                    document_id,
+                    document.get('file_name'),
+                    document.get('document_path'),
+                    request
+                )
                 document_link = document['document_link']
                 document_name = document['file_name']
         except KeyError:

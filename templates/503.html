@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% load static i18n %}
+
+{% block title %}
+{% trans 'Servicio no disponible' %} - Kiwapower
+{% endblock title %}
+
+{% block header %}
+  {% include 'error_header.html' %}
+{% endblock header %}
+
+{% block introduction %}
+<section id="introduction-error" class="d-flex align-items-center">
+
+  <div class="container-fluid">
+    <div class="row justify-content-center">
+      <div class="col-xl-10">
+          <h1>503</h1>
+          <h3>{% trans 'Servicio no disponible' %}</h3>
+      </div>
+    </div>
+  </div>
+
+</section><!-- End introduction -->
+{% endblock introduction %}

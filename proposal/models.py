@@ -60,9 +60,10 @@ class ErrorLog(BaseModel):
         blank=True,
         null=True
     )
+    error_type = models.CharField(max_length=20, default='Salesforce')
     api_call_type = models.CharField(max_length=255, blank=True, null=True)
     sf_object = models.CharField(max_length=255, blank=True, null=True)
-    sf_error = models.TextField(blank=True, null=True)
+    error = models.TextField(blank=True, null=True)
 
 
 class StaticResources(BaseModel):

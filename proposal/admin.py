@@ -98,16 +98,16 @@ class SessionEventAdmin(admin.ModelAdmin):
 @admin.register(ErrorLog)
 class ErrorLogAdmin(admin.ModelAdmin):
     model = ErrorLog
-    list_display = ('session_id', 'id', 'created', 'api_call_type', 'sf_object', 'sf_error')
+    list_display = ('session_id', 'id', 'created', 'error_type', 'api_call_type', 'sf_object', 'error')
     ordering = ('-created',)
-    search_fields = ('sf_object', 'sf_error')
-    list_filter = ('sf_object', 'api_call_type')
+    search_fields = ('sf_object', 'error', 'error_type')
+    list_filter = ('sf_object', 'api_call_type', 'error_type')
     list_per_page = 10
-    list_display_links = None
+    list_display_links = ('id', 'error')
     actions = None
     has_add_permission = false
-    has_delete_permission = false
     log_change = false
+    readonly_fields = tuple(field.name for field in ErrorLog._meta.get_fields())
 
     class Media:
         js = ['assets/js/menu_filter_collapse.js']

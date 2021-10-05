@@ -108,12 +108,28 @@ def sf_api_call(action, parameters={}, method='get', data={}, request=None, sf_o
             else:
                 return r.json()
         else:
-            create_error_message(r, method, request, sf_object)
+            create_error_message(
+                sf_response=r,
+                method=method,
+                request=request,
+                sf_object=sf_object
+            )
     else:
-        create_error_message(None, method, request, sf_object)
+        create_error_message(
+            method=method,
+            request=request,
+            sf_object=sf_object
+        )
 
 
-def create_error_message(sf_response, method, request=None, sf_object=None, error_message=None):
+def create_error_message(
+        method=None,
+        sf_response=None,
+        request=None,
+        sf_object=None,
+        error_message=None,
+        error_type='Salesforce'
+):
     try:
         if error_message is None:
             error_message = ' '.join(tuple(string.strip() for string in sf_response.json()[0].get('message').split()))
@@ -129,7 +145,8 @@ def create_error_message(sf_response, method, request=None, sf_object=None, erro
         session_id_id=session_id,
         api_call_type=method,
         sf_object=sf_object,
-        sf_error=error_message
+        error=error_message,
+        error_type=error_type
     )
 
 

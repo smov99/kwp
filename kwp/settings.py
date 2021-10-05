@@ -61,6 +61,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django_user_agents.middleware.UserAgentMiddleware',
+    'kwp.middleware.ErrorHandlerMiddleware',
 ]
 
 ROOT_URLCONF = 'kwp.urls'

@@ -56,7 +56,6 @@
 
     var iframeInput = document.getElementById('pageNumber'),
       docContainer = document.getElementById('viewerContainer'),
-      downloadBtn = document.getElementById('download'),
       inputVal = $(iframeInput),
       valDict = {},
       startPage = new Date().getTime(),
@@ -67,8 +66,8 @@
     valDict.oldVal = inputVal.val()
     eventsAjax('Interaction with Proposal', 'Opened page 1')
 
-    $(downloadBtn).on('click', function () {
-      eventsAjax('Interaction with Proposal', 'Downloaded');
+    $('.downloadMobile, .downloadDesktop').on('click', function () {
+      eventsAjax('Interaction with Proposal', 'Download');
     })
 
     $(docContainer).scroll(function() {

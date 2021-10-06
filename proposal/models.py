@@ -1,3 +1,5 @@
+import os
+
 from django.db import models
 
 import proposal.services as services
@@ -68,8 +70,8 @@ class ErrorLog(BaseModel):
 
 class StaticResources(BaseModel):
     file_description = models.CharField(max_length=255, blank=True, null=True, unique=True)
-    s3_file_location = models.TextField(unique=True, blank=True, null=True)
-    salesforce_file_id = models.CharField(max_length=255, unique=True)
+    s3_file_location = models.TextField(blank=True, null=True)
+    document = models.FileField(null=True, blank=True)
     salesforce_category = models.CharField(
         max_length=50,
         unique=True,
@@ -81,14 +83,18 @@ class StaticResources(BaseModel):
             ) for category in settings.STATIC_RESOURCES
         )
     )
-    file_extension = models.CharField(max_length=50, blank=True, null=True)
 
     def __str__(self):
         return self.file_description
 
     def save(self, *args, **kwargs):
+        self.document.name = f"{self.salesforce_category}.{self.document.name.split('.')[1]}"
+        self.s3_file_location = f'{settings.KWP_S3_RESOURCES}{self.document.name}'
         try:
-            self.file_extension = services.get_static_resources_file(self.salesforce_file_id)
-            self.s3_file_location = f'{settings.KWP_S3_RESOURCES}{self.salesforce_file_id}.{self.file_extension}'
-        finally:
-            super(StaticResources, self).save(*args, **kwargs)
+            services.write_file_in_memory(self.document.path, self.document.file)
+        except:
+            os.remove(self.document.path)
+            services.write_file_in_memory(self.document.path, self.document.file)
+        services.s3_upload_file(self.document.name, 'static')
+        os.remove(self.document.path)
+        super(StaticResources, self).save(*args, **kwargs)

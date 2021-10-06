@@ -106,8 +106,7 @@ class ProposalView(View):
             client_name = creator['client_name']
             img = services.get_creator_img(creator['MediumPhotoUrl'], request)
             creator_name = creator['Name']
-            proposal_static_resources, documents_id = services.get_static_resources_to_review(proposal)
-            request.session['documents_id'] = documents_id
+            proposal_static_resources = services.get_static_resources_to_review(proposal)
             return render(request, 'proposal.html', {'proposal_id': proposal_id,
                                                      'sections': sections,
                                                      'message': welcome_message,
@@ -137,11 +136,11 @@ class ProposalPDFView(View):
             services.additional_email_verification(request, proposal_id)
         except KeyError:
             raise Http404('email')
-        if document_id in request.session['documents_id']:
+        if document_id in settings.STATIC_RESOURCES:
             document = services.get_single_static_document(document_id)
             document_link = os.path.join(
                 settings.MEDIA_URL,
-                f'{document.salesforce_file_id}.{document.file_extension}'
+                document.document.name
             )
             document_title = document.file_description
         else:
@@ -165,11 +164,11 @@ class Viewer(View):
     def get(self, request, document_id):
         try:
             proposal_id = request.session['proposal_id']
-            if document_id in request.session['documents_id']:
+            if document_id in settings.STATIC_RESOURCES:
                 document = services.get_single_static_document(document_id)
                 document_link = os.path.join(
                     settings.MEDIA_URL,
-                    f'{document.salesforce_file_id}.{document.file_extension}'
+                    document.document.name
                 )
                 document_name = document.file_description
             else:

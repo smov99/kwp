@@ -460,8 +460,9 @@ def s3_upload_file(file_name, file_belonging):
         file_prefix = settings.KWP_S3_PROPOSAL_DOCS
     elif file_belonging == 'static':
         file_prefix = settings.KWP_S3_RESOURCES
+    file_path = os.path.join(settings.MEDIA_ROOT, file_name)
     s3_client.upload_file(
-        file_name,
+        file_path,
         settings.KWP_S3,
         f'{file_prefix}{file_name}'
     )
@@ -481,6 +482,12 @@ def s3_download_file(file_name, file_belonging):
 def write_file(file_path, bytes_document):
     with open(file_path, 'wb') as doc:
         doc.write(bytes_document)
+
+
+def write_file_in_memory(file_path, document):
+    with open(file_path, 'wb') as doc:
+        for chunk in document.chunks():
+            doc.write(chunk)
 
 
 def get_single_dynamic_file(document_id, file_name, document_path, request=None):
@@ -529,65 +536,33 @@ def get_dynamic_files_for_review(proposal_id, request):
         return False
 
 
-def get_static_resources_file(content_document_id):
-    """Getting static resources file.
-
-    :param content_document_id: Salesforce document ID.
-
-    :return: Document body and title.
-    """
-    single_document = get_single_document(content_document_id)
-    if single_document is not None:
-        try:
-            file_extension = single_document['FileExtension']
-        except:
-            return None
-        else:
-            file_name = f"{content_document_id}.{file_extension}"
-            document_path = os.path.join(settings.MEDIA_ROOT, file_name)
-            if s3_file_exists(file_name, 'static'):
-                s3_download_file(file_name, 'static')
-            else:
-                document_link = get_document_link(content_document_id)
-                bytes_document = get_document(document_link)
-                try:
-                    write_file(document_path, bytes_document)
-                except FileExistsError:
-                    os.remove(document_path)
-                    write_file(document_path, bytes_document)
-                s3_upload_file(file_name, 'static')
-            return file_extension
-
-
 def get_static_resources_to_review(proposal):
     response = list()
-    documents_id = list()
     for category in settings.STATIC_RESOURCES:
         if proposal[category]:
             category_record = models.StaticResources.objects.get(salesforce_category=category)
             if not os.path.isfile(
                     os.path.join(
                         settings.MEDIA_ROOT,
-                        f"{category_record.salesforce_file_id}.{category_record.file_extension}"
+                        category_record.document.name
                     )
             ):
-                get_static_resources_file(category_record.salesforce_file_id)
+                s3_download_file(category_record.document.name, 'static')
             response.append(category_record)
-            documents_id.append(category_record.salesforce_file_id)
-    if not len(response) and not len(documents_id):
+    if not len(response):
         response = False
-    return response, documents_id
+    return response
 
 
-def get_single_static_document(document_id):
-    category_record = models.StaticResources.objects.get(salesforce_file_id=document_id)
+def get_single_static_document(category):
+    category_record = models.StaticResources.objects.get(salesforce_category=category)
     if not os.path.isfile(
             os.path.join(
                 settings.MEDIA_ROOT,
-                f"{category_record.salesforce_file_id}.{category_record.file_extension}"
+                category_record.document.name
             )
     ):
-        get_static_resources_file(category_record.salesforce_file_id)
+        s3_download_file(category_record.document.name, 'static')
     return category_record
 
 

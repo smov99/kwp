@@ -497,11 +497,11 @@ def get_single_dynamic_file(document_id, file_name, document_path, request=None)
         else:
             document_link = get_document_link(document_id, request)
             bytes_document = get_document(document_link, request)
-            s3_upload_file(file_name, 'dynamic')
             try:
                 write_file(document_path, bytes_document)
             except FileExistsError:
                 pass
+            s3_upload_file(file_name, 'dynamic')
         return True
     return False
 

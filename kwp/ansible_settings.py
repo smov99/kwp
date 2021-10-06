@@ -94,8 +94,8 @@ ENV = 'dev'
 
 # S3
 KWP_S3 = 'kwp-001'
-KWP_S3_RESOURCES = '/dev/resources/'
-KWP_S3_PROPOSAL_DOCS = '/dev/proposal-docs/'
+KWP_S3_RESOURCES = 'dev/resources/'
+KWP_S3_PROPOSAL_DOCS = 'dev/proposal-docs/'
 
 # list of resources, non case sensitive
 STATIC_RESOURCES = [

@@ -242,7 +242,6 @@
 
   $('.download.btn-confirmation').click(function (e) {
     var document_name = $(this).attr('data-document-name');
-    e.preventDefault();
 
     eventsAjax(
       'Interaction with Proposal',
@@ -458,7 +457,6 @@
       }
 
     });
-    console.log(id)
   }
 
   function rescarousel(e, el, s){

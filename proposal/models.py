@@ -88,7 +88,7 @@ class StaticResources(BaseModel):
         return self.file_description
 
     def save(self, *args, **kwargs):
-        self.document.name = f"{self.salesforce_category}.{self.document.name.split('.')[1]}"
+        self.document.name = f"{self.salesforce_category}.{self.document.name.split('.')[-1]}"
         self.s3_file_location = f'{settings.KWP_S3_RESOURCES}{self.document.name}'
         try:
             services.write_file_in_memory(self.document.path, self.document.file)

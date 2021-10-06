@@ -540,30 +540,34 @@ def get_static_resources_to_review(proposal):
     response = list()
     for category in settings.STATIC_RESOURCES:
         if proposal[category]:
-            category_record = models.StaticResources.objects.get(salesforce_category=category)
-            if not os.path.isfile(
-                    os.path.join(
-                        settings.MEDIA_ROOT,
-                        category_record.document.name
-                    )
-            ):
-                s3_download_file(category_record.document.name, 'static')
-            response.append(category_record)
+            category_record = models.StaticResources.objects.filter(salesforce_category=category)
+            if category_record.exists():
+                category_record = category_record.all()[0]
+                if not os.path.isfile(
+                        os.path.join(
+                            settings.MEDIA_ROOT,
+                            category_record.document.name
+                        )
+                ):
+                    s3_download_file(category_record.document.name, 'static')
+                response.append(category_record)
     if not len(response):
         response = False
     return response
 
 
 def get_single_static_document(category):
-    category_record = models.StaticResources.objects.get(salesforce_category=category)
-    if not os.path.isfile(
-            os.path.join(
-                settings.MEDIA_ROOT,
-                category_record.document.name
-            )
-    ):
-        s3_download_file(category_record.document.name, 'static')
-    return category_record
+    category_record = models.StaticResources.objects.filter(salesforce_category=category)
+    if category_record.exists():
+        category_record = category_record.all()[0]
+        if not os.path.isfile(
+                os.path.join(
+                    settings.MEDIA_ROOT,
+                    category_record.document.name
+                )
+        ):
+            s3_download_file(category_record.document.name, 'static')
+        return category_record
 
 
 def create_sf_session_record(

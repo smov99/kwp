@@ -71,6 +71,7 @@ class ErrorLog(BaseModel):
 class StaticResources(BaseModel):
     file_description = models.CharField(max_length=255, blank=True, null=True, unique=True)
     s3_file_location = models.TextField(blank=True, null=True)
+    is_active = models.BooleanField(default=False)
     document = models.FileField(null=True, blank=True)
     salesforce_category = models.CharField(
         max_length=50,
@@ -88,13 +89,17 @@ class StaticResources(BaseModel):
         return self.file_description
 
     def save(self, *args, **kwargs):
-        self.document.name = f"{self.salesforce_category}.{self.document.name.split('.')[-1]}"
-        self.s3_file_location = f'{settings.KWP_S3_RESOURCES}{self.document.name}'
-        try:
-            services.write_file_in_memory(self.document.path, self.document.file)
-        except:
+        if self.document:
+            self.document.name = f"{self.salesforce_category}.{self.document.name.split('.')[-1]}"
+            self.s3_file_location = f'{settings.KWP_S3_RESOURCES}{self.document.name}'
+            try:
+                services.write_file_in_memory(self.document.path, self.document.file)
+            except:
+                os.remove(self.document.path)
+                services.write_file_in_memory(self.document.path, self.document.file)
+            services.s3_upload_file(self.document.name, 'static')
             os.remove(self.document.path)
-            services.write_file_in_memory(self.document.path, self.document.file)
-        services.s3_upload_file(self.document.name, 'static')
-        os.remove(self.document.path)
+        else:
+            self.is_active = False
+            self.s3_file_location = None
         super(StaticResources, self).save(*args, **kwargs)

@@ -186,3 +186,6 @@ msgstr "Your documents"
 
 msgid "Kiwapower recusos"
 msgstr "Kiwapower resources"
+
+msgid "Servicio no disponible"
+msgstr "Service Unavailable"

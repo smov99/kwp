@@ -1,5 +1,7 @@
 import base64
 import os
+import traceback
+
 import boto3
 from botocore.exceptions import ClientError
 import requests
@@ -7,10 +9,12 @@ from datetime import datetime, timedelta
 import functools
 import time
 
+from django.db import transaction
+from django.template import loader
 from user_agents import parse
 from ipdata import ipdata
 
-from django.http import Http404
+from django.http import Http404, HttpResponse
 from django.shortcuts import redirect
 
 from kwp import settings
@@ -168,9 +172,10 @@ def get_geolocation(client_ip):
 
 def get_user_device(request):
     device = parse(request.META['HTTP_USER_AGENT'])
-    response = device.os.family + ' ' + '.'.join(map(str, device.os.version))
+    response = f'{device.os.family} {".".join(map(str, device.os.version))}'
     if device.device.family != 'Other':
-        response += ', ' + device.device.brand + ' ' + device.device.family
+        response += f', {device.device.brand} {device.device.family}'
+    response += f', {device.browser.family} {".".join(map(str, device.browser.version))}'
     return response
 
 
@@ -539,8 +544,8 @@ def get_dynamic_files_for_review(proposal_id, request):
 def get_static_resources_to_review(proposal):
     response = list()
     for category in settings.STATIC_RESOURCES:
-        if proposal[category]:
-            category_record = models.StaticResources.objects.filter(salesforce_category=category)
+        if proposal.get(category):
+            category_record = models.StaticResources.objects.filter(salesforce_category=category, is_active=True)
             if category_record.exists():
                 category_record = category_record.all()[0]
                 if not os.path.isfile(
@@ -557,7 +562,7 @@ def get_static_resources_to_review(proposal):
 
 
 def get_single_static_document(category):
-    category_record = models.StaticResources.objects.filter(salesforce_category=category)
+    category_record = models.StaticResources.objects.filter(salesforce_category=category, is_active=True)
     if category_record.exists():
         category_record = category_record.all()[0]
         if not os.path.isfile(

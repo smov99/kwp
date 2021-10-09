@@ -119,6 +119,7 @@ class StaticResourcesAdmin(TranslationAdmin):
         'id',
         'created',
         'file_description',
+        'is_active',
         'document',
         's3_file_location',
         'salesforce_category'
@@ -126,5 +127,5 @@ class StaticResourcesAdmin(TranslationAdmin):
     search_fields = ('file_description', 's3_file_location', 'salesforce_category')
     list_display_links = ('file_description',)
     ordering = ('-created',)
-    list_filter = ('salesforce_category',)
+    list_filter = ('salesforce_category', 'is_active')
     exclude = ('s3_file_location',)

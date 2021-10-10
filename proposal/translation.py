@@ -1,7 +1,7 @@
 from modeltranslation.translator import register, TranslationOptions
-from .models import StaticResources
+from .models import StaticResource
 
 
-@register(StaticResources)
+@register(StaticResource)
 class StaticResourcesTranslationOptions(TranslationOptions):
     fields = ('file_description',)

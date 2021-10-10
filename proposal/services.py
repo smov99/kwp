@@ -233,16 +233,16 @@ def user_email_validation(proposal_account_id, email, request=None):
     :return: contact_id and contact_account_id contained in dict.
     """
     validated_info = {}
-    email_domain = email.split('@')[1]
+    email_domain = email.split('@')[-1]
     email_responses = get_user_email_information(proposal_account_id, request=request)
     for email_response in email_responses:
+        authorized_domain = email_response['Authorized_domain__c']
         if email == email_response['Authorized_email__c']:
             validated_info['contact_id'] = email_response['Authorized_contact__c']
             validated_info['contact_account_id'] = proposal_account_id
             validated_info['is_contactcreated'] = False
             return validated_info
-        if email_domain in email_response['Authorized_domain__c'] or \
-                email_responses['Authorized_domain__c'] in email_domain:
+        if email_domain in authorized_domain or authorized_domain in email_domain:
             domain_response = email_domain_validation(email)
             try:
                 valid_email = domain_response[0]['Email']
@@ -282,13 +282,12 @@ def email_domain_validation(email):
 @timed_cache(seconds=600)
 def get_client_info(proposal_account_id, request=None):
     query = f"Select name, OwnerId from Account where id = '{proposal_account_id}'"
-    response = \
-        sf_api_call(
-            f'/services/data/{settings.SF_API_VERSION}/query/',
-            {'q': query},
-            request=request,
-            sf_object='Account'
-        )['records'][0]
+    response = sf_api_call(
+        f'/services/data/{settings.SF_API_VERSION}/query/',
+        {'q': query},
+        request=request,
+        sf_object='Account'
+    )['records'][0]
     return response
 
 
@@ -545,7 +544,7 @@ def get_static_resources_to_review(proposal):
     response = list()
     for category in settings.STATIC_RESOURCES:
         if proposal.get(category):
-            category_record = models.StaticResources.objects.filter(salesforce_category=category, is_active=True)
+            category_record = models.StaticResource.objects.filter(salesforce_category=category, is_active=True)
             if category_record.exists():
                 category_record = category_record.all()[0]
                 if not os.path.isfile(
@@ -562,7 +561,7 @@ def get_static_resources_to_review(proposal):
 
 
 def get_single_static_document(category):
-    category_record = models.StaticResources.objects.filter(salesforce_category=category, is_active=True)
+    category_record = models.StaticResource.objects.filter(salesforce_category=category, is_active=True)
     if category_record.exists():
         category_record = category_record.all()[0]
         if not os.path.isfile(

@@ -371,6 +371,8 @@
         e.preventDefault();
         formAjax(email);
       } else {
+        $(document.body).removeClass('loaded')
+        $('#preloader').removeClass('loaded')
         $(this).find('input[type="submit"]').attr("disabled", true);
         return true;
       }

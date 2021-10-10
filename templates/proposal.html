@@ -113,7 +113,7 @@
                         {% if 'pdf' in document.file_name %}
                         <input type="button" class="btn-confirmation proposal-pdf-link" data-document-id="{{document.document_id}}" data-document-name="{{ document.title }}" value="{% trans 'Ver' %}" />
                         {% else %}
-                        <a href="{{document.document_link}}" class="download btn-confirmation" data-document-id="{{document.document_id}}" download="{{ document.file_name }}">{% trans 'Descargar' %}</a>
+                        <a href="{{document.document_link}}" class="download btn-confirmation" data-document-id="{{document.document_id}}" data-document-name="{{ document.title }}" download="{{ document.file_name }}">{% trans 'Descargar' %}</a>
                         {% endif %}
                       </div>
                     </div>
@@ -146,9 +146,9 @@
                       <div class="document-wrapper">
                         <p class="document-name">{{ file.file_description }}</p>
                         {% if 'pdf' in file.document.name %}
-                        <input type="button" class="btn-confirmation proposal-pdf-link" data-document-id="{{file.salesforce_category}}" data-document-id="{{document.file_description}}" value="{% trans 'Ver' %}" />
+                        <input type="button" class="btn-confirmation proposal-pdf-link" data-document-id="{{file.salesforce_category}}" data-document-name="{{ file.salesforce_category}}" value="{% trans 'Ver' %}" />
                         {% else %}
-                        <a href="{{ media_url }}{{ file.document.name }}" class="download btn-confirmation" data-document-id="{{document.file_description}}" download="{{ file.file_description }}">{% trans 'Descargar' %}</a>
+                        <a href="{{ media_url }}{{ file.document.name }}" class="download btn-confirmation" data-document-id="{{file.salesforce_category}}" data-document-name="{{ file.salesforce_category}}" download="{{ file.file_description }}">{% trans 'Descargar' %}</a>
                         {% endif %}
                       </div>
                     </div>

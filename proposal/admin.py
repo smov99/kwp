@@ -6,7 +6,7 @@ from django.utils.safestring import mark_safe
 from modeltranslation.admin import TranslationAdmin
 from rangefilter.filters import DateTimeRangeFilter
 
-from .models import Session, SessionEvent, ErrorLog, StaticResources
+from .models import Session, SessionEvent, ErrorLog, StaticResource
 
 
 def false(*args, **kwargs):
@@ -113,7 +113,7 @@ class ErrorLogAdmin(admin.ModelAdmin):
         js = ['assets/js/menu_filter_collapse.js']
 
 
-@admin.register(StaticResources)
+@admin.register(StaticResource)
 class StaticResourcesAdmin(TranslationAdmin):
     list_display = (
         'id',

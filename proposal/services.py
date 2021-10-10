@@ -1,6 +1,5 @@
 import base64
 import os
-import traceback
 
 import boto3
 from botocore.exceptions import ClientError
@@ -9,12 +8,10 @@ from datetime import datetime, timedelta
 import functools
 import time
 
-from django.db import transaction
-from django.template import loader
 from user_agents import parse
 from ipdata import ipdata
 
-from django.http import Http404, HttpResponse
+from django.http import Http404
 from django.shortcuts import redirect
 
 from kwp import settings
@@ -481,6 +478,10 @@ def s3_download_file(file_name, file_belonging):
         f'{file_prefix}{file_name}',
         os.path.join(settings.MEDIA_ROOT, file_name)
     )
+
+
+def s3_delete_static_file(file_name):
+    return s3_resource.Object(file_name).delete()
 
 
 def write_file(file_path, bytes_document):

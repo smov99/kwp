@@ -110,5 +110,7 @@ class StaticResource(BaseModel):
                 os.remove(self.document.path)
         else:
             self.is_active = False
+            if self.s3_file_location:
+                services.s3_delete_static_file(self.s3_file_location)
             self.s3_file_location = None
         super(StaticResource, self).save(*args, **kwargs)

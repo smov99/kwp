@@ -15,9 +15,12 @@ class ErrorHandlerMiddleware:
         return response
 
     def process_exception(self, request, exception):
-        create_error_message(
-            request=request,
-            error_message=traceback.format_exc(),
-            error_type=exception.__class__.__name__
-        )
-        return HttpResponse(loader.render_to_string('503.html'), status=503)
+        exception_name = exception.__class__.__name__
+        accepted_exceptions = ['Http404', 'Http403', 'Http400']
+        if exception_name not in accepted_exceptions:
+            create_error_message(
+                request=request,
+                error_message=traceback.format_exc(),
+                error_type=exception.__class__.__name__
+            )
+            return HttpResponse(loader.render_to_string('503.html'), status=503)

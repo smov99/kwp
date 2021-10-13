@@ -232,31 +232,34 @@ def user_email_validation(proposal_account_id, email, request=None):
     validated_info = {}
     email_domain = email.split('@')[-1]
     email_responses = get_user_email_information(proposal_account_id, request=request)
-    for email_response in email_responses:
-        authorized_domain = email_response['Authorized_domain__c']
-        if email == email_response['Authorized_email__c']:
-            validated_info['contact_id'] = email_response['Authorized_contact__c']
-            validated_info['contact_account_id'] = proposal_account_id
-            validated_info['is_contactcreated'] = False
-            return validated_info
-        if email_domain in authorized_domain or authorized_domain in email_domain:
-            domain_response = email_domain_validation(email)
-            try:
-                valid_email = domain_response[0]['Email']
-            except:
-                valid_email = False
-            if valid_email:
-                if valid_email == email:
-                    validated_info['contact_id'] = domain_response[0]['Id']
-                    validated_info['contact_account_id'] = domain_response[0]['AccountId']
-                    validated_info['is_contactcreated'] = False
-                    return validated_info
-            else:
+    if len(email_responses):
+        for email_response in email_responses:
+            authorized_domain = email_response['Authorized_domain__c']
+            if email == email_response['Authorized_email__c']:
+                validated_info['contact_id'] = email_response['Authorized_contact__c']
                 validated_info['contact_account_id'] = proposal_account_id
-                created_contact_response = create_contact(email, validated_info['contact_account_id'])
-                validated_info['contact_id'] = created_contact_response['id']
-                validated_info['is_contactcreated'] = True
+                validated_info['is_contactcreated'] = False
                 return validated_info
+            if authorized_domain:
+                authorized_domain = authorized_domain.lower()
+                if email_domain in authorized_domain or authorized_domain in email_domain:
+                    domain_response = email_domain_validation(email)
+                    try:
+                        valid_email = domain_response[0]['Email']
+                    except:
+                        valid_email = False
+                    if valid_email:
+                        if valid_email == email:
+                            validated_info['contact_id'] = domain_response[0]['Id']
+                            validated_info['contact_account_id'] = domain_response[0]['AccountId']
+                            validated_info['is_contactcreated'] = False
+                            return validated_info
+                    else:
+                        validated_info['contact_account_id'] = proposal_account_id
+                        created_contact_response = create_contact(email, validated_info['contact_account_id'])
+                        validated_info['contact_id'] = created_contact_response['id']
+                        validated_info['is_contactcreated'] = True
+                        return validated_info
     return False
 
 

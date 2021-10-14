@@ -3,7 +3,7 @@ import traceback
 from proposal.services import create_error_message
 from django.template import loader
 from django.http import HttpResponse
-from django.core.signals import got_request_exception
+from proposal.models import Session
 
 
 class ErrorHandlerMiddleware:
@@ -23,4 +23,9 @@ class ErrorHandlerMiddleware:
                 error_message=traceback.format_exc(),
                 error_type=exception.__class__.__name__
             )
+        session_id = request.session.get('session_id')
+        if session_id:
+            session = Session.objects.all().get(pk=session_id)
+            session.with_error = 'Yes'
+            session.save(update_fields=['with_error'])
             return HttpResponse(loader.render_to_string('503.html'), status=503)

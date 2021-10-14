@@ -23,6 +23,7 @@ class SessionAdmin(admin.ModelAdmin):
         'proposal_exists',
         '_email',
         'email_valid',
+        '_with_error',
         'account_id',
         'contact_id',
         'contact_created',
@@ -37,6 +38,7 @@ class SessionAdmin(admin.ModelAdmin):
         'created',
         'proposal_exists',
         'email',
+        'with_error',
         'email_valid',
         'account_id',
         'contact_id',
@@ -49,6 +51,7 @@ class SessionAdmin(admin.ModelAdmin):
     list_filter = (
         ('created', DateTimeRangeFilter),
         'proposal_exists',
+        'with_error',
         'email_valid',
         'contact_created',
         'proposal_id',
@@ -76,6 +79,10 @@ class SessionAdmin(admin.ModelAdmin):
     def _email(self, obj):
         base_url = reverse('admin:proposal_sessionevent_changelist')
         return mark_safe('<a href="{0}?session_id__id__exact={1}">{2}</a>'.format(base_url, obj.pk, obj.email))
+
+    def _with_error(self, obj):
+        base_url = reverse('admin:proposal_errorlog_changelist')
+        return mark_safe('<a href="{0}?session_id__id__exact={1}">{2}</a>'.format(base_url, obj.pk, obj.with_error))
 
     class Media:
         js = ['assets/js/menu_filter_collapse.js']

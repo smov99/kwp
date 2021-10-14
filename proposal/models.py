@@ -22,6 +22,10 @@ class Session(BaseModel):
     email_valid = models.BooleanField(default=False)
     contact_id = models.CharField(max_length=64, blank=True, null=True)
     contact_created = models.BooleanField(default=False)
+    with_error = models.CharField(max_length=64, default='No', choices=(
+        ('Yes', 'Yes'),
+        ('No', 'No')
+    ))
     message = models.CharField(max_length=255, blank=True, null=True)
     client_ip = models.CharField(max_length=64, null=True)
     client_geolocation = models.CharField(max_length=255, blank=True, null=True)

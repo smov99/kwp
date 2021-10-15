@@ -3,6 +3,7 @@ import traceback
 from proposal.services import create_error_message
 from django.template import loader
 from django.http import HttpResponse
+from django.contrib.sessions.models import Session as DjangoSession
 from proposal.models import Session
 
 
@@ -11,6 +12,8 @@ class ErrorHandlerMiddleware:
         self._get_response = get_response
 
     def __call__(self, request):
+        if 'admin' in request.get_full_path():
+            request.session.set_expiry(3600)
         response = self._get_response(request)
         return response
 
@@ -23,9 +26,9 @@ class ErrorHandlerMiddleware:
                 error_message=traceback.format_exc(),
                 error_type=exception.__class__.__name__
             )
-        session_id = request.session.get('session_id')
-        if session_id:
-            session = Session.objects.all().get(pk=session_id)
-            session.with_error = 'Yes'
-            session.save(update_fields=['with_error'])
+            session_id = request.session.get('session_id')
+            if session_id:
+                session = Session.objects.all().get(pk=session_id)
+                session.with_error = 'Yes'
+                session.save(update_fields=['with_error'])
             return HttpResponse(loader.render_to_string('503.html'), status=503)

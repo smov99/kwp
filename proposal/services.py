@@ -240,7 +240,7 @@ def user_email_validation(proposal_account_id, email, request=None):
                 validated_info['contact_account_id'] = proposal_account_id
                 validated_info['is_contactcreated'] = False
                 return validated_info
-            if authorized_domain:
+            if len(authorized_domain) and authorized_domain is str:
                 authorized_domain = authorized_domain.lower()
                 if email_domain in authorized_domain or authorized_domain in email_domain:
                     domain_response = email_domain_validation(email)

@@ -81,8 +81,11 @@ class SessionAdmin(admin.ModelAdmin):
         return mark_safe('<a href="{0}?session_id__id__exact={1}">{2}</a>'.format(base_url, obj.pk, obj.email))
 
     def _with_error(self, obj):
-        base_url = reverse('admin:proposal_errorlog_changelist')
-        return mark_safe('<a href="{0}?session_id__id__exact={1}">{2}</a>'.format(base_url, obj.pk, obj.with_error))
+        if obj.with_error == 'Yes':
+            base_url = reverse('admin:proposal_errorlog_changelist')
+            return mark_safe('<a href="{0}?session_id__id__exact={1}">{2}</a>'.format(base_url, obj.pk, obj.with_error))
+        else:
+            return mark_safe(obj.with_error)
 
     class Media:
         js = ['assets/js/menu_filter_collapse.js']

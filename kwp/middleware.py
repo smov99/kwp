@@ -3,7 +3,6 @@ import traceback
 from proposal.services import create_error_message
 from django.template import loader
 from django.http import HttpResponse
-from django.contrib.sessions.models import Session as DjangoSession
 from proposal.models import Session
 
 

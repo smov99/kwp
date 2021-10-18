@@ -109,21 +109,33 @@ main:before {
 
 #preloader .loader-section {
   position: fixed;
-  width: 100%;
-  height: 51%;
-  background: #fff;
+  width: 100vw;
+  height: 50%;
   z-index: 9998;
   -webkit-transform: translateX(0);
   -ms-transform: translateX(0);
   transform: translateX(0);
 }
 
+#preloader .loader-section:before {
+  content: "";
+  background: #fff;
+  opacity: 0.78;
+  position: absolute;
+  bottom: 0;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+
 #preloader .loader-section.section-top {
-    top: 0;
+  top: 0;
+  background: #fff url("../img/preloader_top.jpg") no-repeat center bottom;
 }
 
 #preloader .loader-section.section-bottom {
   bottom: 0;
+  background: #fff url("../img/preloader_bottom.jpg") no-repeat center top;
 }
 
 #preloader.loaded .loader-section.section-top {
@@ -328,7 +340,7 @@ main:before {
 # Introduction-Confirmation Section
 --------------------------------------------------------------*/
 #introduction {
-  width: 100%;
+  width: 100vw;
   height: 100vh;
   background-size: cover;
   position: relative;
@@ -337,10 +349,12 @@ main:before {
 
 #introduction video {
   position: absolute;
+  object-fit: cover;
   top: 50%;
   left: 50%;
   z-index: 0;
-  width: 1938px;
+  width: 100vw;
+  height: 100vh;
   transform: translate(-50%, -50%);
   opacity: 0.8;
 }

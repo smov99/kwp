@@ -94,7 +94,7 @@ class ProposalView(View):
         request.session['proposal_name'] = proposal['Name']
         request.session['proposal_account_id'] = proposal['Account__c']
         if proposal:
-            if not proposal['Published__c']:
+            if not proposal['Published__c'] and request.session.get('email') != settings.TRUSTED_EMAIL:
                 raise Http404('published')
             request.session['proposal_id'] = proposal_id
             request.session['is_proposalexist'] = proposal['Published__c']

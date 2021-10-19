@@ -26,7 +26,7 @@
     message='',
   ) {
     var _path = window.location.origin + '/events/';
-    var re = /.*kwp\/([\s\S]+?)\.pdf/;
+    var re = /.*kwp\/([\s\S]+?)$/;
     var document_name = window.location.href.match(re)[1].replaceAll("%20", " ");
     $.ajax({
       headers: {"X-CSRFToken": csrftoken},
@@ -64,10 +64,10 @@
 
 
     valDict.oldVal = inputVal.val()
-    eventsAjax('Interaction with Proposal', 'Opened page 1')
+    eventsAjax('Interaction with Document', 'Opened page 1')
 
     $('.downloadMobile, .downloadDesktop').on('click', function () {
-      eventsAjax('Interaction with Proposal', 'Download');
+      eventsAjax('Interaction with Document', 'Download');
     })
 
     $(docContainer).scroll(function() {
@@ -83,8 +83,8 @@
         endPage = new Date().getTime()
         spentTime = ((endPage - startPage) / 1000)
         if (valDict.oldVal !== '0') {
-          eventsAjax('Interaction with Proposal', 'Spent seconds on page number ' + valDict.oldVal, '' + spentTime)
-          eventsAjax('Interaction with Proposal', "Opened page " + valDict.newVal);
+          eventsAjax('Interaction with Document', 'Spent seconds on page number ' + valDict.oldVal, '' + spentTime)
+          eventsAjax('Interaction with Document', "Opened page " + valDict.newVal);
         }
         valDict.oldVal = valDict.newVal
         startPage = new Date().getTime()
@@ -99,7 +99,7 @@
     if (l > 50) {
         selected_text = selected_text.substring(0, 20) + ' ... ' + selected_text.substring(l-20, l);
     }
-    eventsAjax('Interaction with Proposal', 'Copied text: '+selected_text);
+    eventsAjax('Interaction with Document', 'Copied text: '+selected_text);
   });
 
 

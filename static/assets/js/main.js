@@ -228,7 +228,7 @@
     e.preventDefault();
 
     eventsAjax(
-      'Interaction with Proposal',
+      'Interaction with Document',
       'Open',
       '',
       '',
@@ -244,7 +244,7 @@
     var document_name = $(this).attr('data-document-name');
 
     eventsAjax(
-      'Interaction with Proposal',
+      'Interaction with Document',
       'Download',
       '',
       '',
@@ -256,9 +256,9 @@
     if (window.location.href.includes('pdf')) {
       $(window).on('load', function () {
         $(window).on('unload', function () {
-          var re = /.*kwp\/([\s\S]+?)\.pdf/;
+          var re = /.*kwp\/([\s\S]+?)$/;
           var doc_name = $('iframe.embed-responsive-item').attr('src').match(re)[1].replaceAll("%20", " ");
-          eventsAjax('Interaction with Proposal', 'Close', '', '', ''+doc_name);
+          eventsAjax('Interaction with Document', 'Close', '', '', ''+doc_name);
         });
       });
     } else {
@@ -448,14 +448,18 @@
       $(".leftLst").addClass("d-none");
       $(".rightLst").removeClass("d-none");
 
-      if ($(bodyDynamic).width()>=(
-          cssItemWidth*document.querySelector(bodyDynamic).getElementsByClassName('item').length)) {
-        $(bodyDynamic).find('.rightLst').addClass("d-none");
+      if ($(bodyDynamic).length) {
+        if ($(bodyDynamic).width()>=(
+            cssItemWidth*document.querySelector(bodyDynamic).getElementsByClassName('item').length)) {
+          $(bodyDynamic).find('.rightLst').addClass("d-none");
+        }
       }
 
-      if ($(bodyStatic).width()>=(
-          cssItemWidth*document.querySelector(bodyStatic).getElementsByClassName('item').length)) {
-        $(bodyStatic).find('.rightLst').addClass("d-none");
+      if ($(bodyStatic).length) {
+        if ($(bodyStatic).width()>=(
+            cssItemWidth*document.querySelector(bodyStatic).getElementsByClassName('item').length)) {
+          $(bodyStatic).find('.rightLst').addClass("d-none");
+        }
       }
 
     });

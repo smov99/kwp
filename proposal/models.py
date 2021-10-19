@@ -96,6 +96,7 @@ class StaticResource(BaseModel):
     def __init__(self, *args, **kwargs):
         super(StaticResource, self).__init__(*args, **kwargs)
         self.__original_document_name = self.document.name
+        self.__original_file_description = self.file_description
 
     def __str__(self):
         return self.file_description
@@ -103,7 +104,6 @@ class StaticResource(BaseModel):
     def save(self, *args, **kwargs):
         if self.document:
             if self.document.name != self.__original_document_name:
-                self.document.name = f"{self.salesforce_category}.{self.document.name.split('.')[-1]}"
                 self.s3_file_location = f'{settings.KWP_S3_RESOURCES}{self.document.name}'
                 try:
                     services.write_file_in_memory(self.document.path, self.document.file)
@@ -112,6 +112,11 @@ class StaticResource(BaseModel):
                     services.write_file_in_memory(self.document.path, self.document.file)
                 services.s3_upload_file(self.document.name, 'static')
                 os.remove(self.document.path)
+            else:
+                try:
+                    services.s3_download_file(self.document.name, 'static')
+                except FileExistsError:
+                    pass
         else:
             self.is_active = False
             if self.s3_file_location:

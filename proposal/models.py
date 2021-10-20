@@ -72,21 +72,23 @@ class ErrorLog(BaseModel):
     error = models.TextField(blank=True, null=True)
 
 
+class SalesforceCategory(BaseModel):
+    salesforce_category = models.CharField(max_length=255)
+    is_active = models.BooleanField(default=False)
+
+    class Meta:
+        verbose_name_plural = "Salesforce categories"
+
+    def __str__(self):
+        return self.salesforce_category
+
+
 class StaticResource(BaseModel):
     file_description = models.CharField(max_length=255, blank=True, null=True, unique=True)
     s3_file_location = models.TextField(blank=True, null=True)
     is_active = models.BooleanField(default=False)
     document = models.FileField(null=True, blank=True)
-    salesforce_category = models.CharField(
-        max_length=50,
-        choices=tuple(
-            (
-                category,
-                ' '.join(
-                    category.split('__')[0].split('_'))
-            ) for category in settings.STATIC_RESOURCES
-        )
-    )
+    salesforce_category = models.ForeignKey(SalesforceCategory, on_delete=models.CASCADE)
 
     __original_document_name = None
 

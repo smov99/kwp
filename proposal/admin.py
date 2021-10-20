@@ -6,7 +6,13 @@ from django.utils.safestring import mark_safe
 from modeltranslation.admin import TranslationAdmin
 from rangefilter.filters import DateTimeRangeFilter
 
-from .models import Session, SessionEvent, ErrorLog, StaticResource
+from .models import (
+    Session,
+    SessionEvent,
+    ErrorLog,
+    StaticResource,
+    SalesforceCategory
+)
 
 
 def false(*args, **kwargs):
@@ -128,14 +134,46 @@ class StaticResourcesAdmin(TranslationAdmin):
     list_display = (
         'id',
         'created',
+        'modified',
         'file_description',
         'is_active',
         'document',
         's3_file_location',
         'salesforce_category'
     )
-    search_fields = ('file_description', 's3_file_location', 'salesforce_category')
+    search_fields = (
+        'file_description',
+        's3_file_location',
+        'salesforce_category',
+        'created',
+        'modified'
+    )
     list_display_links = ('file_description',)
-    ordering = ('-created',)
+    ordering = ('-modified',)
     list_filter = ('salesforce_category', 'is_active')
     exclude = ('s3_file_location',)
+
+    def render_change_form(self, request, context, *args, **kwargs):
+        context['adminform'].form.fields['salesforce_category'].queryset = \
+            SalesforceCategory.objects.filter(is_active=True)
+        return super(StaticResourcesAdmin, self).render_change_form(request, context, *args, **kwargs)
+
+
+@admin.register(SalesforceCategory)
+class SalesforceCategoriesAdmin(admin.ModelAdmin):
+    model = SalesforceCategory
+    list_display = (
+        'created',
+        'modified',
+        '_salesforce_category',
+        'is_active'
+    )
+    ordering = ('-modified',)
+    list_display_links = ('_salesforce_category',)
+    list_filter = ('is_active',)
+
+    def _salesforce_category(self, obj):
+        try:
+            return mark_safe(' '.join(obj.salesforce_category.split('__')[0].split('_')))
+        except IndexError:
+            return mark_safe(obj.salesforce_category)

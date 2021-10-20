@@ -183,7 +183,7 @@ def get_proposal(proposal_id):
 
     :return: Proposal info
     """
-    query = f"SELECT Id,Account__c,Welcome_message__c,Description__c,Published__c,Expired_proposal__c,{''.join(tuple(category + ',' for category in settings.STATIC_RESOURCES))}Name FROM Web_Proposals__c where IsDeleted = false and Id = '{proposal_id}'"
+    query = f"SELECT Id,Account__c,Welcome_message__c,Description__c,Published__c,Expired_proposal__c,{''.join(tuple(category + ',' for category in models.SalesforceCategory.objects.values_list('salesforce_category', flat=True)))}Name FROM Web_Proposals__c where IsDeleted = false and Id = '{proposal_id}'"
     response = sf_api_call(
         f'/services/data/{settings.SF_API_VERSION}/query/',
         {'q': query},
@@ -547,9 +547,12 @@ def get_dynamic_files_for_review(proposal_id, request):
 
 def get_static_resources_to_review(proposal):
     response = list()
-    for category in settings.STATIC_RESOURCES:
+    for category in models.SalesforceCategory.objects.values_list('salesforce_category', flat=True):
         if proposal.get(category):
-            category_record = models.StaticResource.objects.filter(salesforce_category=category, is_active=True)
+            category_record = models.StaticResource.objects.filter(
+                salesforce_category__salesforce_category=category,
+                is_active=True
+            )
             if category_record.exists():
                 category_record = category_record.all()[0]
                 if not os.path.isfile(
@@ -566,7 +569,10 @@ def get_static_resources_to_review(proposal):
 
 
 def get_single_static_document(category):
-    category_record = models.StaticResource.objects.filter(salesforce_category=category, is_active=True)
+    category_record = models.StaticResource.objects.filter(
+        salesforce_category__salesforce_category=category,
+        is_active=True
+    )
     if category_record.exists():
         category_record = category_record.all()[0]
         if not os.path.isfile(

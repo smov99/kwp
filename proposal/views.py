@@ -8,7 +8,11 @@ from django.http import Http404
 
 from kwp import settings
 from faq.models import Section
-from .models import Session, SessionEvent
+from .models import (
+    Session,
+    SessionEvent,
+    SalesforceCategory
+)
 import proposal.services as services
 from .forms import VerificationForm
 
@@ -136,7 +140,9 @@ class ProposalPDFView(View):
             services.additional_email_verification(request, proposal_id)
         except KeyError:
             raise Http404('email')
-        if document_id in settings.STATIC_RESOURCES:
+        categories = request.session['categories'] = \
+            list(SalesforceCategory.objects.values_list('salesforce_category', flat=True))
+        if document_id in categories:
             document = services.get_single_static_document(document_id)
             document_link = os.path.join(
                 settings.MEDIA_URL,
@@ -164,7 +170,7 @@ class Viewer(View):
     def get(self, request, document_id):
         try:
             proposal_id = request.session['proposal_id']
-            if document_id in settings.STATIC_RESOURCES:
+            if document_id in request.session['categories']:
                 document = services.get_single_static_document(document_id)
                 document_link = os.path.join(
                     settings.MEDIA_URL,

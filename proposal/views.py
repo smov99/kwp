@@ -1,4 +1,5 @@
 import os
+import re
 
 from django.shortcuts import render, redirect
 from django.http.response import HttpResponse
@@ -20,13 +21,16 @@ from .forms import VerificationForm
 class ConfirmationView(View):
     @services.clock
     def get(self, request, proposal_id) -> HttpResponse:
-        proposal = services.get_proposal(proposal_id)
-        if proposal:
-            request.session['proposal'] = proposal
-            return render(request, 'confirmation.html', {'proposal_id': proposal_id})
+        if re.match('a0P[\w\d]{15}', proposal_id):
+            proposal = services.get_proposal(proposal_id)
+            if proposal:
+                request.session['proposal'] = proposal
+                return render(request, 'confirmation.html', {'proposal_id': proposal_id})
+            else:
+                email = request.session.get('email')
+                services.create_failed_session_record(request, proposal_id, email)
+                raise Http404()
         else:
-            email = request.session.get('email')
-            services.create_failed_session_record(request, proposal_id, email)
             raise Http404()
 
     @services.clock

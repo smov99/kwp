@@ -104,9 +104,10 @@ class ProposalView(View):
         if proposal:
             if not proposal['Published__c'] and request.session.get('email') != settings.TRUSTED_EMAIL:
                 raise Http404('published')
+            dynamic_documents = services.get_dynamic_files_for_review(proposal_id, request)
+            proposal_static_resources = services.get_static_resources_to_review(proposal)
             request.session['proposal_id'] = proposal_id
             request.session['is_proposalexist'] = proposal['Published__c']
-            dynamic_documents = services.get_dynamic_files_for_review(proposal_id, request)
             request.session['documents'] = dynamic_documents
             welcome_message = proposal['Welcome_message__c']
             proposal_is_expired = proposal['Expired_proposal__c']
@@ -114,18 +115,21 @@ class ProposalView(View):
             client_name = creator['client_name']
             img = services.get_creator_img(creator['MediumPhotoUrl'], request)
             creator_name = creator['Name']
-            proposal_static_resources = services.get_static_resources_to_review(proposal)
-            return render(request, 'proposal.html', {'proposal_id': proposal_id,
-                                                     'sections': sections,
-                                                     'message': welcome_message,
-                                                     'is_expired': proposal_is_expired,
-                                                     'creator_name': creator_name,
-                                                     'img': img,
-                                                     'client_name': client_name,
-                                                     'documents': dynamic_documents,
-                                                     'static_resources': proposal_static_resources,
-                                                     'media_url': settings.MEDIA_URL
-                                                     })
+            return render(
+                request, 'proposal.html',
+                {
+                    'proposal_id': proposal_id,
+                    'sections': sections,
+                    'message': welcome_message,
+                    'is_expired': proposal_is_expired,
+                    'creator_name': creator_name,
+                    'img': img,
+                    'client_name': client_name,
+                    'documents': dynamic_documents,
+                    'static_resources': proposal_static_resources,
+                    'media_url': settings.MEDIA_URL
+                }
+            )
         else:
             raise Http404()
 

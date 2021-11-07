@@ -98,7 +98,6 @@ class StaticResource(BaseModel):
     def __init__(self, *args, **kwargs):
         super(StaticResource, self).__init__(*args, **kwargs)
         self.__original_document_name = self.document.name
-        self.__original_file_description = self.file_description
 
     def __str__(self):
         return self.file_description

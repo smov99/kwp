@@ -8,6 +8,7 @@ from datetime import datetime, timedelta
 import functools
 import time
 
+from django.forms import model_to_dict
 from user_agents import parse
 from ipdata import ipdata
 
@@ -16,6 +17,7 @@ from django.shortcuts import redirect
 
 from kwp import settings
 import proposal.models as models
+from proposal.celery import app
 
 s3 = boto3.session.Session(aws_access_key_id=settings.KWP_AWS_KEY, aws_secret_access_key=settings.KWP_AWS_SECRET)
 s3_client = s3.client('s3')
@@ -140,8 +142,10 @@ def create_error_message(
         if error_message is None:
             error_message = 'Salesforce authorization error'
     session_id = None
-    if request is not None:
+    if request is not None and request is not str:
         session_id = request.session.get('session_id')
+    elif request is not None:
+        session_id = request
     models.ErrorLog.objects.create(
         session_id_id=session_id,
         api_call_type=method,
@@ -499,6 +503,7 @@ def write_file_in_memory(file_path, document):
             doc.write(chunk)
 
 
+@app.task
 def get_single_dynamic_file(document_id, file_name, document_path, request=None):
     if not os.path.isfile(document_path):
         if s3_file_exists(file_name, 'dynamic'):
@@ -539,7 +544,15 @@ def get_dynamic_files_for_review(proposal_id, request):
             single_response['document_path'] = document_path
             response[document_id] = single_response
             if 'pdf' not in file_name:
-                get_single_dynamic_file(document_id, file_name, document_path, request)
+                get_single_dynamic_file.apply_async(
+                    (
+                        document_id,
+                        file_name,
+                        document_path,
+                        request.session.get('session_id')
+                    ),
+                    retry=False
+                )
         return response
     else:
         return False
@@ -555,20 +568,26 @@ def get_static_resources_to_review(proposal):
             )
             if category_record.exists():
                 category_record = category_record.all()[0]
-                if not os.path.isfile(
+                if '.pdf' not in  category_record.document.name:
+                    if not os.path.isfile(
                         os.path.join(
                             settings.MEDIA_ROOT,
                             category_record.document.name
                         )
-                ):
-                    s3_download_file(category_record.document.name, 'static')
+                    ):
+                        # if '.mp4' in category_record.document.name:
+                        #     res = get_single_static_document.apply_async((category, 'async'), retry=False)
+                        #     res.get()
+                        # else:
+                        get_single_static_document.apply_async((category, 'async'), retry=False)
                 response.append(category_record)
     if not len(response):
         response = False
     return response
 
 
-def get_single_static_document(category):
+@app.task
+def get_single_static_document(category, type_='sync'):
     category_record = models.StaticResource.objects.filter(
         salesforce_category__salesforce_category=category,
         is_active=True
@@ -582,7 +601,12 @@ def get_single_static_document(category):
                 )
         ):
             s3_download_file(category_record.document.name, 'static')
-        return category_record
+        result = model_to_dict(category_record)
+        if type_ == 'async':
+            result['document'] = {
+                'name': result['document'].name
+            }
+        return result
 
 
 def create_sf_session_record(

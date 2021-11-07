@@ -32,6 +32,7 @@ DATABASES = {
 REDIS_HOST = '127.0.0.1'
 REDIS_PORT = '6379'
 REDIS_DB_ID = '4'
+REDIS_DB_CELERY_ID = '5'
 
 CACHES = {
     'default': {
@@ -43,6 +44,17 @@ CACHES = {
         'KEY_PREFIX': 'kiwapower'
     }
 }
+
+# Celery settings
+
+CELERY_BROKER_URL = f'redis://{REDIS_HOST}:{REDIS_PORT}/{REDIS_DB_CELERY_ID}'
+CELERY_BROKER_TRANSPORT_OPTIONS = {'visibility_timeout': 3600}
+CELERY_RESULT_BACKEND = 'django-db'
+CELERY_ACCEPT_CONTENT = ['application/json']
+CELERY_TASK_SERIALIZER = 'json'
+CELERY_RESULT_SERIALIZER = 'json'
+CELERY_CACHE_BACKEND = 'django-cache'
+CELERY_TIMEZONE = 'America/New_York'
 
 # JWT settings
 

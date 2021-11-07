@@ -39,6 +39,7 @@ THIRD_PARTY_APPS = [
     'health_check.db',
     'health_check.cache',
     'health_check.storage',
+    'django_celery_results',
 ]
 
 LOCAL_APPS = [

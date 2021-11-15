@@ -22,7 +22,12 @@ class ConfirmationView(View):
     @services.clock
     def get(self, request, proposal_id) -> HttpResponse:
         if re.match('a0P[\w\d]{15}', proposal_id):
-            proposal = services.get_proposal(proposal_id)
+            proposal = request.session.get('proposal')
+            if proposal:
+                if proposal.get('Id') != proposal_id:
+                    proposal = services.get_proposal(proposal_id)
+            else:
+                proposal = services.get_proposal(proposal_id)
             if proposal:
                 request.session['proposal'] = proposal
                 return render(request, 'confirmation.html', {'proposal_id': proposal_id})
@@ -42,7 +47,8 @@ class ConfirmationView(View):
         email = request.POST['email'].lower()
         request.session['email'] = email
         proposal = request.session['proposal']
-        if email == settings.TRUSTED_EMAIL:
+        trusted_emails = services.get_trusted_emails()
+        if email in trusted_emails:
             services.additional_trusted_email_confirmation(request, proposal_id)
             request.session['is_emailvalid'] = True
             SessionEvent.objects.create(
@@ -77,8 +83,8 @@ class ConfirmationView(View):
             )
             return redirect('proposal', proposal_id)
         else:
-            # client_ip = request.META['REMOTE_ADDR']
-            client_ip = request.META['HTTP_X_FORWARDED_FOR'].split(',')[0].strip()
+            client_ip = request.META['REMOTE_ADDR']
+            # client_ip = request.META['HTTP_X_FORWARDED_FOR'].split(',')[0].strip()
             Session.objects.create(
                 proposal_id=proposal_id,
                 email=request.session['email'],
@@ -98,11 +104,12 @@ class ProposalView(View):
         except KeyError:
             return redirect('confirmation', proposal_id)
         sections = Section.objects.filter(is_active=True).all()
-        proposal = request.session['proposal']
-        request.session['proposal_name'] = proposal['Name']
-        request.session['proposal_account_id'] = proposal['Account__c']
+        proposal = request.session.get('proposal')
         if proposal:
-            if not proposal['Published__c'] and request.session.get('email') != settings.TRUSTED_EMAIL:
+            request.session['proposal_name'] = proposal['Name']
+            request.session['proposal_account_id'] = proposal['Account__c']
+            trusted_emails = services.get_trusted_emails()
+            if not proposal['Published__c'] and request.session.get('email') not in trusted_emails:
                 raise Http404('published')
             dynamic_documents = services.get_dynamic_files_for_review(proposal_id, request)
             proposal_static_resources = services.get_static_resources_to_review(proposal)
@@ -112,9 +119,7 @@ class ProposalView(View):
             welcome_message = proposal['Welcome_message__c']
             proposal_is_expired = proposal['Expired_proposal__c']
             creator = services.get_proposals_creator(proposal['Account__c'], request)
-            client_name = creator['client_name']
             img = services.get_creator_img(creator['MediumPhotoUrl'], request)
-            creator_name = creator['Name']
             return render(
                 request, 'proposal.html',
                 {
@@ -122,9 +127,8 @@ class ProposalView(View):
                     'sections': sections,
                     'message': welcome_message,
                     'is_expired': proposal_is_expired,
-                    'creator_name': creator_name,
+                    'creator': creator,
                     'img': img,
-                    'client_name': client_name,
                     'documents': dynamic_documents,
                     'static_resources': proposal_static_resources,
                     'media_url': settings.MEDIA_URL
@@ -135,8 +139,8 @@ class ProposalView(View):
 
     def post(self, request, proposal_id):
         if request.POST['url'] == request.META['HTTP_REFERER']:
-            documents = request.session['documents'].items()
-            for _, document in documents:
+            documents = request.session['documents']
+            for _, document in documents.items():
                 file_name = document['file_name']
                 os.remove(os.path.join(settings.MEDIA_ROOT, file_name))
         return HttpResponse({'ok': True})
@@ -208,7 +212,8 @@ class EventsView(View):
         time_spent = request.POST.get('time_spent')
         message = request.POST.get('message')
         document_name = request.POST.get('document_name')
-        if request.session['email'] == settings.TRUSTED_EMAIL:
+        trusted_emails = services.get_trusted_emails()
+        if request.session['email'] in trusted_emails:
             request.session['contact_id'] = None
             request.session['contact_account_id'] = None
         request.session['event_type'] = request.POST['event_type']

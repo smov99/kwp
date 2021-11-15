@@ -18,6 +18,7 @@ from django.shortcuts import redirect
 from kwp import settings
 import proposal.models as models
 from proposal.celery import app
+from users.models import User
 
 s3 = boto3.session.Session(aws_access_key_id=settings.KWP_AWS_KEY, aws_secret_access_key=settings.KWP_AWS_SECRET)
 s3_client = s3.client('s3')
@@ -349,7 +350,7 @@ def get_proposals_creator(proposal_account_id, request=None):
     """
     client = get_client_info(proposal_account_id, request)
     user_id = client['OwnerId']
-    query = f"SELECT Name,MediumPhotoUrl,SmallPhotoUrl FROM User where id='{user_id}'"
+    query = f"SELECT Name,MediumPhotoUrl,SmallPhotoUrl,Email,Phone FROM User where id='{user_id}'"
     response = sf_api_call(
         f'/services/data/{settings.SF_API_VERSION}/query/',
         {'q': query},
@@ -575,10 +576,6 @@ def get_static_resources_to_review(proposal):
                             category_record.document.name
                         )
                     ):
-                        # if '.mp4' in category_record.document.name:
-                        #     res = get_single_static_document.apply_async((category, 'async'), retry=False)
-                        #     res.get()
-                        # else:
                         get_single_static_document.apply_async((category, 'async'), retry=False)
                 response.append(category_record)
     if not len(response):
@@ -601,8 +598,9 @@ def get_single_static_document(category, type_='sync'):
                 )
         ):
             s3_download_file(category_record.document.name, 'static')
-        result = model_to_dict(category_record)
+        result = category_record
         if type_ == 'async':
+            result = model_to_dict(result)
             result['document'] = {
                 'name': result['document'].name
             }
@@ -635,8 +633,7 @@ def create_sf_session_record(
         'IP_Address__c': ip_address,
         'IP_geolocation__c': ip_geolocation,
         'Device_OS__c': device,
-        'Login_date__c': datetime.utcnow().__format__('%Y-%m-%dT%H:%M:%S.%UZ'),
-        'OwnerId': settings.SF_USER_ID
+        'Login_date__c': datetime.utcnow().__format__('%Y-%m-%dT%H:%M:%S.%UZ')
     }
     response = sf_api_call(
         f"/services/data/{settings.SF_API_VERSION}/sobjects/Proposal_engagement_header__c",
@@ -743,7 +740,8 @@ def create_event_record(
         event_name=event_name_,
         message=message
     )
-    if email != settings.TRUSTED_EMAIL:
+    trusted_emails = get_trusted_emails()
+    if email not in trusted_emails:
         case_id = None
         if message is not None:
             if 'Feedback-Form' in event_name:
@@ -809,11 +807,12 @@ def create_case_record(
 
 
 def additional_email_verification(request, proposal_id):
-    client_ip = request.META['HTTP_X_FORWARDED_FOR'].split(',')[0].strip()
-    # client_ip = request.META['REMOTE_ADDR']
+    # client_ip = request.META['HTTP_X_FORWARDED_FOR'].split(',')[0].strip()
+    client_ip = request.META['REMOTE_ADDR']
     try:
         email = request.session['email']
-        if email == settings.TRUSTED_EMAIL:
+        trusted_emails = get_trusted_emails()
+        if email in trusted_emails:
             email_validation = True
         else:
             email_validation = user_email_validation(request.session['proposal_account_id'], email, request=request)
@@ -842,8 +841,8 @@ def additional_email_verification(request, proposal_id):
 
 
 def additional_confirmation(request, is_contactcreated, proposal, proposal_id):
-    # client_ip = request.META['REMOTE_ADDR']
-    client_ip = request.META['HTTP_X_FORWARDED_FOR'].split(',')[0].strip()
+    client_ip = request.META['REMOTE_ADDR']
+    # client_ip = request.META['HTTP_X_FORWARDED_FOR'].split(',')[0].strip()
     if client_ip != '127.0.0.1':
         request.session['sf_session_id'] = create_sf_session_record(
             proposal_id,
@@ -884,8 +883,8 @@ def additional_confirmation(request, is_contactcreated, proposal, proposal_id):
 
 
 def additional_trusted_email_confirmation(request, proposal_id):
-    # client_ip = request.META['REMOTE_ADDR']
-    client_ip = request.META['HTTP_X_FORWARDED_FOR'].split(',')[0].strip()
+    client_ip = request.META['REMOTE_ADDR']
+    # client_ip = request.META['HTTP_X_FORWARDED_FOR'].split(',')[0].strip()
     session = models.Session.objects.create(
         proposal_id=proposal_id,
         email=request.session['email'],
@@ -900,8 +899,8 @@ def additional_trusted_email_confirmation(request, proposal_id):
 
 
 def create_failed_session_record(request, proposal_id, email):
-    # client_ip = request.META['REMOTE_ADDR']
-    client_ip = request.META['HTTP_X_FORWARDED_FOR'].split(',')[0].strip()
+    client_ip = request.META['REMOTE_ADDR']
+    # client_ip = request.META['HTTP_X_FORWARDED_FOR'].split(',')[0].strip()
     if client_ip != '127.0.0.1':
         try:
             is_email_valid = request.session['is_emailvalid']
@@ -925,3 +924,11 @@ def create_failed_session_record(request, proposal_id, email):
                 client_geolocation=get_geolocation(client_ip),
                 device=get_user_device(request)
             )
+
+
+def get_trusted_emails():
+    trusted_emails_records = User.objects.filter(backdoor=True, is_active=True)
+    trusted_emails = []
+    if trusted_emails_records.exists():
+        trusted_emails = trusted_emails_records.values_list('email', flat=True)
+    return trusted_emails

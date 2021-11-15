@@ -24,8 +24,9 @@ def get_sections():
     :return: Sections info normalized via 'normalize_sections' func.
     """
     query = "SELECT Id, Category_order__c, English_label__c, Spanish_label__c, FAQ_Category__c FROM Django_FAQ_Setting__c WHERE IsDeleted = false"
-    response = sf_api_call(f'/services/data/{settings.SF_API_VERSION}/query/', {'q': query})['records']
-    sections = normalize_sections(response)
+    sections = sf_api_call(f'/services/data/{settings.SF_API_VERSION}/query/', {'q': query})
+    if sections:
+        sections = normalize_sections(sections['records'])
     return sections
 
 
@@ -53,8 +54,9 @@ def get_articles():
     :return: Articles info normalized via 'normalize_articles' func.
     """
     query = "SELECT KnowledgeArticleId, Django_Order__c, Django_Category__c, Language, Question__c, Answer__c FROM Knowledge__kav where IsDeleted = false ORDER BY  Django_Order__c, Language ASC"
-    response = sf_api_call(f'/services/data/{settings.SF_API_VERSION}/query/', {'q': query})['records']
-    articles = normalize_articles(response)
+    articles = sf_api_call(f'/services/data/{settings.SF_API_VERSION}/query/', {'q': query})
+    if articles:
+        articles = normalize_articles(articles['records'])
     return articles
 
 
@@ -96,50 +98,51 @@ def create_sections_and_articles(section_return, article_return):
     :param section_return: Response from 'get_sections' func.
     :param article_return: Response from 'get_articles' func.
     """
-    for section in section_return:
-        try:
-            section_articles = article_return[section]
-        except KeyError:
-            section_articles = {}
-        order = section_return[section]['order']
-        label = section
-        guid = section_return[section]['guid']
-        label_es = section_return[section]['spanish_label']
-        label_en = section_return[section]['english_label']
-        if Section.objects.filter(guid=guid, is_active=False).exists():
-            Section.objects.filter(is_active=False).get(guid=guid).delete()
-        Section.objects.get_or_create(
-            order=order,
-            guid=guid,
-            is_active=True,
-            label=label,
-            label_en=label_en,
-            label_es=label_es
-        )
-        if section_articles:
-            for article in section_articles:
-                this_article = section_articles[article]
-                order = article
-                guid = this_article['en_US']['guid']
-                question = this_article['en_US']['question']
-                answer = this_article['en_US']['answer']
-                question_es = this_article['es']['question']
-                question_en = this_article['en_US']['question']
-                answer_es = this_article['es']['answer']
-                answer_en = this_article['en_US']['answer']
-                section_ = Section.objects.filter(is_active=True).get(label_en=label)
-                if Article.objects.filter(guid=guid, is_active=False).exists():
-                    Article.objects.filter(is_active=False).get(guid=guid).delete()
-                Article.objects.get_or_create(
-                    order=order,
-                    guid=guid,
-                    is_active=True,
-                    section=section_,
-                    question=question,
-                    answer=answer,
-                    question_en=question_en,
-                    question_es=question_es,
-                    answer_en=answer_en,
-                    answer_es=answer_es
-                )
+    if section_return:
+        for section in section_return:
+            try:
+                section_articles = article_return[section]
+            except KeyError:
+                section_articles = {}
+            order = section_return[section]['order']
+            label = section
+            guid = section_return[section]['guid']
+            label_es = section_return[section]['spanish_label']
+            label_en = section_return[section]['english_label']
+            if Section.objects.filter(guid=guid, is_active=False).exists():
+                Section.objects.filter(is_active=False).get(guid=guid).delete()
+            Section.objects.get_or_create(
+                order=order,
+                guid=guid,
+                is_active=True,
+                label=label,
+                label_en=label_en,
+                label_es=label_es
+            )
+            if section_articles:
+                for article in section_articles:
+                    this_article = section_articles[article]
+                    order = article
+                    guid = this_article['en_US']['guid']
+                    question = this_article['en_US']['question']
+                    answer = this_article['en_US']['answer']
+                    question_es = this_article['es']['question']
+                    question_en = this_article['en_US']['question']
+                    answer_es = this_article['es']['answer']
+                    answer_en = this_article['en_US']['answer']
+                    section_ = Section.objects.filter(is_active=True).get(label_en=label)
+                    if Article.objects.filter(guid=guid, is_active=False).exists():
+                        Article.objects.filter(is_active=False).get(guid=guid).delete()
+                    Article.objects.get_or_create(
+                        order=order,
+                        guid=guid,
+                        is_active=True,
+                        section=section_,
+                        question=question,
+                        answer=answer,
+                        question_en=question_en,
+                        question_es=question_es,
+                        answer_en=answer_en,
+                        answer_es=answer_es
+                    )
     return True

@@ -28,12 +28,12 @@ msgstr ""
 
 #: .\templates\base.html:120 .\templates\proposal.html:13
 #: .\templates\proposal.html:35
-msgid "Casa"
+msgid "Inicio"
 msgstr "Home"
 
 #: .\templates\base.html:121
-msgid "Quienes somos "
-msgstr "Who we are"
+msgid "Conócenos"
+msgstr "About Us"
 
 #: .\templates\base.html:143
 msgid "Miembros de:"
@@ -115,7 +115,7 @@ msgstr "Unsupported request method"
 
 #: .\templates\proposal.html:15 .\templates\proposal.html:41
 #: .\templates\proposal.html:234
-msgid "PMF"
+msgid "FAQ"
 msgstr "FAQ"
 
 msgid "Propuesta"
@@ -189,3 +189,18 @@ msgstr "Kiwapower resources"
 
 msgid "Servicio no disponible"
 msgstr "Service Unavailable"
+
+msgid "Consulta Kiwapower"
+msgstr "Kiwapower Inquiry"
+
+msgid "https://www.kiwapower.com/"
+msgstr "https://www.kiwapower.com/en/"
+
+msgid "https://www.kiwapower.com/#acerca"
+msgstr "https://www.kiwapower.com/en/#acerca"
+
+msgid "https://kiwapower.force.com/FAQ/s/?language=es"
+msgstr "https://kiwapower.force.com/FAQ/s/?language=en_US"
+
+msgid "Ve Nuestro Video"
+msgstr "Watch Our Video"

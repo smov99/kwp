@@ -6,13 +6,16 @@
       <div class="row justify-content-center">
         <div class="col-xl-10 d-flex align-items-center">
           <div class="logo mr-auto scale">
-            <a class="logo mr-auto scale" href="https://www.kiwapower.com/"><img src="{% static 'assets/img/kwlogo.png' %}" alt=""></a>
+            <a class="logo mr-auto scale" href="{% trans 'https://www.kiwapower.com/' %}"><img src="{% static 'assets/img/kwlogo.png' %}" alt=""></a>
           </div>
             <nav class="nav-menu d-none d-lg-block align-justify mr-auto">
               <ul>
-                <li><a href="https://www.kiwapower.com/">{% trans 'Casa' %}</a></li>
-                <li><a href="https://www.kiwapower.com/#acerca">{% trans 'Quienes somos' %}</a></li>
-                <li><a class="scrollto" href="#whykiwapower">{% trans 'PMF' %}</a></li>
+                <li><a href="{% trans 'https://www.kiwapower.com/' %}">{% trans 'Inicio' %}</a></li>
+                <li><a href="{% trans 'https://www.kiwapower.com/#acerca' %}">{% trans 'Conócenos' %}</a></li>
+                <li><a href="{% trans 'https://kiwapower.force.com/FAQ/s/?language=es' %}">{% trans 'FAQ' %}</a></li>
+              </ul>
+              <ul>
+                <li><a href="https://www.kiwapower.com/kiwapower_en/">{% trans 'Ve Nuestro Video' %}</a></li>
               </ul>
             </nav><!-- .nav-menu -->
 

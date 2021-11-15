@@ -10,7 +10,7 @@
           <div class="col-lg-5 footer-contact">
             <div class="row">
               <div class="scale footer-img">
-                <a href="https://www.kiwapower.com/"><img src="{% static 'assets/img/footerkwlogo.png' %}" alt=""></a>
+                <a href="{% trans 'https://www.kiwapower.com/' %}"><img src="{% static 'assets/img/footerkwlogo.png' %}" alt=""></a>
               </div>
             </div>
               <a href="https://www.google.com/maps/place/Volc%C3%A1n+150,+Lomas+-+Virreyes,+Lomas+de+Chapultepec,+Miguel+Hidalgo,+11000+Ciudad+de+M%C3%A9xico,+CDMX/@19.4294065,-99.2099023,17z/data=!3m1!4b1!4m5!3m4!1s0x85d201f5f0c70a61:0xfc4dc6ff4666c121!8m2!3d19.4294065!4d-99.2077136" target="_blank">
@@ -48,8 +48,10 @@
 
           <div class="col-lg-2 footer-links">
             <ul>
-              <li><a href="https://www.kiwapower.com/">{% trans 'Casa' %}</a></li>
-              <li><a href="https://www.kiwapower.com/#acerca">{% trans 'Quienes somos ' %}</a></li>
+              <li><a href="{% trans 'https://www.kiwapower.com/' %}">{% trans 'Inicio' %}</a></li>
+              <li><a href="{% trans 'https://www.kiwapower.com/#acerca' %}">{% trans 'Conócenos' %}</a></li>
+              <li><a href="{% trans 'https://kiwapower.force.com/FAQ/s/?language=es' %}">{% trans 'FAQ' %}</a></li>
+              <li><a href="https://www.kiwapower.com/kiwapower_en/">{% trans 'Ve Nuestro Video' %}</a></li>
             </ul>
           </div>
 

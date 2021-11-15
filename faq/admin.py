@@ -30,7 +30,7 @@ class SectionAdmin(TranslationAdmin):
 @admin.register(Article)
 class ArticleAdmin(TranslationAdmin):
     list_display = ('guid', 'order', 'is_active', 'section', 'question', 'answer')
-    search_fields = ('section', 'question', 'answer')
+    search_fields = ('section__label', 'question', 'answer')
     list_filter = ('section', 'is_active')
     list_display_links = ('question', 'guid')
     ordering = ('section', 'order', '-is_active')

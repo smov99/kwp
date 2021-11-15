@@ -95,8 +95,6 @@ SF_USER_NAME = 'django@kiwapower.com.july16'
 SF_API_VERSION = 'v51.0'
 SF_PASSWORD = 'Ge0s0ft#99'
 SF_LOGIN_URL = 'https://test.salesforce.com/services/oauth2/token'
-SF_USER_ID = '0055x00000BFIezAAH'
-TRUSTED_EMAIL = 'backdoor@email.com'
 
 # IP geolocation
 IPDATA_TOKEN = '5d721175bef6ff7756ec1ef843876cbf5e3559fb2f1c051f46ff9dec'

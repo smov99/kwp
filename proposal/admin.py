@@ -62,12 +62,13 @@ class SessionAdmin(admin.ModelAdmin):
         'contact_created',
         'proposal_id',
         'email',
+        'message',
         'account_id',
         'contact_id',
         'client_ip',
         'client_geolocation'
     )
-    search_fields = ('proposal_id', 'account_id', 'contact_id')
+    search_fields = ('proposal_id', 'account_id', 'contact_id', 'email', 'message')
     ordering = ('-created',)
     list_per_page = 10
     list_display_links = None

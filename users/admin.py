@@ -12,14 +12,14 @@ User = get_user_model()
 class UserAdmin(BaseUserAdmin):
     form = UserAdminChangeForm
     add_form = UserAdminCreationForm
-    readonly_fields = ('created', 'modified',)
-    list_display = ('email', 'admin',)
-    list_filter = ('admin', 'email_confirmed', 'is_active',)
+    readonly_fields = ('created', 'modified', 'guid',)
+    list_display = ('email', 'admin', 'backdoor')
+    list_filter = ('admin', 'email_confirmed', 'is_active', 'staff', 'admin', 'backdoor',)
     fieldsets = (
         (None, {'fields': ('guid', 'full_name', 'email', 'password',)}),
-        ('Confirmed', {'fields': ('email_confirmed',)}),
+        ('Confirmed', {'fields': ('email_confirmed', 'is_active',)}),
         ('Date', {'fields': ('created', 'modified',)}),
-        ('Permissions', {'fields': ('admin', 'staff',)}),
+        ('Permissions', {'fields': ('admin', 'staff', 'backdoor',)}),
     )
     add_fieldsets = (
         (None, {

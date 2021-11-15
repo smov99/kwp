@@ -247,6 +247,10 @@ main:before {
   display: flex;
 }
 
+.nav-menu > ul:last-child{
+  justify-content: center;
+}
+
 .nav-menu > ul > li {
   position: relative;
   white-space: nowrap;
@@ -851,6 +855,10 @@ section {
   margin: 0 auto;
 }
 
+#prepared {
+  margin-top: 25px;
+}
+
 #prepared .section-title p {
   text-align: left;
   font-size: 22px;
@@ -863,59 +871,53 @@ section {
 }
 
 .prepared .member .member-img {
-  position: relative;
   background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
   overflow: hidden;
-  border-radius: 2px;
-  padding: 0;
-}
-
-.prepared .member .member-img img {
-  height: auto;
-  width: auto;
   border-radius: 100px;
-  max-width: 75%;
+  padding: 0;
+  min-height: 100%;
 }
 
 .prepared .member .member-info {
-  padding: 25px 15px;
+  padding: 15px 5px;
 }
 
 .prepared .member .member-info h4 {
   font-weight: 700;
-  margin-bottom: 5px;
   font-size: 14px;
   color: #fff;
 }
 
 .prepared .member .member-info p {
   font-style: italic;
-  font-size: 14px;
-  line-height: 26px;
-  color: #777777;
+  font-weight: 500;
+  text-align: left;
+  font-size: 13px;
+  margin-top: 5px;
+  margin-bottom: 0px;
+  word-wrap: break-word;
 }
 
-@media (min-width: 992px) and (max-width: 1200px) {
-  .prepared .member .member-img img {
-    max-width: 100%;
-  }
+.prepared .member .member-info a {
+  color: #afafaf;
+}
+
+.prepared .member .member-info a:hover {
+  cursor: pointer;
+  color: #e60012;
 }
 
 @media (min-width: 768px) and (max-width: 992px) {
   .prepared .col-centered {
-    max-width: 50%;
-  }
-}
-
-@media (min-width: 500px) and (max-width: 768px) {
-  .prepared .col-centered {
-    max-width: 60%;
-  }
-}
-
-@media (max-width: 500px) {
-  .prepared .col-centered {
     max-width: 80%;
+  }
+}
+
+@media (max-width: 768px) {
+  .prepared .col-centered {
+    max-width: 95%;
   }
 }
 
@@ -929,15 +931,15 @@ section {
   font-size: 12px;
   letter-spacing: 1px;
   display: inline-block;
-  padding: 5px 15px;
+  padding: 5px 0;
   transition: 0.5s;
   color: #fff;
   background: #e60012;
   border: 0;
   border-radius: 6px;
-  width: 95%;
-  bottom: 2.5%;
-  left: 2.5%;
+  width: 80%;
+  bottom: 4%;
+  right: 4%;
 }
 
 #proposal-link .btn-confirmation:hover {
@@ -954,6 +956,28 @@ section {
   font-size: 24px;
 }
 
+#proposal-link .document-bottom i {
+  font-size: 25px;
+  color: #2f2f2f;
+  left: 8px;
+}
+
+#proposal-link .document-bottom.pdf-file i {
+  color: #ff2116;
+}
+
+#proposal-link .document-bottom.word-file i {
+  color: #2c5898;
+}
+
+#proposal-link .document-bottom.excel-file i {
+  color: #10783f;
+}
+
+#proposal-link .document-bottom.powerpoint-file i {
+  color: #bd3719;
+}
+
 /*--------------------------------------------------------------
 # Carousel
 --------------------------------------------------------------*/
@@ -963,18 +987,30 @@ section {
 
 .document-wrapper {
   width: 140px;
-  height: 80px;
+  min-height: 80px;
 }
 
-@media (max-width: 1200px) and (min-width: 992px) {
+@media (max-width: 1200px) and (min-width: 510px) {
   .document-wrapper {
     width: 120px;
-    height: 85px;
+    min-height: 85px;
+  }
+
+  #proposal-link .btn-confirmation {
+    width: 78%;
+    left: 14%;
   }
 }
 
-p.document-name {
-  margin-bottom: 5px;
+@media (max-width: 510px) {
+  .document-wrapper {
+    width: 110px;
+  }
+
+  #proposal-link .btn-confirmation {
+    width: 74%;
+    left: 15%;
+  }
 }
 
 .leftLst {
@@ -1044,6 +1080,19 @@ p.document-name {
 .document p {
   font-size: 12px;
   text-align: left;
+}
+
+.document-name {
+  padding-bottom: 22px;
+  margin: 0 3px;
+}
+
+.document-bottom {
+  vertical-align: bottom;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 8px;
 }
 
 /*--------------------------------------------------------------

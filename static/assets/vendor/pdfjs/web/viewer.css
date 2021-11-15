@@ -114,6 +114,10 @@ a.downloadDesktop::before {
 
 /*---------------------------------------*/
 
+#viewerContainer a {
+  target-new: tab;
+}
+
 input, button {
   outline: none !important;
 }

@@ -807,8 +807,8 @@ def create_case_record(
 
 
 def additional_email_verification(request, proposal_id):
-    # client_ip = request.META['HTTP_X_FORWARDED_FOR'].split(',')[0].strip()
-    client_ip = request.META['REMOTE_ADDR']
+    client_ip = request.META['HTTP_X_FORWARDED_FOR'].split(',')[0].strip()
+    # client_ip = request.META['REMOTE_ADDR']
     try:
         email = request.session['email']
         trusted_emails = get_trusted_emails()
@@ -841,8 +841,8 @@ def additional_email_verification(request, proposal_id):
 
 
 def additional_confirmation(request, is_contactcreated, proposal, proposal_id):
-    client_ip = request.META['REMOTE_ADDR']
-    # client_ip = request.META['HTTP_X_FORWARDED_FOR'].split(',')[0].strip()
+    # client_ip = request.META['REMOTE_ADDR']
+    client_ip = request.META['HTTP_X_FORWARDED_FOR'].split(',')[0].strip()
     if client_ip != '127.0.0.1':
         request.session['sf_session_id'] = create_sf_session_record(
             proposal_id,
@@ -883,8 +883,8 @@ def additional_confirmation(request, is_contactcreated, proposal, proposal_id):
 
 
 def additional_trusted_email_confirmation(request, proposal_id):
-    client_ip = request.META['REMOTE_ADDR']
-    # client_ip = request.META['HTTP_X_FORWARDED_FOR'].split(',')[0].strip()
+    # client_ip = request.META['REMOTE_ADDR']
+    client_ip = request.META['HTTP_X_FORWARDED_FOR'].split(',')[0].strip()
     session = models.Session.objects.create(
         proposal_id=proposal_id,
         email=request.session['email'],
@@ -899,8 +899,8 @@ def additional_trusted_email_confirmation(request, proposal_id):
 
 
 def create_failed_session_record(request, proposal_id, email):
-    client_ip = request.META['REMOTE_ADDR']
-    # client_ip = request.META['HTTP_X_FORWARDED_FOR'].split(',')[0].strip()
+    # client_ip = request.META['REMOTE_ADDR']
+    client_ip = request.META['HTTP_X_FORWARDED_FOR'].split(',')[0].strip()
     if client_ip != '127.0.0.1':
         try:
             is_email_valid = request.session['is_emailvalid']

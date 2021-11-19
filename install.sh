@@ -16,6 +16,11 @@ sed -i "s~dbms_template_path~$project_path~g" nginx/site.conf systemd/gunicorn.s
 sed -i "s~dbms_template_domain~$project_domain~g" nginx/site.conf
 sed -i "s~dbms_template_debug~$debug~g" kwp/ansible_settings.py
 
+`python manage.py updatetranslationfields`
+`python manage.py compilemessages`
+`python manage.py collectstatic`
+`python manage.py migrate`
+
 sudo ln -s $project_path/nginx/site.conf /etc/nginx/sites-enabled/
 sudo ln -s $project_path/systemd/gunicorn.service /etc/systemd/system/
 sudo ln -s $project_path/systemd/celery.service /etc/systemd/system/

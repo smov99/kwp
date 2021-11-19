@@ -7,7 +7,11 @@ from datetime import timedelta
 SECRET_KEY = 'at#96-#7p!4bzqreegk@8e&*8whx^ciky5t_o)x04fti31r%8h'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = 'dbms_template_debug'
+if DEBUG is str:
+    DEBUG = True
+    if DEBUG == 'False':
+        DEBUG = False
 
 CSRF_TRUSTED_ORIGINS = ['127.0.0.1']
 

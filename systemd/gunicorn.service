@@ -4,8 +4,8 @@ After=network.target
 
 [Service]
 User=ubuntu
-WorkingDirectory=dbms_template_path/src
-ExecStart=dbms_template_path/env/bin/gunicorn --workers 5 --bind unix:dbms_template_path/gunicorn/gunicorn.sock config.wsgi:application --access-logfile dbms_template_path/gunicorn/access.log --error-logfile dbms_template_path/gunicorn/error.log
+WorkingDirectory=dbms_template_path
+ExecStart=dbms_template_path/env/bin/gunicorn --workers 5 --bind unix:dbms_template_path/gunicorn/gunicorn.sock kwp.wsgi:application --access-logfile dbms_template_path/gunicorn/access.log --error-logfile dbms_template_path/gunicorn/error.log
 Restart=on-failure
 
 [Install]

@@ -4,12 +4,9 @@ After=network.target
 
 [Service]
 Type=forking
-User=celery
-Group=celery
+User=ubuntu
 WorkingDirectory=dbms_template_path
-ExecStart=/bin/sh -c 'celery -A kwp multi start worker --loglevel="info"'
-ExecStop=/bin/sh -c 'celery -A kwp multi stopwait worker --loglevel="info"'
-ExecReload=/bin/sh -c 'celery -A kwp multi restart worker --loglevel="info"'
+ExecStart=dbms_template_path/env/bin/celery -A kwp worker -l info
 Restart=always
 
 [Install]

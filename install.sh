@@ -7,6 +7,7 @@ debug=""
 read -p "Python interpreter (path or name, for example python3.9): " base_python_interpreter
 read -p "Your domain without protocol (for example, google.com or _ to use ip address): " project_domain
 read -p "Debug flag (True or False): " debug
+`sudo apt install $base_python_interpreter-venv`
 `$base_python_interpreter -m venv env`
 source env/bin/activate
 pip install -U pip

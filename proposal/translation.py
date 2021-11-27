@@ -4,4 +4,4 @@ from .models import StaticResource
 
 @register(StaticResource)
 class StaticResourcesTranslationOptions(TranslationOptions):
-    fields = ('file_description',)
+    fields = ('file_description', 'document')

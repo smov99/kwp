@@ -77,7 +77,8 @@ class SalesforceCategory(BaseModel):
     is_active = models.BooleanField(default=False)
 
     class Meta:
-        verbose_name_plural = "Salesforce categories"
+        verbose_name = 'Web Proposal field'
+        verbose_name_plural = 'Web Proposal fields'
 
     def __str__(self):
         return self.salesforce_category

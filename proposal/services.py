@@ -573,15 +573,16 @@ def get_static_resources_to_review(proposal):
             )
             if category_record.exists():
                 category_record = category_record.all()[0]
-                if '.pdf' not in  category_record.document.name:
-                    if not os.path.isfile(
-                        os.path.join(
-                            settings.MEDIA_ROOT,
-                            category_record.document.name
-                        )
-                    ):
-                        get_single_static_document.apply_async((category, 'async'), retry=False)
-                response.append(category_record)
+                if category_record.document.name:
+                    if '.pdf' not in category_record.document.name:
+                        if not os.path.isfile(
+                            os.path.join(
+                                settings.MEDIA_ROOT,
+                                category_record.document.name
+                            )
+                        ):
+                            get_single_static_document.apply_async((category, 'async'), retry=False)
+                    response.append(category_record)
     if not len(response):
         response = False
     return response

@@ -6,16 +6,16 @@
 <div class="navbar-collapse collapse proposal-mobile-nav" id="mobile-nav">
   <ul class="navbar-nav">
     <li class="nav-item d-block ml-4 mb-1 mt-1">
-      <a class="nav-link" href="{% trans 'https://www.kiwapower.com/' %}">{% trans 'Inicio' %}</a>
+      <a class="nav-link" href="{% trans 'https://www.kiwapower.com/' %}" target="_blank">{% trans 'Inicio' %}</a>
     </li>
     <li class="nav-item d-block ml-4 mb-1">
-      <a class="nav-link" href="{% trans 'https://www.kiwapower.com/#acerca' %}">{% trans 'Conócenos' %}</a>
+      <a class="nav-link" href="{% trans 'https://www.kiwapower.com/#acerca' %}" target="_blank">{% trans 'Conócenos' %}</a>
     </li>
     <li class="nav-item d-block ml-4 mb-1">
-      <a class="nav-link" href="{% trans 'https://kiwapower.force.com/FAQ/s/?language=es' %}">{% trans 'FAQ' %}</a>
+      <a class="nav-link" href="{% trans 'https://kiwapower.force.com/FAQ/s/?language=es' %}" target="_blank">{% trans 'FAQ' %}</a>
     </li>
     <li class="nav-item d-block ml-4 mb-1">
-      <a class="nav-link" href="https://www.kiwapower.com/kiwapower_en/">{% trans 'Ve Nuestro Video' %}</a>
+      <a class="nav-link" href="https://www.kiwapower.com/kiwapower_en/" target="_blank">{% trans 'Ve Nuestro Video' %}</a>
     </li>
     {% for lang in languages %}
     {% if lang.code != LANGUAGE_CODE %}

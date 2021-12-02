@@ -149,10 +149,16 @@ class StaticResourcesAdmin(TranslationAdmin):
         'created',
         'modified'
     )
+    readonly_fields = ('id', 'created', 'modified')
     list_display_links = ('file_description',)
     ordering = ('-modified',)
     list_filter = ('salesforce_category', 'is_active')
     exclude = ('s3_file_location',)
+    fieldsets = (
+        ('General', {'fields': ('id', 'created', 'modified', 'is_active', 'salesforce_category')}),
+        ('ES Document', {'fields': ('file_description_es', 'document_es')}),
+        ('EN Document', {'fields': ('file_description_en', 'document_en')})
+    )
 
     def render_change_form(self, request, context, *args, **kwargs):
         context['adminform'].form.fields['salesforce_category'].queryset = \
@@ -172,6 +178,7 @@ class SalesforceCategoriesAdmin(admin.ModelAdmin):
     ordering = ('-modified',)
     list_display_links = ('_salesforce_category',)
     list_filter = ('is_active',)
+    readonly_fields = ('created', 'modified')
 
     def _salesforce_category(self, obj):
         try:

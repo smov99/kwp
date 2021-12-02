@@ -75,6 +75,19 @@
     });
   }
 
+  function documentItemSize() {
+    let documents = document.getElementsByClassName('document-wrapper'),
+      maxHeight = 0;
+
+    for (let i = 0; i < documents.length; i++) {
+      if ($(documents[i]).height() > maxHeight) {
+        maxHeight = $(documents[i]).height()
+      }
+    }
+
+    $('.document-wrapper').css("min-height", maxHeight);
+  }
+
   // Progress bar
   $(window).scroll(function() {
     let docElem = document.documentElement,
@@ -262,7 +275,11 @@
         });
       });
     } else {
+      $(window).on('resize', function () {
+        documentItemSize();
+      })
       $(window).on('load', function () {
+        documentItemSize();
         $(window).on('unload', function () {
           pdfAjax();
         });
@@ -275,7 +292,7 @@
   }
 
   $(window).on('load', function () {
-    var spentTime,
+    let spentTime,
       valDict = {},
       endSection,
       endQuestion,

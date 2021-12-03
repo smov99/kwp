@@ -568,7 +568,7 @@ def get_static_resources_to_review(proposal):
     ):
         if proposal.get(category):
             category_record = models.StaticResource.objects.filter(
-                salesforce_category__salesforce_category=category,
+                web_proposal_field__salesforce_category=category,
                 is_active=True
             )
             if category_record.exists():
@@ -591,7 +591,7 @@ def get_static_resources_to_review(proposal):
 @app.task
 def get_single_static_document(category, type_='sync'):
     category_record = models.StaticResource.objects.filter(
-        salesforce_category__salesforce_category=category,
+        web_proposal_field__salesforce_category=category,
         is_active=True
     )
     if category_record.exists():

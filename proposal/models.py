@@ -89,12 +89,12 @@ class StaticResource(BaseModel):
     s3_file_location = models.TextField(blank=True, null=True)
     is_active = models.BooleanField(default=False)
     document = models.FileField(null=True, blank=True)
-    salesforce_category = models.ForeignKey(SalesforceCategory, on_delete=models.CASCADE)
+    web_proposal_field = models.ForeignKey(SalesforceCategory, on_delete=models.CASCADE)
 
     __original_document_name = None
 
     class Meta:
-        unique_together = ('is_active', 'salesforce_category')
+        unique_together = ('is_active', 'web_proposal_field')
 
     def __init__(self, *args, **kwargs):
         super(StaticResource, self).__init__(*args, **kwargs)

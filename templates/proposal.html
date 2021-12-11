@@ -72,175 +72,165 @@
       </div>
     </section><!-- End Prepared Section -->
 
-    <!-- ======= Proposal Link Section ======= -->
-    <section id="proposal-link" class="proposal-link">
+    {% if not is_expired and documents %}
+    <!-- ======= Proposal Link Dynamic Section ======= -->
+    <section id="proposal-link-dynamic" class="proposal-link">
       <div class="container">
-        <div>
-          {% if not is_expired and documents %}
-            {% if static_resources %}
-          <div>
-            {% else %}
-          <div class="col-xs-12">
-            {% endif %}
-            <div class="section-title">
-              <p>{% trans "Sus documentos" %}</p>
-            </div>
-            <div class="documents-main dynamic">
-              <div class="rescarousel">
-                <div class="rescarousel-inner">
-                  {% for _ ,document in documents.items %}
-                  <div class="item">
-                    <div class="document">
-                      <div class="document-wrapper">
-                        {% with document.file_name as filename %}
-                        <div class="document-name">
-                          <div>
-                            <p>{{ document.title }}</p>
-                          </div>
-                        </div>
-                        {% if 'pdf' in filename %}
-                        <div class="row document-bottom pdf-file">
-                          <div class="col-2">
-                            <i class="fad fa-file-pdf"></i>
-                          </div>
-                          <div class="col-9">
-                            <input type="button" class="btn-confirmation proposal-pdf-link" data-document-id="{{document.document_id}}" data-document-name="{{ document.title }}.pdf" value="{% trans 'Ver' %}"/>
-                          </div>
-                        </div>
-                        {% else %}
-                        {% if 'doc' in filename or 'docx' in filename or 'dot' in filename %}
-                        <div class="row document-bottom word-file">
-                          <div class="col-2">
-                            <i class="fad fa-file-word"></i>
-                          </div>
-                          <div class="col-9">
-                            <a href="{{document.document_link}}" class="download btn-confirmation" data-document-id="{{document.document_id}}" data-document-name="{{ document.file_name }}" download="{{ document.file_name }}">{% trans 'Descargar' %}</a>
-                          </div>
-                        </div>
-                        {% elif 'xls' in filename or 'xlsx' in filename or 'xlsm' in filename %}
-                        <div class="row document-bottom excel-file">
-                          <div class="col-2">
-                            <i class="fad fa-file-excel"></i>
-                          </div>
-                          <div class="col-9">
-                            <a href="{{document.document_link}}" class="download btn-confirmation" data-document-id="{{document.document_id}}" data-document-name="{{ document.file_name }}" download="{{ document.file_name }}">{% trans 'Descargar' %}</a>
-                          </div>
-                        </div>
-                        {% elif 'pptx' in filename or 'ppt' in filename or 'pptm' in filename %}
-                        <div class="row document-bottom powerpoint-file">
-                          <div class="col-2">
-                            <i class="fad fa-file-powerpoint"></i>
-                          </div>
-                          <div class="col-9">
-                            <a href="{{document.document_link}}" class="download btn-confirmation" data-document-id="{{document.document_id}}" data-document-name="{{ document.file_name }}" download="{{ document.file_name }}">{% trans 'Descargar' %}</a>
-                          </div>
-                        </div>
-                        {% else %}
-                        <div class="row document-bottom">
-                          <div class="col-2">
-                            <i class="fad fa-file-download"></i>
-                          </div>
-                          <div class="col-9">
-                            <a href="{{document.document_link}}" class="download btn-confirmation" data-document-id="{{document.document_id}}" data-document-name="{{ document.file_name }}" download="{{ document.file_name }}">{% trans 'Descargar' %}</a>
-                          </div>
-                        </div>
-                        {% endif %}
-                        {% endif %}
-                        {% endwith %}
+        <div class="section-title">
+          <p>{% trans "Sus documentos" %}</p>
+        </div>
+        <div class="documents-main dynamic">
+          <div class="rescarousel">
+            <div class="rescarousel-inner">
+              {% for _ ,document in documents.items %}
+              <div class="item">
+                <div class="document">
+                  <div class="document-wrapper">
+                    {% with document.file_name as filename %}
+                    <div class="document-name">
+                      <div>
+                        <p>{{ document.title }}</p>
                       </div>
                     </div>
-                  </div>
-                  {% endfor %}
-                </div>
-              </div>
-            </div>
-          </div>
-            {% if static_resources %}
-          <div>
-            {% endif %}
-          {% else %}
-            {% if static_resources %}
-            <div class="col-xs-12">
-            {% endif %}
-          {% endif %}
-          {% if static_resources %}
-            <div class="section-title">
-              <p>{% trans "Kiwapower recusos" %}</p>
-            </div>
-            <div class="documents-main resources">
-              <div class="rescarousel">
-                <div class="rescarousel-inner">
-                  {% for file in static_resources %}
-                  <div class="item">
-                    <div class="document">
-                      <div class="document-wrapper">
-                        {% with file.document.name as filename %}
-                        <div class="document-name">
-                          <div>
-                            <p>{{ file.file_description }}</p>
-                          </div>
-                        </div>
-                        {% if 'pdf' in filename %}
-                        <div class="row document-bottom pdf-file">
-                          <div class="col-2">
-                            <i class="fad fa-file-pdf"></i>
-                          </div>
-                          <div class="col-9">
-                            <input type="button" class="btn-confirmation proposal-pdf-link" data-document-id="{{file.web_proposal_field}}" data-document-name="{{ filename }}" value="{% trans 'Ver' %}" />
-                          </div>
-                        </div>
-                        {% else %}
-                        {% if 'doc' in filename or 'docx' in filename or 'dot' in filename %}
-                        <div class="row document-bottom word-file">
-                          <div class="col-2">
-                            <i class="fad fa-file-word"></i>
-                          </div>
-                          <div class="col-9">
-                            <a href="{{ media_url }}{{ filename }}" class="download btn-confirmation" data-document-id="{{file.web_proposal_field}}" data-document-name="{{ filename }}" download="{{ filename }}">{% trans 'Descargar' %}</a>
-                          </div>
-                        </div>
-                        {% elif 'xls' in filename or 'xlsx' in filename or 'xlsm' in filename %}
-                        <div class="row document-bottom excel-file">
-                          <div class="col-2">
-                            <i class="fad fa-file-excel"></i>
-                          </div>
-                          <div class="col-9">
-                            <a href="{{ media_url }}{{ filename }}" class="download btn-confirmation" data-document-id="{{file.web_proposal_field}}" data-document-name="{{ filename }}" download="{{ filename }}">{% trans 'Descargar' %}</a>
-                          </div>
-                        </div>
-                        {% elif 'pptx' in filename or 'ppt' in filename or 'pptm' in filename %}
-                        <div class="row document-bottom powerpoint-file">
-                          <div class="col-2">
-                            <i class="fad fa-file-powerpoint"></i>
-                          </div>
-                          <div class="col-9">
-                            <a href="{{ media_url }}{{ filename }}" class="download btn-confirmation" data-document-id="{{file.web_proposal_field}}" data-document-name="{{ filename }}" download="{{ filename }}">{% trans 'Descargar' %}</a>
-                          </div>
-                        </div>
-                        {% else %}
-                        <div class="row document-bottom">
-                          <div class="col-2">
-                            <i class="fad fa-file-download"></i>
-                          </div>
-                          <div class="col-9">
-                            <a href="{{ media_url }}{{ filename }}" class="download btn-confirmation" data-document-id="{{file.web_proposal_field}}" data-document-name="{{ filename }}" download="{{ filename }}">{% trans 'Descargar' %}</a>
-                          </div>
-                        </div>
-                        {% endif %}
-                        {% endif %}
-                        {% endwith %}
+                    {% if 'pdf' in filename %}
+                    <div class="row document-bottom pdf-file">
+                      <div class="col-2">
+                        <i class="fad fa-file-pdf"></i>
+                      </div>
+                      <div class="col-9">
+                        <input type="button" class="btn-confirmation proposal-pdf-link" data-document-id="{{document.document_id}}" data-document-name="{{ document.title }}.pdf" value="{% trans 'Ver' %}"/>
                       </div>
                     </div>
+                    {% else %}
+                    {% if 'doc' in filename or 'docx' in filename or 'dot' in filename %}
+                    <div class="row document-bottom word-file">
+                      <div class="col-2">
+                        <i class="fad fa-file-word"></i>
+                      </div>
+                      <div class="col-9">
+                        <a href="{{document.document_link}}" class="download btn-confirmation" data-document-id="{{document.document_id}}" data-document-name="{{ document.file_name }}" download="{{ document.file_name }}">{% trans 'Descargar' %}</a>
+                      </div>
+                    </div>
+                    {% elif 'xls' in filename or 'xlsx' in filename or 'xlsm' in filename %}
+                    <div class="row document-bottom excel-file">
+                      <div class="col-2">
+                        <i class="fad fa-file-excel"></i>
+                      </div>
+                      <div class="col-9">
+                        <a href="{{document.document_link}}" class="download btn-confirmation" data-document-id="{{document.document_id}}" data-document-name="{{ document.file_name }}" download="{{ document.file_name }}">{% trans 'Descargar' %}</a>
+                      </div>
+                    </div>
+                    {% elif 'pptx' in filename or 'ppt' in filename or 'pptm' in filename %}
+                    <div class="row document-bottom powerpoint-file">
+                      <div class="col-2">
+                        <i class="fad fa-file-powerpoint"></i>
+                      </div>
+                      <div class="col-9">
+                        <a href="{{document.document_link}}" class="download btn-confirmation" data-document-id="{{document.document_id}}" data-document-name="{{ document.file_name }}" download="{{ document.file_name }}">{% trans 'Descargar' %}</a>
+                      </div>
+                    </div>
+                    {% else %}
+                    <div class="row document-bottom">
+                      <div class="col-2">
+                        <i class="fad fa-file-download"></i>
+                      </div>
+                      <div class="col-9">
+                        <a href="{{document.document_link}}" class="download btn-confirmation" data-document-id="{{document.document_id}}" data-document-name="{{ document.file_name }}" download="{{ document.file_name }}">{% trans 'Descargar' %}</a>
+                      </div>
+                    </div>
+                    {% endif %}
+                    {% endif %}
+                    {% endwith %}
                   </div>
-                  {% endfor %}
                 </div>
               </div>
+              {% endfor %}
             </div>
           </div>
-          {% endif %}
         </div>
       </div>
-    </section><!-- End Proposal Link Section -->
+    </section><!-- End Proposal Link Dynamic Section -->
+    {% endif %}
+
+    {% if static_resources %}
+    <!-- ======= Proposal Link Static Section ======= -->
+    <section id="proposal-link-static" class="proposal-link">
+      <div class="container">
+        <div class="section-title">
+          <p>{% trans "Kiwapower recusos" %}</p>
+        </div>
+        <div class="documents-main resources">
+          <div class="rescarousel">
+            <div class="rescarousel-inner">
+              {% for file in static_resources %}
+              <div class="item">
+                <div class="document">
+                  <div class="document-wrapper">
+                    {% with file.document.name as filename %}
+                    <div class="document-name">
+                      <div>
+                        <p>{{ file.file_description }}</p>
+                      </div>
+                    </div>
+                    {% if 'pdf' in filename %}
+                    <div class="row document-bottom pdf-file">
+                      <div class="col-2">
+                        <i class="fad fa-file-pdf"></i>
+                      </div>
+                      <div class="col-9">
+                        <input type="button" class="btn-confirmation proposal-pdf-link" data-document-id="{{file.web_proposal_field}}" data-document-name="{{ filename }}" value="{% trans 'Ver' %}" />
+                      </div>
+                    </div>
+                    {% else %}
+                    {% if 'doc' in filename or 'docx' in filename or 'dot' in filename %}
+                    <div class="row document-bottom word-file">
+                      <div class="col-2">
+                        <i class="fad fa-file-word"></i>
+                      </div>
+                      <div class="col-9">
+                        <a href="{{ media_url }}{{ filename }}" class="download btn-confirmation" data-document-id="{{file.web_proposal_field}}" data-document-name="{{ filename }}" download="{{ filename }}">{% trans 'Descargar' %}</a>
+                      </div>
+                    </div>
+                    {% elif 'xls' in filename or 'xlsx' in filename or 'xlsm' in filename %}
+                    <div class="row document-bottom excel-file">
+                      <div class="col-2">
+                        <i class="fad fa-file-excel"></i>
+                      </div>
+                      <div class="col-9">
+                        <a href="{{ media_url }}{{ filename }}" class="download btn-confirmation" data-document-id="{{file.web_proposal_field}}" data-document-name="{{ filename }}" download="{{ filename }}">{% trans 'Descargar' %}</a>
+                      </div>
+                    </div>
+                    {% elif 'pptx' in filename or 'ppt' in filename or 'pptm' in filename %}
+                    <div class="row document-bottom powerpoint-file">
+                      <div class="col-2">
+                        <i class="fad fa-file-powerpoint"></i>
+                      </div>
+                      <div class="col-9">
+                        <a href="{{ media_url }}{{ filename }}" class="download btn-confirmation" data-document-id="{{file.web_proposal_field}}" data-document-name="{{ filename }}" download="{{ filename }}">{% trans 'Descargar' %}</a>
+                      </div>
+                    </div>
+                    {% else %}
+                    <div class="row document-bottom">
+                      <div class="col-2">
+                        <i class="fad fa-file-download"></i>
+                      </div>
+                      <div class="col-9">
+                        <a href="{{ media_url }}{{ filename }}" class="download btn-confirmation" data-document-id="{{file.web_proposal_field}}" data-document-name="{{ filename }}" download="{{ filename }}">{% trans 'Descargar' %}</a>
+                      </div>
+                    </div>
+                    {% endif %}
+                    {% endif %}
+                    {% endwith %}
+                  </div>
+                </div>
+              </div>
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+      </div>
+    </section><!-- End Proposal Link Static Section -->
+    {% endif %}
 
     <!-- ======= Why Kiwapower Section ======= -->
     <section id="whykiwapower" class="faq">

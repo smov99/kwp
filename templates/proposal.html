@@ -186,7 +186,7 @@
                             <i class="fad fa-file-pdf"></i>
                           </div>
                           <div class="col-9">
-                            <input type="button" class="btn-confirmation proposal-pdf-link" data-document-id="{{file.salesforce_category}}" data-document-name="{{ filename }}" value="{% trans 'Ver' %}" />
+                            <input type="button" class="btn-confirmation proposal-pdf-link" data-document-id="{{file.web_proposal_field}}" data-document-name="{{ filename }}" value="{% trans 'Ver' %}" />
                           </div>
                         </div>
                         {% else %}
@@ -196,7 +196,7 @@
                             <i class="fad fa-file-word"></i>
                           </div>
                           <div class="col-9">
-                            <a href="{{ media_url }}{{ filename }}" class="download btn-confirmation" data-document-id="{{file.salesforce_category}}" data-document-name="{{ filename }}" download="{{ filename }}">{% trans 'Descargar' %}</a>
+                            <a href="{{ media_url }}{{ filename }}" class="download btn-confirmation" data-document-id="{{file.web_proposal_field}}" data-document-name="{{ filename }}" download="{{ filename }}">{% trans 'Descargar' %}</a>
                           </div>
                         </div>
                         {% elif 'xls' in filename or 'xlsx' in filename or 'xlsm' in filename %}
@@ -205,7 +205,7 @@
                             <i class="fad fa-file-excel"></i>
                           </div>
                           <div class="col-9">
-                            <a href="{{ media_url }}{{ filename }}" class="download btn-confirmation" data-document-id="{{file.salesforce_category}}" data-document-name="{{ filename }}" download="{{ filename }}">{% trans 'Descargar' %}</a>
+                            <a href="{{ media_url }}{{ filename }}" class="download btn-confirmation" data-document-id="{{file.web_proposal_field}}" data-document-name="{{ filename }}" download="{{ filename }}">{% trans 'Descargar' %}</a>
                           </div>
                         </div>
                         {% elif 'pptx' in filename or 'ppt' in filename or 'pptm' in filename %}
@@ -214,7 +214,7 @@
                             <i class="fad fa-file-powerpoint"></i>
                           </div>
                           <div class="col-9">
-                            <a href="{{ media_url }}{{ filename }}" class="download btn-confirmation" data-document-id="{{file.salesforce_category}}" data-document-name="{{ filename }}" download="{{ filename }}">{% trans 'Descargar' %}</a>
+                            <a href="{{ media_url }}{{ filename }}" class="download btn-confirmation" data-document-id="{{file.web_proposal_field}}" data-document-name="{{ filename }}" download="{{ filename }}">{% trans 'Descargar' %}</a>
                           </div>
                         </div>
                         {% else %}
@@ -223,7 +223,7 @@
                             <i class="fad fa-file-download"></i>
                           </div>
                           <div class="col-9">
-                            <a href="{{ media_url }}{{ filename }}" class="download btn-confirmation" data-document-id="{{file.salesforce_category}}" data-document-name="{{ filename }}" download="{{ filename }}">{% trans 'Descargar' %}</a>
+                            <a href="{{ media_url }}{{ filename }}" class="download btn-confirmation" data-document-id="{{file.web_proposal_field}}" data-document-name="{{ filename }}" download="{{ filename }}">{% trans 'Descargar' %}</a>
                           </div>
                         </div>
                         {% endif %}

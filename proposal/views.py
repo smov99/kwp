@@ -44,9 +44,11 @@ class ConfirmationView(View):
         if not form.is_valid():
             request.method = 'GET'
             return HttpResponse({'error': True})
+        proposal = services.get_from_session(request, 'proposal')
+        if not proposal:
+            return redirect('confirmation', proposal_id)
         email = request.POST['email'].lower()
         request.session['email'] = email
-        proposal = request.session['proposal']
         trusted_emails = services.get_trusted_emails()
         if email in trusted_emails:
             services.additional_trusted_email_confirmation(request, proposal_id)
@@ -139,10 +141,13 @@ class ProposalView(View):
 
     def post(self, request, proposal_id):
         if request.POST['url'] == request.META['HTTP_REFERER']:
-            documents = request.session['documents']
-            for _, document in documents.items():
-                file_name = document['file_name']
-                os.remove(os.path.join(settings.MEDIA_ROOT, file_name))
+            documents = services.get_from_session(request, 'documents')
+            if documents:
+                for _, document in documents.items():
+                    file_name = document['file_name']
+                    file_path = os.path.join(settings.MEDIA_ROOT, file_name)
+                    if os.path.isfile(file_path):
+                        os.remove(file_path)
         return HttpResponse({'ok': True})
 
 

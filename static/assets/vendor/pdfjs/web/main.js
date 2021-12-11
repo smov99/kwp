@@ -73,15 +73,17 @@
 
     $('body').on('DOMSubtreeModified', '.page', function () {
       $('.linkAnnotation a').on('click', function (e) {
-        e.preventDefault()
-        let eventStart = new Date().getTime()
-        if (((eventStart - eventTimer.click)/1000) > 2) {
-        eventsAjax('Interaction with Document', 'Following a link ' + $(this).attr('title') + ': ' + $(this).attr('href'))
-        let tab = window.open(''+$(this).attr('href'), '_blank');
-        if (tab) {
-          tab.focus();
-        }
-        eventTimer.click = new Date().getTime()
+        if (!$(this).attr('href').match('^#')) {
+          e.preventDefault()
+          let eventStart = new Date().getTime()
+          if (((eventStart - eventTimer.click) / 1000) > 2) {
+            eventsAjax('Interaction with Document', 'Following a link ' + $(this).attr('title') + ': ' + $(this).attr('href'))
+            let tab = window.open('' + $(this).attr('href'), '_blank');
+            if (tab) {
+              tab.focus();
+            }
+            eventTimer.click = new Date().getTime()
+          }
         }
       });
     });

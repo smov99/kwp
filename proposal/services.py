@@ -937,3 +937,11 @@ def get_trusted_emails():
     if trusted_emails_records.exists():
         trusted_emails = trusted_emails_records.values_list('email', flat=True)
     return trusted_emails
+
+
+def get_from_session(request, key):
+    try:
+        result = request.session[key]
+    except KeyError:
+        result = None
+    return result

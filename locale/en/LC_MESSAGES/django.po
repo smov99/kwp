@@ -184,7 +184,7 @@ msgstr "Checkbox are not ticked"
 msgid "Sus documentos"
 msgstr "Your documents"
 
-msgid "Kiwapower recusos"
+msgid "Kiwapower recursos"
 msgstr "Kiwapower resources"
 
 msgid "Servicio no disponible"

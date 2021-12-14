@@ -563,7 +563,7 @@ def get_static_resources_to_review(proposal):
     response = list()
     for category in models.SalesforceCategory.objects.filter(
             is_active=True
-    ).order_by('-staticresource').values_list(
+    ).order_by('staticresource').values_list(
         'salesforce_category', flat=True
     ):
         if proposal.get(category):

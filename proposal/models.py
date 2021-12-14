@@ -1,9 +1,6 @@
-import os
-
 from django.db import models
 
 import proposal.services as services
-import kwp.settings as settings
 
 
 class BaseModel(models.Model):
@@ -98,30 +95,13 @@ class StaticResource(BaseModel):
 
     def __init__(self, *args, **kwargs):
         super(StaticResource, self).__init__(*args, **kwargs)
-        self.__original_document_name = self.document.name
+        self.__original_document_name_en = self.document_en.name
+        self.__original_document_name_es = self.document_es.name
 
     def __str__(self):
         return self.file_description
 
     def save(self, *args, **kwargs):
-        if self.document:
-            if self.document.name != self.__original_document_name:
-                self.s3_file_location = f'{settings.KWP_S3_RESOURCES}{self.document.name}'
-                try:
-                    services.write_file_in_memory(self.document.path, self.document.file)
-                except:
-                    os.remove(self.document.path)
-                    services.write_file_in_memory(self.document.path, self.document.file)
-                services.s3_upload_file(self.document.name, 'static')
-                os.remove(self.document.path)
-            else:
-                try:
-                    services.s3_download_file(self.document.name, 'static')
-                except FileExistsError:
-                    pass
-        else:
-            self.is_active = False
-            if self.s3_file_location:
-                services.s3_delete_static_file(self.s3_file_location)
-            self.s3_file_location = None
+        self = services.save_document(self, "en", self.__original_document_name_en)
+        self = services.save_document(self, "es", self.__original_document_name_es)
         super(StaticResource, self).save(*args, **kwargs)

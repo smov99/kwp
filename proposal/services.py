@@ -945,3 +945,39 @@ def get_from_session(request, key):
     except KeyError:
         result = None
     return result
+
+
+def save_document(model_object, lang_prefix, original_document_name):
+    if lang_prefix == 'en':
+        document = model_object.document_en
+        s3_location = model_object.s3_file_location_en
+    elif lang_prefix == 'es':
+        document = model_object.document_es
+        s3_location = model_object.s3_file_location_es
+    if document:
+        if document.name != original_document_name:
+            if lang_prefix == 'en':
+                model_object.s3_file_location_en = f'{settings.KWP_S3_RESOURCES}{document.name}'
+            elif lang_prefix == 'es':
+                model_object.s3_file_location_es = f'{settings.KWP_S3_RESOURCES}{document.name}'
+            try:
+                write_file_in_memory(document.path, document.file)
+            except:
+                os.remove(document.path)
+                write_file_in_memory(document.path, document.file)
+            s3_upload_file(document.name, 'static')
+            os.remove(document.path)
+        else:
+            try:
+                print(document.name)
+                s3_download_file(document.name, 'static')
+            except FileExistsError:
+                pass
+    else:
+        model_object.is_active = False
+        if model_object.s3_file_location:
+            s3_delete_static_file(s3_location)
+
+        model_object.s3_file_location_en = None
+        model_object.s3_file_location_es = None
+    return model_object

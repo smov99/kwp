@@ -28,7 +28,7 @@
               {% get_language_info_list for LANGUAGES as languages %}
               {% for lang in languages %}
               {% if lang.code != LANGUAGE_CODE %}
-              <li><a href="{% if lang.code != 'es' %}/{{ lang.code }}{% endif %}/{{ proposal_id }}/proposal" target="_blank">{% trans 'EN' %}</a></li>
+              <li><a href="{% if lang.code != 'es' %}/{{ lang.code }}{% endif %}/{{ proposal_id }}/proposal">{% trans 'EN' %}</a></li>
               {% endif %}
               {% endfor %}
             </ul>

@@ -1,7 +1,10 @@
+import uuid
+
 from django.db import models
+from proposal.models import BaseModel
 
 
-class Section(models.Model):
+class Section(BaseModel):
     order = models.IntegerField(blank=True, null=True)
     guid = models.CharField(max_length=64, blank=True, null=True)
     label = models.CharField(max_length=255)
@@ -13,8 +16,13 @@ class Section(models.Model):
     def __str__(self):
         return self.label
 
+    def save(self, *args, **kwargs):
+        if not self.guid:
+            self.guid = uuid.uuid4().hex
+        super(Section, self).save(*args, **kwargs)
 
-class Article(models.Model):
+
+class Article(BaseModel):
     order = models.IntegerField(blank=True, null=True)
     guid = models.CharField(max_length=64, blank=True, null=True)
     section = models.ForeignKey(Section, on_delete=models.CASCADE)
@@ -28,3 +36,8 @@ class Article(models.Model):
 
     def __str__(self):
         return self.question
+
+    def save(self, *args, **kwargs):
+        if not self.guid:
+            self.guid = uuid.uuid4().hex
+        super(Article, self).save(*args, **kwargs)

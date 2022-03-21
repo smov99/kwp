@@ -18,6 +18,7 @@ class SessionEventSerializer(serializers.HyperlinkedModelSerializer):
             'session_id',
             'id',
             'created',
+            'document_name',
             'event_type',
             'event_name',
             'message'

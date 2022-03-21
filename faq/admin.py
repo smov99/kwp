@@ -11,6 +11,7 @@ class SectionAdmin(TranslationAdmin):
     list_display = ('guid', 'order', '_label', 'is_active', 'label_en', 'label_es')
     list_display_links = ('guid', '_label')
     search_fields = ('label_en', 'label_es')
+    readonly_fields = ('guid',)
     list_filter = ('is_active',)
     ordering = ('order', '-is_active')
     list_per_page = 10
@@ -30,11 +31,17 @@ class SectionAdmin(TranslationAdmin):
 @admin.register(Article)
 class ArticleAdmin(TranslationAdmin):
     list_display = ('guid', 'order', 'is_active', 'section', 'question', 'answer')
-    search_fields = ('section', 'question', 'answer')
+    search_fields = ('section__label', 'question', 'answer')
     list_filter = ('section', 'is_active')
     list_display_links = ('question', 'guid')
     ordering = ('section', 'order', '-is_active')
     list_per_page = 10
+    readonly_fields = ('guid', 'created', 'modified')
+    fieldsets = (
+        ('General', {'fields': ('guid', 'created', 'modified', 'is_active')}),
+        ('EN', {'fields': ('question_en', 'answer_en')}),
+        ('ES', {'fields': ('question_es', 'answer_es')})
+    )
 
     class Media:
         js = ['assets/js/menu_filter_collapse.js']

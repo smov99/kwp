@@ -1,0 +1,13 @@
+[Unit]
+Description=celery daemon
+After=network.target
+
+[Service]
+Type=forking
+User=ubuntu
+WorkingDirectory=dbms_template_path
+ExecStart=dbms_template_path/env/bin/celery -A kwp worker -l info
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

@@ -32,7 +32,8 @@
 
 <section id="introduction" class="d-flex align-items-center">
 
-  <video loop="loop" autoplay="" muted="" src="{% static 'assets/img/solar_panels.mp4' %}">
+  <video loop autoplay muted poster="{% static 'assets/img/solar_panels_placeholder.jpg' %}">
+    <source src="{% static 'assets/img/solar_panels.mp4' %}" type="video/mp4">
   </video>
 
   <div class="container-fluid" data-aos="zoom-out" data-aos-delay="100">
@@ -48,7 +49,8 @@
                 <input type="email" name="email" placeholder="{% trans 'Correo electrónico...' %}"><input type="submit" id="confirmationButton" value="{% trans 'Confirmar' %}">
               </form>
             </div>
-            <div class="form-error d-none" id="form-error" data-aos="fade-up" data-aos-delay="100">{% trans 'Email inválido.' %}</div>
+            <div class="form-error d-none" id="form-email-error" data-aos="fade-up" data-aos-delay="100">{% trans 'Email inválido' %}</div>
+            <div class="form-error d-none" id="form-checkbox-error" data-aos="fade-up" data-aos-delay="100">{% trans 'Las casillas de verificación no están marcadas' %}</div>
             <div class="row">
               <div class="col-lg-6">
                 <div class="form-check mb-3">

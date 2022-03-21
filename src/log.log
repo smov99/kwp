@@ -2115,3 +2115,610 @@ Traceback (most recent call last):
     raise self.model.DoesNotExist(
 faq.models.Section.DoesNotExist: Section matching query does not exist.
 ERROR 2021-06-04 01:37:31,649 basehttp 1548 8964 "POST /update_sections/ HTTP/1.1" 500 109648
+ERROR 2021-09-01 21:13:17,760 log 660 23052 Internal Server Error: /asada/
+Traceback (most recent call last):
+  File "F:\workspace\django\kwp\env\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "F:\workspace\django\kwp\env\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "F:\workspace\django\kwp\env\lib\site-packages\django\views\generic\base.py", line 70, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "F:\workspace\django\kwp\env\lib\site-packages\django\views\generic\base.py", line 98, in dispatch
+    return handler(request, *args, **kwargs)
+  File "F:\workspace\django\kwp\proposal\services.py", line 23, in clocked
+    result = func(*args, **kwargs)
+  File "F:\workspace\django\kwp\proposal\views.py", line 19, in get
+    proposal = services.get_proposal(proposal_id)
+  File "F:\workspace\django\kwp\proposal\services.py", line 149, in get_proposal
+    response = sf_api_call(f'/services/data/{settings.SF_API_VERSION}/query/', {'q': query})
+  File "F:\workspace\django\kwp\proposal\services.py", line 91, in sf_api_call
+    r = requests.request(method, instance_url + action, headers=headers, params=parameters, timeout=30)
+TypeError: unsupported operand type(s) for +: 'NoneType' and 'str'
+ERROR 2021-09-01 21:13:17,765 basehttp 660 23052 "GET /asada/ HTTP/1.1" 500 92315
+WARNING 2021-09-01 21:13:18,120 log 660 23052 Not Found: /favicon.ico
+WARNING 2021-09-01 21:13:18,121 basehttp 660 23052 "GET /favicon.ico HTTP/1.1" 404 3512
+ERROR 2021-09-01 23:24:46,313 log 20556 25256 Internal Server Error: /en/a0P0400000158vAEAQ/
+Traceback (most recent call last):
+  File "F:\workspace\django\kwp\env\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "F:\workspace\django\kwp\env\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "F:\workspace\django\kwp\env\lib\site-packages\django\views\generic\base.py", line 70, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "F:\workspace\django\kwp\env\lib\site-packages\django\views\generic\base.py", line 98, in dispatch
+    return handler(request, *args, **kwargs)
+  File "F:\workspace\django\kwp\proposal\services.py", line 22, in clocked
+    result = func(*args, **kwargs)
+  File "F:\workspace\django\kwp\proposal\views.py", line 19, in get
+    proposal = services.get_proposal(proposal_id)
+  File "F:\workspace\django\kwp\proposal\services.py", line 148, in get_proposal
+    response = sf_api_call(f'/services/data/{settings.SF_API_VERSION}/query/', {'q': query})
+  File "F:\workspace\django\kwp\proposal\services.py", line 90, in sf_api_call
+    r = requests.request(method, instance_url + action, headers=headers, params=parameters, timeout=30)
+TypeError: unsupported operand type(s) for +: 'NoneType' and 'str'
+ERROR 2021-09-01 23:24:46,325 basehttp 20556 25256 "GET /en/a0P0400000158vAEAQ/ HTTP/1.1" 500 92799
+ERROR 2021-09-01 23:25:03,834 log 20556 25256 Internal Server Error: /admin/
+Traceback (most recent call last):
+  File "F:\workspace\django\kwp\env\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "F:\workspace\django\kwp\env\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "F:\workspace\django\kwp\env\lib\site-packages\django\views\generic\base.py", line 70, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "F:\workspace\django\kwp\env\lib\site-packages\django\views\generic\base.py", line 98, in dispatch
+    return handler(request, *args, **kwargs)
+  File "F:\workspace\django\kwp\proposal\services.py", line 22, in clocked
+    result = func(*args, **kwargs)
+  File "F:\workspace\django\kwp\proposal\views.py", line 19, in get
+    proposal = services.get_proposal(proposal_id)
+  File "F:\workspace\django\kwp\proposal\services.py", line 148, in get_proposal
+    response = sf_api_call(f'/services/data/{settings.SF_API_VERSION}/query/', {'q': query})
+  File "F:\workspace\django\kwp\proposal\services.py", line 90, in sf_api_call
+    r = requests.request(method, instance_url + action, headers=headers, params=parameters, timeout=30)
+TypeError: unsupported operand type(s) for +: 'NoneType' and 'str'
+ERROR 2021-09-01 23:25:03,838 basehttp 20556 25256 "GET /admin/ HTTP/1.1" 500 92178
+ERROR 2021-09-02 21:11:28,517 log 27380 25780 Internal Server Error: /en/a0P5x00000VConYEAT/
+Traceback (most recent call last):
+  File "F:\workspace\django\kwp\env\lib\site-packages\urllib3\connection.py", line 169, in _new_conn
+    conn = connection.create_connection(
+  File "F:\workspace\django\kwp\env\lib\site-packages\urllib3\util\connection.py", line 73, in create_connection
+    for res in socket.getaddrinfo(host, port, family, socket.SOCK_STREAM):
+  File "C:\Users\vsevo\AppData\Local\Programs\Python\Python39\lib\socket.py", line 953, in getaddrinfo
+    for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+socket.gaierror: [Errno 11001] getaddrinfo failed
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "F:\workspace\django\kwp\env\lib\site-packages\urllib3\connectionpool.py", line 699, in urlopen
+    httplib_response = self._make_request(
+  File "F:\workspace\django\kwp\env\lib\site-packages\urllib3\connectionpool.py", line 382, in _make_request
+    self._validate_conn(conn)
+  File "F:\workspace\django\kwp\env\lib\site-packages\urllib3\connectionpool.py", line 1010, in _validate_conn
+    conn.connect()
+  File "F:\workspace\django\kwp\env\lib\site-packages\urllib3\connection.py", line 353, in connect
+    conn = self._new_conn()
+  File "F:\workspace\django\kwp\env\lib\site-packages\urllib3\connection.py", line 181, in _new_conn
+    raise NewConnectionError(
+urllib3.exceptions.NewConnectionError: <urllib3.connection.HTTPSConnection object at 0x00000274F0F91250>: Failed to establish a new connection: [Errno 11001] getaddrinfo failed
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "F:\workspace\django\kwp\env\lib\site-packages\requests\adapters.py", line 439, in send
+    resp = conn.urlopen(
+  File "F:\workspace\django\kwp\env\lib\site-packages\urllib3\connectionpool.py", line 755, in urlopen
+    retries = retries.increment(
+  File "F:\workspace\django\kwp\env\lib\site-packages\urllib3\util\retry.py", line 574, in increment
+    raise MaxRetryError(_pool, url, error or ResponseError(cause))
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='kiwapower--july16.my.salesforce.com', port=443): Max retries exceeded with url: /services/data/v51.0/query/?q=SELECT+Id%2CAccount__c%2CWelcome_message__c%2CDescription__c%2CPublished__c%2CName+FROM+Web_Proposals__c+where+IsDeleted+%3D+false+and+Id+%3D+%27a0P5x00000VConYEAT%27 (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x00000274F0F91250>: Failed to establish a new connection: [Errno 11001] getaddrinfo failed'))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "F:\workspace\django\kwp\env\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "F:\workspace\django\kwp\env\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "F:\workspace\django\kwp\env\lib\site-packages\django\views\generic\base.py", line 70, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "F:\workspace\django\kwp\env\lib\site-packages\django\views\generic\base.py", line 98, in dispatch
+    return handler(request, *args, **kwargs)
+  File "F:\workspace\django\kwp\proposal\services.py", line 22, in clocked
+    result = func(*args, **kwargs)
+  File "F:\workspace\django\kwp\proposal\views.py", line 19, in get
+    proposal = services.get_proposal(proposal_id)
+  File "F:\workspace\django\kwp\proposal\services.py", line 148, in get_proposal
+    response = sf_api_call(f'/services/data/{settings.SF_API_VERSION}/query/', {'q': query})
+  File "F:\workspace\django\kwp\proposal\services.py", line 90, in sf_api_call
+    r = requests.request(method, instance_url + action, headers=headers, params=parameters, timeout=30)
+  File "F:\workspace\django\kwp\env\lib\site-packages\requests\api.py", line 61, in request
+    return session.request(method=method, url=url, **kwargs)
+  File "F:\workspace\django\kwp\env\lib\site-packages\requests\sessions.py", line 542, in request
+    resp = self.send(prep, **send_kwargs)
+  File "F:\workspace\django\kwp\env\lib\site-packages\requests\sessions.py", line 655, in send
+    r = adapter.send(request, **kwargs)
+  File "F:\workspace\django\kwp\env\lib\site-packages\requests\adapters.py", line 516, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPSConnectionPool(host='kiwapower--july16.my.salesforce.com', port=443): Max retries exceeded with url: /services/data/v51.0/query/?q=SELECT+Id%2CAccount__c%2CWelcome_message__c%2CDescription__c%2CPublished__c%2CName+FROM+Web_Proposals__c+where+IsDeleted+%3D+false+and+Id+%3D+%27a0P5x00000VConYEAT%27 (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x00000274F0F91250>: Failed to establish a new connection: [Errno 11001] getaddrinfo failed'))
+ERROR 2021-09-02 21:11:28,523 basehttp 27380 25780 "GET /en/a0P5x00000VConYEAT/ HTTP/1.1" 500 180668
+ERROR 2021-09-04 01:57:04,795 log 24288 23840 Internal Server Error: /en/a0P5x00000VConYEAT/
+Traceback (most recent call last):
+  File "F:\workspace\django\kwp\env\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "F:\workspace\django\kwp\env\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "F:\workspace\django\kwp\env\lib\site-packages\django\views\generic\base.py", line 70, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "F:\workspace\django\kwp\env\lib\site-packages\django\views\generic\base.py", line 98, in dispatch
+    return handler(request, *args, **kwargs)
+  File "F:\workspace\django\kwp\proposal\services.py", line 22, in clocked
+    result = func(*args, **kwargs)
+  File "F:\workspace\django\kwp\proposal\views.py", line 37, in post
+    services.additional_trusted_email_confirmation(request, proposal_id)
+  File "F:\workspace\django\kwp\proposal\services.py", line 651, in additional_trusted_email_confirmation
+    client_ip = request.META['HTTP_X_FORWARDED_FOR'].split(',')[0].strip()
+KeyError: 'HTTP_X_FORWARDED_FOR'
+ERROR 2021-09-04 01:57:04,804 basehttp 24288 23840 "POST /en/a0P5x00000VConYEAT/ HTTP/1.1" 500 90035
+WARNING 2021-09-04 01:57:05,117 log 24288 23840 Not Found: /favicon.ico
+WARNING 2021-09-04 01:57:05,118 basehttp 24288 23840 "GET /favicon.ico HTTP/1.1" 404 3512
+WARNING 2021-09-07 01:10:34,949 log 27624 11096 Not Found: /en/a0P5x00000VConYEAT/proposal/images/img1.jpg
+WARNING 2021-09-07 01:10:34,962 basehttp 27624 11096 "GET /en/a0P5x00000VConYEAT/proposal/images/img1.jpg HTTP/1.1" 404 3632
+WARNING 2021-09-07 01:10:35,007 log 27624 21160 Not Found: /en/a0P5x00000VConYEAT/proposal/images/img2.jpg
+WARNING 2021-09-07 01:10:35,008 basehttp 27624 21160 "GET /en/a0P5x00000VConYEAT/proposal/images/img2.jpg HTTP/1.1" 404 3632
+WARNING 2021-09-07 01:10:35,062 log 27624 11176 Not Found: /en/a0P5x00000VConYEAT/proposal/images/img3.jpg
+WARNING 2021-09-07 01:10:35,062 basehttp 27624 11176 "GET /en/a0P5x00000VConYEAT/proposal/images/img3.jpg HTTP/1.1" 404 3632
+WARNING 2021-09-07 01:10:35,269 log 27624 11096 Not Found: /en/a0P5x00000VConYEAT/proposal/images/img4.jpg
+WARNING 2021-09-07 01:10:35,270 basehttp 27624 11096 "GET /en/a0P5x00000VConYEAT/proposal/images/img4.jpg HTTP/1.1" 404 3632
+WARNING 2021-09-10 20:02:32,638 log 17492 26588 Not Found: /favicon.ico
+WARNING 2021-09-10 20:02:32,655 basehttp 17492 26588 "GET /favicon.ico HTTP/1.1" 404 3512
+ERROR 2021-09-10 20:25:26,440 log 17492 10752 Internal Server Error: /events/
+Traceback (most recent call last):
+  File "F:\workspace\django\kwp\env\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "F:\workspace\django\kwp\env\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "F:\workspace\django\kwp\env\lib\site-packages\django\views\generic\base.py", line 70, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "F:\workspace\django\kwp\env\lib\site-packages\django\views\generic\base.py", line 98, in dispatch
+    return handler(request, *args, **kwargs)
+  File "F:\workspace\django\kwp\proposal\views.py", line 160, in post
+    if request.session['email'] == settings.TRUSTED_EMAIL:
+  File "F:\workspace\django\kwp\env\lib\site-packages\django\contrib\sessions\backends\base.py", line 65, in __getitem__
+    return self._session[key]
+KeyError: 'email'
+ERROR 2021-09-10 20:25:26,443 basehttp 17492 10752 "POST /events/ HTTP/1.1" 500 84263
+ERROR 2021-09-10 20:25:27,070 log 17492 10752 Internal Server Error: /events/
+Traceback (most recent call last):
+  File "F:\workspace\django\kwp\env\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "F:\workspace\django\kwp\env\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "F:\workspace\django\kwp\env\lib\site-packages\django\views\generic\base.py", line 70, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "F:\workspace\django\kwp\env\lib\site-packages\django\views\generic\base.py", line 98, in dispatch
+    return handler(request, *args, **kwargs)
+  File "F:\workspace\django\kwp\proposal\views.py", line 160, in post
+    if request.session['email'] == settings.TRUSTED_EMAIL:
+  File "F:\workspace\django\kwp\env\lib\site-packages\django\contrib\sessions\backends\base.py", line 65, in __getitem__
+    return self._session[key]
+KeyError: 'email'
+ERROR 2021-09-10 20:25:27,072 basehttp 17492 10752 "POST /events/ HTTP/1.1" 500 84000
+ERROR 2021-09-10 20:25:29,093 log 17492 10752 Internal Server Error: /events/
+Traceback (most recent call last):
+  File "F:\workspace\django\kwp\env\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "F:\workspace\django\kwp\env\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "F:\workspace\django\kwp\env\lib\site-packages\django\views\generic\base.py", line 70, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "F:\workspace\django\kwp\env\lib\site-packages\django\views\generic\base.py", line 98, in dispatch
+    return handler(request, *args, **kwargs)
+  File "F:\workspace\django\kwp\proposal\views.py", line 160, in post
+    if request.session['email'] == settings.TRUSTED_EMAIL:
+  File "F:\workspace\django\kwp\env\lib\site-packages\django\contrib\sessions\backends\base.py", line 65, in __getitem__
+    return self._session[key]
+KeyError: 'email'
+ERROR 2021-09-10 20:25:29,094 basehttp 17492 10752 "POST /events/ HTTP/1.1" 500 84137
+ERROR 2021-09-10 20:25:30,199 log 17492 10752 Internal Server Error: /events/
+Traceback (most recent call last):
+  File "F:\workspace\django\kwp\env\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "F:\workspace\django\kwp\env\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "F:\workspace\django\kwp\env\lib\site-packages\django\views\generic\base.py", line 70, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "F:\workspace\django\kwp\env\lib\site-packages\django\views\generic\base.py", line 98, in dispatch
+    return handler(request, *args, **kwargs)
+  File "F:\workspace\django\kwp\proposal\views.py", line 160, in post
+    if request.session['email'] == settings.TRUSTED_EMAIL:
+  File "F:\workspace\django\kwp\env\lib\site-packages\django\contrib\sessions\backends\base.py", line 65, in __getitem__
+    return self._session[key]
+KeyError: 'email'
+ERROR 2021-09-10 20:25:30,202 basehttp 17492 10752 "POST /events/ HTTP/1.1" 500 84197
+ERROR 2021-09-10 20:25:31,136 log 17492 10752 Internal Server Error: /events/
+Traceback (most recent call last):
+  File "F:\workspace\django\kwp\env\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "F:\workspace\django\kwp\env\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "F:\workspace\django\kwp\env\lib\site-packages\django\views\generic\base.py", line 70, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "F:\workspace\django\kwp\env\lib\site-packages\django\views\generic\base.py", line 98, in dispatch
+    return handler(request, *args, **kwargs)
+  File "F:\workspace\django\kwp\proposal\views.py", line 160, in post
+    if request.session['email'] == settings.TRUSTED_EMAIL:
+  File "F:\workspace\django\kwp\env\lib\site-packages\django\contrib\sessions\backends\base.py", line 65, in __getitem__
+    return self._session[key]
+KeyError: 'email'
+ERROR 2021-09-10 20:25:31,138 basehttp 17492 10752 "POST /events/ HTTP/1.1" 500 84142
+ERROR 2021-09-10 20:25:31,700 log 17492 10752 Internal Server Error: /events/
+Traceback (most recent call last):
+  File "F:\workspace\django\kwp\env\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "F:\workspace\django\kwp\env\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "F:\workspace\django\kwp\env\lib\site-packages\django\views\generic\base.py", line 70, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "F:\workspace\django\kwp\env\lib\site-packages\django\views\generic\base.py", line 98, in dispatch
+    return handler(request, *args, **kwargs)
+  File "F:\workspace\django\kwp\proposal\views.py", line 160, in post
+    if request.session['email'] == settings.TRUSTED_EMAIL:
+  File "F:\workspace\django\kwp\env\lib\site-packages\django\contrib\sessions\backends\base.py", line 65, in __getitem__
+    return self._session[key]
+KeyError: 'email'
+ERROR 2021-09-10 20:25:31,702 basehttp 17492 10752 "POST /events/ HTTP/1.1" 500 83992
+ERROR 2021-09-10 20:25:32,579 log 17492 10752 Internal Server Error: /events/
+Traceback (most recent call last):
+  File "F:\workspace\django\kwp\env\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "F:\workspace\django\kwp\env\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "F:\workspace\django\kwp\env\lib\site-packages\django\views\generic\base.py", line 70, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "F:\workspace\django\kwp\env\lib\site-packages\django\views\generic\base.py", line 98, in dispatch
+    return handler(request, *args, **kwargs)
+  File "F:\workspace\django\kwp\proposal\views.py", line 160, in post
+    if request.session['email'] == settings.TRUSTED_EMAIL:
+  File "F:\workspace\django\kwp\env\lib\site-packages\django\contrib\sessions\backends\base.py", line 65, in __getitem__
+    return self._session[key]
+KeyError: 'email'
+ERROR 2021-09-10 20:25:32,580 basehttp 17492 10752 "POST /events/ HTTP/1.1" 500 84076
+ERROR 2021-09-10 20:25:33,334 log 17492 10752 Internal Server Error: /events/
+Traceback (most recent call last):
+  File "F:\workspace\django\kwp\env\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "F:\workspace\django\kwp\env\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "F:\workspace\django\kwp\env\lib\site-packages\django\views\generic\base.py", line 70, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "F:\workspace\django\kwp\env\lib\site-packages\django\views\generic\base.py", line 98, in dispatch
+    return handler(request, *args, **kwargs)
+  File "F:\workspace\django\kwp\proposal\views.py", line 160, in post
+    if request.session['email'] == settings.TRUSTED_EMAIL:
+  File "F:\workspace\django\kwp\env\lib\site-packages\django\contrib\sessions\backends\base.py", line 65, in __getitem__
+    return self._session[key]
+KeyError: 'email'
+ERROR 2021-09-10 20:25:33,336 basehttp 17492 10752 "POST /events/ HTTP/1.1" 500 84145
+ERROR 2021-09-10 20:25:34,283 log 17492 10752 Internal Server Error: /events/
+Traceback (most recent call last):
+  File "F:\workspace\django\kwp\env\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "F:\workspace\django\kwp\env\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "F:\workspace\django\kwp\env\lib\site-packages\django\views\generic\base.py", line 70, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "F:\workspace\django\kwp\env\lib\site-packages\django\views\generic\base.py", line 98, in dispatch
+    return handler(request, *args, **kwargs)
+  File "F:\workspace\django\kwp\proposal\views.py", line 160, in post
+    if request.session['email'] == settings.TRUSTED_EMAIL:
+  File "F:\workspace\django\kwp\env\lib\site-packages\django\contrib\sessions\backends\base.py", line 65, in __getitem__
+    return self._session[key]
+KeyError: 'email'
+ERROR 2021-09-10 20:25:34,285 basehttp 17492 10752 "POST /events/ HTTP/1.1" 500 84068
+ERROR 2021-09-10 20:25:35,697 log 17492 10752 Internal Server Error: /events/
+Traceback (most recent call last):
+  File "F:\workspace\django\kwp\env\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "F:\workspace\django\kwp\env\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "F:\workspace\django\kwp\env\lib\site-packages\django\views\generic\base.py", line 70, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "F:\workspace\django\kwp\env\lib\site-packages\django\views\generic\base.py", line 98, in dispatch
+    return handler(request, *args, **kwargs)
+  File "F:\workspace\django\kwp\proposal\views.py", line 160, in post
+    if request.session['email'] == settings.TRUSTED_EMAIL:
+  File "F:\workspace\django\kwp\env\lib\site-packages\django\contrib\sessions\backends\base.py", line 65, in __getitem__
+    return self._session[key]
+KeyError: 'email'
+ERROR 2021-09-10 20:25:35,698 basehttp 17492 10752 "POST /events/ HTTP/1.1" 500 84205
+ERROR 2021-09-10 20:25:37,987 log 17492 10752 Internal Server Error: /events/
+Traceback (most recent call last):
+  File "F:\workspace\django\kwp\env\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "F:\workspace\django\kwp\env\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "F:\workspace\django\kwp\env\lib\site-packages\django\views\generic\base.py", line 70, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "F:\workspace\django\kwp\env\lib\site-packages\django\views\generic\base.py", line 98, in dispatch
+    return handler(request, *args, **kwargs)
+  File "F:\workspace\django\kwp\proposal\views.py", line 160, in post
+    if request.session['email'] == settings.TRUSTED_EMAIL:
+  File "F:\workspace\django\kwp\env\lib\site-packages\django\contrib\sessions\backends\base.py", line 65, in __getitem__
+    return self._session[key]
+KeyError: 'email'
+ERROR 2021-09-10 20:25:37,989 basehttp 17492 10752 "POST /events/ HTTP/1.1" 500 84000
+ERROR 2021-09-10 20:25:39,926 log 17492 10752 Internal Server Error: /events/
+Traceback (most recent call last):
+  File "F:\workspace\django\kwp\env\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "F:\workspace\django\kwp\env\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "F:\workspace\django\kwp\env\lib\site-packages\django\views\generic\base.py", line 70, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "F:\workspace\django\kwp\env\lib\site-packages\django\views\generic\base.py", line 98, in dispatch
+    return handler(request, *args, **kwargs)
+  File "F:\workspace\django\kwp\proposal\views.py", line 160, in post
+    if request.session['email'] == settings.TRUSTED_EMAIL:
+  File "F:\workspace\django\kwp\env\lib\site-packages\django\contrib\sessions\backends\base.py", line 65, in __getitem__
+    return self._session[key]
+KeyError: 'email'
+ERROR 2021-09-10 20:25:39,928 basehttp 17492 10752 "POST /events/ HTTP/1.1" 500 84000
+ERROR 2021-09-10 20:25:41,192 log 17492 10752 Internal Server Error: /events/
+Traceback (most recent call last):
+  File "F:\workspace\django\kwp\env\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "F:\workspace\django\kwp\env\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "F:\workspace\django\kwp\env\lib\site-packages\django\views\generic\base.py", line 70, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "F:\workspace\django\kwp\env\lib\site-packages\django\views\generic\base.py", line 98, in dispatch
+    return handler(request, *args, **kwargs)
+  File "F:\workspace\django\kwp\proposal\views.py", line 160, in post
+    if request.session['email'] == settings.TRUSTED_EMAIL:
+  File "F:\workspace\django\kwp\env\lib\site-packages\django\contrib\sessions\backends\base.py", line 65, in __getitem__
+    return self._session[key]
+KeyError: 'email'
+ERROR 2021-09-10 20:25:41,194 basehttp 17492 10752 "POST /events/ HTTP/1.1" 500 84137
+ERROR 2021-09-10 20:25:42,777 log 17492 10752 Internal Server Error: /events/
+Traceback (most recent call last):
+  File "F:\workspace\django\kwp\env\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "F:\workspace\django\kwp\env\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "F:\workspace\django\kwp\env\lib\site-packages\django\views\generic\base.py", line 70, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "F:\workspace\django\kwp\env\lib\site-packages\django\views\generic\base.py", line 98, in dispatch
+    return handler(request, *args, **kwargs)
+  File "F:\workspace\django\kwp\proposal\views.py", line 160, in post
+    if request.session['email'] == settings.TRUSTED_EMAIL:
+  File "F:\workspace\django\kwp\env\lib\site-packages\django\contrib\sessions\backends\base.py", line 65, in __getitem__
+    return self._session[key]
+KeyError: 'email'
+ERROR 2021-09-10 20:25:42,781 basehttp 17492 10752 "POST /events/ HTTP/1.1" 500 84000
+ERROR 2021-09-10 20:25:43,868 log 17492 10752 Internal Server Error: /events/
+Traceback (most recent call last):
+  File "F:\workspace\django\kwp\env\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "F:\workspace\django\kwp\env\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "F:\workspace\django\kwp\env\lib\site-packages\django\views\generic\base.py", line 70, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "F:\workspace\django\kwp\env\lib\site-packages\django\views\generic\base.py", line 98, in dispatch
+    return handler(request, *args, **kwargs)
+  File "F:\workspace\django\kwp\proposal\views.py", line 160, in post
+    if request.session['email'] == settings.TRUSTED_EMAIL:
+  File "F:\workspace\django\kwp\env\lib\site-packages\django\contrib\sessions\backends\base.py", line 65, in __getitem__
+    return self._session[key]
+KeyError: 'email'
+ERROR 2021-09-10 20:25:43,871 basehttp 17492 10752 "POST /events/ HTTP/1.1" 500 84137
+ERROR 2021-09-10 20:25:44,805 log 17492 10752 Internal Server Error: /events/
+Traceback (most recent call last):
+  File "F:\workspace\django\kwp\env\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "F:\workspace\django\kwp\env\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "F:\workspace\django\kwp\env\lib\site-packages\django\views\generic\base.py", line 70, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "F:\workspace\django\kwp\env\lib\site-packages\django\views\generic\base.py", line 98, in dispatch
+    return handler(request, *args, **kwargs)
+  File "F:\workspace\django\kwp\proposal\views.py", line 160, in post
+    if request.session['email'] == settings.TRUSTED_EMAIL:
+  File "F:\workspace\django\kwp\env\lib\site-packages\django\contrib\sessions\backends\base.py", line 65, in __getitem__
+    return self._session[key]
+KeyError: 'email'
+ERROR 2021-09-10 20:25:44,806 basehttp 17492 10752 "POST /events/ HTTP/1.1" 500 84000
+ERROR 2021-09-10 20:25:46,109 log 17492 10752 Internal Server Error: /events/
+Traceback (most recent call last):
+  File "F:\workspace\django\kwp\env\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "F:\workspace\django\kwp\env\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "F:\workspace\django\kwp\env\lib\site-packages\django\views\generic\base.py", line 70, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "F:\workspace\django\kwp\env\lib\site-packages\django\views\generic\base.py", line 98, in dispatch
+    return handler(request, *args, **kwargs)
+  File "F:\workspace\django\kwp\proposal\views.py", line 160, in post
+    if request.session['email'] == settings.TRUSTED_EMAIL:
+  File "F:\workspace\django\kwp\env\lib\site-packages\django\contrib\sessions\backends\base.py", line 65, in __getitem__
+    return self._session[key]
+KeyError: 'email'
+ERROR 2021-09-10 20:25:46,110 basehttp 17492 10752 "POST /events/ HTTP/1.1" 500 84137
+ERROR 2021-09-10 20:25:46,776 log 17492 10752 Internal Server Error: /events/
+Traceback (most recent call last):
+  File "F:\workspace\django\kwp\env\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "F:\workspace\django\kwp\env\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "F:\workspace\django\kwp\env\lib\site-packages\django\views\generic\base.py", line 70, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "F:\workspace\django\kwp\env\lib\site-packages\django\views\generic\base.py", line 98, in dispatch
+    return handler(request, *args, **kwargs)
+  File "F:\workspace\django\kwp\proposal\views.py", line 160, in post
+    if request.session['email'] == settings.TRUSTED_EMAIL:
+  File "F:\workspace\django\kwp\env\lib\site-packages\django\contrib\sessions\backends\base.py", line 65, in __getitem__
+    return self._session[key]
+KeyError: 'email'
+ERROR 2021-09-10 20:25:46,778 basehttp 17492 10752 "POST /events/ HTTP/1.1" 500 84135
+ERROR 2021-09-10 20:25:48,011 log 17492 10752 Internal Server Error: /events/
+Traceback (most recent call last):
+  File "F:\workspace\django\kwp\env\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "F:\workspace\django\kwp\env\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "F:\workspace\django\kwp\env\lib\site-packages\django\views\generic\base.py", line 70, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "F:\workspace\django\kwp\env\lib\site-packages\django\views\generic\base.py", line 98, in dispatch
+    return handler(request, *args, **kwargs)
+  File "F:\workspace\django\kwp\proposal\views.py", line 160, in post
+    if request.session['email'] == settings.TRUSTED_EMAIL:
+  File "F:\workspace\django\kwp\env\lib\site-packages\django\contrib\sessions\backends\base.py", line 65, in __getitem__
+    return self._session[key]
+KeyError: 'email'
+ERROR 2021-09-10 20:25:48,013 basehttp 17492 10752 "POST /events/ HTTP/1.1" 500 84215
+ERROR 2021-09-10 20:25:48,718 log 17492 10752 Internal Server Error: /events/
+Traceback (most recent call last):
+  File "F:\workspace\django\kwp\env\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "F:\workspace\django\kwp\env\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "F:\workspace\django\kwp\env\lib\site-packages\django\views\generic\base.py", line 70, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "F:\workspace\django\kwp\env\lib\site-packages\django\views\generic\base.py", line 98, in dispatch
+    return handler(request, *args, **kwargs)
+  File "F:\workspace\django\kwp\proposal\views.py", line 160, in post
+    if request.session['email'] == settings.TRUSTED_EMAIL:
+  File "F:\workspace\django\kwp\env\lib\site-packages\django\contrib\sessions\backends\base.py", line 65, in __getitem__
+    return self._session[key]
+KeyError: 'email'
+ERROR 2021-09-10 20:25:48,719 basehttp 17492 10752 "POST /events/ HTTP/1.1" 500 84284
+ERROR 2021-09-10 20:25:49,343 log 17492 10752 Internal Server Error: /events/
+Traceback (most recent call last):
+  File "F:\workspace\django\kwp\env\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "F:\workspace\django\kwp\env\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "F:\workspace\django\kwp\env\lib\site-packages\django\views\generic\base.py", line 70, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "F:\workspace\django\kwp\env\lib\site-packages\django\views\generic\base.py", line 98, in dispatch
+    return handler(request, *args, **kwargs)
+  File "F:\workspace\django\kwp\proposal\views.py", line 160, in post
+    if request.session['email'] == settings.TRUSTED_EMAIL:
+  File "F:\workspace\django\kwp\env\lib\site-packages\django\contrib\sessions\backends\base.py", line 65, in __getitem__
+    return self._session[key]
+KeyError: 'email'
+ERROR 2021-09-10 20:25:49,345 basehttp 17492 10752 "POST /events/ HTTP/1.1" 500 84068
+ERROR 2021-09-10 20:25:50,733 log 17492 10752 Internal Server Error: /events/
+Traceback (most recent call last):
+  File "F:\workspace\django\kwp\env\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "F:\workspace\django\kwp\env\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "F:\workspace\django\kwp\env\lib\site-packages\django\views\generic\base.py", line 70, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "F:\workspace\django\kwp\env\lib\site-packages\django\views\generic\base.py", line 98, in dispatch
+    return handler(request, *args, **kwargs)
+  File "F:\workspace\django\kwp\proposal\views.py", line 160, in post
+    if request.session['email'] == settings.TRUSTED_EMAIL:
+  File "F:\workspace\django\kwp\env\lib\site-packages\django\contrib\sessions\backends\base.py", line 65, in __getitem__
+    return self._session[key]
+KeyError: 'email'
+ERROR 2021-09-10 20:25:50,734 basehttp 17492 10752 "POST /events/ HTTP/1.1" 500 84131
+ERROR 2021-09-10 20:25:51,506 log 17492 10752 Internal Server Error: /events/
+Traceback (most recent call last):
+  File "F:\workspace\django\kwp\env\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "F:\workspace\django\kwp\env\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "F:\workspace\django\kwp\env\lib\site-packages\django\views\generic\base.py", line 70, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "F:\workspace\django\kwp\env\lib\site-packages\django\views\generic\base.py", line 98, in dispatch
+    return handler(request, *args, **kwargs)
+  File "F:\workspace\django\kwp\proposal\views.py", line 160, in post
+    if request.session['email'] == settings.TRUSTED_EMAIL:
+  File "F:\workspace\django\kwp\env\lib\site-packages\django\contrib\sessions\backends\base.py", line 65, in __getitem__
+    return self._session[key]
+KeyError: 'email'
+ERROR 2021-09-10 20:25:51,507 basehttp 17492 10752 "POST /events/ HTTP/1.1" 500 83992
+ERROR 2021-09-10 20:25:53,099 log 17492 10752 Internal Server Error: /events/
+Traceback (most recent call last):
+  File "F:\workspace\django\kwp\env\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "F:\workspace\django\kwp\env\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "F:\workspace\django\kwp\env\lib\site-packages\django\views\generic\base.py", line 70, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "F:\workspace\django\kwp\env\lib\site-packages\django\views\generic\base.py", line 98, in dispatch
+    return handler(request, *args, **kwargs)
+  File "F:\workspace\django\kwp\proposal\views.py", line 160, in post
+    if request.session['email'] == settings.TRUSTED_EMAIL:
+  File "F:\workspace\django\kwp\env\lib\site-packages\django\contrib\sessions\backends\base.py", line 65, in __getitem__
+    return self._session[key]
+KeyError: 'email'
+ERROR 2021-09-10 20:25:53,101 basehttp 17492 10752 "POST /events/ HTTP/1.1" 500 84205
+ERROR 2021-09-10 20:25:54,145 log 17492 10752 Internal Server Error: /events/
+Traceback (most recent call last):
+  File "F:\workspace\django\kwp\env\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "F:\workspace\django\kwp\env\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "F:\workspace\django\kwp\env\lib\site-packages\django\views\generic\base.py", line 70, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "F:\workspace\django\kwp\env\lib\site-packages\django\views\generic\base.py", line 98, in dispatch
+    return handler(request, *args, **kwargs)
+  File "F:\workspace\django\kwp\proposal\views.py", line 160, in post
+    if request.session['email'] == settings.TRUSTED_EMAIL:
+  File "F:\workspace\django\kwp\env\lib\site-packages\django\contrib\sessions\backends\base.py", line 65, in __getitem__
+    return self._session[key]
+KeyError: 'email'
+ERROR 2021-09-10 20:25:54,147 basehttp 17492 10752 "POST /events/ HTTP/1.1" 500 84129
+ERROR 2021-09-10 20:29:21,964 log 17492 10752 Internal Server Error: /events/
+Traceback (most recent call last):
+  File "F:\workspace\django\kwp\env\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "F:\workspace\django\kwp\env\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "F:\workspace\django\kwp\env\lib\site-packages\django\views\generic\base.py", line 70, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "F:\workspace\django\kwp\env\lib\site-packages\django\views\generic\base.py", line 98, in dispatch
+    return handler(request, *args, **kwargs)
+  File "F:\workspace\django\kwp\proposal\views.py", line 160, in post
+    if request.session['email'] == settings.TRUSTED_EMAIL:
+  File "F:\workspace\django\kwp\env\lib\site-packages\django\contrib\sessions\backends\base.py", line 65, in __getitem__
+    return self._session[key]
+KeyError: 'email'
+ERROR 2021-09-10 20:29:21,966 basehttp 17492 10752 "POST /events/ HTTP/1.1" 500 83992
+ERROR 2021-09-10 20:29:26,416 log 17492 10752 Internal Server Error: /events/
+Traceback (most recent call last):
+  File "F:\workspace\django\kwp\env\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "F:\workspace\django\kwp\env\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "F:\workspace\django\kwp\env\lib\site-packages\django\views\generic\base.py", line 70, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "F:\workspace\django\kwp\env\lib\site-packages\django\views\generic\base.py", line 98, in dispatch
+    return handler(request, *args, **kwargs)
+  File "F:\workspace\django\kwp\proposal\views.py", line 160, in post
+    if request.session['email'] == settings.TRUSTED_EMAIL:
+  File "F:\workspace\django\kwp\env\lib\site-packages\django\contrib\sessions\backends\base.py", line 65, in __getitem__
+    return self._session[key]
+KeyError: 'email'
+ERROR 2021-09-10 20:29:26,417 basehttp 17492 10752 "POST /events/ HTTP/1.1" 500 84129
+ERROR 2021-09-11 23:58:04,253 log 2756 8892 Internal Server Error: /en/a0P5x00000VConYEAT/proposal/pdf/
+Traceback (most recent call last):
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\views\generic\base.py", line 70, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\views\generic\base.py", line 98, in dispatch
+    return handler(request, *args, **kwargs)
+  File "F:\workspace\django\kwp\proposal\views.py", line 134, in get
+    document = request.session['document']
+  File "C:\Users\vsevo\.virtualenvs\kiwapower_web_proposal-4V7KCttA\lib\site-packages\django\contrib\sessions\backends\base.py", line 65, in __getitem__
+    return self._session[key]
+KeyError: 'document'
+ERROR 2021-09-11 23:58:04,356 basehttp 2756 8892 "GET /en/a0P5x00000VConYEAT/proposal/pdf/ HTTP/1.1" 500 84726
+WARNING 2021-09-11 23:58:04,651 log 2756 8892 Not Found: /favicon.ico
+WARNING 2021-09-11 23:58:04,652 basehttp 2756 8892 "GET /favicon.ico HTTP/1.1" 404 3512

@@ -23,13 +23,14 @@ from proposal import views
 
 urlpatterns = [
     path('i18n/', include('django.conf.urls.i18n')),
-    path('viewer', views.Viewer.as_view(), name='viewer'),
+    path('viewer<slug:document_id>', views.Viewer.as_view(), name='viewer'),
     path('update_sections/', include('faq.urls')),
     path('events/', views.EventsView.as_view(), name='events'),
+    path('kwp/health/', include('health_check.urls')),
 ]
 
 urlpatterns += i18n_patterns(
-    path('kwp/', admin.site.urls, name='admin-root'),
+    path('kwp/admin/', admin.site.urls, name='admin-root'),
     path('', include('proposal.urls')),
     path('api/v1/', include('api.urls')),
     prefix_default_language=False,

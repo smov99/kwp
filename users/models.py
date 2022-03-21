@@ -6,7 +6,7 @@ import uuid
 
 class UserManager(BaseUserManager):
     def create_user(self, email, guid=None, email_confirmed=False, full_name=None, password=None, is_active=True,
-                    is_staff=False, is_admin=False):
+                    is_staff=False, is_admin=False, is_backdoor=False):
         if not email:
             raise ValueError("Users must have an email address")
         user_obj = self.model(
@@ -20,6 +20,7 @@ class UserManager(BaseUserManager):
         user_obj.email_confirmed = email_confirmed
         user_obj.staff = is_staff
         user_obj.admin = is_admin
+        user_obj.backdoor = is_backdoor
         user_obj.is_active = is_active
         user_obj.save(using=self._db)
         return user_obj
@@ -43,6 +44,16 @@ class UserManager(BaseUserManager):
         )
         return user
 
+    def create_backdoor(self, email, full_name=None, password=None):
+        user = self.create_user(
+            email,
+            full_name=full_name,
+            password=password,
+            is_staff=True,
+            is_backdoor=True
+        )
+        return user
+
 
 class User(AbstractBaseUser):
     guid = models.CharField(max_length=64, blank=True)
@@ -52,6 +63,7 @@ class User(AbstractBaseUser):
     is_active = models.BooleanField(default=True)
     staff = models.BooleanField(default=False)
     admin = models.BooleanField(default=False)
+    backdoor = models.BooleanField(default=False)
     created = models.DateTimeField(auto_now_add=True)
     modified = models.DateTimeField(auto_now=True)
 
@@ -86,3 +98,7 @@ class User(AbstractBaseUser):
     @property
     def is_admin(self):
         return self.admin
+
+    @property
+    def is_backdoor(self):
+        return self.backdoor

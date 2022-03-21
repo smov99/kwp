@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% load static i18n %}
 
-{% block title %}{% trans 'Propuesta para' %} {{ client_name }} - Kiwapower{% endblock title %}
+{% block title %}{% trans 'Propuesta para' %} {{ creator.client_name }} - Kiwapower{% endblock title %}
 
 {% block description %}{% endblock description %}
 
@@ -12,29 +12,7 @@
 {% endblock header %}
 
 {% block mobile_nav %}
-{% get_current_language as LANGUAGE_CODE %}
-{% get_available_languages as LANGUAGES %}
-{% get_language_info_list for LANGUAGES as languages %}
-<div class="navbar-collapse collapse proposal-mobile-nav" id="mobile-nav">
-  <ul class="navbar-nav">
-    <li class="nav-item d-block ml-4 mb-1 mt-1">
-      <a class="nav-link" href="https://www.kiwapower.com/">{% trans 'Casa' %}</a>
-    </li>
-    <li class="nav-item d-block ml-4 mb-1">
-      <a class="nav-link" href="https://www.kiwapower.com/#acerca">{% trans 'Quienes somos' %}</a>
-    </li>
-    <li class="nav-item d-block ml-4 mb-1">
-      <a class="nav-link scrollto" href="#whykiwapower">{% trans 'PMF' %}</a>
-    </li>
-    {% for lang in languages %}
-    {% if lang.code != LANGUAGE_CODE %}
-    <li class="nav-item d-block ml-4 mb-1">
-      <a class="nav-link" href="{% if lang.code != 'es' %}/{{ lang.code }}{% endif %}/{{ proposal_id }}/proposal">{% trans 'EN' %}</a>
-    </li>
-    {% endif %}
-    {% endfor %}
-  </ul>
-</div>
+{% include 'proposal_header_mobile.html' %}
 {% endblock mobile_nav %}
 
 {% block introduction %}
@@ -43,7 +21,11 @@
   <div class="container-fluid">
     <div class="row justify-content-center">
       <div class="col-xl-10">
-          <h1>{% trans 'Esta propuesta fue preparada para ' %}{{ client_name }}</h1>
+        {% if not is_expired %}
+        <h1>{% trans 'Esta propuesta fue preparada para ' %}{{ creator.client_name }}</h1>
+        {% else %}
+        <h1>{% trans 'Esta propuesta ha caducado, consulte con su representante de Kawapower' %}</h1>
+        {% endif %}
       </div>
     </div>
   </div>
@@ -57,9 +39,8 @@
     <!-- ======= Prepared Section ======= -->
     <section id="prepared" class="prepared">
       <div class="container">
-
         <div class="row">
-            <div class="col-lg-9">
+            <div class="col-md-6 col-lg-8">
               <div class="section-title">
                 {% if message %}
                 <p>{{ message }}</p>
@@ -68,40 +49,188 @@
                 {% endif %}
               </div>
             </div>
-            <div class="col-lg-3 col-centered">
+            <div class="col-md-6 col-lg-4 col-centered">
               <div class="row member">
-                <div class="col-5 member-img">
-                {% if img %}
-                  <img src="data:image/png;base64,{{ img }}" alt="">
-                {% else %}
-                  <img src="{% static 'assets/img/user-icon-placeholder.png' %}" alt="">
-                {% endif %}
+                <div class="col-3 col-md-4 col-lg-3 member-img" style="background-image: url({% if img %}'data:image/png;base64,{{ img }}'{% else %}'/static/assets/img/user-icon-placeholder.png'{% endif %});">
                 </div>
-                <div class="col-3 member-info">
-                  <h4>{{ creator_name }}</h4>
+                <div class="col-9 col-md-8 col-lg-9 member-info">
+                  <h4>{{ creator.Name }}</h4>
+                  {% if creator.Email %}
+                  <a href="mailto:{{ creator.Email }}?subject={% trans 'Consulta Kiwapower' %}">
+                    <p>{{ creator.Email }}</p>
+                  </a>
+                  {% endif %}
+                  {% if creator.Phone %}
+                  <a href="tel:{{ creator.Phone }}">
+                    <p>{{ creator.Phone }}</p>
+                  </a>
+                  {% endif %}
                 </div>
               </div>
             </div>
-
         </div>
-
       </div>
     </section><!-- End Prepared Section -->
 
-    <!-- ======= Proposal Link Section ======= -->
-  {% if document %}
-    <section id="proposal-link" class="proposal-link">
+    {% if not is_expired and documents %}
+    <!-- ======= Proposal Link Dynamic Section ======= -->
+    <section id="proposal-link-dynamic" class="proposal-link">
       <div class="container">
-        <div class="row">
-          <div class="col-xl-10">
-            <div class="section-title">
-              <input type="button" id="proposal-pdf-link" class="btn-confirmation" value="{% trans 'Ver propuesta' %}" />
+        <div class="section-title">
+          <p>{% trans "Sus documentos" %}</p>
+        </div>
+        <div class="documents-main dynamic">
+          <div class="rescarousel">
+            <div class="rescarousel-inner">
+              {% for _ ,document in documents.items %}
+              <div class="item">
+                <div class="document">
+                  <div class="document-wrapper">
+                    {% with document.file_name as filename %}
+                    <div class="document-name">
+                      <div>
+                        <p>{{ document.title }}</p>
+                      </div>
+                    </div>
+                    {% if 'pdf' in filename %}
+                    <div class="row document-bottom pdf-file">
+                      <div class="col-2">
+                        <i class="fad fa-file-pdf"></i>
+                      </div>
+                      <div class="col-9">
+                        <input type="button" class="btn-confirmation proposal-pdf-link" data-document-id="{{document.document_id}}" data-document-name="{{ document.title }}.pdf" value="{% trans 'Ver' %}"/>
+                      </div>
+                    </div>
+                    {% else %}
+                    {% if 'doc' in filename or 'docx' in filename or 'dot' in filename %}
+                    <div class="row document-bottom word-file">
+                      <div class="col-2">
+                        <i class="fad fa-file-word"></i>
+                      </div>
+                      <div class="col-9">
+                        <a href="{{document.document_link}}" class="download btn-confirmation" data-document-id="{{document.document_id}}" data-document-name="{{ document.file_name }}" download="{{ document.file_name }}">{% trans 'Descargar' %}</a>
+                      </div>
+                    </div>
+                    {% elif 'xls' in filename or 'xlsx' in filename or 'xlsm' in filename %}
+                    <div class="row document-bottom excel-file">
+                      <div class="col-2">
+                        <i class="fad fa-file-excel"></i>
+                      </div>
+                      <div class="col-9">
+                        <a href="{{document.document_link}}" class="download btn-confirmation" data-document-id="{{document.document_id}}" data-document-name="{{ document.file_name }}" download="{{ document.file_name }}">{% trans 'Descargar' %}</a>
+                      </div>
+                    </div>
+                    {% elif 'pptx' in filename or 'ppt' in filename or 'pptm' in filename %}
+                    <div class="row document-bottom powerpoint-file">
+                      <div class="col-2">
+                        <i class="fad fa-file-powerpoint"></i>
+                      </div>
+                      <div class="col-9">
+                        <a href="{{document.document_link}}" class="download btn-confirmation" data-document-id="{{document.document_id}}" data-document-name="{{ document.file_name }}" download="{{ document.file_name }}">{% trans 'Descargar' %}</a>
+                      </div>
+                    </div>
+                    {% else %}
+                    <div class="row document-bottom">
+                      <div class="col-2">
+                        <i class="fad fa-file-download"></i>
+                      </div>
+                      <div class="col-9">
+                        <a href="{{document.document_link}}" class="download btn-confirmation" data-document-id="{{document.document_id}}" data-document-name="{{ document.file_name }}" download="{{ document.file_name }}">{% trans 'Descargar' %}</a>
+                      </div>
+                    </div>
+                    {% endif %}
+                    {% endif %}
+                    {% endwith %}
+                  </div>
+                </div>
+              </div>
+              {% endfor %}
             </div>
           </div>
         </div>
       </div>
-    </section><!-- End Proposal Link Section -->
-  {% endif %}
+    </section><!-- End Proposal Link Dynamic Section -->
+    {% endif %}
+
+    {% if static_resources %}
+    <!-- ======= Proposal Link Static Section ======= -->
+    <section id="proposal-link-static" class="proposal-link">
+      <div class="container">
+        <div class="section-title">
+          <p>{% trans "Kiwapower recursos" %}</p>
+        </div>
+        <div class="documents-main resources">
+          <div class="rescarousel">
+            <div class="rescarousel-inner">
+              {% for file in static_resources %}
+              <div class="item">
+                <div class="document">
+                  <div class="document-wrapper">
+                    {% with file.document.name as filename %}
+                    <div class="document-name">
+                      <div>
+                        <p>{{ file.file_description }}</p>
+                      </div>
+                    </div>
+                    {% if 'pdf' in filename %}
+                    <div class="row document-bottom pdf-file">
+                      <div class="col-2">
+                        <i class="fad fa-file-pdf"></i>
+                      </div>
+                      <div class="col-9">
+                        <input type="button" class="btn-confirmation proposal-pdf-link" data-document-id="{{file.web_proposal_field}}" data-document-name="{{ filename }}" value="{% trans 'Ver' %}" />
+                      </div>
+                    </div>
+                    {% else %}
+                    {% if 'doc' in filename or 'docx' in filename or 'dot' in filename %}
+                    <div class="row document-bottom word-file">
+                      <div class="col-2">
+                        <i class="fad fa-file-word"></i>
+                      </div>
+                      <div class="col-9">
+                        <a href="{{ media_url }}{{ filename }}" class="download btn-confirmation" data-document-id="{{file.web_proposal_field}}" data-document-name="{{ filename }}" download="{{ filename }}">{% trans 'Descargar' %}</a>
+                      </div>
+                    </div>
+                    {% elif 'xls' in filename or 'xlsx' in filename or 'xlsm' in filename %}
+                    <div class="row document-bottom excel-file">
+                      <div class="col-2">
+                        <i class="fad fa-file-excel"></i>
+                      </div>
+                      <div class="col-9">
+                        <a href="{{ media_url }}{{ filename }}" class="download btn-confirmation" data-document-id="{{file.web_proposal_field}}" data-document-name="{{ filename }}" download="{{ filename }}">{% trans 'Descargar' %}</a>
+                      </div>
+                    </div>
+                    {% elif 'pptx' in filename or 'ppt' in filename or 'pptm' in filename %}
+                    <div class="row document-bottom powerpoint-file">
+                      <div class="col-2">
+                        <i class="fad fa-file-powerpoint"></i>
+                      </div>
+                      <div class="col-9">
+                        <a href="{{ media_url }}{{ filename }}" class="download btn-confirmation" data-document-id="{{file.web_proposal_field}}" data-document-name="{{ filename }}" download="{{ filename }}">{% trans 'Descargar' %}</a>
+                      </div>
+                    </div>
+                    {% else %}
+                    <div class="row document-bottom">
+                      <div class="col-2">
+                        <i class="fad fa-file-download"></i>
+                      </div>
+                      <div class="col-9">
+                        <a href="{{ media_url }}{{ filename }}" class="download btn-confirmation" data-document-id="{{file.web_proposal_field}}" data-document-name="{{ filename }}" download="{{ filename }}">{% trans 'Descargar' %}</a>
+                      </div>
+                    </div>
+                    {% endif %}
+                    {% endif %}
+                    {% endwith %}
+                  </div>
+                </div>
+              </div>
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+      </div>
+    </section><!-- End Proposal Link Static Section -->
+    {% endif %}
 
     <!-- ======= Why Kiwapower Section ======= -->
     <section id="whykiwapower" class="faq">
@@ -110,16 +239,16 @@
         {% for section in sections %}
         {% if section.article_set.all.exists %}
         <div class="section-title">
-          <a data-toggle="collapse" class="collapsed" href="#section{{ section.id }}"><h2>{{ section.label }}<i class="bx bx-chevron-down icon-show"></i><i class="bx bx-x icon-close"></i></h2></a>
+          <a id="link-section-{{ section.id }}" aria-expanded="false" data-toggle="collapse" class="collapsed" href="#section-{{ section.id }}"><h2>{{ section.label }}<i class="bx bx-chevron-down icon-show"></i><i class="bx bx-x icon-close"></i></h2></a>
         </div>
         {% endif %}
 
-        <div id="section{{ section.id }}" class="collapse" data-parent=".section-title">
+        <div id="section-{{ section.id }}" class="collapse" data-parent="#link-section-{{ section.id }}">
           <ul class="faq-list" data-aos="fade-up">
           {% for article in section.article_set.all %}
             <li>
-              <a data-toggle="collapse" class="collapsed" href="#article{{ section.id }}-{{ article.order }}">{{ article.question }}<i class="bx bx-chevron-down icon-show"></i><i class="bx bx-x icon-close"></i></a>
-              <div id="article{{ section.id }}-{{ article.order }}" class="collapse" data-parent=".faq-list">
+              <a id="link-article-{{ section.id }}-{{ article.order }}" aria-expanded="false" data-toggle="collapse" class="collapsed" href="#article-{{ section.id }}-{{ article.order }}">{{ article.question }}<i class="bx bx-chevron-down icon-show"></i><i class="bx bx-x icon-close"></i></a>
+              <div id="article-{{ section.id }}-{{ article.order }}" class="collapse" data-parent="#link-article-{{ section.id }}-{{ article.order }}" >
                 <p>
                   {{ article.answer }}
                 </p>

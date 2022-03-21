@@ -15,7 +15,7 @@
   {% get_language_info_list for LANGUAGES as languages %}
   {% for lang in languages %}
   {% if lang.code != LANGUAGE_CODE %}
-  <a href="{% if lang.code != 'es' %}/{{ lang.code }}{% endif %}/kwp/">{% trans 'EN' %}</a>
+  <a href="{% if lang.code != 'es' %}/{{ lang.code }}{% endif %}/kwp/admin">{% trans 'EN' %}</a>
   {% endif %}
   {% endfor %}
 </h1>
@@ -40,7 +40,7 @@
     {% get_language_info_list for LANGUAGES as languages %}
     {% for lang in languages %}
     {% if lang.code != LANGUAGE_CODE %}
-    <a href="{% if lang.code != 'es' %}/{{ lang.code }}{% endif %}/kwp/">{% trans 'EN' %}</a>
+    <a href="{% if lang.code != 'es' %}/{{ lang.code }}{% endif %}/kwp/admin">{% trans 'EN' %}</a>
     {% endif %}
     {% endfor %}
 {% endblock %}

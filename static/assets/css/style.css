@@ -109,21 +109,33 @@ main:before {
 
 #preloader .loader-section {
   position: fixed;
-  width: 100%;
-  height: 51%;
-  background: #fff;
+  width: 100vw;
+  height: 50%;
   z-index: 9998;
   -webkit-transform: translateX(0);
   -ms-transform: translateX(0);
   transform: translateX(0);
 }
 
+#preloader .loader-section:before {
+  content: "";
+  background: #fff;
+  opacity: 0.78;
+  position: absolute;
+  bottom: 0;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+
 #preloader .loader-section.section-top {
-    top: 0;
+  top: 0;
+  background: #fff url("../img/preloader_top.jpg") no-repeat center bottom;
 }
 
 #preloader .loader-section.section-bottom {
   bottom: 0;
+  background: #fff url("../img/preloader_bottom.jpg") no-repeat center top;
 }
 
 #preloader.loaded .loader-section.section-top {
@@ -235,6 +247,10 @@ main:before {
   display: flex;
 }
 
+.nav-menu > ul:last-child{
+  justify-content: center;
+}
+
 .nav-menu > ul > li {
   position: relative;
   white-space: nowrap;
@@ -328,7 +344,7 @@ main:before {
 # Introduction-Confirmation Section
 --------------------------------------------------------------*/
 #introduction {
-  width: 100%;
+  width: 100vw;
   height: 100vh;
   background-size: cover;
   position: relative;
@@ -337,10 +353,12 @@ main:before {
 
 #introduction video {
   position: absolute;
+  object-fit: cover;
   top: 50%;
   left: 50%;
   z-index: 0;
-  width: 1938px;
+  width: 100vw;
+  height: 100vh;
   transform: translate(-50%, -50%);
   opacity: 0.8;
 }
@@ -552,7 +570,7 @@ main:before {
 @media (max-width: 500px) {
   #introduction-proposal {
     background-size: 140vw;
-    height: 10vh;
+    height: 12vh;
   }
 }
 
@@ -701,7 +719,7 @@ main:before {
 # Sections General
 --------------------------------------------------------------*/
 section {
-  margin-top: 10px;
+  margin-top: 20px;
   overflow: hidden;
   position: relative;
 }
@@ -745,7 +763,7 @@ section {
 # Frequently Asked Questions
 --------------------------------------------------------------*/
 .faq .section-title {
-  text-align: unset;
+  text-align: left;
 }
 
 .faq .section-title a {
@@ -837,6 +855,10 @@ section {
   margin: 0 auto;
 }
 
+#prepared {
+  margin-top: 25px;
+}
+
 #prepared .section-title p {
   text-align: left;
   font-size: 22px;
@@ -849,87 +871,228 @@ section {
 }
 
 .prepared .member .member-img {
-  position: relative;
   background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
   overflow: hidden;
-  border-radius: 2px;
-  padding: 0;
-}
-
-.prepared .member .member-img img {
-  height: auto;
-  width: auto;
   border-radius: 100px;
-  max-width: 75%;
+  padding: 0;
+  min-height: 100%;
 }
 
 .prepared .member .member-info {
-  padding: 25px 15px;
+  padding: 15px 5px;
 }
 
 .prepared .member .member-info h4 {
   font-weight: 700;
-  margin-bottom: 5px;
   font-size: 14px;
   color: #fff;
 }
 
 .prepared .member .member-info p {
   font-style: italic;
-  font-size: 14px;
-  line-height: 26px;
-  color: #777777;
+  font-weight: 500;
+  text-align: left;
+  font-size: 13px;
+  margin-top: 5px;
+  margin-bottom: 0px;
+  word-wrap: break-word;
 }
 
-@media (min-width: 992px) and (max-width: 1200px) {
-  .prepared .member .member-img img {
-    max-width: 100%;
-  }
+.prepared .member .member-info a {
+  color: #afafaf;
+}
+
+.prepared .member .member-info a:hover {
+  cursor: pointer;
+  color: #e60012;
 }
 
 @media (min-width: 768px) and (max-width: 992px) {
   .prepared .col-centered {
-    max-width: 50%;
-  }
-}
-
-@media (min-width: 500px) and (max-width: 768px) {
-  .prepared .col-centered {
-    max-width: 60%;
-  }
-}
-
-@media (max-width: 500px) {
-  .prepared .col-centered {
     max-width: 80%;
+  }
+}
+
+@media (max-width: 768px) {
+  .prepared .col-centered {
+    max-width: 95%;
   }
 }
 
 /*--------------------------------------------------------------
 # Proposal Link
 --------------------------------------------------------------*/
-#proposal-link .btn-confirmation {
+#proposal-link-dynamic .btn-confirmation, #proposal-link-static .btn-confirmation {
+  position: absolute;
   font-family: "Lato", sans-serif;
   font-weight: 500;
-  font-size: 16px;
+  font-size: 12px;
   letter-spacing: 1px;
   display: inline-block;
-  padding: 10px 30px;
+  padding: 5px 0;
   transition: 0.5s;
   color: #fff;
   background: #e60012;
   border: 0;
   border-radius: 6px;
+  width: 80%;
+  bottom: 4%;
+  right: 4%;
 }
 
-#proposal-link .btn-confirmation:hover {
+#proposal-link-dynamic .btn-confirmation:hover, #proposal-link-static .btn-confirmation:hover {
   background: #e35052;
 }
 
-@media (min-width: 992px) {
-  #proposal-link .section-title {
-    text-align: left;
+#proposal-link-dynamic .section-title, #proposal-link-static .section-title {
+  text-align: left;
+  margin-bottom: 0;
+  padding-bottom: 10px;
+}
+
+#proposal-link-dynamic .section-title p, #proposal-link-static .section-title p {
+  font-size: 24px;
+}
+
+#proposal-link-dynamic .document-bottom i, #proposal-link-static .document-bottom i {
+  font-size: 25px;
+  color: #2f2f2f;
+  left: 8px;
+}
+
+#proposal-link-dynamic .document-bottom.pdf-file i, #proposal-link-static .document-bottom.pdf-file i {
+  color: #ff2116;
+}
+
+#proposal-link-dynamic .document-bottom.word-file i, #proposal-link-static .document-bottom.word-file i {
+  color: #2c5898;
+}
+
+#proposal-link-dynamic .document-bottom.excel-file i, #proposal-link-static .document-bottom.excel-file i {
+  color: #10783f;
+}
+
+#proposal-link-dynamic .document-bottom.powerpoint-file i, #proposal-link-static .document-bottom.powerpoint-file i {
+  color: #bd3719;
+}
+
+/*--------------------------------------------------------------
+# Carousel
+--------------------------------------------------------------*/
+.documents-main {
+  width: 100%;
+}
+
+.document-wrapper {
+  width: 140px;
+  min-height: 80px;
+}
+
+@media (max-width: 1200px) and (min-width: 510px) {
+  .document-wrapper {
+    width: 120px;
+    min-height: 85px;
   }
+
+  #proposal-link-dynamic .btn-confirmation, #proposal-link-static .btn-confirmation {
+    width: 78%;
+    left: 14%;
+  }
+}
+
+@media (max-width: 510px) {
+  .document-wrapper {
+    width: 110px;
+  }
+
+  #proposal-link-dynamic .btn-confirmation, #proposal-link-static .btn-confirmation {
+    width: 74%;
+    left: 15%;
+  }
+}
+
+.leftLst {
+  position: absolute;
+  margin: auto;
+  top: 47px;
+  left: 12px;
+  bottom: 0;
+  background: linear-gradient(to left, transparent, #2626263B);
+  width: 30px;
+  border: none;
+  z-index: 100;
+  height: auto;
+  outline: none;
+}
+
+.rightLst {
+  position: absolute;
+  margin: auto;
+  top: 47px;
+  right: 12px;
+  bottom: 0;
+  background: linear-gradient(to right, transparent, #2626263B);
+  width: 30px;
+  border: none;
+  z-index: 100;
+  height: content-box;
+  outline: none;
+}
+
+.rightLst i, .leftLst i {
+  color: #fff;
+}
+
+.rescarousel {
+  float: left;
+  overflow: hidden;
+  width: 100%;
+}
+.rescarousel-inner {
+  transition: 1s ease all;
+  float: left;
+  justify-content: center;
+  height: content-box;
+  vertical-align: middle;
+}
+.rescarousel-inner .item {
+  float: left;
+}
+.document {
+  width: content-box;
+  height: auto;
+  position: relative;
+  display: inline-block;
+  vertical-align: middle;
+  left: 0;
+  margin: 6px 10px;
+  text-align: center;
+  overflow: hidden;
+  padding: 5px;
+  background: transparent;
+  border: solid 0.9px transparent;
+  border-radius: 8px;
+  box-shadow: 0 0 15px rgba(214, 215, 216, 0.6);
+}
+
+.document p {
+  font-size: 12px;
+  text-align: left;
+}
+
+.document-name {
+  padding-bottom: 22px;
+  margin: 0 3px;
+}
+
+.document-bottom {
+  vertical-align: bottom;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 8px;
 }
 
 /*--------------------------------------------------------------

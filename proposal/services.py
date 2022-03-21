@@ -599,17 +599,10 @@ def get_single_static_document(category, type_='sync'):
         if not os.path.isfile(
                 os.path.join(
                     settings.MEDIA_ROOT,
-                    category_record.document_en.name
+                    category_record.document.name
                 )
         ):
-            s3_download_file(category_record.document_en.name, 'static')
-        if not os.path.isfile(
-                os.path.join(
-                    settings.MEDIA_ROOT,
-                    category_record.document_es.name
-                )
-        ):
-            s3_download_file(category_record.document_es.name, 'static')
+            s3_download_file(category_record.document.name, 'static')
         result = category_record
         if type_ == 'async':
             result = model_to_dict(result)
@@ -962,7 +955,7 @@ def save_document(model_object, lang_prefix, original_document_name):
         document = model_object.document_es
         s3_location = model_object.s3_file_location_es
     if document:
-        if document.name not in original_document_name:
+        if document.name != original_document_name:
             if lang_prefix == 'en':
                 model_object.s3_file_location_en = f'{settings.KWP_S3_RESOURCES}{document.name}'
             elif lang_prefix == 'es':

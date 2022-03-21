@@ -369,7 +369,7 @@ def get_documents_list(proposal_id, request=None):
 
     :return: List of documents
     """
-    query = f"SELECT ContentDocumentId FROM ContentDocumentLink where IsDeleted = false and LinkedEntityId = '{proposal_id}'"
+    query = f"SELECT ContentDocumentId FROM ContentDocumentLink where IsDeleted = false and LinkedEntityId = '{proposal_id}' order by SystemModstamp DESC"
     response = sf_api_call(
         f'/services/data/{settings.SF_API_VERSION}/query/',
         {'q': query},

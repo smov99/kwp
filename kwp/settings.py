@@ -213,4 +213,4 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'tmp/kwp/')
 from kwp.ansible_settings import *
 
 # kwp
-PRODUCT_VERSION = '2.0'
+PRODUCT_VERSION = '1.0'

@@ -199,8 +199,8 @@ msgstr "https://www.kiwapower.com/en/"
 msgid "https://www.kiwapower.com/#acerca"
 msgstr "https://www.kiwapower.com/en/#acerca"
 
-msgid "https://kiwapower.force.com/FAQ/s/?language=es"
-msgstr "https://kiwapower.force.com/FAQ/s/?language=en_US"
+msgid "https://www.kiwapower.com/preguntas-frecuentes/"
+msgstr "https://www.kiwapower.com/en/frequently-asked-questions/"
 
-msgid "Ve Nuestro Video"
-msgstr "Watch Our Video"
+msgid "Mira nuestro video y Descubre Kiwapower en 2 min"
+msgstr "Watch our video and Discover Kiwapower in 2 min"

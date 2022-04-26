@@ -1,23 +1,21 @@
 import base64
+from datetime import datetime, timedelta
+import functools
 import os
+import time
 
 import boto3
 from botocore.exceptions import ClientError
-import requests
-from datetime import datetime, timedelta
-import functools
-import time
-
 from django.forms import model_to_dict
-from user_agents import parse
-from ipdata import ipdata
-
 from django.http import Http404
 from django.shortcuts import redirect
+from ipdata import ipdata
+import requests
+from user_agents import parse
 
 from kwp import settings
-import proposal.models as models
 from proposal.celery import app
+import proposal.models as models
 from users.models import User
 
 s3 = boto3.session.Session(aws_access_key_id=settings.KWP_AWS_KEY, aws_secret_access_key=settings.KWP_AWS_SECRET)
@@ -143,16 +141,17 @@ def create_error_message(
         if error_message is None:
             error_message = 'Salesforce authorization error'
     session_id = None
-    if request is not None and request is not str:
-        session_id = request.session.get('session_id')
-    elif request is not None:
-        session_id = request
+    if request is not None:
+        session_id = request.session.get('session_id') if request is not str else request
+
+    meta_data = {"data": {"url": request.build_absolute_uri(), "headers": dict(request.headers)}} if request else {}
     models.ErrorLog.objects.create(
         session_id_id=session_id,
         api_call_type=method,
         sf_object=sf_object,
         error=error_message,
-        error_type=error_type
+        error_type=error_type,
+        **meta_data
     )
 
 

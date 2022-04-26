@@ -1,11 +1,14 @@
 import datetime
 
 from django.contrib import admin
+from django.contrib.postgres.fields import JSONField
 from django.urls import reverse
 from django.utils.safestring import mark_safe
 from modeltranslation.admin import TranslationAdmin
+from prettyjson import PrettyJSONWidget
 from rangefilter.filters import DateTimeRangeFilter
 
+from proposal.forms import ErrorLogForm
 from proposal.models import ErrorLog, SalesforceCategory, Session, SessionEvent, StaticResource
 
 
@@ -108,6 +111,7 @@ class SessionEventAdmin(admin.ModelAdmin):
 
 @admin.register(ErrorLog)
 class ErrorLogAdmin(admin.ModelAdmin):
+    form = ErrorLogForm
     model = ErrorLog
     list_display = ('session_id', 'id', 'created', 'error_type', 'api_call_type', 'sf_object', 'error')
     ordering = ('-created',)
@@ -119,6 +123,7 @@ class ErrorLogAdmin(admin.ModelAdmin):
     has_add_permission = false
     log_change = false
     readonly_fields = tuple(field.name for field in ErrorLog._meta.get_fields())
+    formfield_overrides = {JSONField: {"widget": PrettyJSONWidget}}
 
     class Media:
         js = ['assets/js/menu_filter_collapse.js']

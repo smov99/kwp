@@ -59,6 +59,7 @@ class ErrorLog(BaseModel):
     api_call_type = models.CharField(max_length=255, blank=True, null=True)
     sf_object = models.CharField(max_length=255, blank=True, null=True)
     error = models.TextField(blank=True, null=True)
+    data = models.JSONField("Request data", default=dict)
 
 
 class SalesforceCategory(BaseModel):

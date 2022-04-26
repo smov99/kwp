@@ -1,5 +1,6 @@
 import os
 
+from django.core.exceptions import ValidationError
 from django.db import models
 from model_utils import FieldTracker
 
@@ -100,6 +101,11 @@ class StaticResource(BaseModel):
 
     def __str__(self):
         return self.file_description
+
+    def clean(self):
+        if self.is_active and not self.web_proposal_field.is_active:
+            raise ValidationError('Current "Static Resource" should be deactivated')
+        super().clean()
 
     def save(self, *args, **kwargs):
         if self.document:

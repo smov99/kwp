@@ -1,6 +1,6 @@
 import datetime
 
-from django.contrib import admin, messages
+from django.contrib import admin
 from django.urls import reverse
 from django.utils.safestring import mark_safe
 from modeltranslation.admin import TranslationAdmin
@@ -155,7 +155,6 @@ class StaticResourcesAdmin(TranslationAdmin):
     def save_model(self, request, obj, form, change):
         if obj.is_active and not obj.web_proposal_field.is_active:
             obj.is_active = False
-            messages.add_message(request, messages.WARNING, 'Resource was disabled by "Web Proposal Field\'s" status')
         super(StaticResourcesAdmin, self).save_model(request, obj, form, change)
 
 

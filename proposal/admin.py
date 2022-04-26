@@ -1,18 +1,12 @@
 import datetime
 
-from django.contrib import admin
+from django.contrib import admin, messages
 from django.urls import reverse
 from django.utils.safestring import mark_safe
 from modeltranslation.admin import TranslationAdmin
 from rangefilter.filters import DateTimeRangeFilter
 
-from .models import (
-    Session,
-    SessionEvent,
-    ErrorLog,
-    StaticResource,
-    SalesforceCategory
-)
+from proposal.models import ErrorLog, SalesforceCategory, Session, SessionEvent, StaticResource
 
 
 def false(*args, **kwargs):
@@ -133,37 +127,36 @@ class ErrorLogAdmin(admin.ModelAdmin):
 @admin.register(StaticResource)
 class StaticResourcesAdmin(TranslationAdmin):
     list_display = (
-        'id',
-        'created',
-        'modified',
-        'file_description',
-        'is_active',
-        'document',
-        's3_file_location',
-        'web_proposal_field'
+        "id",
+        "created",
+        "modified",
+        "file_description",
+        "is_active",
+        "document",
+        "s3_file_location",
+        "web_proposal_field",
     )
-    search_fields = (
-        'file_description',
-        's3_file_location',
-        'web_proposal_field',
-        'created',
-        'modified'
-    )
-    readonly_fields = ('id', 'created', 'modified')
-    list_display_links = ('file_description',)
-    ordering = ('-modified',)
-    list_filter = ('web_proposal_field', 'is_active')
-    exclude = ('s3_file_location',)
+    search_fields = ("file_description", "s3_file_location", "web_proposal_field", "created", "modified")
+    readonly_fields = ("id", "created", "modified")
+    list_display_links = ("file_description",)
+    ordering = ("-modified",)
+    list_filter = ("web_proposal_field", "is_active")
+    exclude = ("s3_file_location",)
     fieldsets = (
-        ('General', {'fields': ('id', 'created', 'modified', 'is_active', 'web_proposal_field')}),
-        ('ES Document', {'fields': ('file_description_es', 'document_es')}),
-        ('EN Document', {'fields': ('file_description_en', 'document_en')})
+        ("General", {"fields": ("id", "created", "modified", "is_active", "web_proposal_field")}),
+        ("ES Document", {"fields": ("file_description_es", "document_es")}),
+        ("EN Document", {"fields": ("file_description_en", "document_en")}),
     )
 
     def render_change_form(self, request, context, *args, **kwargs):
-        context['adminform'].form.fields['web_proposal_field'].queryset = \
-            SalesforceCategory.objects.filter(is_active=True)
+        context["adminform"].form.fields["web_proposal_field"].queryset = SalesforceCategory.objects.all()
         return super(StaticResourcesAdmin, self).render_change_form(request, context, *args, **kwargs)
+
+    def save_model(self, request, obj, form, change):
+        if obj.is_active and not obj.web_proposal_field.is_active:
+            obj.is_active = False
+            messages.add_message(request, messages.WARNING, 'Resource was disabled by "Web Proposal Field\'s" status')
+        super(StaticResourcesAdmin, self).save_model(request, obj, form, change)
 
 
 @admin.register(SalesforceCategory)
